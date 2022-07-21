@@ -1,0 +1,24 @@
+{
+  "name": "auresx",
+  "descrpition": "AuresX is a software company that took the initiative to provide innovative solutions to major digital challenges facing vital sectors in Algeria.",
+  "author": {
+    "name": "Abderraouf Zine",
+    "email": "rofazayn@gmail.com",
+    "url": "https://rofazayn.com"
+  },
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "turbo": "latest"
+  }
+}
