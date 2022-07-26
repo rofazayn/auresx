@@ -10,6 +10,7 @@ import {
   useMantineColorScheme,
 } from '@mantine/core'
 import { IconMoon, IconSun } from '@tabler/icons'
+import Link from 'next/link'
 
 const Navbar = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme()
@@ -23,12 +24,13 @@ const Navbar = () => {
             justifyContent: 'start',
           }}
         >
-          <Stack spacing={2} align='center'>
+          <Link href='/' passHref>
             <AspectRatio
               ratio={1 / 1}
               sx={{
                 width: 48,
                 paddingInlineStart: -24,
+                cursor: 'pointer',
               }}
             >
               <Image
@@ -40,7 +42,7 @@ const Navbar = () => {
                 aria-label='AuresX logo'
               />
             </AspectRatio>
-          </Stack>
+          </Link>
         </Grid.Col>
 
         <Grid.Col
