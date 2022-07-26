@@ -64,7 +64,7 @@ const Navbar = () => {
         >
           <ActionIcon
             variant='light'
-            color={'cyan'}
+            // color={'cyan'}
             size='lg'
             radius={'md'}
             onClick={() => toggleColorScheme()}

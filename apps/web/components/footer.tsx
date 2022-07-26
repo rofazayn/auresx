@@ -6,7 +6,7 @@ const Footer = () => {
   const [_scroll, scrollTo] = useWindowScroll()
   return (
     <Container size='xs' mt={60} pr={'xl'}>
-      <Divider variant='dotted' mb={20} />
+      <Divider variant='dotted' mb={30} />
       <Group position='apart'>
         <Group spacing={8}>
           <Text size={'sm'} color={'dimmed'}>
