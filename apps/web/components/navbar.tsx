@@ -28,14 +28,14 @@ const Navbar = () => {
             <AspectRatio
               ratio={1 / 1}
               sx={{
-                width: 48,
-                paddingInlineStart: -24,
+                width: 40,
+                // paddingInlineStart: 0,
                 cursor: 'pointer',
               }}
             >
               <Image
-                sx={(theme) => ({
-                  borderRadius: theme.radius.xl,
+                sx={(_theme) => ({
+                  // borderRadius: theme.radius.xl,
                 })}
                 src={'/images/logo.png'}
                 alt='AuresX logo'
