@@ -26,9 +26,9 @@ const Home: NextPage = () => {
         <Stack spacing={30}>
           <Stack spacing={4}>
             <Text weight='bold' size='md'>
-              # Briefing
+              About
             </Text>
-            <Text color='dimmed'>
+            <Text color='dimmed' component='h1'>
               AuresX is a software company that took the initiative to provide
               innovative solutions to major digital challenges facing vital
               sectors in Algeria.
@@ -48,15 +48,15 @@ const Home: NextPage = () => {
           <Divider variant='dotted' my={8} />
           <Stack spacing={4}>
             <Text weight='bold' size='md'>
-              # Projects
+              Our Projects
             </Text>
-            <Text color='dimmed'>
+            <Text color='dimmed' component='h1'>
               Our main goal is to target the most vital sectors first such as
               business, commerce, banking, health and education. From there we
               will decide where to go.
             </Text>
           </Stack>
-          <Timeline active={0} bulletSize={18} lineWidth={4} color={'cyan'}>
+          <Timeline active={0} bulletSize={18} lineWidth={4} color={'fluor'}>
             <Timeline.Item title='Genesis'>
               <Text color='dimmed' size='sm'>
                 A hybrid online/offline business management system for small to
@@ -78,6 +78,41 @@ const Home: NextPage = () => {
                 Planned launch: first quarter of 2024
               </Text>
             </Timeline.Item>
+
+            <Timeline.Item title='Teftoufa' lineVariant='dashed'>
+              <Text color='dimmed' size='sm'>
+                An online experience that connects businesses with independent
+                professionals and agencies, a space where freelancers and
+                business owners connect, create and get paid safely and
+                securely.
+              </Text>
+              <Text size='xs' mt={4}>
+                Planned launch: Undecided
+              </Text>
+            </Timeline.Item>
+
+            <Timeline.Item title='Laafya' lineVariant='dashed'>
+              <Text color='dimmed' size='sm'>
+                A general solution for the health sector, where health workers,
+                health establishments and individuals who are seeking healthcare
+                are all brought together, online!
+              </Text>
+              <Text size='xs' mt={4}>
+                Planned launch: Undecided
+              </Text>
+            </Timeline.Item>
+
+            <Timeline.Item title='Luminous' lineVariant='dashed'>
+              <Text color='dimmed' size='sm'>
+                A new and a simpler meaning of crowdfunding, fundraises and
+                charity acts, where you can support innovative ideas, help
+                others in need or get support yourself.
+              </Text>
+              <Text size='xs' mt={4}>
+                Planned launch: Undecided
+              </Text>
+            </Timeline.Item>
+
             <Timeline.Item title='HoggarX' lineVariant='dashed'>
               <Text color='dimmed' size='sm'>
                 A national proof of authority (PoA) blockchain network to
@@ -85,9 +120,10 @@ const Home: NextPage = () => {
                 any kind.
               </Text>
               <Text size='xs' mt={4}>
-                Planned launch: 2025
+                Planned launch: Needs legal intervention
               </Text>
             </Timeline.Item>
+
             <Timeline.Item title='Other Projects'>
               <Text color='dimmed' size='sm'>
                 Many and many other projects are being planned for AuresX, but
@@ -102,7 +138,7 @@ const Home: NextPage = () => {
           <Divider variant='dotted' my={8} />
           <Stack spacing={4}>
             <Text weight='bold' size='md'>
-              # Endeavour
+              The Endeavour
             </Text>
             <Text color='dimmed'>
               Our aim at AuresX is to convince brilliant minds and skillful
@@ -115,13 +151,25 @@ const Home: NextPage = () => {
               >
                 <Text
                   component='span'
-                  color='cyan'
+                  color='fluor'
                   weight='bold'
                   sx={{ textDecoration: 'none' }}
                 >
                   rofazayn@gmail.com
                 </Text>
               </NextLink>
+            </Text>
+          </Stack>
+          <Divider variant='dotted' my={8} />
+          <Stack spacing={4}>
+            <Text weight='bold' size='md'>
+              Location &amp; Operations
+            </Text>
+            <Text color='dimmed'>
+              AuresX will operate according to the laws and regulations under
+              the the People&apos;s Democratic Republic of Algeria provincy, the
+              headquarters will be initially set in the city of Batna, which is
+              located in the eastern area of the same country.
             </Text>
           </Stack>
         </Stack>

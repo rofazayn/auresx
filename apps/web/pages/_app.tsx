@@ -1,17 +1,17 @@
-import { AppProps } from 'next/app'
-import Head from 'next/head'
 import {
   Box,
+  ColorScheme,
   ColorSchemeProvider,
   MantineProvider,
-  ColorScheme,
 } from '@mantine/core'
 import { useColorScheme } from '@mantine/hooks'
+import { AppProps } from 'next/app'
+import Head from 'next/head'
 
-import PageLayout from '../components/page-layout'
 import { useState } from 'react'
-import Navbar from '../components/navbar'
 import Footer from '../components/footer'
+import Navbar from '../components/navbar'
+import PageLayout from '../components/page-layout'
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props
@@ -41,6 +41,22 @@ export default function App(props: AppProps) {
           theme={{
             /** mantine theme override here */
             colorScheme,
+            colors: {
+              fluor: [
+                '#d2f9f0',
+                '#a6f4e0',
+                '#79eed1',
+                '#54ffd1',
+                '#4de9c1',
+                '#20e3b2',
+                '#25e6b2',
+                '#1ab68e',
+                '#13886b',
+                '#0d5b47',
+              ],
+            },
+            primaryColor: 'fluor',
+            primaryShade: 7,
           }}
         >
           <Box
