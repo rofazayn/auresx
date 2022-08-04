@@ -166,8 +166,8 @@ const Home: NextPage = () => {
               Location &amp; Operations
             </Text>
             <Text color='dimmed'>
-              AuresX will operate according to the laws and regulations under
-              the the People&apos;s Democratic Republic of Algeria provincy, the
+              AuresX will operate according to the laws and regulations stated
+              by the People&apos;s Democratic Republic of Algeria , the
               headquarters will be initially set in the city of Batna, which is
               located in the eastern area of the same country.
             </Text>
