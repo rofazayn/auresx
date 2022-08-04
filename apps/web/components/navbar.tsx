@@ -28,7 +28,7 @@ const Navbar = () => {
             <AspectRatio
               ratio={1 / 1}
               sx={{
-                width: 40,
+                width: 32,
                 // paddingInlineStart: 0,
                 cursor: 'pointer',
               }}
@@ -72,9 +72,9 @@ const Navbar = () => {
             onClick={() => toggleColorScheme()}
           >
             {colorScheme === 'dark' ? (
-              <IconSun size={18} />
+              <IconSun size={16} />
             ) : (
-              <IconMoon size={18} />
+              <IconMoon size={16} />
             )}
           </ActionIcon>
         </Grid.Col>

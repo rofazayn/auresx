@@ -1,18 +1,20 @@
-import {
-  ActionIcon,
-  Button,
-  Container,
-  Divider,
-  Group,
-  Text,
-} from '@mantine/core'
+import { Button, Container, Divider, Group, Text } from '@mantine/core'
 import { useWindowScroll } from '@mantine/hooks'
-import { IconChevronUp } from '@tabler/icons'
 
 const Footer = () => {
   const [_scroll, scrollTo] = useWindowScroll()
   return (
-    <Container size='xs' mt={60} pr={'xl'}>
+    <Container
+      size='xs'
+      px={'xl'}
+      sx={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        paddingBlock: 32,
+      }}
+    >
       <Divider variant='dotted' mb={30} />
       <Group position='apart'>
         <Group spacing={8}>
@@ -23,10 +25,9 @@ const Footer = () => {
         <Group spacing={8}>
           <Group spacing={8}>
             <Button
-              color={'gray'}
+              color={'fluor'}
               variant='light'
               onClick={() => scrollTo({ y: 0 })}
-              rightIcon={<IconChevronUp size='16' />}
             >
               Back to top
             </Button>
