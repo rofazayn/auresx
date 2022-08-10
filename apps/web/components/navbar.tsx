@@ -37,7 +37,11 @@ const Navbar = () => {
                 sx={(_theme) => ({
                   // borderRadius: theme.radius.xl,
                 })}
-                src={'/images/logo.png'}
+                src={
+                  colorScheme === 'dark'
+                    ? '/images/logo.png'
+                    : '/images/logo-light.png'
+                }
                 alt='AuresX logo'
                 aria-label='AuresX logo'
               />
