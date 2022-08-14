@@ -39,6 +39,7 @@ export default function App(props: AppProps) {
           withGlobalStyles
           withNormalizeCSS
           theme={{
+            fontFamily: 'Montserrat',
             colorScheme,
             colors: {
               fluor: [
