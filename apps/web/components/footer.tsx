@@ -1,12 +1,10 @@
-import { Button, Container, Divider, Group, Text } from '@mantine/core'
-import { useWindowScroll } from '@mantine/hooks'
+import { Anchor, Container, Divider, Group, Text } from '@mantine/core'
+import Link from 'next/link'
 
 const Footer = () => {
-  const [_scroll, scrollTo] = useWindowScroll()
   return (
     <Container
-      size='xs'
-      px={'xl'}
+      size='lg'
       sx={{
         position: 'absolute',
         bottom: 0,
@@ -15,23 +13,16 @@ const Footer = () => {
         paddingBlock: 32,
       }}
     >
-      <Divider variant='dotted' mb={30} />
+      <Divider variant='dashed' my={24} />
       <Group position='apart'>
-        <Group spacing={8}>
-          <Text size={'sm'} color={'dimmed'}>
-            AuresX Algeria &copy; 2022
-          </Text>
-        </Group>
-        <Group spacing={8}>
-          <Group spacing={8}>
-            <Button
-              color={'fluor'}
-              variant='light'
-              onClick={() => scrollTo({ y: 0 })}
-            >
-              Back to top
-            </Button>
-          </Group>
+        <Text size={'md'} color='dimmed'>
+          AuresX Algeria &copy; 2022
+        </Text>
+
+        <Group spacing={16}>
+          <Link href='/privacy-policy' passHref>
+            <Anchor color='dimmed'>Privacy Policy</Anchor>
+          </Link>
         </Group>
       </Group>
     </Container>

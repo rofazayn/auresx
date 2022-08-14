@@ -15,10 +15,10 @@ import Link from 'next/link'
 const Navbar = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme()
   return (
-    <Container size='xs' mb={32} px={'xl'}>
+    <Container size='lg' mb={32}>
       <Grid align={'center'}>
         <Grid.Col
-          span={4}
+          span={6}
           sx={{
             display: 'flex',
             justifyContent: 'start',
@@ -49,7 +49,7 @@ const Navbar = () => {
           </Link>
         </Grid.Col>
 
-        <Grid.Col
+        {/* <Grid.Col
           span={4}
           sx={{
             display: 'flex',
@@ -59,10 +59,10 @@ const Navbar = () => {
           <Text size={'sm'} weight='bold' color='dimmed'>
             Introduction
           </Text>
-        </Grid.Col>
+        </Grid.Col> */}
 
         <Grid.Col
-          span={4}
+          span={6}
           sx={{
             display: 'flex',
             justifyContent: 'end',
@@ -83,7 +83,7 @@ const Navbar = () => {
           </ActionIcon>
         </Grid.Col>
       </Grid>
-      <Divider mt={24} variant={'dotted'} />
+      {/* <Divider mt={24} variant={'dotted'} /> */}
     </Container>
   )
 }

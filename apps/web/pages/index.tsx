@@ -5,6 +5,7 @@ import {
   Stack,
   Text,
   Timeline,
+  Title,
 } from '@mantine/core'
 import { NextLink } from '@mantine/next'
 import type { NextPage } from 'next'
@@ -22,13 +23,11 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <Container size='xs' px={'xl'}>
+      <Container size='sm'>
         <Stack spacing={30}>
           <Stack spacing={4}>
-            <Text weight='bold' size='md'>
-              About
-            </Text>
-            <Text color='dimmed' component='h1'>
+            <Title>About</Title>
+            <Text color='dimmed'>
               AuresX is a software company that took the initiative to provide
               innovative solutions to major digital challenges facing vital
               sectors in Algeria.
@@ -47,10 +46,8 @@ const Home: NextPage = () => {
           </Blockquote>
           <Divider variant='dotted' my={8} />
           <Stack spacing={4}>
-            <Text weight='bold' size='md'>
-              Our Projects
-            </Text>
-            <Text color='dimmed' component='h1'>
+            <Title order={2}>Our Projects</Title>
+            <Text color='dimmed'>
               Our main goal is to target the most vital sectors first such as
               business, commerce, banking, health and education. From there we
               will decide where to go.
@@ -137,9 +134,7 @@ const Home: NextPage = () => {
           </Timeline>
           <Divider variant='dotted' my={8} />
           <Stack spacing={4}>
-            <Text weight='bold' size='md'>
-              The Endeavour
-            </Text>
+            <Title order={2}>The Endeavour</Title>
             <Text color='dimmed'>
               Our aim at AuresX is to convince brilliant minds and skillful
               individuals to join our endeavour, if you are interested or you
@@ -162,9 +157,7 @@ const Home: NextPage = () => {
           </Stack>
           <Divider variant='dotted' my={8} />
           <Stack spacing={4}>
-            <Text weight='bold' size='md'>
-              Location &amp; Operations
-            </Text>
+            <Title order={2}>Location &amp; Operations</Title>
             <Text color='dimmed'>
               AuresX will operate according to the laws and regulations stated
               by the People&apos;s Democratic Republic of Algeria , the

@@ -39,7 +39,6 @@ export default function App(props: AppProps) {
           withGlobalStyles
           withNormalizeCSS
           theme={{
-            /** mantine theme override here */
             colorScheme,
             colors: {
               fluor: [
