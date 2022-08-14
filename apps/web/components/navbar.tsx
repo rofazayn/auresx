@@ -28,7 +28,7 @@ const Navbar = () => {
             <AspectRatio
               ratio={1 / 1}
               sx={{
-                width: 32,
+                width: 44,
                 // paddingInlineStart: 0,
                 cursor: 'pointer',
               }}

@@ -40,6 +40,7 @@ export default function App(props: AppProps) {
           withNormalizeCSS
           theme={{
             fontFamily: 'Montserrat',
+            focusRing: 'auto',
             headings: { fontFamily: 'Montserrat' },
             colorScheme,
             colors: {

@@ -1,16 +1,4 @@
-import {
-  Anchor,
-  Blockquote,
-  Box,
-  Container,
-  Divider,
-  List,
-  Stack,
-  Text,
-  Timeline,
-  Title,
-} from '@mantine/core'
-import { NextLink } from '@mantine/next'
+import { Anchor, Box, Container, List, Stack, Text, Title } from '@mantine/core'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
@@ -821,7 +809,7 @@ const PrivacyPolicy: NextPage = () => {
             <Anchor href='mailto:privacy@auresx.com'>privacy@auresx.com</Anchor>{' '}
             or by post to:
           </Text>
-          <Text size='sm'>
+          <Text size='md'>
             <b>Legal name: AuresX SPAS</b>
             <br />
             <b>Address: 5th of July St.</b>
