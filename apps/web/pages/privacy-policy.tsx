@@ -269,9 +269,7 @@ const PrivacyPolicy: NextPage = () => {
             details, like your Facebook, Twitter, or other social media account.
             If you choose to register in this way, we will collect the
             information described in the section called &quot;
-            <Anchor href='#handle-social'>
-              HOW DO WE HANDLE YOUR SOCIAL LOGINS?
-            </Anchor>
+            <Anchor href='#sec-5'>HOW DO WE HANDLE YOUR SOCIAL LOGINS?</Anchor>
             &quot; below.
           </Text>
           <Text size='sm'>
@@ -407,7 +405,7 @@ const PrivacyPolicy: NextPage = () => {
               marketing purposes, if this is in accordance with your marketing
               preferences. You can opt out of our marketing emails at any time.
               For more information, see &quot;
-              <Anchor href='#'>WHAT ARE YOUR PRIVACY RIGHTS?</Anchor>&quot;
+              <Anchor href='#sec-9'>WHAT ARE YOUR PRIVACY RIGHTS?</Anchor>&quot;
               below).
             </List.Item>
             <List.Item>
@@ -677,7 +675,9 @@ const PrivacyPolicy: NextPage = () => {
             on the applicable law, you have the right to withdraw your consent
             at any time. You can withdraw your consent at any time by contacting
             us by using the contact details provided in the section &quot;
-            <Anchor href='#'>HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</Anchor>
+            <Anchor href='#sec-13'>
+              HOW CAN YOU CONTACT US ABOUT THIS NOTICE?
+            </Anchor>
             &quot; below.
           </Text>
           <Text size='sm'>
@@ -693,7 +693,9 @@ const PrivacyPolicy: NextPage = () => {
             replying &quot;STOP&quot; or &quot;UNSUBSCRIBE&quot; to the SMS
             messages that we send, or by contacting us using the details
             provided in the section &quot;
-            <Anchor href='#'>HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</Anchor>
+            <Anchor href='#sec-13'>
+              HOW CAN YOU CONTACT US ABOUT THIS NOTICE?
+            </Anchor>
             &quot; below. You will then be removed from the marketing lists.
             However, we may still communicate with you — for example, to send
             you service-related messages that are necessary for the
