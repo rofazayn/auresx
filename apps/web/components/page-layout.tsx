@@ -11,7 +11,7 @@ export default function PageLayout({ children }: LayoutProps) {
         minHeight: '100%',
         width: '100%',
         paddingTop: 32,
-        paddingBottom: 160,
+        paddingBottom: 280,
         position: 'relative',
         flexGrow: 1,
       }}
