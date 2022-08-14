@@ -40,6 +40,7 @@ export default function App(props: AppProps) {
           withNormalizeCSS
           theme={{
             fontFamily: 'Montserrat',
+            headings: { fontFamily: 'Montserrat' },
             colorScheme,
             colors: {
               fluor: [
