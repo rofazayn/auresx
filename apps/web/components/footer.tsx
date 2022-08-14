@@ -15,13 +15,20 @@ const Footer = () => {
     >
       <Divider variant='dashed' my={24} />
       <Group position='apart'>
-        <Text size={'md'} color='dimmed'>
+        <Text size={'sm'} color='dimmed'>
           AuresX Algeria &copy; 2022
         </Text>
 
         <Group spacing={16}>
           <Link href='/privacy-policy' passHref>
-            <Anchor color='dimmed'>Privacy Policy</Anchor>
+            <Anchor color='dimmed' size='sm'>
+              Privacy Policy
+            </Anchor>
+          </Link>
+          <Link href='/terms' passHref>
+            <Anchor color='dimmed' size='sm'>
+              Terms of Use
+            </Anchor>
           </Link>
         </Group>
       </Group>
