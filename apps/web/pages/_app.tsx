@@ -9,6 +9,7 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 
 import { useState } from 'react'
+import CookieBanner from '../components/cookie-banner'
 import Footer from '../components/footer'
 import Navbar from '../components/navbar'
 import PageLayout from '../components/page-layout'
@@ -74,6 +75,7 @@ export default function App(props: AppProps) {
             })}
           >
             <PageLayout>
+              <CookieBanner />
               <Navbar />
               <Component {...pageProps} />
               <Footer />

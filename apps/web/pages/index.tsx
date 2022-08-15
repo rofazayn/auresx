@@ -1,12 +1,9 @@
 import {
   Blockquote,
-  Box,
-  Button,
   Container,
   Divider,
   Stack,
   Text,
-  TextInput,
   Timeline,
   Title,
 } from '@mantine/core'

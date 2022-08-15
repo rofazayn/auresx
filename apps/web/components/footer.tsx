@@ -30,6 +30,11 @@ const Footer = () => {
               Terms of Use
             </Anchor>
           </Link>
+          <Link href='/cookies' passHref>
+            <Anchor color='dimmed' size='sm'>
+              Cookies
+            </Anchor>
+          </Link>
         </Group>
       </Group>
     </Container>
