@@ -28,14 +28,15 @@ export default class _Document extends Document {
             href='/favicon-16x16.png'
           />
           <link rel='manifest' href='/site.webmanifest' />
+          {/* Fonts */}
           <link rel='preconnect' href='https://fonts.googleapis.com' />
           <link
             rel='preconnect'
             href='https://fonts.gstatic.com'
-            crossOrigin='true'
+            crossOrigin={'true'}
           />
           <link
-            href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap'
+            href='https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;700&family=Work+Sans:wght@300;400;700&display=swap'
             rel='stylesheet'
           />
         </Head>

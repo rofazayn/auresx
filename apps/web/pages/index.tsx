@@ -1,9 +1,12 @@
 import {
   Blockquote,
+  Box,
+  Button,
   Container,
   Divider,
   Stack,
   Text,
+  TextInput,
   Timeline,
   Title,
 } from '@mantine/core'
@@ -26,7 +29,7 @@ const Home: NextPage = () => {
       <Container size='sm'>
         <Stack spacing={30}>
           <Stack spacing={4}>
-            <Title>About</Title>
+            <Title>Welcome to AuresX</Title>
             <Text color='dimmed'>
               AuresX is a software company that took the initiative to provide
               innovative solutions to major digital challenges facing vital

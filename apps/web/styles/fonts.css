@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'Aesthet Nova';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Aesthet Nova'),
+    url(/fonts/Aesthet-Nova-Light.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Aesthet Nova';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Aesthet Nova'),
+    url(/fonts/Aesthet-Nova-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Aesthet Nova';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Aesthet Nova'),
+    url(/fonts/Aesthet-Nova-Medium.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Aesthet Nova';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Aesthet Nova'),
+    url(/fonts/Aesthet-Nova-Bold.ttf) format('truetype');
+}

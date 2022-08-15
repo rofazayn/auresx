@@ -12,6 +12,7 @@ import { useState } from 'react'
 import Footer from '../components/footer'
 import Navbar from '../components/navbar'
 import PageLayout from '../components/page-layout'
+import '../styles/fonts.css'
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props
@@ -39,9 +40,11 @@ export default function App(props: AppProps) {
           withGlobalStyles
           withNormalizeCSS
           theme={{
-            fontFamily: 'Montserrat',
+            fontFamily: 'Work Sans, IBM Plex Sans Arabic, sans-serif',
             focusRing: 'auto',
-            headings: { fontFamily: 'Montserrat' },
+            headings: {
+              fontFamily: 'Aesthet Nova, IBM Plex Sans Arabic, serif',
+            },
             colorScheme,
             colors: {
               fluor: [
