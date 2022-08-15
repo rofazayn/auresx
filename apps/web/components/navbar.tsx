@@ -2,11 +2,8 @@ import {
   ActionIcon,
   AspectRatio,
   Container,
-  Divider,
   Grid,
   Image,
-  Stack,
-  Text,
   useMantineColorScheme,
 } from '@mantine/core'
 import { IconMoon, IconSun } from '@tabler/icons'
@@ -21,29 +18,33 @@ const Navbar = () => {
           span={6}
           sx={{
             display: 'flex',
-            justifyContent: 'start',
+            justifyContent: 'flex-start',
           }}
         >
           <Link href='/' passHref>
             <AspectRatio
               ratio={1 / 1}
               sx={{
-                width: 44,
+                width: 40,
                 // paddingInlineStart: 0,
                 cursor: 'pointer',
               }}
             >
               <Image
-                sx={(_theme) => ({
-                  // borderRadius: theme.radius.xl,
-                })}
-                src={
-                  colorScheme === 'dark'
-                    ? '/images/logo.png'
-                    : '/images/logo-light.png'
-                }
+                src={'/images/logo.png'}
                 alt='AuresX logo'
                 aria-label='AuresX logo'
+                sx={{
+                  display: colorScheme === 'dark' ? 'block' : 'none !important',
+                }}
+              />
+              <Image
+                src={'/images/logo-light.png'}
+                alt='AuresX logo'
+                aria-label='AuresX logo'
+                sx={{
+                  display: colorScheme !== 'dark' ? 'block' : 'none !important',
+                }}
               />
             </AspectRatio>
           </Link>
@@ -65,7 +66,7 @@ const Navbar = () => {
           span={6}
           sx={{
             display: 'flex',
-            justifyContent: 'end',
+            justifyContent: 'flex-end',
           }}
         >
           <ActionIcon
