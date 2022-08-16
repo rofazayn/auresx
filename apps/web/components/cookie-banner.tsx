@@ -7,6 +7,7 @@ import {
   Stack,
   Text,
 } from '@mantine/core'
+import { IconCheck, IconMoon } from '@tabler/icons'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
@@ -26,12 +27,13 @@ const CookieBanner = () => {
         insetInline: 0,
         marginInline: 'auto',
         minHeight: 48,
-        paddingBlock: 16,
+        paddingTop: 16,
+        paddingBottom: 24,
         width: '100%',
         backgroundColor:
           theme.colorScheme === 'dark'
             ? theme.colors.gray[9]
-            : theme.colors.gray[1],
+            : theme.colors.gray[0],
         zIndex: 999,
       })}
     >
@@ -44,8 +46,8 @@ const CookieBanner = () => {
             sx={(theme) => ({
               color:
                 theme.colorScheme === 'dark'
-                  ? theme.colors.gray[4]
-                  : theme.colors.gray[6],
+                  ? theme.colors.gray[1]
+                  : theme.colors.gray[9],
             })}
           >
             You have to accept our{' '}
@@ -56,16 +58,14 @@ const CookieBanner = () => {
           </Text>
 
           <Button
-            size='sm'
-            variant='light'
-            color={'gray'}
             sx={{ width: '100%' }}
             onClick={() => {
               localStorage.setItem('cookies-accepted', 'yes')
               setCookiesConsent('yes')
             }}
+            rightIcon={<IconCheck size='18' />}
           >
-            Accept &amp; Continue
+            I accept all cookies &amp; I want to continue
           </Button>
         </Group>
       </Container>

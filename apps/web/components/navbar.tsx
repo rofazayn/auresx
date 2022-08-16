@@ -1,12 +1,12 @@
 import {
   ActionIcon,
   AspectRatio,
+  Button,
   Container,
   Divider,
   Grid,
+  Group,
   Image,
-  Stack,
-  Text,
   useMantineColorScheme,
 } from '@mantine/core'
 import { IconMoon, IconSun } from '@tabler/icons'
@@ -16,63 +16,39 @@ const Navbar = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme()
   return (
     <Container size='lg' mb={32}>
-      <Grid align={'center'}>
-        <Grid.Col
-          span={6}
-          sx={{
-            display: 'flex',
-            justifyContent: 'start',
-          }}
-        >
-          <Link href='/' passHref>
-            <AspectRatio
-              ratio={1 / 1}
+      <Group position='apart'>
+        <Link href='/' passHref>
+          <AspectRatio
+            ratio={1 / 1}
+            sx={{
+              width: 40,
+              // paddingInlineStart: 0,
+              cursor: 'pointer',
+            }}
+          >
+            <Image
+              src={'/images/logo.png'}
+              alt='AuresX logo'
+              aria-label='AuresX logo'
               sx={{
-                width: 44,
-                // paddingInlineStart: 0,
-                cursor: 'pointer',
+                display: colorScheme === 'dark' ? 'block' : 'none !important',
               }}
-            >
-              <Image
-                sx={(_theme) => ({
-                  // borderRadius: theme.radius.xl,
-                })}
-                src={
-                  colorScheme === 'dark'
-                    ? '/images/logo.png'
-                    : '/images/logo-light.png'
-                }
-                alt='AuresX logo'
-                aria-label='AuresX logo'
-              />
-            </AspectRatio>
-          </Link>
-        </Grid.Col>
+            />
+            <Image
+              src={'/images/logo-light.png'}
+              alt='AuresX logo'
+              aria-label='AuresX logo'
+              sx={{
+                display: colorScheme !== 'dark' ? 'block' : 'none !important',
+              }}
+            />
+          </AspectRatio>
+        </Link>
 
-        {/* <Grid.Col
-          span={4}
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
-          <Text size={'sm'} weight='bold' color='dimmed'>
-            Introduction
-          </Text>
-        </Grid.Col> */}
-
-        <Grid.Col
-          span={6}
-          sx={{
-            display: 'flex',
-            justifyContent: 'end',
-          }}
-        >
+        <Group spacing={8}>
           <ActionIcon
-            variant='light'
-            // color={'cyan'}
+            variant='subtle'
             size='lg'
-            radius={'md'}
             onClick={() => toggleColorScheme()}
           >
             {colorScheme === 'dark' ? (
@@ -81,9 +57,17 @@ const Navbar = () => {
               <IconMoon size={16} />
             )}
           </ActionIcon>
-        </Grid.Col>
-      </Grid>
-      {/* <Divider mt={24} variant={'dotted'} /> */}
+
+          {/* <Button variant='subtle' color='gray'>
+            Sign in
+          </Button> */}
+          <Link href='/register'>
+            <Button variant='light' color='gray'>
+              Join us
+            </Button>
+          </Link>
+        </Group>
+      </Group>
     </Container>
   )
 }

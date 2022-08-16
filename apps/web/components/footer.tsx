@@ -13,7 +13,7 @@ const Footer = () => {
         paddingBlock: 32,
       }}
     >
-      <Divider variant='dashed' my={24} />
+      <Divider variant='dotted' my={24} />
       <Group position='apart'>
         <Text size={'sm'} color='dimmed'>
           AuresX Algeria &copy; 2022

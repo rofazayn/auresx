@@ -53,7 +53,7 @@ const Home: NextPage = () => {
               will decide where to go.
             </Text>
           </Stack>
-          <Timeline active={0} bulletSize={18} lineWidth={4} color={'fluor'}>
+          <Timeline active={0} bulletSize={18} lineWidth={4}>
             <Timeline.Item title='Genesis'>
               <Text color='dimmed' size='sm'>
                 A hybrid online/offline business management system for small to

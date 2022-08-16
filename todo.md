@@ -1,0 +1,4 @@
+- Optimize light logo
+- Build a better landing page
+- Setup a newsletter
+- Work on an accounts system
