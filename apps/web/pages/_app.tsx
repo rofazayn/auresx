@@ -2,6 +2,7 @@ import {
   Box,
   ColorScheme,
   ColorSchemeProvider,
+  createEmotionCache,
   MantineProvider,
 } from '@mantine/core'
 import { useColorScheme } from '@mantine/hooks'
@@ -15,6 +16,12 @@ import Navbar from '../components/navbar'
 import PageLayout from '../components/page-layout'
 import '../styles/fonts.css'
 import mantineTheme from '../styles/mantine-theme'
+import rtlPlugin from 'stylis-plugin-rtl'
+
+const rtlCache = createEmotionCache({
+  key: 'mantine-rtl',
+  stylisPlugins: [rtlPlugin],
+})
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props
@@ -26,6 +33,8 @@ export default function App(props: AppProps) {
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'))
 
+  const [rtl, setRtl] = useState(false)
+
   return (
     <>
       <Head>
@@ -36,37 +45,41 @@ export default function App(props: AppProps) {
         />
       </Head>
 
-      <ColorSchemeProvider
-        colorScheme={colorScheme}
-        toggleColorScheme={toggleColorScheme}
-      >
-        <MantineProvider
-          withGlobalStyles
-          withNormalizeCSS
-          theme={{
-            ...mantineTheme,
-            colorScheme,
-          }}
+      <div dir={rtl ? 'rtl' : 'ltr'}>
+        <ColorSchemeProvider
+          colorScheme={colorScheme}
+          toggleColorScheme={toggleColorScheme}
         >
-          <Box
-            sx={(_theme) => ({
-              minHeight: '100vh',
-              width: '100%',
-              overflow: 'hidden',
-              display: 'flex',
-              flexDirection: 'column',
-            })}
+          <MantineProvider
+            withGlobalStyles
+            withNormalizeCSS
+            theme={{
+              ...mantineTheme,
+              colorScheme,
+              dir: rtl ? 'rtl' : 'ltr',
+            }}
+            emotionCache={rtl ? rtlCache : undefined}
           >
-            <PageLayout>
-              <Navbar />
-              {/* <RouterTransition /> */}
-              <Component {...pageProps} />
-              <Footer />
-              <CookieBanner />
-            </PageLayout>
-          </Box>
-        </MantineProvider>
-      </ColorSchemeProvider>
+            <Box
+              sx={(_theme) => ({
+                minHeight: '100vh',
+                width: '100%',
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+              })}
+            >
+              <PageLayout>
+                <Navbar />
+                {/* <RouterTransition /> */}
+                <Component {...pageProps} />
+                <Footer />
+                <CookieBanner />
+              </PageLayout>
+            </Box>
+          </MantineProvider>
+        </ColorSchemeProvider>
+      </div>
     </>
   )
 }
