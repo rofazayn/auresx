@@ -16,12 +16,7 @@ import Navbar from '../components/navbar'
 import PageLayout from '../components/page-layout'
 import '../styles/fonts.css'
 import mantineTheme from '../styles/mantine-theme'
-import rtlPlugin from 'stylis-plugin-rtl'
-
-const rtlCache = createEmotionCache({
-  key: 'mantine-rtl',
-  stylisPlugins: [rtlPlugin],
-})
+import rtlCache from '../styles/rtl-cache'
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props
