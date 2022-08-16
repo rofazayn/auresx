@@ -3,6 +3,7 @@ import { MantineThemeOverride } from '@mantine/core'
 const mantineTheme: MantineThemeOverride = {
   fontFamily: 'Work Sans, IBM Plex Sans Arabic, sans-serif',
   focusRing: 'auto',
+  // defaultRadius: 'md',
 
   headings: {
     fontFamily: 'Aesthet Nova, IBM Plex Sans Arabic, serif',
@@ -22,7 +23,7 @@ const mantineTheme: MantineThemeOverride = {
     ],
   },
   primaryColor: 'fluor',
-  primaryShade: 7,
+  // primaryShade: 7,
   components: {
     InputWrapper: {
       defaultProps: {
