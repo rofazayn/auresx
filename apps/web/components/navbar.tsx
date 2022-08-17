@@ -15,7 +15,7 @@ import Link from 'next/link'
 const Navbar = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme()
   return (
-    <Container size='lg' mb={32}>
+    <Container size='xl' mb={32}>
       <Group position='apart'>
         <Link href='/' passHref>
           <AspectRatio
@@ -62,7 +62,7 @@ const Navbar = () => {
             Sign in
           </Button> */}
           <Link href='/register'>
-            <Button variant='light' color='gray'>
+            <Button variant='default' color='gray'>
               Join us
             </Button>
           </Link>

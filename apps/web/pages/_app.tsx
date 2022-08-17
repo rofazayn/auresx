@@ -2,13 +2,11 @@ import {
   Box,
   ColorScheme,
   ColorSchemeProvider,
-  createEmotionCache,
   MantineProvider,
 } from '@mantine/core'
 import { useColorScheme } from '@mantine/hooks'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-
 import { useState } from 'react'
 import CookieBanner from '../components/cookie-banner'
 import Footer from '../components/footer'
@@ -28,7 +26,7 @@ export default function App(props: AppProps) {
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'))
 
-  const [rtl, setRtl] = useState(false)
+  const [rtl, _setRtl] = useState(false)
 
   return (
     <>
