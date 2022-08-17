@@ -4,7 +4,7 @@ import Link from 'next/link'
 const Footer = () => {
   return (
     <Container
-      size='lg'
+      size='xl'
       sx={{
         position: 'absolute',
         bottom: 0,

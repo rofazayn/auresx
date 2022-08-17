@@ -23,7 +23,7 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <Container size='sm'>
+      <Container size='md'>
         <Stack spacing={30}>
           <Stack spacing={4}>
             <Title>Welcome to AuresX</Title>
