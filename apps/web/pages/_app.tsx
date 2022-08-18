@@ -7,7 +7,8 @@ import {
 import { useColorScheme } from '@mantine/hooks'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import { useState } from 'react'
+import { Router } from 'next/router'
+import { useEffect, useState } from 'react'
 import CookieBanner from '../components/cookie-banner'
 import Footer from '../components/footer'
 import Navbar from '../components/navbar'
@@ -16,16 +17,20 @@ import '../styles/custom.css'
 import '../styles/fonts.css'
 import mantineTheme from '../styles/mantine-theme'
 import rtlCache from '../styles/rtl-cache'
+import NextNProgress from 'nextjs-progressbar'
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props
 
-  const preferredColorScheme = useColorScheme('dark')
-
+  // detect color scheme
+  const preferredColorScheme = useColorScheme()
   const [colorScheme, setColorScheme] =
     useState<ColorScheme>(preferredColorScheme)
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'))
+  useEffect(() => {
+    setColorScheme(preferredColorScheme)
+  }, [preferredColorScheme])
 
   const [rtl, _setRtl] = useState(false)
 
@@ -65,7 +70,16 @@ export default function App(props: AppProps) {
               })}
             >
               <PageLayout>
-                {/* <RouterTransition /> */}
+                <NextNProgress
+                  color={'#20e3b2'}
+                  startPosition={0.3}
+                  stopDelayMs={200}
+                  height={3}
+                  showOnShallow={true}
+                  options={{
+                    showSpinner: false,
+                  }}
+                />
                 <Component {...pageProps} />
                 <CookieBanner />
                 <Footer />
