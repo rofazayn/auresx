@@ -12,6 +12,7 @@ import CookieBanner from '../components/cookie-banner'
 import Footer from '../components/footer'
 import Navbar from '../components/navbar'
 import PageLayout from '../components/page-layout'
+import '../styles/custom.css'
 import '../styles/fonts.css'
 import mantineTheme from '../styles/mantine-theme'
 import rtlCache from '../styles/rtl-cache'
@@ -53,6 +54,7 @@ export default function App(props: AppProps) {
             }}
             emotionCache={rtl ? rtlCache : undefined}
           >
+            <Navbar />
             <Box
               sx={(_theme) => ({
                 minHeight: '100vh',
@@ -63,11 +65,10 @@ export default function App(props: AppProps) {
               })}
             >
               <PageLayout>
-                <Navbar />
                 {/* <RouterTransition /> */}
                 <Component {...pageProps} />
-                <Footer />
                 <CookieBanner />
+                <Footer />
               </PageLayout>
             </Box>
           </MantineProvider>

@@ -10,7 +10,7 @@ export default function PageLayout({ children }: LayoutProps) {
       sx={{
         minHeight: '100%',
         width: '100%',
-        paddingTop: 32,
+        paddingTop: 40,
         paddingBottom: 240,
         position: 'relative',
         flexGrow: 1,
