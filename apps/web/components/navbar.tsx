@@ -1,10 +1,9 @@
 import {
   ActionIcon,
   AspectRatio,
+  Box,
   Button,
   Container,
-  Divider,
-  Grid,
   Group,
   Image,
   useMantineColorScheme,
@@ -15,40 +14,43 @@ import Link from 'next/link'
 const Navbar = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme()
   return (
-    <Container size='xl' mb={32}>
+    <Container size='xl' mb={32} sx={{ paddingTop: 28 }}>
       <Group position='apart'>
-        <Link href='/' passHref>
-          <AspectRatio
-            ratio={1 / 1}
-            sx={{
-              width: 40,
-              // paddingInlineStart: 0,
-              cursor: 'pointer',
-            }}
-          >
-            <Image
-              src={'/images/logo.png'}
-              alt='AuresX logo'
-              aria-label='AuresX logo'
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Link href='/' passHref>
+            <AspectRatio
+              ratio={1 / 1}
               sx={{
-                display: colorScheme === 'dark' ? 'block' : 'none !important',
+                width: 44,
+                // paddingInlineStart: 0,
+                cursor: 'pointer',
+                marginInlineEnd: 80,
               }}
-            />
-            <Image
-              src={'/images/logo-light.png'}
-              alt='AuresX logo'
-              aria-label='AuresX logo'
-              sx={{
-                display: colorScheme !== 'dark' ? 'block' : 'none !important',
-              }}
-            />
-          </AspectRatio>
-        </Link>
+            >
+              <Image
+                src={'/images/logo.png'}
+                alt='AuresX logo'
+                aria-label='AuresX logo'
+                sx={{
+                  display: colorScheme === 'dark' ? 'block' : 'none !important',
+                }}
+              />
+              <Image
+                src={'/images/logo-light.png'}
+                alt='AuresX logo'
+                aria-label='AuresX logo'
+                sx={{
+                  display: colorScheme !== 'dark' ? 'block' : 'none !important',
+                }}
+              />
+            </AspectRatio>
+          </Link>
+        </Box>
 
-        <Group spacing={8}>
+        <Group spacing={16}>
           <ActionIcon
             variant='subtle'
-            size='lg'
+            size='sm'
             onClick={() => toggleColorScheme()}
           >
             {colorScheme === 'dark' ? (
@@ -58,11 +60,8 @@ const Navbar = () => {
             )}
           </ActionIcon>
 
-          {/* <Button variant='subtle' color='gray'>
-            Sign in
-          </Button> */}
           <Link href='/register'>
-            <Button variant='default' color='gray'>
+            <Button variant='light' color='teal' size='md'>
               Join us
             </Button>
           </Link>

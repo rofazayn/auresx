@@ -10,7 +10,7 @@ const Footer = () => {
         bottom: 0,
         left: 0,
         right: 0,
-        paddingBlock: 32,
+        paddingBlock: 24,
       }}
     >
       <Divider variant='dotted' my={24} />
@@ -19,7 +19,7 @@ const Footer = () => {
           AuresX Algeria &copy; 2022
         </Text>
 
-        <Group spacing={16}>
+        <Group spacing={12}>
           <Link href='/privacy-policy' passHref>
             <Anchor color='dimmed' size='sm'>
               Privacy Policy
