@@ -14,7 +14,7 @@ import Link from 'next/link'
 const Navbar = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme()
   return (
-    <Container size='xl' mb={32} sx={{ paddingTop: 28 }}>
+    <Container size='xl' mb={32} sx={{ paddingTop: 32 }}>
       <Group position='apart'>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Link href='/' passHref>
@@ -47,7 +47,7 @@ const Navbar = () => {
           </Link>
         </Box>
 
-        <Group spacing={16}>
+        <Group spacing={20}>
           <ActionIcon
             variant='subtle'
             size='sm'

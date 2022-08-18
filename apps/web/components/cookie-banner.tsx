@@ -59,11 +59,13 @@ const CookieBanner = () => {
 
           <Button
             sx={{ width: '100%' }}
+            size='md'
+            variant='light'
             onClick={() => {
               localStorage.setItem('cookies-accepted', 'yes')
               setCookiesConsent('yes')
             }}
-            rightIcon={<IconCheck size='18' />}
+            rightIcon={<IconCheck size='20' />}
           >
             I accept all cookies &amp; I want to continue
           </Button>

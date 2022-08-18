@@ -11,18 +11,28 @@ export function RouterTransition() {
   const router = useRouter()
 
   useEffect(() => {
-    const handleStart = (url: string) =>
-      url !== router.asPath && startNavigationProgress()
-    const handleComplete = () => resetNavigationProgress()
+    const handleStart = (url: string) => {
+      console.log('triggered')
+      return url !== router.asPath && startNavigationProgress()
+    }
 
-    router.events.on('routeChangeStart', handleStart)
-    router.events.on('routeChangeComplete', handleComplete)
-    router.events.on('routeChangeError', handleComplete)
+    const handleComplete = () => {
+      resetNavigationProgress()
+      console.log('complete')
+    }
+
+    if (typeof window !== 'undefined') {
+      router.events.on('routeChangeStart', handleStart)
+      router.events.on('routeChangeComplete', handleComplete)
+      router.events.on('routeChangeError', handleComplete)
+    }
 
     return () => {
-      router.events.off('routeChangeStart', handleStart)
-      router.events.off('routeChangeComplete', handleComplete)
-      router.events.off('routeChangeError', handleComplete)
+      if (typeof window !== 'undefined') {
+        router.events.off('routeChangeStart', handleStart)
+        router.events.off('routeChangeComplete', handleComplete)
+        router.events.off('routeChangeError', handleComplete)
+      }
     }
   }, [router.asPath, router.events])
 

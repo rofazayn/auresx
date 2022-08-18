@@ -10,10 +10,10 @@ const Footer = () => {
         bottom: 0,
         left: 0,
         right: 0,
-        paddingBlock: 24,
+        paddingBlock: 40,
       }}
     >
-      <Divider variant='dotted' my={24} />
+      <Divider variant='dotted' mb={32} />
       <Group position='apart'>
         <Text size={'sm'} color='dimmed'>
           AuresX Algeria &copy; 2022
