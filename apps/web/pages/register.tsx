@@ -124,7 +124,6 @@ const Terms: NextPage = () => {
                     type='text'
                     label='Full name'
                     placeholder='Enter your full name'
-                    error={'Please provide a real name'}
                     description='Please provide your real &amp; full name'
                   />
                   <TextInput
@@ -149,16 +148,7 @@ const Terms: NextPage = () => {
                     label={'By signing-up with us you agree to the following'}
                     mt={16}
                   />
-                  <Checkbox
-                    size='md'
-                    sx={{ alignItems: 'flex-start' }}
-                    label={
-                      <Text size='sm'>
-                        <b>I would like</b> to susbscribe to AuresX&apos;s
-                        newsletter and receive latest news (<b>optional</b>)
-                      </Text>
-                    }
-                  />
+
                   <Checkbox
                     required
                     size='md'
@@ -176,6 +166,16 @@ const Terms: NextPage = () => {
                           <Anchor underline>Privacy Policy</Anchor>
                         </Link>{' '}
                         provided by AuresX (<b>required</b>)
+                      </Text>
+                    }
+                  />
+                  <Checkbox
+                    size='md'
+                    sx={{ alignItems: 'flex-start' }}
+                    label={
+                      <Text size='sm'>
+                        <b>I would like</b> to susbscribe to AuresX&apos;s
+                        newsletter and receive latest news (<b>optional</b>)
                       </Text>
                     }
                   />
