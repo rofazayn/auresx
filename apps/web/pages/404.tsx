@@ -1,5 +1,5 @@
 import { Box, Button, Container, Text, Title } from '@mantine/core'
-import { IconLamp2, IconSmartHome } from '@tabler/icons'
+import { IconLamp2, IconSmartHome, IconSpeedboat } from '@tabler/icons'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -23,21 +23,22 @@ const Terms: NextPage = () => {
         }}
       >
         <Container size='sm'>
-          <Box sx={{ maxWidth: 340 }}>
+          <Box sx={{ maxWidth: 400 }}>
             <Title order={1} sx={{ fontSize: 80 }}>
               404 <span style={{ fontSize: 64 }}>👾</span>
             </Title>
-            <Text color='dimmed' size='sm' mb={'xl'}>
-              <b>Oups!</b> The page you are looking for wasn&apos;t found, you
-              could go back by using the button below!
+            <Text color='dimmed' size='md' mb={'xl'}>
+              <b>Oups!</b> The page you are looking for wasn&apos;t found, we
+              suggest you go back to the homepage.
             </Text>
             <Link href='/'>
               <Button
                 variant='light'
-                rightIcon={<IconSmartHome size='16' />}
-                color='gray'
+                rightIcon={<IconSpeedboat size='24' />}
+                color='violet'
+                size='md'
               >
-                Take me home
+                Let&apos; Go Back Home
               </Button>
             </Link>
           </Box>

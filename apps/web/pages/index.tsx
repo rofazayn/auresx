@@ -1,15 +1,19 @@
 import {
-  Blockquote,
+  Anchor,
+  Box,
+  Button,
+  Center,
   Container,
-  Divider,
+  Image,
   Stack,
   Text,
-  Timeline,
   Title,
 } from '@mantine/core'
-import { NextLink } from '@mantine/next'
+import { IconBuildingArch } from '@tabler/icons'
 import type { NextPage } from 'next'
 import Head from 'next/head'
+
+import Link from 'next/link'
 
 const Home: NextPage = () => {
   return (
@@ -23,149 +27,138 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <Container size='md'>
-        <Stack spacing={30}>
-          <Stack spacing={4}>
-            <Title>Welcome to AuresX</Title>
-            <Text color='dimmed'>
+      <Container size='xs'>
+        <Stack spacing={16} align='center' justify={'center'}>
+          <Box mb={64}>
+            {/* <Center>
+              <Image
+                src={'/images/illustrations/hero-landing.svg'}
+                alt='landing page hero'
+                mb={-24}
+              />
+            </Center> */}
+            <Center>
+              <Title
+                align='center'
+                size={48}
+                sx={{
+                  lineHeight: 1.1,
+
+                  '@media(max-width: 755px)': {
+                    fontSize: 36,
+                  },
+                }}
+                mb={24}
+              >
+                Aures
+                <Box
+                  component='span'
+                  sx={(theme) => ({ color: theme.colors.teal[5] })}
+                >
+                  X
+                </Box>
+                , high-tier technology from the lofty mountains of the Aures
+                region.
+              </Title>
+            </Center>
+
+            <Text color='dimmed' size='lg' align='center' mb={24}>
               AuresX is a software company that took the initiative to provide
               innovative solutions to major digital challenges facing vital
               sectors in Algeria.
             </Text>
-          </Stack>
-          <Blockquote
-            cite='– Founder &amp; CEO of AuresX'
-            sx={(theme) => ({
-              padding: 0,
-              fontSize: theme.fontSizes.md,
-            })}
-          >
-            Algeria lacks many digital solutions to most of its vital sectors,
-            our goal at AuresX is to solve that problem in the most innovative
-            way and as fast as we possibly can.
-          </Blockquote>
-          <Divider variant='dotted' my={8} />
-          <Stack spacing={4}>
-            <Title order={2}>Our Projects</Title>
-            <Text color='dimmed'>
-              Our main goal is to target the most vital sectors first such as
-              business, commerce, banking, health and education. From there we
-              will decide where to go.
-            </Text>
-          </Stack>
-          <Timeline active={0} bulletSize={18} lineWidth={4}>
-            <Timeline.Item title='Genesis'>
-              <Text color='dimmed' size='sm'>
-                A hybrid online/offline business management system for small to
-                large businesses, it provides solution to most of the problems
-                encountered by business owners and entrepreneurs.
-              </Text>
-              <Text size='xs' mt={4}>
-                Planned launch: first quarter of 2023
-              </Text>
-            </Timeline.Item>
-            <Timeline.Item title='Clientello'>
-              <Text color='dimmed' size='sm'>
-                An online service where individuals and business owners can
-                publish their work and contribute to a national online market,
-                it also provides a platform for e-commerce businesses where they
-                can thrive.
-              </Text>
-              <Text size='xs' mt={4}>
-                Planned launch: first quarter of 2024
-              </Text>
-            </Timeline.Item>
-
-            <Timeline.Item title='Teftoufa' lineVariant='dashed'>
-              <Text color='dimmed' size='sm'>
-                An online experience that connects businesses with independent
-                professionals and agencies, a space where freelancers and
-                business owners connect, create and get paid safely and
-                securely.
-              </Text>
-              <Text size='xs' mt={4}>
-                Planned launch: Undecided
-              </Text>
-            </Timeline.Item>
-
-            <Timeline.Item title='Laafya' lineVariant='dashed'>
-              <Text color='dimmed' size='sm'>
-                A general solution for the health sector, where health workers,
-                health establishments and individuals who are seeking healthcare
-                are all brought together, online!
-              </Text>
-              <Text size='xs' mt={4}>
-                Planned launch: Undecided
-              </Text>
-            </Timeline.Item>
-
-            <Timeline.Item title='Luminous' lineVariant='dashed'>
-              <Text color='dimmed' size='sm'>
-                A new and a simpler meaning of crowdfunding, fundraises and
-                charity acts, where you can support innovative ideas, help
-                others in need or get support yourself.
-              </Text>
-              <Text size='xs' mt={4}>
-                Planned launch: Undecided
-              </Text>
-            </Timeline.Item>
-
-            <Timeline.Item title='HoggarX' lineVariant='dashed'>
-              <Text color='dimmed' size='sm'>
-                A national proof of authority (PoA) blockchain network to
-                enhance and secure online transactions and exchange of assets of
-                any kind.
-              </Text>
-              <Text size='xs' mt={4}>
-                Planned launch: Needs legal intervention
-              </Text>
-            </Timeline.Item>
-
-            <Timeline.Item title='Other Projects'>
-              <Text color='dimmed' size='sm'>
-                Many and many other projects are being planned for AuresX, but
-                for now our team will focus on the three main ones mentioned
-                above.
-              </Text>
-              <Text size='xs' mt={4}>
-                Planned launch: 2025 - Future
-              </Text>
-            </Timeline.Item>
-          </Timeline>
-          <Divider variant='dotted' my={8} />
-          <Stack spacing={4}>
-            <Title order={2}>The Endeavour</Title>
-            <Text color='dimmed'>
-              Our aim at AuresX is to convince brilliant minds and skillful
-              individuals to join our endeavour, if you are interested or you
-              need more information about the project, feel free to email us at{' '}
-              <NextLink
-                href='mailto:rofazayn@gmail.com'
-                style={{ textDecoration: 'none' }}
-                passHref
-              >
-                <Text
-                  component='span'
-                  color='fluor'
-                  weight='bold'
-                  sx={{ textDecoration: 'none' }}
+            <Center mb={12}>
+              <Link href='/register'>
+                <Button
+                  size='lg'
+                  variant='light'
+                  rightIcon={<IconBuildingArch />}
                 >
-                  rofazayn@gmail.com
-                </Text>
-              </NextLink>
-            </Text>
-          </Stack>
-          <Divider variant='dotted' my={8} />
-          <Stack spacing={4}>
-            <Title order={2}>Location &amp; Operations</Title>
-            <Text color='dimmed'>
-              AuresX will operate according to the laws and regulations stated
-              by the People&apos;s Democratic Republic of Algeria , the
-              headquarters will be initially set in the city of Batna, which is
-              located in the eastern area of the same country.
-            </Text>
-          </Stack>
+                  Join our Endeavor
+                </Button>
+              </Link>
+            </Center>
+            <Center>
+              <Link href='/services' passHref>
+                <Anchor size='sm' color='dimmed' underline>
+                  Or discover what we do offer first
+                </Anchor>
+              </Link>
+            </Center>
+          </Box>
+
+          {/* <Box sx={{ width: '100%', maxWidth: 180 }} my={24}>
+            <Divider variant='dashed' />
+          </Box>
+          <Center>
+            <Blockquote
+              cite='– Founder &amp; CEO of AuresX'
+              sx={(theme) => ({
+                opacity: 0.5,
+                maxWidth: 460,
+                padding: 0,
+                fontSize: theme.fontSizes.sm,
+                textAlign: 'center',
+              })}
+              icon={null}
+            >
+              Algeria lacks many digital solutions to most of its vital sectors,
+              our goal at AuresX is to solve that problem in the most innovative
+              way and as fast as we possibly can.
+            </Blockquote>
+          </Center> */}
         </Stack>
+      </Container>
+      <Container size='lg'>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+          mb={8}
+          px={8}
+        >
+          <Text size='sm' color='dimmed'>
+            <Text span weight='bold'>
+              Featuring:
+            </Text>{' '}
+            Genesis™
+          </Text>
+          <Text size='sm' color='dimmed'>
+            Releasing -{' '}
+            <Text span weight='bold'>
+              Mid 2023
+            </Text>
+          </Text>
+        </Box>
+      </Container>
+      <Container size='xl'>
+        <Box
+          sx={(theme) => ({
+            borderRadius: 16,
+            overflow: 'hidden',
+            border: '3px solid',
+            '@media (max-width: 755px)': {
+              borderRadius: 8,
+              border: '2px solid',
+              borderColor: theme.colors.teal[5],
+            },
+            borderColor: theme.colors.teal[5],
+          })}
+        >
+          <Image
+            src={'/images/genesis-ui.png'}
+            alt='project genesis'
+            // sx={{
+            //   filter: 'none',
+            //   transition: 'all 200ms ease-in-out',
+            //   '&:hover': {
+            //     filter: 'grayscale(100%)',
+            //   },
+            // }}
+          />
+        </Box>
       </Container>
     </>
   )
