@@ -1,7 +1,17 @@
-import { Anchor, Container, Divider, Group, Text } from '@mantine/core'
+import {
+  ActionIcon,
+  Anchor,
+  Container,
+  Divider,
+  Group,
+  Text,
+  useMantineColorScheme,
+} from '@mantine/core'
+import { IconMoon, IconSun } from '@tabler/icons'
 import Link from 'next/link'
 
 const Footer = () => {
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme()
   return (
     <Container
       size='xl'
@@ -20,6 +30,17 @@ const Footer = () => {
         </Text>
 
         <Group spacing={12}>
+          <ActionIcon
+            variant='subtle'
+            size='sm'
+            onClick={() => toggleColorScheme()}
+          >
+            {colorScheme === 'dark' ? (
+              <IconSun size={16} />
+            ) : (
+              <IconMoon size={16} />
+            )}
+          </ActionIcon>
           <Link href='/privacy-policy' passHref>
             <Anchor color='dimmed' size='sm'>
               Privacy Policy

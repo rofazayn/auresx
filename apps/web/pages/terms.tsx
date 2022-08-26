@@ -892,11 +892,7 @@ const Terms: NextPage = () => {
             retention of non-electronic records, or to payments or the granting
             of credits by any means other than electronic means.
           </Text>
-          <Title
-            order={2}
-            id='sec-1
-          26'
-          >
+          <Title order={2} id='sec-26'>
             26. MISCELLANEOUS
           </Title>
           <Text size='sm'>

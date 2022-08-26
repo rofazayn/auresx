@@ -18,6 +18,8 @@ import '../styles/fonts.css'
 import mantineTheme from '../styles/mantine-theme'
 import rtlCache from '../styles/rtl-cache'
 import NextNProgress from 'nextjs-progressbar'
+import { ApolloProvider } from '@apollo/client'
+import apolloClient from '../configs/apollo-client'
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props
@@ -44,50 +46,52 @@ export default function App(props: AppProps) {
         />
       </Head>
 
-      <div dir={rtl ? 'rtl' : 'ltr'}>
-        <ColorSchemeProvider
-          colorScheme={colorScheme}
-          toggleColorScheme={toggleColorScheme}
-        >
-          <MantineProvider
-            withGlobalStyles
-            withNormalizeCSS
-            theme={{
-              ...mantineTheme,
-              colorScheme,
-              dir: rtl ? 'rtl' : 'ltr',
-            }}
-            emotionCache={rtl ? rtlCache : undefined}
+      <ApolloProvider client={apolloClient}>
+        <div dir={rtl ? 'rtl' : 'ltr'}>
+          <ColorSchemeProvider
+            colorScheme={colorScheme}
+            toggleColorScheme={toggleColorScheme}
           >
-            <Navbar />
-            <Box
-              sx={(_theme) => ({
-                minHeight: '100vh',
-                width: '100%',
-                overflow: 'hidden',
-                display: 'flex',
-                flexDirection: 'column',
-              })}
+            <MantineProvider
+              withGlobalStyles
+              withNormalizeCSS
+              theme={{
+                ...mantineTheme,
+                colorScheme,
+                dir: rtl ? 'rtl' : 'ltr',
+              }}
+              emotionCache={rtl ? rtlCache : undefined}
             >
-              <PageLayout>
-                <NextNProgress
-                  color={'#20e3b2'}
-                  startPosition={0.3}
-                  stopDelayMs={200}
-                  height={3}
-                  showOnShallow={true}
-                  options={{
-                    showSpinner: false,
-                  }}
-                />
-                <Component {...pageProps} />
-                <CookieBanner />
-                <Footer />
-              </PageLayout>
-            </Box>
-          </MantineProvider>
-        </ColorSchemeProvider>
-      </div>
+              <Navbar />
+              <Box
+                sx={(_theme) => ({
+                  minHeight: '100vh',
+                  width: '100%',
+                  overflow: 'hidden',
+                  display: 'flex',
+                  flexDirection: 'column',
+                })}
+              >
+                <PageLayout>
+                  <NextNProgress
+                    color={'#20e3b2'}
+                    startPosition={0.2}
+                    stopDelayMs={200}
+                    height={2}
+                    showOnShallow={true}
+                    options={{
+                      showSpinner: false,
+                    }}
+                  />
+                  <Component {...pageProps} />
+                  <CookieBanner />
+                  <Footer />
+                </PageLayout>
+              </Box>
+            </MantineProvider>
+          </ColorSchemeProvider>
+        </div>
+      </ApolloProvider>
     </>
   )
 }

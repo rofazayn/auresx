@@ -18,14 +18,38 @@ import {
 import {
   IconBrandFacebook,
   IconBrandGoogle,
-  IconDroplet,
-  IconInfoCircle,
+  IconLockAccess,
+  IconPlugConnected,
 } from '@tabler/icons'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useState } from 'react'
+import { useRegisterMutation } from '../generated/graphql'
+import { setAccessToken } from '../utils/access-token'
 
-const Terms: NextPage = () => {
+const Register: NextPage = () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const [registerMutation, { loading }] = useRegisterMutation()
+
+  async function onRegister(e: any) {
+    e.preventDefault()
+    const registerOperation = await registerMutation({
+      variables: {
+        name,
+        email,
+        password,
+      },
+    })
+
+    if (registerOperation.data?.register.accessToken) {
+      setAccessToken(registerOperation.data?.register.accessToken)
+    }
+  }
+
   return (
     <>
       <Head>
@@ -41,7 +65,7 @@ const Terms: NextPage = () => {
         <Grid gutter={24} align={'center'} justify={'center'}>
           <Grid.Col sm={12} md={6}>
             <Center>
-              <Box>
+              <Box sx={{ maxWidth: 380 }}>
                 <MediaQuery
                   largerThan='sm'
                   styles={{
@@ -59,7 +83,7 @@ const Terms: NextPage = () => {
                     src={'/images/illustrations/account-register.svg'}
                     alt='register account'
                     mb={16}
-                    sx={{ transform: 'translateX(-8px)', maxWidth: 380 }}
+                    sx={{ transform: 'translateX(-18px)', maxWidth: 380 }}
                   />
                 </MediaQuery>
 
@@ -80,8 +104,14 @@ const Terms: NextPage = () => {
                 <Divider
                   variant='dashed'
                   sx={{ maxWidth: 380 }}
+                  // label={'Third party login is coming soon!'}
                   label={
-                    'You can register easily by connecting your account on'
+                    <Text size='xs' color='dimmed'>
+                      Register by connecting your account on -{' '}
+                      <Text component='span' color='orange' weight='600'>
+                        coming soon
+                      </Text>{' '}
+                    </Text>
                   }
                   mb={8}
                 />
@@ -93,18 +123,16 @@ const Terms: NextPage = () => {
                   >
                     <Button
                       variant='default'
-                      sx={{ width: '100%' }}
+                      sx={{ width: '100%', cursor: 'not-allowed' }}
                       leftIcon={<IconBrandGoogle size='16' />}
-                      size='md'
                     >
                       Google
                     </Button>
 
                     <Button
                       variant='default'
-                      sx={{ width: '100%' }}
+                      sx={{ width: '100%', cursor: 'not-allowed' }}
                       leftIcon={<IconBrandFacebook size='16' />}
-                      size='md'
                     >
                       Facebook
                     </Button>
@@ -119,13 +147,14 @@ const Terms: NextPage = () => {
                 <Box
                   sx={{
                     display: 'flex',
-                    opacity: '50%',
+                    opacity: 0.6,
                   }}
+                  mb={-16}
                 >
-                  <Box sx={{ marginInlineEnd: 8 }}>
-                    <IconInfoCircle size='16' />
+                  <Box sx={{ marginInlineEnd: 10, opacity: 0.3 }}>
+                    <IconLockAccess size='40' color='gray' />
                   </Box>
-                  <Text color='dimmed' size='xs'>
+                  <Text color='dimmed' size='xs' weight='500'>
                     You can also register by using your email, you just have to
                     fill up the registration form!
                   </Text>
@@ -142,28 +171,33 @@ const Terms: NextPage = () => {
                     required
                     variant='filled'
                     type='text'
-                    label='Full name'
+                    label='Full Name (required)'
                     placeholder='Enter your full name'
                     description='Please provide your real &amp; full name'
                     size='md'
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                   <TextInput
                     required
                     variant='filled'
                     type='email'
-                    label='Email'
+                    label='Email (required)'
                     placeholder='Enter your email'
                     description='We need your email to validate your account'
                     size='md'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                   <PasswordInput
                     required
                     variant='filled'
-                    // type='password'
-                    label='Password'
+                    label='Password (required)'
                     placeholder='Enter your password'
-                    description='Make sure you do not share it with anyone'
+                    description='Pick a password that is hard to guess'
                     size='md'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
 
                   <Divider
@@ -172,55 +206,70 @@ const Terms: NextPage = () => {
                     mt={16}
                   />
 
-                  <Checkbox
-                    required
-                    size='md'
-                    sx={{ alignItems: 'flex-start' }}
-                    checked={true}
-                    disabled={true}
-                    label={
-                      <Text size='sm'>
-                        <b>I agree</b> to the{' '}
-                        <Link href='/terms' passHref>
-                          <Anchor underline>Terms of Use</Anchor>
-                        </Link>{' '}
-                        and to the{' '}
-                        <Link href='/privacy-policy' passHref>
-                          <Anchor underline>Privacy Policy</Anchor>
-                        </Link>{' '}
-                        provided by AuresX (<b>required</b>)
-                      </Text>
-                    }
-                  />
-                  <Checkbox
-                    size='md'
-                    sx={{ alignItems: 'flex-start' }}
-                    label={
-                      <Text size='sm'>
-                        <b>I would like</b> to susbscribe to AuresX&apos;s
-                        newsletter and receive latest news (<b>optional</b>)
-                      </Text>
-                    }
-                  />
+                  <Stack spacing={8}>
+                    <Checkbox
+                      required
+                      size='md'
+                      sx={{ alignItems: 'flex-start' }}
+                      checked={true}
+                      disabled={true}
+                      label={
+                        <Text size='sm'>
+                          <b>I agree</b> to the{' '}
+                          <Link href='/terms' passHref>
+                            <Anchor underline>Terms of Use</Anchor>
+                          </Link>{' '}
+                          and to the{' '}
+                          <Link href='/privacy-policy' passHref>
+                            <Anchor underline>Privacy Policy</Anchor>
+                          </Link>{' '}
+                          provided by AuresX (<b>required</b>)
+                        </Text>
+                      }
+                    />
+                    <Checkbox
+                      size='md'
+                      sx={{ alignItems: 'flex-start' }}
+                      label={
+                        <Text size='sm'>
+                          <b>I would like</b> to susbscribe to AuresX&apos;s
+                          newsletter and receive latest news (<b>optional</b>)
+                        </Text>
+                      }
+                    />
+                  </Stack>
+                  <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                    <Divider
+                      variant='dashed'
+                      label={
+                        "That's it, press the registration button to finish up"
+                      }
+                      mb={8}
+                    />
+                    <Button
+                      variant='light'
+                      rightIcon={<IconPlugConnected />}
+                      size='md'
+                      // onClick={onRegister}
+                      loading={loading}
+                    >
+                      Create my AuresX Account
+                    </Button>
+                  </Box>
 
-                  <Divider
-                    variant='dashed'
-                    label={
-                      "That's it, press the registration button to finish up"
-                    }
-                    mt={16}
-                  />
-                  <Button
-                    variant='light'
-                    rightIcon={<IconDroplet size='18' />}
-                    size='md'
-                  >
-                    Create my AuresX account
-                  </Button>
-                  <Text size='xs' color='dimmed' mt={8}>
-                    AuresX accounts are a general purpose accounts that handle
-                    your data, activity &amp; authorizations in our ecosystem.
-                  </Text>
+                  <Box mt={16}>
+                    {/* <Divider variant='dashed' mt={16} mb={8} /> */}
+                    <Text color='dimmed' mb={8}>
+                      Already have an AuresX account?{' '}
+                      <Link href='/login' passHref>
+                        <Anchor weight='500'>Sign in</Anchor>
+                      </Link>
+                    </Text>
+                    <Text size='xs' color='dimmed'>
+                      AuresX accounts are a general purpose accounts that handle
+                      your data, activity &amp; authorizations in our ecosystem.
+                    </Text>
+                  </Box>
                 </Stack>
                 {/* </form> */}
               </Box>
@@ -232,4 +281,4 @@ const Terms: NextPage = () => {
   )
 }
 
-export default Terms
+export default Register
