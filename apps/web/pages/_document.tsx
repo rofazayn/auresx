@@ -1,11 +1,5 @@
-import { createGetInitialProps, ServerStyles } from '@mantine/next'
-import Document, {
-  DocumentContext,
-  Head,
-  Html,
-  Main,
-  NextScript,
-} from 'next/document'
+import { createGetInitialProps } from '@mantine/next'
+import Document, { Head, Html, Main, NextScript } from 'next/document'
 // import rtlCache from '../styles/rtl-cache'
 
 // const stylesServer = createStylesServer(rtlCache)

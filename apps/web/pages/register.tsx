@@ -21,34 +21,16 @@ import {
   IconLockAccess,
   IconPlugConnected,
 } from '@tabler/icons'
+import { Formik } from 'formik'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState } from 'react'
 import { useRegisterMutation } from '../generated/graphql'
 import { setAccessToken } from '../utils/access-token'
+import { registerSchema } from '../validation/auth-validation'
 
 const Register: NextPage = () => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  const [registerMutation, { loading }] = useRegisterMutation()
-
-  async function onRegister(e: any) {
-    e.preventDefault()
-    const registerOperation = await registerMutation({
-      variables: {
-        name,
-        email,
-        password,
-      },
-    })
-
-    if (registerOperation.data?.register.accessToken) {
-      setAccessToken(registerOperation.data?.register.accessToken)
-    }
-  }
+  const [registerMutation /*  { loading } */] = useRegisterMutation()
 
   return (
     <>
@@ -122,15 +104,19 @@ const Register: NextPage = () => {
                     }}
                   >
                     <Button
-                      variant='default'
+                      variant='light'
+                      color='gray'
+                      size='md'
                       sx={{ width: '100%', cursor: 'not-allowed' }}
                       leftIcon={<IconBrandGoogle size='16' />}
                     >
                       Google
                     </Button>
-
+                    <Divider orientation='vertical' />
                     <Button
-                      variant='default'
+                      variant='light'
+                      color='gray'
+                      size='md'
                       sx={{ width: '100%', cursor: 'not-allowed' }}
                       leftIcon={<IconBrandFacebook size='16' />}
                     >
@@ -165,113 +151,160 @@ const Register: NextPage = () => {
           <Grid.Col sm={12} md={6}>
             <Center>
               <Box sx={{ maxWidth: 380 }}>
-                {/* <form> */}
-                <Stack spacing={16}>
-                  <TextInput
-                    required
-                    variant='filled'
-                    type='text'
-                    label='Full Name (required)'
-                    placeholder='Enter your full name'
-                    description='Please provide your real &amp; full name'
-                    size='md'
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                  <TextInput
-                    required
-                    variant='filled'
-                    type='email'
-                    label='Email (required)'
-                    placeholder='Enter your email'
-                    description='We need your email to validate your account'
-                    size='md'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <PasswordInput
-                    required
-                    variant='filled'
-                    label='Password (required)'
-                    placeholder='Enter your password'
-                    description='Pick a password that is hard to guess'
-                    size='md'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+                <Formik
+                  initialValues={{ name: '', email: '', password: '' }}
+                  validationSchema={registerSchema}
+                  onSubmit={async (
+                    values,
+                    {
+                      /* setSubmitting */
+                    }
+                  ) => {
+                    alert(JSON.stringify(values))
+                    const { name, email, password } = values
+                    const loginOperation = await registerMutation({
+                      variables: {
+                        name,
+                        email,
+                        password,
+                      },
+                    })
 
-                  <Divider
-                    variant='dashed'
-                    label={'By signing-up with us you agree to the following'}
-                    mt={16}
-                  />
+                    if (loginOperation.data?.register.accessToken) {
+                      setAccessToken(loginOperation.data?.register.accessToken)
+                    }
+                  }}
+                >
+                  {({
+                    values,
+                    errors,
+                    touched,
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                    isSubmitting,
+                    /* and other goodies */
+                  }) => (
+                    <form onSubmit={handleSubmit}>
+                      <Stack spacing={16}>
+                        <TextInput
+                          variant='filled'
+                          type='text'
+                          label='Full Name (required)'
+                          placeholder='Enter your full name'
+                          description='Please provide your real &amp; full name'
+                          size='md'
+                          name='name'
+                          value={values.name}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={touched.name && errors.name}
+                        />
+                        <TextInput
+                          variant='filled'
+                          label='Email (required)'
+                          placeholder='Enter your email'
+                          description='We need your email to validate your account'
+                          size='md'
+                          type='email'
+                          name='email'
+                          value={values.email}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={touched.email && errors.email}
+                        />
+                        <PasswordInput
+                          variant='filled'
+                          label='Password (required)'
+                          placeholder='Enter your password'
+                          description='Pick a password that is hard to guess'
+                          size='md'
+                          name='password'
+                          value={values.password}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={touched.password && errors.password}
+                        />
 
-                  <Stack spacing={8}>
-                    <Checkbox
-                      required
-                      size='md'
-                      sx={{ alignItems: 'flex-start' }}
-                      checked={true}
-                      disabled={true}
-                      label={
-                        <Text size='sm'>
-                          <b>I agree</b> to the{' '}
-                          <Link href='/terms' passHref>
-                            <Anchor underline>Terms of Use</Anchor>
-                          </Link>{' '}
-                          and to the{' '}
-                          <Link href='/privacy-policy' passHref>
-                            <Anchor underline>Privacy Policy</Anchor>
-                          </Link>{' '}
-                          provided by AuresX (<b>required</b>)
-                        </Text>
-                      }
-                    />
-                    <Checkbox
-                      size='md'
-                      sx={{ alignItems: 'flex-start' }}
-                      label={
-                        <Text size='sm'>
-                          <b>I would like</b> to susbscribe to AuresX&apos;s
-                          newsletter and receive latest news (<b>optional</b>)
-                        </Text>
-                      }
-                    />
-                  </Stack>
-                  <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <Divider
-                      variant='dashed'
-                      label={
-                        "That's it, press the registration button to finish up"
-                      }
-                      mb={8}
-                    />
-                    <Button
-                      variant='light'
-                      rightIcon={<IconPlugConnected />}
-                      size='md'
-                      // onClick={onRegister}
-                      loading={loading}
-                    >
-                      Create my AuresX Account
-                    </Button>
-                  </Box>
+                        <Divider
+                          variant='dashed'
+                          label={
+                            'By signing-up with us you agree to the following'
+                          }
+                          mt={8}
+                          mb={-8}
+                        />
 
-                  <Box mt={16}>
-                    {/* <Divider variant='dashed' mt={16} mb={8} /> */}
-                    <Text color='dimmed' mb={8}>
-                      Already have an AuresX account?{' '}
-                      <Link href='/login' passHref>
-                        <Anchor weight='500'>Sign in</Anchor>
-                      </Link>
-                    </Text>
-                    <Text size='xs' color='dimmed'>
-                      AuresX accounts are a general purpose accounts that handle
-                      your data, activity &amp; authorizations in our ecosystem.
-                    </Text>
-                  </Box>
-                </Stack>
-                {/* </form> */}
+                        <Stack spacing={8}>
+                          <Checkbox
+                            required
+                            size='lg'
+                            sx={{ alignItems: 'flex-start' }}
+                            checked={true}
+                            disabled={true}
+                            label={
+                              <Text size='sm'>
+                                <b>I agree</b> to the{' '}
+                                <Link href='/terms' passHref>
+                                  <Anchor underline>Terms of Use</Anchor>
+                                </Link>{' '}
+                                and to the{' '}
+                                <Link href='/privacy-policy' passHref>
+                                  <Anchor underline>Privacy Policy</Anchor>
+                                </Link>{' '}
+                                provided by AuresX (<b>required</b>)
+                              </Text>
+                            }
+                          />
+                          <Checkbox
+                            size='lg'
+                            sx={{ alignItems: 'flex-start' }}
+                            label={
+                              <Text size='sm'>
+                                <b>I would like</b> to susbscribe to
+                                AuresX&apos;s newsletter and receive latest news
+                                (<b>optional</b>)
+                              </Text>
+                            }
+                          />
+                        </Stack>
+                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                          <Divider
+                            variant='dashed'
+                            label={
+                              "That's it, press the registration button to finish up"
+                            }
+                            mb={8}
+                          />
+                          <Button
+                            variant='light'
+                            rightIcon={<IconPlugConnected />}
+                            size='lg'
+                            type='submit'
+                            loading={isSubmitting}
+                          >
+                            Create my AuresX Account
+                          </Button>
+                        </Box>
+
+                        <Box mt={16}>
+                          {/* <Divider variant='dashed' mt={16} mb={8} /> */}
+                          <Text color='dimmed' mb={8}>
+                            Already have an AuresX account?{' '}
+                            <Link href='/login' passHref>
+                              <Anchor weight='500'>Sign in</Anchor>
+                            </Link>
+                          </Text>
+                          <Text size='xs' color='dimmed'>
+                            AuresX accounts are a general purpose accounts that
+                            handle your data, activity &amp; authorizations in
+                            our ecosystem.
+                          </Text>
+                        </Box>
+                      </Stack>
+                    </form>
+                  )}
+                </Formik>
               </Box>
             </Center>
           </Grid.Col>

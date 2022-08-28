@@ -40,15 +40,15 @@ const Home: NextPage = () => {
             <Center>
               <Title
                 align='center'
-                size={48}
+                size={46}
                 sx={{
                   lineHeight: 1.1,
 
                   '@media(max-width: 755px)': {
-                    fontSize: 36,
+                    fontSize: 32,
                   },
                 }}
-                mb={24}
+                mb={16}
               >
                 Aures
                 <Box
@@ -57,16 +57,18 @@ const Home: NextPage = () => {
                 >
                   X
                 </Box>
-                , high-tier technology from the lofty mountains of the Aures
-                region.
+                , bringing high-tier technology to the lofty mountain peaks of
+                the Aures region.
               </Title>
             </Center>
 
-            <Text color='dimmed' size='lg' align='center' mb={24}>
-              AuresX is a software company that took the initiative to provide
-              innovative solutions to major digital challenges facing vital
-              sectors in Algeria.
-            </Text>
+            <Center sx={{ maxWidth: 380, margin: '0 auto' }}>
+              <Text color='dimmed' size='md' align='center' mb={28}>
+                A software company that took the initiative to provide
+                innovative solutions to major digital challenges facing vital
+                sectors in Algeria 🇩🇿
+              </Text>
+            </Center>
             <Center mb={12}>
               <Link href='/register'>
                 <Button
