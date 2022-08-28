@@ -7,19 +7,25 @@ import {
   Container,
   Divider,
   Drawer,
+  Group,
   Image,
   MediaQuery,
+  ScrollArea,
   Text,
   useMantineColorScheme,
   useMantineTheme,
 } from '@mantine/core'
 import {
-  Icon3dCubeSphere,
-  IconAnchor,
-  IconDirections,
+  IconAppWindow,
+  IconCoin,
+  IconHeart,
+  IconHome,
   IconLogin,
+  IconMoon,
   IconPlugConnected,
-  IconWindow,
+  IconRocket,
+  IconSun,
+  IconTarget,
   IconX,
 } from '@tabler/icons'
 import Link from 'next/link'
@@ -28,7 +34,7 @@ import { useEffect, useState } from 'react'
 
 const Navbar = () => {
   const theme = useMantineTheme()
-  const { colorScheme /* toggleColorScheme */ } = useMantineColorScheme()
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme()
   const [opened, setOpened] = useState<boolean>(false)
   const router = useRouter()
 
@@ -165,139 +171,241 @@ const Navbar = () => {
           position={'right'}
         >
           <Box
-            pt={40}
-            pb={32}
-            px={16}
             sx={{
+              height: '100%',
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'space-between',
-              height: '100%',
+              overflowY: 'auto',
             }}
           >
             <Box
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 16,
+                position: 'sticky',
+                top: 0,
+                backgroundColor:
+                  theme.colorScheme === 'dark' ? theme.colors.dark[7] : 'white',
+                zIndex: 9,
               }}
+              px={16}
+            >
+              <Box sx={{ width: '100%' }} pt={40}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    width: '100%',
+                  }}
+                >
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <IconAppWindow
+                      // color='gray'
+                      style={{ marginInlineEnd: 8 }}
+                      size={24}
+                    />
+                    <Text size='sm' weight='bold'>
+                      Navigation Menu
+                    </Text>
+                  </Box>
+                  <Box>
+                    <ActionIcon
+                      variant='light'
+                      size='md'
+                      color='gray'
+                      onClick={() => setOpened(false)}
+                    >
+                      <IconX />
+                    </ActionIcon>
+                  </Box>
+                </Box>
+              </Box>
+              <Divider variant='dashed' mt={24} />
+            </Box>
+
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                flexGrow: 1,
+              }}
+              px={16}
+              pb={24}
             >
               <Box
-                // mb={8}
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: 32,
-                }}
-              >
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  {/* <IconAnchor
-                    // color='gray'
-                    style={{ marginInlineEnd: 8 }}
-                    size={24}
-                  /> */}
-                  <Text size='sm' weight='bold'>
-                    Navigation Menu
-                  </Text>
-                  {/* <Text size='sm' color='dimmed'>
-                    This is your navigation menu, you&apos;ll find below the
-                    options.
-                  </Text> */}
-                </Box>
-                <Box>
-                  <ActionIcon
-                    variant='light'
-                    size='md'
-                    color='gray'
-                    onClick={() => setOpened(false)}
-                  >
-                    <IconX />
-                  </ActionIcon>
-                </Box>
-              </Box>
-              <Divider variant='dashed' mt={8} />
-              <Box>
-                <Box mb={16}>
-                  <Text weight='bold' mb={4} size='sm'>
-                    Pages
-                  </Text>
-                  <Text size='sm' color='dimmed' sx={{ lineHeight: 1.4 }}>
-                    Tap on one of the buttons down below to navigate to a
-                    specific page.
-                  </Text>
-                </Box>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                  <Link href='/' passHref>
-                    <Button variant='light' color='gray' size='md'>
-                      Home
-                    </Button>
-                  </Link>
-                  <Link href='/solutions' passHref>
-                    <Button variant='light' color='gray' size='md'>
-                      Solutions
-                    </Button>
-                  </Link>
-                  <Link href='/pricing' passHref>
-                    <Button variant='light' color='gray' size='md'>
-                      Pricing
-                    </Button>
-                  </Link>
-                  <Link href='/endeavor' passHref>
-                    <Button variant='light' color='gray' size='md'>
-                      Endeavor
-                    </Button>
-                  </Link>
-                  <Link href='/team' passHref>
-                    <Button variant='light' color='gray' size='md'>
-                      The Team
-                    </Button>
-                  </Link>
-                </Box>
-              </Box>
-            </Box>
-            <Box>
-              <Divider variant='dashed' my={16} />
-              <Box mb={16}>
-                <Text weight='bold' mb={4} size='sm'>
-                  Accounts Center (beta)
-                </Text>
-                <Text size='sm' color='dimmed' sx={{ lineHeight: 1.4 }}>
-                  If you want to login to your account or create a new one.
-                </Text>
-              </Box>
-              <Box
+                pt={16}
                 sx={{
                   display: 'flex',
                   flexDirection: 'column',
-                  width: '100%',
-                  gap: 8,
+                  justifyContent: 'space-between',
                 }}
               >
-                <Link href='/login'>
-                  <Button
-                    variant='light'
-                    color='indigo'
-                    size='md'
-                    radius='md'
-                    sx={{ width: '100%' }}
-                    rightIcon={<IconLogin size='24' />}
+                <Box>
+                  <Box mb={16}>
+                    <Text weight='bold' mb={4} size='sm'>
+                      Page Links
+                    </Text>
+                    <Text size='xs' color='dimmed' sx={{ lineHeight: 1.4 }}>
+                      Tap on one of the buttons down below to navigate to a
+                      specific page on the website.
+                    </Text>
+                  </Box>
+                  <Group
+                    sx={{
+                      display: 'flex' /* , flexDirection: 'column' */,
+                      gap: 8,
+                    }}
                   >
-                    Login to your Account
-                  </Button>
-                </Link>
-                <Link href='/register'>
-                  <Button
-                    variant='light'
-                    color='teal'
-                    size='md'
-                    rightIcon={<IconPlugConnected size='24' />}
-                    radius='md'
-                    sx={{ width: '100%' }}
-                  >
-                    Create a New Account
-                  </Button>
-                </Link>
+                    {/* <Button.Group orientation='vertical'> */}
+                    <Link href='/' passHref>
+                      <Button
+                        variant='light'
+                        color='gray'
+                        size='md'
+                        leftIcon={<IconHome />}
+                      >
+                        Home
+                      </Button>
+                    </Link>
+                    <Link href='/solutions' passHref>
+                      <Button
+                        variant='light'
+                        color='gray'
+                        size='md'
+                        leftIcon={<IconRocket />}
+                      >
+                        Solutions
+                      </Button>
+                    </Link>
+                    <Link href='/pricing' passHref>
+                      <Button
+                        variant='light'
+                        color='gray'
+                        size='md'
+                        leftIcon={<IconCoin />}
+                      >
+                        Pricing
+                      </Button>
+                    </Link>
+                    <Link href='/endeavor' passHref>
+                      <Button
+                        variant='light'
+                        color='gray'
+                        size='md'
+                        leftIcon={<IconTarget />}
+                      >
+                        Endeavor
+                      </Button>
+                    </Link>
+                    <Link href='/team' passHref>
+                      <Button
+                        variant='light'
+                        color='gray'
+                        size='md'
+                        leftIcon={<IconHeart />}
+                      >
+                        The Team
+                      </Button>
+                    </Link>
+                    {/* </Button.Group> */}
+                  </Group>
+                </Box>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexGrow: 1,
+                  }}
+                >
+                  <Box mb={16}>
+                    <Divider variant='dashed' my={16} />
+                    <Box mb={16}>
+                      <Text weight='bold' mb={4} size='sm'>
+                        Theme Preferences
+                      </Text>
+                      <Text size='xs' color='dimmed' sx={{ lineHeight: 1.4 }}>
+                        You can change your theme preferences here.
+                      </Text>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 8,
+                      }}
+                    >
+                      <Button.Group>
+                        <Button
+                          variant='light'
+                          color='gray'
+                          size='md'
+                          sx={{ width: '100%' }}
+                          onClick={() => toggleColorScheme('dark')}
+                          leftIcon={<IconMoon size='20' />}
+                        >
+                          Dark
+                        </Button>
+                        <Divider orientation='vertical' />
+                        <Button
+                          variant='light'
+                          color='gray'
+                          size='md'
+                          sx={{ width: '100%' }}
+                          onClick={() => toggleColorScheme('light')}
+                          rightIcon={<IconSun size='20' />}
+                        >
+                          Light
+                        </Button>
+                      </Button.Group>
+                    </Box>
+                  </Box>
+                </Box>
+              </Box>
+
+              <Box>
+                <Divider variant='dashed' mb={16} />
+                <Box mb={16}>
+                  <Text weight='bold' mb={4} size='sm'>
+                    Accounts Center (beta)
+                  </Text>
+                  <Text size='xs' color='dimmed' sx={{ lineHeight: 1.4 }}>
+                    In case you want to access your account or create a new one,
+                    here are the options
+                  </Text>
+                </Box>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    width: '100%',
+                    gap: 8,
+                  }}
+                >
+                  <Link href='/login'>
+                    <Button
+                      variant='light'
+                      color='indigo'
+                      size='md'
+                      sx={{ width: '100%' }}
+                      rightIcon={<IconLogin size='24' />}
+                    >
+                      Login to your Account
+                    </Button>
+                  </Link>
+                  <Link href='/register'>
+                    <Button
+                      variant='light'
+                      color='teal'
+                      size='md'
+                      rightIcon={<IconPlugConnected size='24' />}
+                      sx={{ width: '100%' }}
+                    >
+                      Create a New Account
+                    </Button>
+                  </Link>
+                </Box>
               </Box>
             </Box>
           </Box>

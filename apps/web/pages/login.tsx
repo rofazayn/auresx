@@ -14,6 +14,7 @@ import {
   Text,
   TextInput,
   Title,
+  useMantineTheme,
 } from '@mantine/core'
 import {
   IconBrandFacebook,
@@ -27,26 +28,12 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useLoginMutation } from '../generated/graphql'
 import { setAccessToken } from '../utils/access-token'
+import { Formik, FormikState } from 'formik'
+import { loginSchema } from '../validation/auth-validation'
 
 const Login: NextPage = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  const [loginMutation, { loading }] = useLoginMutation()
-
-  async function onLogin(e: any) {
-    e.preventDefault()
-    const loginOperation = await loginMutation({
-      variables: {
-        email,
-        password,
-      },
-    })
-
-    if (loginOperation.data?.login.accessToken) {
-      setAccessToken(loginOperation.data?.login.accessToken)
-    }
-  }
+  const theme = useMantineTheme()
+  const [loginMutation /*  { loading } */] = useLoginMutation()
 
   return (
     <>
@@ -63,7 +50,7 @@ const Login: NextPage = () => {
         <Grid gutter={24} align={'center'} justify={'center'}>
           <Grid.Col sm={12} md={6}>
             <Center>
-              <Box sx={{ maxWidth: 380 }}>
+              <Box sx={{ maxWidth: 380, marginTop: -32 }}>
                 <MediaQuery
                   largerThan='sm'
                   styles={{
@@ -123,15 +110,19 @@ const Login: NextPage = () => {
                       }}
                     >
                       <Button
-                        variant='default'
+                        variant='light'
+                        color='gray'
+                        size='md'
                         sx={{ width: '100%', cursor: 'not-allowed' }}
                         leftIcon={<IconBrandGoogle size='16' />}
                       >
                         Google
                       </Button>
-
+                      <Divider orientation='vertical' />
                       <Button
-                        variant='default'
+                        variant='light'
+                        color='gray'
+                        size='md'
                         sx={{ width: '100%', cursor: 'not-allowed' }}
                         leftIcon={<IconBrandFacebook size='16' />}
                       >
@@ -163,90 +154,131 @@ const Login: NextPage = () => {
           <Grid.Col sm={12} md={6}>
             <Center>
               <Box sx={{ maxWidth: 380 }}>
-                {/* <form> */}
-                <Stack spacing={16}>
-                  <TextInput
-                    required
-                    variant='filled'
-                    type='email'
-                    label='Email (required)'
-                    placeholder='Enter your email'
-                    description='The email you used to create your account'
-                    size='md'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <PasswordInput
-                    required
-                    variant='filled'
-                    label='Password (required)'
-                    placeholder='Enter your password'
-                    description='Make sure you do not share it with anyone'
-                    size='md'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+                <Formik
+                  initialValues={{ email: '', password: '', stayLogged: false }}
+                  validationSchema={loginSchema}
+                  onSubmit={async (
+                    values,
+                    {
+                      /* setSubmitting */
+                    }
+                  ) => {
+                    alert(JSON.stringify(values))
+                    const { email, password } = values
+                    const loginOperation = await loginMutation({
+                      variables: {
+                        email,
+                        password,
+                      },
+                    })
 
-                  <Box>
-                    <Divider
-                      variant='dashed'
-                      label={
-                        'Would you like to stay logged in to your account?'
-                      }
-                      mb={8}
-                    />
+                    if (loginOperation.data?.login.accessToken) {
+                      setAccessToken(loginOperation.data?.login.accessToken)
+                    }
+                  }}
+                >
+                  {({
+                    values,
+                    errors,
+                    touched,
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                    isSubmitting,
+                    /* and other goodies */
+                  }) => (
+                    <form onSubmit={handleSubmit}>
+                      <Stack spacing={16}>
+                        <TextInput
+                          variant='filled'
+                          label='Email (required)'
+                          placeholder='Enter your email'
+                          description='The email you used to create your account'
+                          size='md'
+                          name='email'
+                          type='email'
+                          value={values.email}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={touched.email && errors.email}
+                        />
+                        <PasswordInput
+                          variant='filled'
+                          label='Password (required)'
+                          placeholder='Enter your password'
+                          description='Make sure you do not share it with anyone'
+                          size='md'
+                          name='password'
+                          value={values.password}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={touched.password && errors.password}
+                        />
 
-                    <Checkbox
-                      required
-                      size='md'
-                      sx={{ alignItems: 'flex-start' }}
-                      // checked={false}
-                      label={
-                        <Text size='sm'>
-                          <b>Yes, I would like to</b> stay logged in to my
-                          account on this device if possible (optional)
-                        </Text>
-                      }
-                    />
-                  </Box>
+                        <Box>
+                          <Divider
+                            variant='dashed'
+                            label={
+                              'Would you like to stay logged in to your account?'
+                            }
+                            mb={8}
+                          />
 
-                  <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <Divider
-                      variant='dashed'
-                      label={
-                        'Everything okay? then please proceed to signing in'
-                      }
-                      mb={8}
-                    />
-                    <Button
-                      variant='light'
-                      rightIcon={<IconLogin />}
-                      size='md'
-                      // onClick={onLogin}
-                      loading={loading}
-                    >
-                      Login to your AuresX Account
-                    </Button>
-                  </Box>
+                          <Checkbox
+                            size='lg'
+                            sx={{ alignItems: 'flex-start' }}
+                            name={'stayLogged'}
+                            onChange={handleChange}
+                            checked={values.stayLogged}
+                            label={
+                              <Text size='sm'>
+                                <b>Yes, I would like to</b> stay logged in to my
+                                account on this device if possible (optional)
+                              </Text>
+                            }
+                          />
+                        </Box>
 
-                  {/* <Divider variant='dashed' mt={16} mb={8} /> */}
+                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                          <Divider
+                            variant='dashed'
+                            label={
+                              'Everything okay? then please proceed to signing in'
+                            }
+                            mb={8}
+                          />
+                          <Button
+                            variant='light'
+                            rightIcon={<IconLogin />}
+                            size='lg'
+                            type='submit'
+                            loading={isSubmitting}
+                          >
+                            Login to your AuresX Account
+                          </Button>
+                        </Box>
 
-                  <Box mt={16}>
-                    {/* <Divider variant='dashed' my={16} /> */}
-                    <Text color='dimmed' mb={8}>
-                      Don&apos;t you have an account with us?{' '}
-                      <Link href='/register' passHref>
-                        <Anchor weight='500'>Register</Anchor>
-                      </Link>
-                    </Text>
+                        {/* <Divider variant='dashed' mt={16} mb={8} /> */}
 
-                    <Text size='xs' color='dimmed'>
-                      AuresX accounts are a general purpose accounts that handle
-                      your data, activity &amp; authorizations in our ecosystem.
-                    </Text>
-                  </Box>
-                </Stack>
-                {/* </form> */}
+                        <Box mt={16}>
+                          {/* <Divider variant='dashed' my={16} /> */}
+                          <Text color='dimmed' mb={8}>
+                            Don&apos;t you have an account with us?{' '}
+                            <Link href='/register' passHref>
+                              <Anchor weight='500'>Register</Anchor>
+                            </Link>
+                          </Text>
+
+                          <Text size='xs' color='dimmed'>
+                            AuresX accounts are a general purpose accounts that
+                            handle your data, activity &amp; authorizations in
+                            our ecosystem.
+                          </Text>
+                        </Box>
+                      </Stack>
+                    </form>
+                  )}
+                </Formik>
               </Box>
             </Center>
           </Grid.Col>
