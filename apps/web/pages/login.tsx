@@ -22,13 +22,12 @@ import {
   IconLockAccess,
   IconLogin,
 } from '@tabler/icons'
+import { Formik } from 'formik'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState } from 'react'
 import { useLoginMutation } from '../generated/graphql'
 import { setAccessToken } from '../utils/access-token'
-import { Formik, FormikState } from 'formik'
 import { loginSchema } from '../validation/auth-validation'
 
 const Login: NextPage = () => {

@@ -8,9 +8,7 @@ import {
   Divider,
   Drawer,
   Group,
-  Image,
   MediaQuery,
-  ScrollArea,
   Text,
   useMantineColorScheme,
   useMantineTheme,
@@ -28,9 +26,12 @@ import {
   IconTarget,
   IconX,
 } from '@tabler/icons'
+import NextImage from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import logoImage from '../public/images/logo.png'
+import logoImageLight from '../public/images/logo-light.png'
 
 const Navbar = () => {
   const theme = useMantineTheme()
@@ -62,24 +63,23 @@ const Navbar = () => {
                     marginInlineEnd: 40,
                   }}
                 >
-                  <Image
-                    src={'/images/logo.png'}
-                    alt='AuresX logo'
-                    aria-label='AuresX logo'
-                    sx={{
-                      display:
-                        colorScheme === 'dark' ? 'block' : 'none !important',
-                    }}
-                  />
-                  <Image
-                    src={'/images/logo-light.png'}
-                    alt='AuresX logo'
-                    aria-label='AuresX logo'
-                    sx={{
-                      display:
-                        colorScheme !== 'dark' ? 'block' : 'none !important',
-                    }}
-                  />
+                  {colorScheme === 'dark' ? (
+                    <NextImage
+                      src={logoImage}
+                      alt='AuresX logo'
+                      aria-label='AuresX logo'
+                      layout='fill'
+                      placeholder='blur'
+                    />
+                  ) : (
+                    <NextImage
+                      src={logoImageLight}
+                      alt='AuresX logo'
+                      aria-label='AuresX logo'
+                      layout='fill'
+                      placeholder='blur'
+                    />
+                  )}
                 </AspectRatio>
               </Link>
             </Box>

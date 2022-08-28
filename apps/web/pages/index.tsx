@@ -4,7 +4,6 @@ import {
   Button,
   Center,
   Container,
-  Image,
   Stack,
   Text,
   Title,
@@ -12,8 +11,9 @@ import {
 import { IconBuildingArch } from '@tabler/icons'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-
+import NextImage from 'next/image'
 import Link from 'next/link'
+import genesisImageURL from '../public/images/genesis-ui.png'
 
 const Home: NextPage = () => {
   return (
@@ -149,16 +149,10 @@ const Home: NextPage = () => {
             borderColor: theme.colors.teal[5],
           })}
         >
-          <Image
-            src={'/images/genesis-ui.png'}
+          <NextImage
+            src={genesisImageURL}
             alt='project genesis'
-            // sx={{
-            //   filter: 'none',
-            //   transition: 'all 200ms ease-in-out',
-            //   '&:hover': {
-            //     filter: 'grayscale(100%)',
-            //   },
-            // }}
+            placeholder='blur'
           />
         </Box>
       </Container>
