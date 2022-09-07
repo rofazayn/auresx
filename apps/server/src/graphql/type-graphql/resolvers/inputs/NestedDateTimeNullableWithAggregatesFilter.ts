@@ -2,14 +2,13 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { NestedDateTimeFilter } from "../inputs/NestedDateTimeFilter";
-import { NestedDateTimeWithAggregatesFilter } from "../inputs/NestedDateTimeWithAggregatesFilter";
-import { NestedIntFilter } from "../inputs/NestedIntFilter";
+import { NestedDateTimeNullableFilter } from "../inputs/NestedDateTimeNullableFilter";
+import { NestedIntNullableFilter } from "../inputs/NestedIntNullableFilter";
 
-@TypeGraphQL.InputType("DateTimeWithAggregatesFilter", {
+@TypeGraphQL.InputType("NestedDateTimeNullableWithAggregatesFilter", {
   isAbstract: true
 })
-export class DateTimeWithAggregatesFilter {
+export class NestedDateTimeNullableWithAggregatesFilter {
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
   })
@@ -45,23 +44,28 @@ export class DateTimeWithAggregatesFilter {
   })
   gte?: Date | undefined;
 
-  @TypeGraphQL.Field(_type => NestedDateTimeWithAggregatesFilter, {
+  @TypeGraphQL.Field(_type => NestedDateTimeNullableWithAggregatesFilter, {
     nullable: true
   })
-  not?: NestedDateTimeWithAggregatesFilter | undefined;
+  not?: NestedDateTimeNullableWithAggregatesFilter | undefined;
 
-  @TypeGraphQL.Field(_type => NestedIntFilter, {
+  @TypeGraphQL.Field(_type => NestedIntNullableFilter, {
     nullable: true
   })
-  _count?: NestedIntFilter | undefined;
+  _count?: NestedIntNullableFilter | undefined;
 
-  @TypeGraphQL.Field(_type => NestedDateTimeFilter, {
+  @TypeGraphQL.Field(_type => NestedDateTimeNullableFilter, {
     nullable: true
   })
-  _min?: NestedDateTimeFilter | undefined;
+  _min?: NestedDateTimeNullableFilter | undefined;
 
-  @TypeGraphQL.Field(_type => NestedDateTimeFilter, {
+  @TypeGraphQL.Field(_type => NestedDateTimeNullableFilter, {
     nullable: true
   })
-  _max?: NestedDateTimeFilter | undefined;
+  _max?: NestedDateTimeNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  isSet?: boolean | undefined;
 }

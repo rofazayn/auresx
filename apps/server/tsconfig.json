@@ -7,5 +7,8 @@
     "dist",
     "src/generated/**/*",
     "webpack.config.js"
-  ]
+  ],
+  "compilerOptions": {
+    "outDir": "build"
+  }
 }

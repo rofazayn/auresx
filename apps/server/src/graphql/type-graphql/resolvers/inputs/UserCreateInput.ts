@@ -22,6 +22,41 @@ export class UserCreateInput {
   })
   name!: string;
 
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  emailConfirmed?: boolean | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  phoneNumber?: string | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  country?: string | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  region?: string | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  city?: string | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  job?: string | undefined;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  preferredTheme?: string | undefined;
+
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
   })

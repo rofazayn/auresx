@@ -9,8 +9,13 @@ import { TokenRefreshLink } from 'apollo-link-token-refresh'
 import jwtDecode from 'jwt-decode'
 import { getAccessToken, setAccessToken } from '../utils/access-token'
 
+const NODE_ENV = process.env.NODE_ENV! || 'development'
+const serverEndpoint: string = `${
+  NODE_ENV === 'development' ? 'http://localhost:4000' : 'http://auresx.com'
+}`
+
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: serverEndpoint + '/graphql',
   credentials: 'include',
 })
 
@@ -50,6 +55,7 @@ const tokenRefreshLink = new TokenRefreshLink({
     const token = getAccessToken()
 
     if (!token) {
+      setAccessToken(null)
       return false
     }
 
@@ -69,10 +75,11 @@ const tokenRefreshLink = new TokenRefreshLink({
       mutation {
         refresh {
           accessToken
+          refreshToken
         }
       }
     `
-    const response = await fetch(`http://localhost:4000/graphql`, {
+    const response = await fetch(serverEndpoint + '/graphql', {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -99,12 +106,11 @@ const tokenRefreshLink = new TokenRefreshLink({
   },
   handleError: () => {
     setAccessToken(null)
-    console.warn('your refresh token is invalid, please relogin')
   },
 })
 
 const apolloClient = new ApolloClient({
-  uri: 'http://localhost:4000',
+  uri: serverEndpoint,
   cache: new InMemoryCache(),
   link: ApolloLink.from([tokenRefreshLink, requestLink, httpLink]),
 })

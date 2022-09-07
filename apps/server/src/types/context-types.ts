@@ -1,10 +1,12 @@
 import { PrismaClient } from '@prisma/client'
-import { User } from '../graphql/type-graphql'
+import { Request, Response } from 'express'
+import { JwtPayload } from 'jsonwebtoken'
+import type { User } from '../graphql/type-graphql'
 
 export type ApolloContext = {
   req: Request
   res: Response
-  prisma: PrismaClient
-  user: User
+  user: User | null
   refreshToken: string | null
+  prisma: PrismaClient
 }

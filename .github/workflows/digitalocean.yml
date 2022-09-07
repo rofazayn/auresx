@@ -1,0 +1,59 @@
+name: digitalocean-ci
+
+on:
+  push:
+    branches: ['prod']
+  pull_request:
+    branches: ['prod']
+
+jobs:
+  server:
+    runs-on: self-hosted
+
+    steps:
+      - name: Setup checkout
+        uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Run Scripts
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          ACCOUNTS_SERVER_PORT: ${{ secrets.ACCOUNTS_SERVER_PORT }}
+          ACCOUNTS_JWT_SECRET: ${{ secrets.ACCOUNTS_JWT_SECRET }}
+          ACCOUNTS_EMAIL_ADDRESS: ${{ secrets.ACCOUNTS_EMAIL_ADDRESS }}
+          ACCOUNTS_EMAIL_JWT_SECRET: ${{ secrets.ACCOUNTS_EMAIL_JWT_SECRET }}
+          ACCOUNTS_EMAIL_SECRET: ${{ secrets.ACCOUNTS_EMAIL_SECRET }}
+        run: |
+          yarn install --check-files --force
+          yarn workspace server prisma:generate
+          yarn workspace server build
+          yarn workspace server serve
+
+  web:
+    runs-on: self-hosted
+    needs: server
+
+    steps:
+      - name: Setup checkout
+        uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Run Scripts
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          ACCOUNTS_SERVER_PORT: ${{ secrets.ACCOUNTS_SERVER_PORT }}
+          ACCOUNTS_JWT_SECRET: ${{ secrets.ACCOUNTS_JWT_SECRET }}
+          ACCOUNTS_EMAIL_ADDRESS: ${{ secrets.ACCOUNTS_EMAIL_ADDRESS }}
+          ACCOUNTS_EMAIL_JWT_SECRET: ${{ secrets.ACCOUNTS_EMAIL_JWT_SECRET }}
+          ACCOUNTS_EMAIL_SECRET: ${{ secrets.ACCOUNTS_EMAIL_SECRET }}
+        run: |
+          yarn workspace web graphql:generate
+          yarn workspace web build
+          yarn workspace web start
+          sudo service nginx restart

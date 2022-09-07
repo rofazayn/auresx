@@ -1,0 +1,16 @@
+query Profile {
+  profile {
+    id
+    email
+    name
+    emailConfirmed
+    phoneNumber
+    country
+    region
+    city
+    job
+    preferredTheme
+    createdAt
+    updatedAt
+  }
+}

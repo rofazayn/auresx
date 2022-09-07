@@ -11,13 +11,10 @@ const opts: any = {
 
 passport.use(
   new JwtStrategy(opts, async function (jwt_payload, done) {
-    console.log(jwt_payload)
     try {
       const user = await prisma.user.findFirst({
         where: { email: jwt_payload.email },
       })
-
-      console.log(user)
 
       if (user) {
         return done(null, user)
@@ -25,7 +22,6 @@ passport.use(
         return done(null, false)
       }
     } catch (error) {
-      console.log('first')
       return done(error, false)
     }
   })

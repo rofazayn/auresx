@@ -2,12 +2,12 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { NestedDateTimeFilter } from "../inputs/NestedDateTimeFilter";
+import { NestedDateTimeNullableFilter } from "../inputs/NestedDateTimeNullableFilter";
 
-@TypeGraphQL.InputType("DateTimeFilter", {
+@TypeGraphQL.InputType("DateTimeNullableFilter", {
   isAbstract: true
 })
-export class DateTimeFilter {
+export class DateTimeNullableFilter {
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
   })
@@ -43,8 +43,13 @@ export class DateTimeFilter {
   })
   gte?: Date | undefined;
 
-  @TypeGraphQL.Field(_type => NestedDateTimeFilter, {
+  @TypeGraphQL.Field(_type => NestedDateTimeNullableFilter, {
     nullable: true
   })
-  not?: NestedDateTimeFilter | undefined;
+  not?: NestedDateTimeNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  isSet?: boolean | undefined;
 }

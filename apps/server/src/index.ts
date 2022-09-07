@@ -1,11 +1,12 @@
-import { PrismaClient } from '@prisma/client'
 import {
   ApolloServerPluginDrainHttpServer,
+  ApolloServerPluginLandingPageDisabled,
   ApolloServerPluginLandingPageLocalDefault,
 } from 'apollo-server-core'
 import { ApolloServer } from 'apollo-server-express'
+import cookieParser from 'cookie-parser'
 import cors from 'cors'
-import express, { Request, Response } from 'express'
+import express from 'express'
 import { applyMiddleware } from 'graphql-middleware'
 import http from 'http'
 import { JwtPayload, verify } from 'jsonwebtoken'
@@ -16,15 +17,23 @@ import { v4 as uuidv4 } from 'uuid'
 import './configs/passport'
 import prisma from './configs/prisma-client'
 import shield from './configs/shield'
+import { ACCOUNTS_JWT_SECRET, NODE_ENV, PORT } from './constants'
 import AuthResolver from './graphql/resolvers/auth-resolver'
-import { resolvers, User } from './graphql/type-graphql'
+import { UpdateOneUserResolver, User } from './graphql/type-graphql'
+import authRoutes from './routes/auth-routes'
+import { ApolloContext } from './types/context-types'
 import { createRefreshToken } from './utils/jwt-tokens'
 
-export const refreshTokens: Record<string, any> = {}
+// export const refreshTokens: Record<string, any> = {}
 const app = express()
 
+console.log(NODE_ENV)
+
 const corsOptions = {
-  origin: ['*', 'http://localhost:3000', 'http://auresx.com'],
+  origin:
+    NODE_ENV !== 'development'
+      ? ['http://auresx.com']
+      : ['http://localhost:3000', 'http://auresx.com'],
   credentials: true,
 }
 
@@ -32,9 +41,10 @@ async function main() {
   // establish db connection
   await prisma.$connect()
   // setup configs
+  app.use(cookieParser())
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
-  app.set('trust proxy', process.env.NODE_ENV !== 'production')
+  app.set('trust proxy', NODE_ENV !== 'production')
   app.use(cors(corsOptions))
   app.use(passport.initialize())
 
@@ -43,7 +53,7 @@ async function main() {
   const server = new ApolloServer({
     schema: applyMiddleware(
       await buildSchema({
-        resolvers: [AuthResolver, ...resolvers],
+        resolvers: [AuthResolver, UpdateOneUserResolver /* ...resolvers */],
         validate: false,
       }),
       shield
@@ -53,7 +63,9 @@ async function main() {
     introspection: true,
     plugins: [
       ApolloServerPluginDrainHttpServer({ httpServer }),
-      ApolloServerPluginLandingPageLocalDefault({ embed: true }),
+      NODE_ENV === 'development'
+        ? ApolloServerPluginLandingPageLocalDefault({ embed: true })
+        : ApolloServerPluginLandingPageDisabled(),
     ],
     formatResponse: (response, requestContext) => {
       if (
@@ -73,48 +85,40 @@ async function main() {
           null
 
         if (accessToken) {
-          const token = verify(accessToken, process.env.JWT_SECRET!) as User
+          const token = verify(accessToken, ACCOUNTS_JWT_SECRET) as User
 
           const refreshTokenGuid = uuidv4()
           const newRefreshToken = createRefreshToken(token.id, refreshTokenGuid)
-          refreshTokens[refreshTokenGuid] = token.id
+          // refreshTokens[refreshTokenGuid] = token.id
 
           requestContext.response?.http?.headers.append(
             'Set-Cookie',
-            `refreshToken=${newRefreshToken}; expires=${tokenExpireDate}; path=/; HttpOnly=true; Secure=true; SameSite=Strict`
+            `refreshToken=${newRefreshToken}; expires=${tokenExpireDate}; path=/; HttpOnly=true; Secure=true; SameSite=Lax`
           )
         }
       }
       return response
     },
     context: ({ req, res }) => {
-      let ctx: {
-        req: Request
-        res: Response
-        user: String | User | JwtPayload | null
-        refreshToken: string | null
-        prisma: PrismaClient
-      } = { req, res, user: null, refreshToken: null, prisma }
+      let ctx: ApolloContext = {
+        req,
+        res,
+        user: null,
+        refreshToken: null,
+        prisma,
+      }
 
-      if (req.headers.cookie) {
-        const cookies = req.headers.cookie
-          .split(';')
-          .reduce<Record<string, string>>((obj, c) => {
-            const [name, value] = c.split('=')
-            obj[name.trim()] = value.trim()
-            return obj
-          }, {})
-
-        ctx.refreshToken = cookies?.refreshToken
+      if (req.cookies) {
+        ctx.refreshToken = req.cookies.refreshToken
       }
 
       try {
         if (req.headers['authorization']) {
-          const parsedToken = verify(
+          const parsedToken: string | JwtPayload = verify(
             req.headers['authorization'].split(' ')[1] as string,
-            process.env.JWT_SECRET!
+            ACCOUNTS_JWT_SECRET
           )
-          ctx.user = parsedToken
+          ctx.user = parsedToken as User
         }
       } catch {}
 
@@ -127,11 +131,14 @@ async function main() {
     app,
     cors: corsOptions,
   })
+  app.use(authRoutes)
   await new Promise<void>((resolve) =>
-    httpServer.listen({ port: 4000 }, resolve)
+    httpServer.listen({ port: PORT }, resolve)
   )
-  console.log(`👾 Server listening at http://localhost:4000`)
-  console.log(`👾 Server ready at http://localhost:4000${server.graphqlPath}`)
+  console.log(`👾 Server listening at http://localhost:${PORT}`)
+  console.log(
+    `👾 Server ready at http://localhost:${PORT}${server.graphqlPath}`
+  )
 }
 
 main()

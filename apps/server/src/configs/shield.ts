@@ -1,20 +1,29 @@
 import { ApolloError } from 'apollo-server-core'
-import { allow, rule, shield } from 'graphql-shield'
+import { allow, and, rule, shield } from 'graphql-shield'
 
 const isAuthenticated = rule()((parent, args, ctx, info) => {
   return !!ctx.user || new Error('you are not authenticated')
+})
+
+const isOwner = rule()((parent, args, ctx, info) => {
+  const ownership = ctx.user.id === args.where.id
+  return ownership || new Error('you are not authorized to do this')
 })
 
 export default shield(
   {
     Query: {
       '*': isAuthenticated,
+      profile: isAuthenticated,
     },
     Mutation: {
       '*': isAuthenticated,
       login: allow,
       register: allow,
       refresh: allow,
+      logout: allow,
+      sendEmailConfirmation: isAuthenticated,
+      updateOneUser: and(isAuthenticated, isOwner),
     },
   },
   {
