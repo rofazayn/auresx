@@ -29,8 +29,8 @@ export default function App() {
             </AspectRatio>
 
             <Heading>
-              A component library for the
-              <Text color='purple.500'> React Ecosystem</Text>
+              A component Kermouda Tafes for the
+              <Text color='indigo.500'> React Ecosystem</Text>
             </Heading>
             <Text my='3' fontWeight='medium'>
               NativeBase is a simple, modular and accessible component library
@@ -39,7 +39,7 @@ export default function App() {
             <Flex flex={1} direction={'row'}>
               <Button
                 width={'100%'}
-                colorScheme={'purple'}
+                colorScheme={'indigo'}
                 onPress={() => alert('hello')}
                 borderRadius={'lg'}
                 _text={{

@@ -169,7 +169,7 @@ function applyTypeClassEnhanceConfig<
 }
 
 const modelsInfo = {
-  User: ["id", "email", "name", "createdAt", "updatedAt"]
+  User: ["id", "email", "name", "emailConfirmed", "phoneNumber", "country", "region", "city", "job", "preferredTheme", "createdAt", "updatedAt"]
 };
 
 type ModelNames = keyof typeof models;
@@ -209,11 +209,11 @@ export function applyModelsEnhanceMap(modelsEnhanceMap: ModelsEnhanceMap) {
 
 const outputsInfo = {
   AggregateUser: ["_count", "_min", "_max"],
-  UserGroupBy: ["id", "email", "name", "password", "createdAt", "updatedAt", "_count", "_min", "_max"],
+  UserGroupBy: ["id", "email", "name", "emailConfirmed", "password", "phoneNumber", "country", "region", "city", "job", "preferredTheme", "createdAt", "updatedAt", "_count", "_min", "_max"],
   AffectedRowsOutput: ["count"],
-  UserCountAggregate: ["id", "email", "name", "password", "createdAt", "updatedAt", "_all"],
-  UserMinAggregate: ["id", "email", "name", "password", "createdAt", "updatedAt"],
-  UserMaxAggregate: ["id", "email", "name", "password", "createdAt", "updatedAt"]
+  UserCountAggregate: ["id", "email", "name", "emailConfirmed", "password", "phoneNumber", "country", "region", "city", "job", "preferredTheme", "createdAt", "updatedAt", "_all"],
+  UserMinAggregate: ["id", "email", "name", "emailConfirmed", "password", "phoneNumber", "country", "region", "city", "job", "preferredTheme", "createdAt", "updatedAt"],
+  UserMaxAggregate: ["id", "email", "name", "emailConfirmed", "password", "phoneNumber", "country", "region", "city", "job", "preferredTheme", "createdAt", "updatedAt"]
 };
 
 type OutputTypesNames = keyof typeof outputTypes;
@@ -254,29 +254,40 @@ export function applyOutputTypesEnhanceMap(
 }
 
 const inputsInfo = {
-  UserWhereInput: ["AND", "OR", "NOT", "id", "email", "name", "password", "createdAt", "updatedAt"],
-  UserOrderByWithRelationInput: ["id", "email", "name", "password", "createdAt", "updatedAt"],
+  UserWhereInput: ["AND", "OR", "NOT", "id", "email", "name", "emailConfirmed", "password", "phoneNumber", "country", "region", "city", "job", "preferredTheme", "createdAt", "updatedAt"],
+  UserOrderByWithRelationInput: ["id", "email", "name", "emailConfirmed", "password", "phoneNumber", "country", "region", "city", "job", "preferredTheme", "createdAt", "updatedAt"],
   UserWhereUniqueInput: ["id", "email"],
-  UserOrderByWithAggregationInput: ["id", "email", "name", "password", "createdAt", "updatedAt", "_count", "_max", "_min"],
-  UserScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "email", "name", "password", "createdAt", "updatedAt"],
-  UserCreateInput: ["id", "email", "name", "password", "createdAt", "updatedAt"],
-  UserUpdateInput: ["email", "name", "password", "createdAt", "updatedAt"],
-  UserCreateManyInput: ["id", "email", "name", "password", "createdAt", "updatedAt"],
-  UserUpdateManyMutationInput: ["email", "name", "password", "createdAt", "updatedAt"],
+  UserOrderByWithAggregationInput: ["id", "email", "name", "emailConfirmed", "password", "phoneNumber", "country", "region", "city", "job", "preferredTheme", "createdAt", "updatedAt", "_count", "_max", "_min"],
+  UserScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "email", "name", "emailConfirmed", "password", "phoneNumber", "country", "region", "city", "job", "preferredTheme", "createdAt", "updatedAt"],
+  UserCreateInput: ["id", "email", "name", "emailConfirmed", "password", "phoneNumber", "country", "region", "city", "job", "preferredTheme", "createdAt", "updatedAt"],
+  UserUpdateInput: ["email", "name", "emailConfirmed", "password", "phoneNumber", "country", "region", "city", "job", "preferredTheme", "createdAt", "updatedAt"],
+  UserCreateManyInput: ["id", "email", "name", "emailConfirmed", "password", "phoneNumber", "country", "region", "city", "job", "preferredTheme", "createdAt", "updatedAt"],
+  UserUpdateManyMutationInput: ["email", "name", "emailConfirmed", "password", "phoneNumber", "country", "region", "city", "job", "preferredTheme", "createdAt", "updatedAt"],
   StringFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not"],
-  DateTimeFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not"],
-  UserCountOrderByAggregateInput: ["id", "email", "name", "password", "createdAt", "updatedAt"],
-  UserMaxOrderByAggregateInput: ["id", "email", "name", "password", "createdAt", "updatedAt"],
-  UserMinOrderByAggregateInput: ["id", "email", "name", "password", "createdAt", "updatedAt"],
+  BoolNullableFilter: ["equals", "not", "isSet"],
+  StringNullableFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not", "isSet"],
+  DateTimeNullableFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not", "isSet"],
+  UserCountOrderByAggregateInput: ["id", "email", "name", "emailConfirmed", "password", "phoneNumber", "country", "region", "city", "job", "preferredTheme", "createdAt", "updatedAt"],
+  UserMaxOrderByAggregateInput: ["id", "email", "name", "emailConfirmed", "password", "phoneNumber", "country", "region", "city", "job", "preferredTheme", "createdAt", "updatedAt"],
+  UserMinOrderByAggregateInput: ["id", "email", "name", "emailConfirmed", "password", "phoneNumber", "country", "region", "city", "job", "preferredTheme", "createdAt", "updatedAt"],
   StringWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not", "_count", "_min", "_max"],
-  DateTimeWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not", "_count", "_min", "_max"],
+  BoolNullableWithAggregatesFilter: ["equals", "not", "_count", "_min", "_max", "isSet"],
+  StringNullableWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not", "_count", "_min", "_max", "isSet"],
+  DateTimeNullableWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not", "_count", "_min", "_max", "isSet"],
   StringFieldUpdateOperationsInput: ["set"],
-  DateTimeFieldUpdateOperationsInput: ["set"],
+  NullableBoolFieldUpdateOperationsInput: ["set", "unset"],
+  NullableStringFieldUpdateOperationsInput: ["set", "unset"],
+  NullableDateTimeFieldUpdateOperationsInput: ["set", "unset"],
   NestedStringFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "not"],
-  NestedDateTimeFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not"],
+  NestedBoolNullableFilter: ["equals", "not", "isSet"],
+  NestedStringNullableFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "not", "isSet"],
+  NestedDateTimeNullableFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not", "isSet"],
   NestedStringWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "not", "_count", "_min", "_max"],
   NestedIntFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not"],
-  NestedDateTimeWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not", "_count", "_min", "_max"]
+  NestedBoolNullableWithAggregatesFilter: ["equals", "not", "_count", "_min", "_max", "isSet"],
+  NestedIntNullableFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not", "isSet"],
+  NestedStringNullableWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "not", "_count", "_min", "_max", "isSet"],
+  NestedDateTimeNullableWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not", "_count", "_min", "_max", "isSet"]
 };
 
 type InputTypesNames = keyof typeof inputTypes;

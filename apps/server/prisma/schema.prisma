@@ -13,11 +13,18 @@ generator typegraphql {
 }
 
 model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  email     String   @unique
-  name      String
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  email          String    @unique
+  name           String
+  emailConfirmed Boolean?  @default(false)
   /// @TypeGraphQL.omit(output: true, input: true)
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  password       String
+  phoneNumber    String?
+  country        String?   @default("Algeria")
+  region         String?
+  city           String?
+  job            String?
+  preferredTheme String?   @default("system")
+  createdAt      DateTime? @default(now())
+  updatedAt      DateTime? @updatedAt
 }

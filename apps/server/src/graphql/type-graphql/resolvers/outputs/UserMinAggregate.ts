@@ -22,10 +22,45 @@ export class UserMinAggregate {
   })
   name!: string | null;
 
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  emailConfirmed!: boolean | null;
+
   @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
   password!: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  phoneNumber!: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  country!: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  region!: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  city!: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  job!: string | null;
+
+  @TypeGraphQL.Field(_type => String, {
+    nullable: true
+  })
+  preferredTheme!: string | null;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: true

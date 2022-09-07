@@ -7,6 +7,9 @@ export class AuthResponse {
   accessToken?: string
 
   @Field({ nullable: true })
+  refreshToken?: string
+
+  @Field({ nullable: true })
   user?: User
 }
 
@@ -14,4 +17,7 @@ export class AuthResponse {
 export class RefreshTokensResponse {
   @Field({ nullable: true })
   accessToken?: string
+
+  @Field({ nullable: true })
+  refreshToken?: string
 }
