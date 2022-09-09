@@ -11,7 +11,7 @@ import { getAccessToken, setAccessToken } from '../utils/access-token'
 
 const NODE_ENV = process.env.NODE_ENV! || 'development'
 const serverEndpoint: string = `${
-  NODE_ENV === 'development' ? 'http://localhost:4000' : 'http://auresx.com'
+  NODE_ENV === 'development' ? 'http://localhost:4000' : 'http://api.auresx.com'
 }`
 
 const httpLink = createHttpLink({
