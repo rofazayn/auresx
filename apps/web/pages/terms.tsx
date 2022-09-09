@@ -55,7 +55,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='table-contents'>
                 TABLE OF CONTENTS
               </Title>
-              <List size='sm' type='ordered'>
+              <List size='lg' type='ordered'>
                 <List.Item>
                   <Anchor href='#sec-1'>AGREEMENT TO TERMS</Anchor>
                 </List.Item>
@@ -147,7 +147,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-1'>
                 1. AGREEMENT TO TERMS
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 These Terms of Use constitute a legally binding agreement made
                 between you, whether personally or on behalf of an entity
                 (&quot;you&quot;) and AuresX SPAS, doing business as AuresX
@@ -166,7 +166,7 @@ const Terms: NextPage = () => {
                 TERMS OF USE, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE
                 SITE AND YOU MUST DISCONTINUE USE IMMEDIATELY.
               </Text>
-              <Text size='sm'>
+              <Text size='lg'>
                 Supplemental terms and conditions or documents that may be
                 posted on the Site from time to time are hereby expressly
                 incorporated herein by reference. We reserve the right, in our
@@ -181,7 +181,7 @@ const Terms: NextPage = () => {
                 revised Terms of Use by your continued use of the Site after the
                 date such revised Terms of Use are posted.
               </Text>
-              <Text size='sm'>
+              <Text size='lg'>
                 The information provided on the Site is not intended for
                 distribution to or use by any person or entity in any
                 jurisdiction or country where such distribution or use would be
@@ -192,7 +192,7 @@ const Terms: NextPage = () => {
                 responsible for compliance with local laws, if and to the extent
                 local laws are applicable.
               </Text>
-              <Text size='sm'>
+              <Text size='lg'>
                 The Site is intended for users who are at least 18 years old.
                 Persons under the age of 18 are not permitted to use or register
                 for the Site.
@@ -200,7 +200,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-2'>
                 2. INTELLECTUAL PROPERTY RIGHTS
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 Unless otherwise indicated, the Site is our proprietary property
                 and all source code, databases, functionality, software, website
                 designs, audio, video, text, photographs, and graphics on the
@@ -219,7 +219,7 @@ const Terms: NextPage = () => {
                 otherwise exploited for any commercial purpose whatsoever,
                 without our express prior written permission.
               </Text>
-              <Text size='sm'>
+              <Text size='lg'>
                 Provided that you are eligible to use the Site, you are granted
                 a limited license to access and use the Site and to download or
                 print a copy of any portion of the Content to which you have
@@ -230,7 +230,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-3'>
                 3. USER REPRESENTATIONS
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 By using the Site, you represent and warrant that: (1) all
                 registration information you submit will be true, accurate,
                 current, and complete; (2) you will maintain the accuracy of
@@ -243,7 +243,7 @@ const Terms: NextPage = () => {
                 Site for any illegal or unauthorized purpose; and (7) your use
                 of the Site will not violate any applicable law or regulation.
               </Text>
-              <Text size='sm'>
+              <Text size='lg'>
                 If you provide any information that is untrue, inaccurate, not
                 current, or incomplete, we have the right to suspend or
                 terminate your account and refuse any and all current or future
@@ -252,7 +252,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-4'>
                 4. USER REGISTRATION
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 You may be required to register with the Site. You agree to keep
                 your password confidential and will be responsible for all use
                 of your account and password. We reserve the right to remove,
@@ -263,14 +263,14 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-5'>
                 5. PROHIBITED ACTIVITIES
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 You may not access or use the Site for any purpose other than
                 that for which we make the Site available. The Site may not be
                 used in connection with any commercial endeavors except those
                 that are specifically endorsed or approved by us.
               </Text>
-              <Text size='sm'>As a user of the Site, you agree not to:</Text>
-              <List size='sm' withPadding>
+              <Text size='lg'>As a user of the Site, you agree not to:</Text>
+              <List size='lg' withPadding>
                 <List.Item>
                   Systematically retrieve data or other content from the Site to
                   create or compile, directly or indirectly, a collection,
@@ -393,7 +393,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-6'>
                 6. USER GENERATED CONTRIBUTIONS
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 The Site may invite you to chat, contribute to, or participate
                 in blogs, message boards, online forums, and other
                 functionality, and may provide you with the opportunity to
@@ -409,7 +409,7 @@ const Terms: NextPage = () => {
                 available any Contributions, you thereby represent and warrant
                 that:
               </Text>
-              <List size='sm' withPadding>
+              <List size='lg' withPadding>
                 <List.Item>
                   The creation, distribution, transmission, public display, or
                   performance, and the accessing, downloading, or copying of
@@ -479,7 +479,7 @@ const Terms: NextPage = () => {
                   or any applicable law or regulation.
                 </List.Item>
               </List>
-              <Text size='sm'>
+              <Text size='lg'>
                 Any use of the Site in violation of the foregoing violates these
                 Terms of Use and may result in, among other things, termination
                 or suspension of your rights to use the Site.
@@ -487,7 +487,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-7'>
                 7. CONTRIBUTION LICENSE
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 By posting your Contributions to any part of the Site or making
                 Contributions accessible to the Site by linking your account
                 from the Site to any of your social networking accounts, you
@@ -506,7 +506,7 @@ const Terms: NextPage = () => {
                 and distribution may occur in any media formats and through any
                 media channels.
               </Text>
-              <Text size='sm'>
+              <Text size='lg'>
                 This license will apply to any form, media, or technology now
                 known or hereafter developed, and includes our use of your name,
                 company name, and franchise name, as applicable, and any of the
@@ -515,7 +515,7 @@ const Terms: NextPage = () => {
                 your Contributions, and you warrant that moral rights have not
                 otherwise been asserted in your Contributions.
               </Text>
-              <Text size='sm'>
+              <Text size='lg'>
                 We do not assert any ownership over your Contributions. You
                 retain full ownership of all of your Contributions and any
                 intellectual property rights or other proprietary rights
@@ -526,7 +526,7 @@ const Terms: NextPage = () => {
                 us from any and all responsibility and to refrain from any legal
                 action against us regarding your Contributions.
               </Text>
-              <Text size='sm'>
+              <Text size='lg'>
                 We have the right, in our sole and absolute discretion, (1) to
                 edit, redact, or otherwise change any Contributions; (2) to
                 re-categorize any Contributions to place them in more
@@ -537,7 +537,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-8'>
                 8. GUIDELINES FOR REVIEWS
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 We may provide you areas on the Site to leave reviews or
                 ratings. When posting a review, you must comply with the
                 following criteria: (1) you should have firsthand experience
@@ -554,7 +554,7 @@ const Terms: NextPage = () => {
                 organize a campaign encouraging others to post reviews, whether
                 positive or negative.
               </Text>
-              <Text size='sm'>
+              <Text size='lg'>
                 We may accept, reject, or remove reviews in our sole discretion.
                 We have absolutely no obligation to screen reviews or to delete
                 reviews, even if anyone considers reviews objectionable or
@@ -571,7 +571,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-9'>
                 9. SOCIAL MEDIA
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 As part of the functionality of the Site, you may link your
                 account with online accounts you have with third-party service
                 providers (each such account, a “Third-Party Account”) by
@@ -627,7 +627,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-10'>
                 10. SUBMISSIONS
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 You acknowledge and agree that any questions, comments,
                 suggestions, ideas, feedback, or other information regarding the
                 Site (&quot;Submissions&quot;) provided by you to us are
@@ -646,7 +646,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-11'>
                 11. THIRD-PARTY WEBSITE AND CONTENT
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 The Site may contain (or you may be sent via the Site) links to
                 other websites (&quot;Third-Party Websites&quot;) as well as
                 articles, photographs, text, graphics, pictures, designs, music,
@@ -685,7 +685,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-12'>
                 12. ADVERTISERS
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 We allow advertisers to display their advertisements and other
                 information in certain areas of the Site, such as sidebar
                 advertisements or banner advertisements. If you are an
@@ -702,7 +702,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-13'>
                 13. SITE MANAGEMENT
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 We reserve the right, but not the obligation, to: (1) monitor
                 the Site for violations of these Terms of Use; (2) take
                 appropriate legal action against anyone who, in our sole
@@ -722,7 +722,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-14'>
                 14. PRIVACY POLICY
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 We care about data privacy and security. Please review our
                 Privacy Policy:{' '}
                 <Link href='/privacy-policy' passHref>
@@ -741,7 +741,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-15'>
                 15. COPYRIGHT INFRINGEMENTS
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 We respect the intellectual property rights of others. If you
                 believe that any material available on or through the Site
                 infringes upon any copyright you own or control, please
@@ -758,7 +758,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-16'>
                 16. TERM AND TERMINATION
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 These Terms of Use shall remain in full force and effect while
                 you use the Site. WITHOUT LIMITING ANY OTHER PROVISION OF THESE
                 TERMS OF USE, WE RESERVE THE RIGHT TO, IN OUR SOLE DISCRETION
@@ -771,7 +771,7 @@ const Terms: NextPage = () => {
                 SITE OR DELETE YOUR ACCOUNT AND ANY CONTENT OR INFORMATION THAT
                 YOU POSTED AT ANY TIME, WITHOUT WARNING, IN OUR SOLE DISCRETION.
               </Text>
-              <Text size='sm'>
+              <Text size='lg'>
                 If we terminate or suspend your account for any reason, you are
                 prohibited from registering and creating a new account under
                 your name, a fake or borrowed name, or the name of any third
@@ -784,7 +784,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-17'>
                 17. MODIFICATIONS AND INTERRUPTIONS
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 We reserve the right to change, modify, or remove the contents
                 of the Site at any time or for any reason at our sole discretion
                 without notice. However, we have no obligation to update any
@@ -794,7 +794,7 @@ const Terms: NextPage = () => {
                 modification, price change, suspension, or discontinuance of the
                 Site.
               </Text>
-              <Text size='sm'>
+              <Text size='lg'>
                 We cannot guarantee the Site will be available at all times. We
                 may experience hardware, software, or other problems or need to
                 perform maintenance related to the Site, resulting in
@@ -811,7 +811,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-18'>
                 18. GOVERNING LAW{' '}
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 These terms shall be governed by and defined following the laws
                 of Algeria. AuresX SPAS and yourself irrevocably consent that
                 the courts of Algeria shall have exclusive jurisdiction to
@@ -821,7 +821,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-19'>
                 19. DISPUTE RESOLUTION
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 You agree to irrevocably submit all disputes related to Terms or
                 the relationship established by this Agreement to the
                 jurisdiction of the Algeria courts. AuresX SPAS shall also
@@ -833,7 +833,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-20'>
                 20. CORRECTIONS
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 There may be information on the Site that contains typographical
                 errors, inaccuracies, or omissions, including descriptions,
                 pricing, availability, and various other information. We reserve
@@ -844,7 +844,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-21'>
                 21. DISCLAIMER
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 THE SITE IS PROVIDED ON AN AS-IS AND AS-AVAILABLE BASIS. YOU
                 AGREE THAT YOUR USE OF THE SITE AND OUR SERVICES WILL BE AT YOUR
                 SOLE RISK. TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM
@@ -880,7 +880,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-22'>
                 22. LIMITATIONS OF LIABILITY
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 IN NO EVENT WILL WE OR OUR DIRECTORS, EMPLOYEES, OR AGENTS BE
                 LIABLE TO YOU OR ANY THIRD PARTY FOR ANY DIRECT, INDIRECT,
                 CONSEQUENTIAL, EXEMPLARY, INCIDENTAL, SPECIAL, OR PUNITIVE
@@ -901,7 +901,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-23'>
                 23. INDEMNIFICATION
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 You agree to defend, indemnify, and hold us harmless, including
                 our subsidiaries, affiliates, and all of our respective
                 officers, agents, partners, and employees, from and against any
@@ -924,7 +924,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-24'>
                 24. USER DATA
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 We will maintain certain data that you transmit to the Site for
                 the purpose of managing the performance of the Site, as well as
                 data relating to your use of the Site. Although we perform
@@ -938,7 +938,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-25'>
                 25. ELECTRONIC COMMUNICATIONS, TRANSACTIONS, AND SIGNATURES
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 Visiting the Site, sending us emails, and completing online
                 forms constitute electronic communications. You consent to
                 receive electronic communications, and you agree that all
@@ -958,7 +958,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-26'>
                 26. MISCELLANEOUS
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 These Terms of Use and any policies or operating rules posted by
                 us on the Site or in respect to the Site constitute the entire
                 agreement and understanding between you and us. Our failure to
@@ -984,7 +984,7 @@ const Terms: NextPage = () => {
               <Title order={2} id='sec-27'>
                 27. CONTACT US
               </Title>
-              <Text size='sm'>
+              <Text size='lg'>
                 In order to resolve a complaint regarding the Site or to receive
                 further information regarding use of the Site, please contact us
                 at:
@@ -1003,7 +1003,7 @@ const Terms: NextPage = () => {
                 <br />
                 <b>Phone: (+213)549985283</b>
                 <br />
-                <b>E-mail: contact@auresx.com</b>
+                <b>E-mail: support@auresx.com</b>
               </Text>
             </Stack>
           </Paper>

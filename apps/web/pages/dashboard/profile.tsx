@@ -18,6 +18,7 @@ import {
   IconLocation,
   IconMail,
   IconPhone,
+  IconSettings,
   IconUser,
   IconUserCircle,
 } from '@tabler/icons'
@@ -60,7 +61,21 @@ const DashboardProfile: NextPage = () => {
             <br />
             If you wish to change anything, go to your{' '}
             <NextLink href='/dashboard/settings' passHref>
-              <Anchor underline>Settings</Anchor>
+              <Anchor underline>
+                <Box
+                  sx={{
+                    display: 'inline-flex',
+                    transform: 'translateY(3px)',
+                    alignItems: 'center',
+                    gap: 4,
+                  }}
+                >
+                  <Text span weight='500'>
+                    Settings
+                  </Text>
+                  <IconSettings size={16} />
+                </Box>
+              </Anchor>
             </NextLink>
           </Text>
           <Paper

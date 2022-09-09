@@ -313,11 +313,13 @@ const Register: NextPage = () => {
                                     <Text size='sm'>
                                       <b>I agree</b> to the{' '}
                                       <Link href='/terms' passHref>
-                                        <Anchor underline>Terms of Use</Anchor>
+                                        <Anchor underline weight='500'>
+                                          Terms of Use
+                                        </Anchor>
                                       </Link>{' '}
                                       and to the{' '}
                                       <Link href='/privacy-policy' passHref>
-                                        <Anchor underline>
+                                        <Anchor underline weight='500'>
                                           Privacy Policy
                                         </Anchor>
                                       </Link>{' '}
@@ -351,7 +353,7 @@ const Register: NextPage = () => {
                                   mb={8}
                                 />
                                 <Button
-                                  variant='light'
+                                  variant='filled'
                                   rightIcon={<IconPlugConnected />}
                                   size='lg'
                                   type='submit'
@@ -382,7 +384,7 @@ const Register: NextPage = () => {
                                 <Text color='dimmed' mb={8}>
                                   Already have an AuresX account?{' '}
                                   <Link href='/login' passHref>
-                                    <Anchor weight='500' color='teal'>
+                                    <Anchor weight='bold' color='indigo'>
                                       Sign in
                                     </Anchor>
                                   </Link>

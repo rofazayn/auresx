@@ -312,7 +312,7 @@ const Login: NextPage = () => {
                                 />
 
                                 <Button
-                                  variant='light'
+                                  variant='filled'
                                   rightIcon={<IconLogin />}
                                   size='lg'
                                   type='submit'
@@ -348,7 +348,7 @@ const Login: NextPage = () => {
                                 <Text color='dimmed' mb={8}>
                                   Don&apos;t you have an account with us?{' '}
                                   <Link href='/register' passHref>
-                                    <Anchor weight='500' color='indigo'>
+                                    <Anchor weight='bold' color='indigo'>
                                       Register
                                     </Anchor>
                                   </Link>

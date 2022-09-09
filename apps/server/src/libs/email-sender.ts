@@ -25,7 +25,7 @@ export async function sendConfirmationSMTP(
 
   try {
     await transporter.sendMail({
-      from: '"AuresX Accounts" <support@auresx.com>', // sender address
+      from: '"AuresX Accounts" <accounts@auresx.com>', // sender address
       to: email, // list of receivers
       subject: 'Please confirm your email address', // Subject line
       // text: 'plain text'
