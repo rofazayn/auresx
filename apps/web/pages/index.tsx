@@ -152,7 +152,7 @@ const Home: NextPage = () => {
                     <br />
                     Soon
                   </Title>
-                  <Loader size='lg' variant='dots' color='teal' />
+                  <Loader size='xl' variant='dots' color='gray' />
                 </Box>
               </Paper>
             </Grid.Col>

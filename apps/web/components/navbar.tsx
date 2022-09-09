@@ -96,7 +96,7 @@ const Navbar = () => {
           >
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <Link href='/'>
-                <Box sx={{ marginInlineEnd: 56 }}>
+                <Box sx={{ marginInlineEnd: 40 }}>
                   <Logo />
                 </Box>
               </Link>
@@ -155,7 +155,7 @@ const Navbar = () => {
             ) : authStatus === 'found' ? (
               <>
                 <MediaQuery smallerThan={'md'} styles={{ display: 'none' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <Link href='/dashboard'>
                       <Button
                         variant='subtle'
@@ -170,7 +170,7 @@ const Navbar = () => {
                     <Button
                       onClick={logout}
                       color='red'
-                      variant='light'
+                      variant='subtle'
                       size='md'
                       radius='md'
                       rightIcon={<IconLogout />}
@@ -196,7 +196,7 @@ const Navbar = () => {
                     <Link href='/dashboard'>
                       <Button
                         variant='subtle'
-                        color='indigo'
+                        color='gray'
                         size='sm'
                         radius='md'
                         leftIcon={<IconApps />}
@@ -205,7 +205,7 @@ const Navbar = () => {
                       </Button>
                     </Link>
                     <Burger
-                      color='gray'
+                      // color='gray'
                       aria-label='Menu'
                       opened={opened}
                       size='sm'
@@ -230,8 +230,8 @@ const Navbar = () => {
                     </Link>
                     <Link href='/register'>
                       <Button
-                        variant='light'
-                        color='teal'
+                        variant='filled'
+                        color='indigo'
                         size='md'
                         rightIcon={<IconConfetti size='24' />}
                         radius='md'

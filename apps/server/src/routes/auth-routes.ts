@@ -1,13 +1,14 @@
 import { Request, Response, Router } from 'express'
 import { verify } from 'jsonwebtoken'
 import prisma from '../configs/prisma-client'
+import { ACCOUNTS_EMAIL_JWT_SECRET, NODE_ENV } from '../constants'
 
 const authRoutes = Router()
 authRoutes.get('/confirm-email/:token', async (req: Request, res: Response) => {
   try {
     let decodedConfirmationToken = verify(
       req.params.token,
-      process.env.EMAIL_JWT_SECRET!
+      ACCOUNTS_EMAIL_JWT_SECRET
     ) as unknown as {
       userId: string
     }
@@ -24,18 +25,22 @@ authRoutes.get('/confirm-email/:token', async (req: Request, res: Response) => {
         })
 
         return res.redirect(
-          !process.env.PROD
-            ? 'http://localhost:3000/dashboard'
-            : 'https://www.auresx.com/dashboard'
+          NODE_ENV === 'production'
+            ? 'https://auresx.com/dashboard'
+            : 'http://localhost:3000/dashboard'
         )
       }
     }
     return res.redirect(
-      !process.env.PROD ? 'http://localhost:3000/' : 'https://www.auresx.com/'
+      NODE_ENV === 'production'
+        ? 'https://auresx.com/dashboard'
+        : 'http://localhost:3000/dashboard'
     )
   } catch {
     return res.redirect(
-      !process.env.PROD ? 'http://localhost:3000/' : 'https://www.auresx.com/'
+      NODE_ENV === 'production'
+        ? 'https://auresx.com/login'
+        : 'http://localhost:3000/login'
     )
   }
 })

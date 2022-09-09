@@ -32,8 +32,12 @@ console.log(NODE_ENV)
 const corsOptions = {
   origin:
     NODE_ENV !== 'development'
-      ? ['http://auresx.com']
-      : ['http://localhost:3000', 'http://auresx.com'],
+      ? ['https://auresx.com', 'https://www.auresx.com']
+      : [
+          'http://localhost:3000',
+          'https://auresx.com',
+          'https://www.auresx.com',
+        ],
   credentials: true,
 }
 
@@ -91,10 +95,15 @@ async function main() {
           const newRefreshToken = createRefreshToken(token.id, refreshTokenGuid)
           // refreshTokens[refreshTokenGuid] = token.id
 
-          requestContext.response?.http?.headers.append(
-            'Set-Cookie',
-            `refreshToken=${newRefreshToken}; expires=${tokenExpireDate}; path=/; HttpOnly=true; Secure=true; SameSite=Lax`
-          )
+          NODE_ENV === 'production'
+            ? requestContext.response?.http?.headers.append(
+                'Set-Cookie',
+                `refreshToken=${newRefreshToken}; expires=${tokenExpireDate};domain=.auresx.com; path=/; HttpOnly=true; Secure=true; SameSite=Lax;`
+              )
+            : requestContext.response?.http?.headers.append(
+                'Set-Cookie',
+                `refreshToken=${newRefreshToken}; expires=${tokenExpireDate}; path=/; HttpOnly=true; Secure=true; SameSite=Lax;`
+              )
         }
       }
       return response

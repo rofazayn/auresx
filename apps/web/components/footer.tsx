@@ -8,6 +8,7 @@ import {
   Divider,
   Grid,
   Group,
+  Image,
   Paper,
   Select,
   Stack,
@@ -23,6 +24,7 @@ import {
   IconMoon,
   IconSun,
 } from '@tabler/icons'
+// import Image from 'next/image'
 import NextImage from 'next/image'
 import Link from 'next/link'
 import logoImageLight from '../public/images/logo-light.png'
@@ -91,6 +93,12 @@ const Footer = () => {
                 <Link href='/team' passHref>
                   <Anchor color='dimmed'>Meet the Team</Anchor>
                 </Link>
+                <Link href='/careers' passHref>
+                  <Anchor color='dimmed'>Careers (not yet)</Anchor>
+                </Link>
+                <Link href='/system-status' passHref>
+                  <Anchor color='dimmed'>System Status</Anchor>
+                </Link>
                 <Link href='/privacy-policy' passHref>
                   <Anchor color='dimmed'>Privacy Policy</Anchor>
                 </Link>
@@ -156,9 +164,6 @@ const Footer = () => {
                 </Link>
                 <Link href='/support/bug' passHref>
                   <Anchor color='dimmed'>Report a Bug</Anchor>
-                </Link>
-                <Link href='/support/ideas' passHref>
-                  <Anchor color='dimmed'>Careers (not yet)</Anchor>
                 </Link>
               </Box>
             </Box>
@@ -334,6 +339,36 @@ const Footer = () => {
                     </Anchor>
                   </Link>
                 </Group>
+              </Box>
+              <Divider variant='dashed' sx={{ opacity: 0.4, maxWidth: 200 }} />
+              <Box
+                sx={{
+                  maxWidth: 140,
+                }}
+              >
+                <Link
+                  href='https://www.digitalocean.com/?refcode=4cafe4276440&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge'
+                  passHref
+                >
+                  <a target='_blank'>
+                    <Image
+                      src='https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%203.svg'
+                      alt='DigitalOcean Referral Badge'
+                      sx={{
+                        display:
+                          theme.colorScheme === 'dark' ? 'block' : 'none',
+                      }}
+                    />
+                    <Image
+                      src='https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%202.svg'
+                      alt='DigitalOcean Referral Badge'
+                      sx={{
+                        display:
+                          theme.colorScheme === 'light' ? 'block' : 'none',
+                      }}
+                    />
+                  </a>
+                </Link>
               </Box>
             </Box>
           </Grid.Col>
