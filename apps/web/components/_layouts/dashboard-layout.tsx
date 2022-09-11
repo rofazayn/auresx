@@ -211,17 +211,18 @@ export default function DashboardLayout({ children }: LayoutProps) {
                   <EmailAlert />
                 </Paper>
                 <Box
+                  mt={8}
+                  pb={8}
                   sx={{
                     display: 'flex',
                     alignItems: 'flex-start',
                     flexDirection: 'column',
                     '@media (max-width: 768px)': {
-                      marginInline: 16,
-                      paddingBottom: 24,
+                      marginInline: 4,
+                      paddingBottom: 40,
+                      marginTop: 16,
                     },
                   }}
-                  mt={8}
-                  pb={8}
                 >
                   <Box
                     // spacing={8}

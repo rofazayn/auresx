@@ -4,6 +4,7 @@ import {
   Divider,
   Grid,
   InputBase,
+  Select,
   Text,
   TextInput,
   useMantineTheme,
@@ -17,15 +18,17 @@ import {
   IconUser,
   IconWallpaper,
 } from '@tabler/icons'
-import { Formik } from 'formik'
-import { useContext, useEffect, useState } from 'react'
+import { Field, Form, Formik } from 'formik'
+import { useContext, useEffect, useMemo, useState } from 'react'
 import InputMask from 'react-input-mask'
+import countryList from 'react-select-country-list'
 import { AuthContext } from '../context/auth-context'
 import { useUpdateOneUserMutation } from '../generated/graphql'
 import settingsCountryImage from '../public/images/illustrations/settings-country.svg'
 import settingsJobImage from '../public/images/illustrations/settings-job.svg'
 import settingsNameImage from '../public/images/illustrations/settings-name.svg'
 import settingsPhoneImage from '../public/images/illustrations/settings-phone.svg'
+import { capitalizeWords } from '../utils/input-formatter'
 import { userSettingsSchema } from '../validation/settings-validation'
 import SettingsCard from './settings-card'
 
@@ -47,14 +50,13 @@ const UserSettings = () => {
         name: currentUser.name,
         phoneNumber: currentUser.phoneNumber,
         country: currentUser.country,
-        // region: currentUser.region,
-        // city: currentUser.city,
         job: currentUser.job,
       })
     }
   }, [currentUser])
 
   const [updateOneUserMutation] = useUpdateOneUserMutation()
+  const options = useMemo(() => countryList().getData(), [])
 
   return (
     <Box>
@@ -62,7 +64,6 @@ const UserSettings = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={userSettingsSchema}
-          // validateOnChange={true}
           enableReinitialize={true}
           onSubmit={async (values) => {
             if (!currentUser) return
@@ -71,12 +72,14 @@ const UserSettings = () => {
               const updatedUser = await updateOneUserMutation({
                 variables: {
                   data: {
-                    name: { set: values.name },
+                    name: values.name
+                      ? { set: capitalizeWords(values.name.trim()) }
+                      : null,
                     phoneNumber: { set: values.phoneNumber },
-                    country: { set: values.country },
-                    // region: { set: values.region },
-                    // city: { set: values.city },
-                    job: { set: values.job },
+                    country: values.country
+                      ? { set: values.country.trim() }
+                      : null,
+                    job: values.job ? { set: values.job.trim() } : null,
                   },
                   where: {
                     id: currentUser.id,
@@ -102,8 +105,9 @@ const UserSettings = () => {
             handleSubmit,
             isSubmitting,
             /* and other goodies */
+            setFieldValue,
           }) => (
-            <form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
               <Box
                 sx={{
                   display: 'flex',
@@ -199,7 +203,7 @@ const UserSettings = () => {
                       imageUrl: settingsCountryImage,
                     }}
                   >
-                    <TextInput
+                    {/* <TextInput
                       sx={(theme) => ({
                         input: {
                           backgroundColor:
@@ -218,6 +222,42 @@ const UserSettings = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       error={errors.country}
+                    /> */}
+                    <Field
+                      name='country'
+                      as={Select}
+                      data={
+                        options
+                          ? options.map((country) => ({
+                              value: country.label,
+                              label: country.label,
+                            }))
+                          : []
+                      }
+                      sx={(theme: any) => ({
+                        input: {
+                          backgroundColor:
+                            theme.colorScheme === 'dark'
+                              ? theme.colors.dark[7]
+                              : theme.colors.gray[2],
+                        },
+                      })}
+                      variant='filled'
+                      rightSection={<IconLocation color='gray' />}
+                      type='text'
+                      placeholder='Enter your country'
+                      size='md'
+                      // name='country'
+                      value={values.country}
+                      onChange={(value: string | null) =>
+                        setFieldValue('country', value)
+                      }
+                      onBlur={handleBlur}
+                      error={errors.country}
+                      searchable
+                      nothingFound='No countries listed'
+                      allowDeselect
+                      maxDropdownHeight={200}
                     />
                   </SettingsCard>
                 </Grid.Col>
@@ -302,7 +342,7 @@ const UserSettings = () => {
                   </Button>
                 </Box>
               </Box>
-            </form>
+            </Form>
           )}
         </Formik>
       )}
