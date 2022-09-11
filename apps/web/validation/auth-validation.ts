@@ -6,7 +6,11 @@ export const loginSchema = Yup.object({
 })
 
 export const registerSchema = Yup.object({
-  name: Yup.string().min(5).max(20).required(),
+  name: Yup.string()
+    .min(5)
+    .max(25)
+    .matches(/^\s*[\S]+(\s[\S]+)+\s*$/gms, 'Please enter your full name.')
+    .required(),
   email: Yup.string().email().required(),
   password: Yup.string().min(8).required(),
 })

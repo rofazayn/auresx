@@ -33,6 +33,7 @@ import PageLayout from '../components/_layouts/page-layout'
 import { AuthContext } from '../context/auth-context'
 import { useRegisterMutation } from '../generated/graphql'
 import { setAccessToken } from '../utils/access-token'
+import { capitalizeWords } from '../utils/input-formatter'
 import { registerSchema } from '../validation/auth-validation'
 
 const Register: NextPage = () => {
@@ -224,7 +225,7 @@ const Register: NextPage = () => {
                           const { name, email, password } = values
                           const registerOperation = await registerMutation({
                             variables: {
-                              name,
+                              name: capitalizeWords(name.trim()),
                               email,
                               password,
                             },
