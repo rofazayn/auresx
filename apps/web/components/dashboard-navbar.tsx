@@ -15,8 +15,10 @@ import {
 } from '@mantine/core'
 import {
   IconAppWindow,
+  IconArrowBack,
   IconMoon,
   IconNotification,
+  IconSmartHome,
   IconSun,
   IconX,
 } from '@tabler/icons'
@@ -25,6 +27,7 @@ import { useRouter } from 'next/router'
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../context/auth-context'
 import Logo from './logo'
+import NavLink from './nav-link'
 import { NavbarLinks } from './navbar-links'
 import UserControllerBadge from './user-controller-badge'
 
@@ -256,6 +259,14 @@ const DashboardNavbar = () => {
                           </Text>
                         </Box>
                         <NavbarLinks withSettings={true} />
+                        <NavLink
+                          item={{
+                            link: '/',
+                            label: 'Website',
+                            labelExtended: 'Back to Website',
+                            icon: IconArrowBack,
+                          }}
+                        />
                       </Box>
                       <Box
                         sx={{
@@ -263,6 +274,7 @@ const DashboardNavbar = () => {
                           flexDirection: 'column',
                           flexGrow: 1,
                         }}
+                        mb={16}
                       >
                         <Box mb={16}>
                           <Divider variant='dashed' my={16} />

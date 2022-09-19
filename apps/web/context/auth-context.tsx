@@ -14,7 +14,7 @@ const AuthProvider = ({ children }: any) => {
   const [logoutMutation, { loading: logoutLoading }] = useLogoutMutation({})
   const profileQuery = useProfileQuery({
     skip: currentUser !== 'found',
-    // pollInterval: 1000 /* * 60 */ * 5,
+    pollInterval: 1000 * 60 * 3,
   })
   // try refresh mutation and check if tokens are valid
   // before fetching me data and chanching authStatus state

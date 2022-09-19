@@ -13,6 +13,6 @@ export const userSettingsSchema = Yup.object({
       return val_length_without_dashes === 18
     })
     .nullable(true),
-  country: Yup.string().min(2).max(20).nullable(true),
+  country: Yup.string().nullable(true),
   job: Yup.string().min(4).max(20).nullable(true),
 })

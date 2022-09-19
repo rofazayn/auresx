@@ -1,34 +1,19 @@
 import {
-  ActionIcon,
   Box,
-  Button,
   Center,
-  Grid,
   MediaQuery,
   SegmentedControl,
-  Text,
-  TextInput,
   useMantineTheme,
 } from '@mantine/core'
-import {
-  IconEdit,
-  IconEye,
-  IconGift,
-  IconHome,
-  IconPalette,
-  IconSettings,
-  IconUser,
-} from '@tabler/icons'
+import { IconGift, IconPalette, IconSettings, IconUser } from '@tabler/icons'
 import { NextPage } from 'next'
 import Head from 'next/head'
-import { useContext, useEffect, useState } from 'react'
+import { useState } from 'react'
 import CustomizationSettings from '../../components/customization-settings'
 import PageHeader from '../../components/page-header'
 import ReferralSettings from '../../components/referral-settings'
-import SettingsCard from '../../components/settings-card'
 import UserSettings from '../../components/user-settings'
 import DashboardLayout from '../../components/_layouts/dashboard-layout'
-import { AuthContext } from '../../context/auth-context'
 
 const DashboardSettings: NextPage = () => {
   const theme = useMantineTheme()

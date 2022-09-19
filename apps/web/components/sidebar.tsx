@@ -1,5 +1,10 @@
 import { Box, Paper, useMantineTheme } from '@mantine/core'
-import { IconSettings } from '@tabler/icons'
+import {
+  IconArrowBack,
+  IconHomeOff,
+  IconSettings,
+  IconSmartHome,
+} from '@tabler/icons'
 import NavLink from './nav-link'
 import { NavbarLinks } from './navbar-links'
 import SidebarHeader from './sidebar-header'
@@ -36,6 +41,14 @@ const Sidebar = () => {
         </Box>
         <Box>
           <Box mb={16}>
+            <NavLink
+              item={{
+                link: '/',
+                label: 'Website',
+                labelExtended: 'Back to Website',
+                icon: IconArrowBack,
+              }}
+            />
             <NavLink
               item={{
                 link: '/dashboard/settings',
