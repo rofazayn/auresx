@@ -3,11 +3,15 @@ import {
   Box,
   Button,
   Container,
+  Divider,
   Group,
+  Paper,
   Stack,
   Text,
+  Title,
 } from '@mantine/core'
-import { IconCheck, IconMoon } from '@tabler/icons'
+import { useScrollLock } from '@mantine/hooks'
+import { IconCake, IconCheck, IconCookie, IconMoon } from '@tabler/icons'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
@@ -19,57 +23,84 @@ const CookieBanner = () => {
     setCookiesConsent(consent)
   }, [])
 
+  const [_scrollLocked, setScrollLocked] = useScrollLock()
+
+  useEffect(() => {
+    if (cookiesConsent !== 'yes') {
+      setScrollLocked(true)
+    } else {
+      setScrollLocked(false)
+    }
+  }, [cookiesConsent, setScrollLocked])
+
   return cookiesConsent !== 'yes' ? (
     <Box
       sx={(theme) => ({
         position: 'fixed',
         bottom: 0,
-        insetInline: 0,
+        top: 0,
+        left: 0,
+        right: 0,
         marginInline: 'auto',
-        minHeight: 48,
-        paddingTop: 16,
-        paddingBottom: 24,
         width: '100%',
+        height: '100vh',
+        overflow: 'hidden',
         backgroundColor:
           theme.colorScheme === 'dark'
-            ? theme.colors.gray[9]
-            : theme.colors.gray[0],
+            ? theme.fn.rgba(theme.colors.dark[9], 0.5)
+            : theme.fn.rgba(theme.colors.dark[5], 0.5),
         zIndex: 999,
+        backdropFilter: 'blur(5px)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       })}
     >
-      <Container size='sm'>
-        <Group position='apart'>
-          <Text
-            size='xs'
-            weight='bold'
-            inline={true}
-            sx={(theme) => ({
-              color:
-                theme.colorScheme === 'dark'
-                  ? theme.colors.gray[1]
-                  : theme.colors.gray[9],
-            })}
-          >
-            You have to accept our{' '}
-            <Link href='/cookies'>
-              <Anchor underline={true}>Cookies Policy</Anchor>
-            </Link>{' '}
-            to use this website, you also have the right to refuse and leave.
-          </Text>
+      <Container size='xs' sx={{ maxWidth: 440 }}>
+        <Paper p='lg' radius='lg' sx={{ marginInline: 8 }}>
+          <Group position='apart' spacing={2}>
+            <Title size='lg'>Cookie Consent</Title>
+            <Text size='xs' weight='bold' color='dimmed'>
+              For your privacy, you have to accept our{' '}
+              <Link href='/cookies'>
+                <Anchor underline={true}>Cookies Policy</Anchor>
+              </Link>{' '}
+              to proceed with using the website.
+            </Text>
 
-          <Button
-            sx={{ width: '100%' }}
-            size='md'
-            variant='light'
-            onClick={() => {
-              localStorage.setItem('cookies-accepted', 'yes')
-              setCookiesConsent('yes')
-            }}
-            rightIcon={<IconCheck size='20' />}
-          >
-            I accept all cookies &amp; I want to continue
-          </Button>
-        </Group>
+            <Box my={12} sx={{ width: '100%', opacity: 0.7 }}>
+              <Divider variant='dashed' />
+            </Box>
+
+            <Group spacing={'xs'} sx={{ width: '100%' }}>
+              <Button
+                sx={{ width: '100%' }}
+                size='md'
+                variant='light'
+                color='indigo'
+                onClick={() => {
+                  localStorage.setItem('cookies-accepted', 'yes')
+                  setCookiesConsent('yes')
+                }}
+                rightIcon={<IconCookie size='20' />}
+              >
+                Accept Necessary Ones
+              </Button>
+              <Button
+                sx={{ width: '100%' }}
+                size='md'
+                // variant='light'
+                onClick={() => {
+                  localStorage.setItem('cookies-accepted', 'yes')
+                  setCookiesConsent('yes')
+                }}
+                rightIcon={<IconCake size='20' />}
+              >
+                Accept All Cookies
+              </Button>
+            </Group>
+          </Group>
+        </Paper>
       </Container>
     </Box>
   ) : null
