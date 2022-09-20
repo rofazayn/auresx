@@ -23,6 +23,7 @@ const AuthProvider = ({ children }: any) => {
     if (authStatus === 'found' && currentUser?.preferredTheme !== 'system') {
       toggleColorScheme(currentUser?.preferredTheme as ColorScheme)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser?.preferredTheme])
 
   const logout = useCallback(async () => {
