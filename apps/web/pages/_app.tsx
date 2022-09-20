@@ -14,7 +14,7 @@ import { AuthProvider } from '../context/auth-context'
 import '../styles/custom.css'
 import '../styles/fonts.css'
 import mantineTheme from '../styles/mantine-theme'
-import rtlCache from '../styles/rtl-cache'
+import { rtlCache, emotionCache } from '../styles/emotion-caches'
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props
@@ -58,7 +58,7 @@ export default function App(props: AppProps) {
                   colorScheme,
                   dir: rtl ? 'rtl' : 'ltr',
                 }}
-                emotionCache={rtl ? rtlCache : undefined}
+                emotionCache={rtl ? rtlCache : emotionCache}
               >
                 <Box
                   sx={(theme) => ({
