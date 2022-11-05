@@ -114,6 +114,10 @@ const ProductSubscription: NextPage = () => {
       date.setMonth(date.getMonth() + calculatedDuration)
     )
 
+    if (currentUser.balance < total) {
+      return
+    }
+
     setGlobalLoading(true)
     try {
       await createOneSubscriptionMutation({
