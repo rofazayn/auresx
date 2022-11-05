@@ -3,11 +3,19 @@ import {
   ApolloLink,
   createHttpLink,
   InMemoryCache,
+  makeVar,
   Observable,
 } from '@apollo/client'
 import { TokenRefreshLink } from 'apollo-link-token-refresh'
 import jwtDecode from 'jwt-decode'
-import { getAccessToken, setAccessToken } from '../utils/access-token'
+import {
+  getAccessToken,
+  getRefreshToken,
+  setAccessToken,
+  setRefreshToken,
+} from '../utils/tokens-operations'
+
+export const refreshStatusVar = makeVar<string>('stale')
 
 const NODE_ENV = process.env.NODE_ENV! || 'development'
 const serverEndpoint: string = `${
@@ -18,7 +26,6 @@ const serverEndpoint: string = `${
 
 const httpLink = createHttpLink({
   uri: serverEndpoint + '/graphql',
-  credentials: 'include',
 })
 
 const requestLink = new ApolloLink(
@@ -28,10 +35,12 @@ const requestLink = new ApolloLink(
       Promise.resolve(operation)
         .then((operation) => {
           const accessToken = getAccessToken()
-          if (accessToken) {
+          const refreshToken = getRefreshToken()
+          if (accessToken && refreshToken) {
             operation.setContext({
               headers: {
-                Authorization: `Bearer ${accessToken}`,
+                'x-access-token': `Bearer ${accessToken}`,
+                'x-refresh-token': `Bearer ${refreshToken}`,
               },
             })
           }
@@ -43,7 +52,9 @@ const requestLink = new ApolloLink(
             complete: observer.complete.bind(observer),
           })
         })
-        .catch(observer.error.bind(observer))
+        .catch(() => {
+          observer.error.bind(observer)
+        })
 
       return () => {
         if (handle) handle.unsubscribe()
@@ -54,15 +65,17 @@ const requestLink = new ApolloLink(
 const tokenRefreshLink = new TokenRefreshLink({
   accessTokenField: 'accessToken',
   isTokenValidOrUndefined: () => {
-    const token = getAccessToken()
+    const accessToken = getAccessToken()
+    const refreshToken = getRefreshToken()
 
-    if (!token) {
+    if (!accessToken || !refreshToken) {
       setAccessToken(null)
+      setRefreshToken(null)
       return false
     }
 
     try {
-      const { exp }: any = jwtDecode(token)
+      const { exp }: any = jwtDecode(accessToken)
       if (Date.now() >= exp * 1000) {
         return false
       } else {
@@ -81,19 +94,34 @@ const tokenRefreshLink = new TokenRefreshLink({
         }
       }
     `
-    const response = await fetch(serverEndpoint + '/graphql', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: refreshMutation,
-      }),
-    })
 
-    return response.json()
+    const refreshToken = getRefreshToken()
+
+    if (refreshToken) {
+      try {
+        const { exp }: any = jwtDecode(refreshToken as string)
+        if (Date.now() >= exp * 1000) {
+          return null
+        }
+      } catch {
+        return null
+      }
+
+      const response = await fetch(serverEndpoint + '/graphql', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'x-refresh-token': `Bearer ${refreshToken}`,
+        },
+        body: JSON.stringify({
+          query: refreshMutation,
+        }),
+      })
+
+      return response.json()
+    }
+    return null
   },
   handleFetch: (accessToken) => {
     if (accessToken) {
@@ -103,11 +131,19 @@ const tokenRefreshLink = new TokenRefreshLink({
     }
   },
   handleResponse: (_operation, _accessTokenField) => (response: any) => {
-    if (!response) return { accessToken: null }
+    if (
+      response.data.refresh.accessToken &&
+      response.data.refresh.refreshToken
+    ) {
+      setRefreshToken(response.data.refresh.refreshToken)
+      setAccessToken(response.data.refresh.accessToken)
+    } else {
+      refreshStatusVar('error')
+    }
     return { accessToken: response.data?.refresh?.accessToken }
   },
-  handleError: () => {
-    setAccessToken(null)
+  handleError: (err) => {
+    refreshStatusVar('error')
   },
 })
 

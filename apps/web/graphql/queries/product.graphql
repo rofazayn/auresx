@@ -1,0 +1,16 @@
+query Product($where: ProductWhereUniqueInput!) {
+  product(where: $where) {
+    id
+    name
+    monthPrice
+    trialDuration
+    cancelDuration
+    description
+    infoURL
+    createdAt
+    updatedAt
+    _count {
+      subscriptions
+    }
+  }
+}

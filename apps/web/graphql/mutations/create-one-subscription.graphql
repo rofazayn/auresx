@@ -1,0 +1,22 @@
+mutation CreateOneSubscription($data: SubscriptionCreateInput!) {
+  createOneSubscription(data: $data) {
+    id
+    productId
+    userId
+    totalPaid
+    expiryDate
+    renewCounter
+    createdAt
+    updatedAt
+    product {
+      id
+      name
+      description
+    }
+    user {
+      id
+      name
+      email
+    }
+  }
+}

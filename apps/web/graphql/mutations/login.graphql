@@ -5,8 +5,16 @@ mutation Login($password: String!, $email: String!) {
     user {
       id
       email
-      emailConfirmed
       name
+      emailConfirmed
+      phoneNumber
+      country
+      region
+      city
+      job
+      preferredTheme
+      balance
+      bonus
       createdAt
       updatedAt
     }

@@ -32,7 +32,7 @@ import LoaderGlobal from '../components/loader-global'
 import PageLayout from '../components/_layouts/page-layout'
 import { AuthContext } from '../context/auth-context'
 import { useRegisterMutation } from '../generated/graphql'
-import { setAccessToken } from '../utils/access-token'
+import { setAccessToken } from '../utils/tokens-operations'
 import { capitalizeWords } from '../utils/input-formatter'
 import { registerSchema } from '../validation/auth-validation'
 
@@ -50,9 +50,9 @@ const Register: NextPage = () => {
     }
   }, [authStatus, router])
 
-  if (authStatus === 'stale') {
+  if (authStatus === 'stale' || authStatus === 'found') {
     return <LoaderGlobal />
-  } else if (authStatus === 'unfound') {
+  } else {
     return (
       <>
         <Head>
@@ -83,11 +83,11 @@ const Register: NextPage = () => {
                 '@media (max-width: 768px)': {
                   paddingInline: 16,
                 },
-                paddingTop: 40,
+                paddingTop: 56,
                 paddingBottom: 64,
               }}
             >
-              <Grid gutter={24} align={'center'} justify={'center'}>
+              <Grid gutter={24} align={'start'} justify={'center'}>
                 <Grid.Col sm={12} md={6}>
                   <Center>
                     <Box
@@ -108,17 +108,14 @@ const Register: NextPage = () => {
                           },
                         }}
                       >
-                        <Box sx={{ transform: 'scale(1.2)' }} mb={40}>
+                        <Box sx={{ transform: 'scale(1.2)' }} mb={24}>
                           <Image
                             src={'/images/illustrations/account-register.svg'}
                             alt='login to account'
                             sx={{
-                              // transform: 'translateX(-32px)',
-                              '@media(max-width: 768px)': {
-                                transform: 'none',
-                              },
+                              maxWidth: 300,
+                              transform: 'translateX(-8px)',
                             }}
-                            // mt={-32}
                           />
                         </Box>
 
@@ -202,8 +199,8 @@ const Register: NextPage = () => {
                             <IconLockAccess size='40' color='gray' />
                           </Box>
                           <Text color='dimmed' size='xs' weight='500'>
-                            You can also register by using your email, you just
-                            have to fill up the registration form!
+                            You can register by using your email, you just have
+                            to fill up the registration form!
                           </Text>
                         </Box>
                       </Box>
@@ -261,7 +258,7 @@ const Register: NextPage = () => {
                                 label='Full Name (required)'
                                 placeholder='Enter your full name'
                                 description='Please provide your real &amp; full name'
-                                size='lg'
+                                size='md'
                                 name='name'
                                 value={values.name}
                                 onChange={handleChange}
@@ -273,7 +270,7 @@ const Register: NextPage = () => {
                                 label='Email (required)'
                                 placeholder='Enter your email'
                                 description='We need your email to validate your account'
-                                size='lg'
+                                size='md'
                                 type='email'
                                 name='email'
                                 value={values.email}
@@ -286,7 +283,7 @@ const Register: NextPage = () => {
                                 label='Password (required)'
                                 placeholder='Enter your password'
                                 description='Pick a password that is hard to guess'
-                                size='lg'
+                                size='md'
                                 name='password'
                                 value={values.password}
                                 onChange={handleChange}
@@ -390,7 +387,11 @@ const Register: NextPage = () => {
                                     </Anchor>
                                   </Link>
                                 </Text>
-                                <Text size='xs' color='dimmed'>
+                                <Text
+                                  size='xs'
+                                  color='dimmed'
+                                  sx={{ opacity: 0.6 }}
+                                >
                                   AuresX accounts are a general purpose accounts
                                   that handle your data, activity &amp;
                                   authorizations in our ecosystem.
@@ -409,8 +410,6 @@ const Register: NextPage = () => {
         </PageLayout>
       </>
     )
-  } else {
-    return null
   }
 }
 

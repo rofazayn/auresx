@@ -114,7 +114,7 @@ const DashboardNavbar = () => {
                           variant='subtle'
                           size='xl'
                           radius='md'
-                          color='indigo'
+                          // color='indigo'
                           aria-label='Notifications'
                           // onClick={logout}
                         >
@@ -247,6 +247,23 @@ const DashboardNavbar = () => {
                       <Box>
                         <Box mb={16}>
                           <Text weight='bold' mb={4} size='sm'>
+                            Account Preview
+                          </Text>
+                          <Text
+                            size='xs'
+                            color='dimmed'
+                            sx={{ lineHeight: 1.4 }}
+                          >
+                            You can view your balance, navigate to your profile
+                            or log out from here.
+                          </Text>
+                        </Box>
+                        <UserControllerBadge />
+                      </Box>
+                      <Divider variant='dashed' sx={{ opacity: 0.4 }} my={16} />
+                      <Box>
+                        <Box mb={16}>
+                          <Text weight='bold' mb={4} size='sm'>
                             Dashboard Navigation
                           </Text>
                           <Text
@@ -323,10 +340,6 @@ const DashboardNavbar = () => {
                           </Box>
                         </Box>
                       </Box>
-                    </Box>
-
-                    <Box>
-                      <UserControllerBadge />
                     </Box>
                   </Box>
                 </Box>

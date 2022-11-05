@@ -29,7 +29,7 @@ import LoaderGlobal from '../components/loader-global'
 import PageLayout from '../components/_layouts/page-layout'
 import { AuthContext } from '../context/auth-context'
 import { useLoginMutation } from '../generated/graphql'
-import { setAccessToken } from '../utils/access-token'
+import { setAccessToken, setRefreshToken } from '../utils/tokens-operations'
 import { loginSchema } from '../validation/auth-validation'
 
 const Login: NextPage = () => {
@@ -47,9 +47,9 @@ const Login: NextPage = () => {
     }
   }, [authStatus, router])
 
-  if (authStatus === 'stale') {
+  if (authStatus === 'stale' || authStatus === 'found') {
     return <LoaderGlobal />
-  } else if (authStatus === 'unfound') {
+  } else {
     return (
       <>
         <Head>
@@ -81,11 +81,11 @@ const Login: NextPage = () => {
                 '@media (max-width: 768px)': {
                   paddingInline: 16,
                 },
-                paddingTop: 40,
+                paddingTop: 56,
                 paddingBottom: 64,
               }}
             >
-              <Grid gutter={24} align={'center'} justify={'center'}>
+              <Grid gutter={24} align={'start'} justify={'center'}>
                 <Grid.Col sm={12} md={6}>
                   <Center>
                     <Box sx={{ maxWidth: 380 }}>
@@ -94,12 +94,8 @@ const Login: NextPage = () => {
                           src={'/images/illustrations/account-login.svg'}
                           alt='login to account'
                           sx={{
-                            transform: 'translateX(-16px)',
-                            '@media(max-width: 768px)': {
-                              transform: 'none',
-                            },
+                            maxWidth: 300,
                           }}
-                          // mt={-32}
                         />
                       </Box>
 
@@ -223,14 +219,17 @@ const Login: NextPage = () => {
                           })
 
                           if (loginOperation.data?.login.accessToken) {
+                            setAuthStatus('found')
                             setAccessToken(
                               loginOperation.data?.login.accessToken
+                            )
+                            setRefreshToken(
+                              loginOperation.data?.login.refreshToken
                             )
                             let decodedUser = jwtDecode(
                               loginOperation.data.login.accessToken
                             )
                             setCurrentUser(decodedUser)
-                            setAuthStatus('found')
                           }
                         }}
                       >
@@ -251,7 +250,7 @@ const Login: NextPage = () => {
                                 label='Email (required)'
                                 placeholder='Enter your email'
                                 description='The email you used to create your account'
-                                size='lg'
+                                size='md'
                                 name='email'
                                 type='email'
                                 value={values.email}
@@ -264,7 +263,7 @@ const Login: NextPage = () => {
                                 label='Password (required)'
                                 placeholder='Enter your password'
                                 description='Make sure you do not share it with anyone'
-                                size='lg'
+                                size='md'
                                 name='password'
                                 value={values.password}
                                 onChange={handleChange}
@@ -354,7 +353,11 @@ const Login: NextPage = () => {
                                   </Link>
                                 </Text>
 
-                                <Text size='xs' color='dimmed'>
+                                <Text
+                                  size='xs'
+                                  color='dimmed'
+                                  sx={{ opacity: 0.6 }}
+                                >
                                   AuresX accounts are a general purpose accounts
                                   that handle your data, activity &amp;
                                   authorizations in our ecosystem.
@@ -373,8 +376,6 @@ const Login: NextPage = () => {
         </PageLayout>
       </>
     )
-  } else {
-    return null
   }
 }
 

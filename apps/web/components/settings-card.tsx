@@ -1,7 +1,6 @@
-import { ActionIcon, Box, Divider, Text, TextInput } from '@mantine/core'
-import { IconCheck, IconEdit } from '@tabler/icons'
+import { Box, Divider, Text } from '@mantine/core'
+import { IconEdit } from '@tabler/icons'
 import NextImage from 'next/image'
-import { ReactNode, useState } from 'react'
 
 interface IDataProp {
   label: string
@@ -50,9 +49,7 @@ const SettingsCard = ({
             sx={(theme) => ({
               borderRadius: 16,
               backgroundColor:
-                theme.colorScheme === 'dark'
-                  ? theme.colors.dark[7]
-                  : theme.colors.gray[2],
+                theme.colorScheme === 'dark' ? theme.colors.dark[7] : 'white',
               // paddingBlock: 4,
               width: 80,
               '@media (max-width: 768px)': {

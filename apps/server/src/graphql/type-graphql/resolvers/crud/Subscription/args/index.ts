@@ -1,0 +1,12 @@
+export { AggregateSubscriptionArgs } from "./AggregateSubscriptionArgs";
+export { CreateManySubscriptionArgs } from "./CreateManySubscriptionArgs";
+export { CreateOneSubscriptionArgs } from "./CreateOneSubscriptionArgs";
+export { DeleteManySubscriptionArgs } from "./DeleteManySubscriptionArgs";
+export { DeleteOneSubscriptionArgs } from "./DeleteOneSubscriptionArgs";
+export { FindFirstSubscriptionArgs } from "./FindFirstSubscriptionArgs";
+export { FindManySubscriptionArgs } from "./FindManySubscriptionArgs";
+export { FindUniqueSubscriptionArgs } from "./FindUniqueSubscriptionArgs";
+export { GroupBySubscriptionArgs } from "./GroupBySubscriptionArgs";
+export { UpdateManySubscriptionArgs } from "./UpdateManySubscriptionArgs";
+export { UpdateOneSubscriptionArgs } from "./UpdateOneSubscriptionArgs";
+export { UpsertOneSubscriptionArgs } from "./UpsertOneSubscriptionArgs";

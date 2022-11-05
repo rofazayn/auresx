@@ -1,5 +1,5 @@
 import { Box, Text, useMantineTheme } from '@mantine/core'
-import { IconHome, IconNotification } from '@tabler/icons'
+import { IconNotification } from '@tabler/icons'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'

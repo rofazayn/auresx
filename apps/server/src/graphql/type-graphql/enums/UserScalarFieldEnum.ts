@@ -12,6 +12,8 @@ export enum UserScalarFieldEnum {
   city = "city",
   job = "job",
   preferredTheme = "preferredTheme",
+  balance = "balance",
+  bonus = "bonus",
   createdAt = "createdAt",
   updatedAt = "updatedAt"
 }

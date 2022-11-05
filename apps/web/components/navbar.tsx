@@ -113,7 +113,7 @@ const Navbar = () => {
                       Solutions
                     </Anchor>
                   </Link>
-                  <Link href='/pricing' passHref>
+                  {/* <Link href='/pricing' passHref>
                     <Anchor
                       color='dimmed'
                       size='md'
@@ -123,7 +123,7 @@ const Navbar = () => {
                     >
                       Pricing
                     </Anchor>
-                  </Link>
+                  </Link> */}
                   <Link href='/endeavor' passHref>
                     <Anchor
                       color='dimmed'
@@ -392,7 +392,7 @@ const Navbar = () => {
                             Solutions
                           </Button>
                         </Link>
-                        <Link href='/pricing' passHref>
+                        {/* <Link href='/pricing' passHref>
                           <Button
                             variant='light'
                             color='gray'
@@ -401,7 +401,7 @@ const Navbar = () => {
                           >
                             Pricing
                           </Button>
-                        </Link>
+                        </Link> */}
                         <Link href='/endeavor' passHref>
                           <Button
                             variant='light'

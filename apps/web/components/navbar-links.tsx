@@ -1,5 +1,11 @@
 import { Box } from '@mantine/core'
-import { IconHome, IconReceipt2, IconRocket, IconSettings } from '@tabler/icons'
+import {
+  IconHome,
+  IconReceipt2,
+  IconRocket,
+  IconSettings,
+  IconShip,
+} from '@tabler/icons'
 import NavLink from './nav-link'
 
 const data = [
@@ -12,8 +18,8 @@ const data = [
   {
     link: '/dashboard/services',
     label: 'Services',
-    labelExtended: 'Products and Services',
-    icon: IconRocket,
+    labelExtended: 'Explore our Services',
+    icon: IconShip,
   },
   {
     link: '/dashboard/billing',

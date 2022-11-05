@@ -4,8 +4,11 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { BoolNullableFilter } from "../inputs/BoolNullableFilter";
 import { DateTimeNullableFilter } from "../inputs/DateTimeNullableFilter";
+import { FloatNullableFilter } from "../inputs/FloatNullableFilter";
 import { StringFilter } from "../inputs/StringFilter";
 import { StringNullableFilter } from "../inputs/StringNullableFilter";
+import { SubscriptionListRelationFilter } from "../inputs/SubscriptionListRelationFilter";
+import { TransactionListRelationFilter } from "../inputs/TransactionListRelationFilter";
 
 @TypeGraphQL.InputType("UserWhereInput", {
   isAbstract: true
@@ -75,6 +78,26 @@ export class UserWhereInput {
     nullable: true
   })
   preferredTheme?: StringNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => FloatNullableFilter, {
+    nullable: true
+  })
+  balance?: FloatNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => FloatNullableFilter, {
+    nullable: true
+  })
+  bonus?: FloatNullableFilter | undefined;
+
+  @TypeGraphQL.Field(_type => SubscriptionListRelationFilter, {
+    nullable: true
+  })
+  subscriptions?: SubscriptionListRelationFilter | undefined;
+
+  @TypeGraphQL.Field(_type => TransactionListRelationFilter, {
+    nullable: true
+  })
+  transactions?: TransactionListRelationFilter | undefined;
 
   @TypeGraphQL.Field(_type => DateTimeNullableFilter, {
     nullable: true

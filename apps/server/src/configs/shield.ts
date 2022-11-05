@@ -14,16 +14,17 @@ export default shield(
   {
     Query: {
       '*': isAuthenticated,
-      profile: isAuthenticated,
     },
     Mutation: {
       '*': isAuthenticated,
+      // '*': isAuthenticated,
       login: allow,
       register: allow,
       refresh: allow,
       logout: allow,
       sendEmailConfirmation: isAuthenticated,
       updateOneUser: and(isAuthenticated, isOwner),
+      createOneSubscription: isAuthenticated,
     },
   },
   {

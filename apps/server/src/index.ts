@@ -13,16 +13,14 @@ import { JwtPayload, verify } from 'jsonwebtoken'
 import passport from 'passport'
 import 'reflect-metadata'
 import { buildSchema } from 'type-graphql'
-import { v4 as uuidv4 } from 'uuid'
 import './configs/passport'
 import prisma from './configs/prisma-client'
 import shield from './configs/shield'
 import { ACCOUNTS_JWT_SECRET, NODE_ENV, PORT } from './constants'
 import AuthResolver from './graphql/resolvers/auth-resolver'
-import { UpdateOneUserResolver, User } from './graphql/type-graphql'
+import { resolvers, User } from './graphql/type-graphql'
 import authRoutes from './routes/auth-routes'
 import { ApolloContext } from './types/context-types'
-import { createRefreshToken } from './utils/jwt-tokens'
 
 // export const refreshTokens: Record<string, any> = {}
 const app = express()
@@ -38,7 +36,7 @@ const corsOptions = {
           'https://auresx.com',
           'https://www.auresx.com',
         ],
-  credentials: true,
+  // credentials: true,
 }
 
 async function main() {
@@ -50,14 +48,14 @@ async function main() {
   app.use(express.urlencoded({ extended: true }))
   app.set('trust proxy', NODE_ENV !== 'production')
   app.use(cors(corsOptions))
-  app.use(passport.initialize())
+  // app.use(passport.initialize())
 
   // apollo server
   const httpServer = http.createServer(app)
   const server = new ApolloServer({
     schema: applyMiddleware(
       await buildSchema({
-        resolvers: [AuthResolver, UpdateOneUserResolver /* ...resolvers */],
+        resolvers: [AuthResolver, ...resolvers],
         validate: false,
       }),
       shield
@@ -71,65 +69,25 @@ async function main() {
         ? ApolloServerPluginLandingPageLocalDefault({ embed: true })
         : ApolloServerPluginLandingPageDisabled(),
     ],
-    formatResponse: (response, requestContext) => {
-      if (
-        response.data?.login ||
-        response.data?.register ||
-        response.data?.refresh
-      ) {
-        const tokenExpireDate = new Date()
-        tokenExpireDate.setDate(
-          tokenExpireDate.getDate() + 60 * 60 * 24 * 7 // 7 days
-        )
-
-        const accessToken =
-          response.data?.login?.accessToken ||
-          response.data?.register?.accessToken ||
-          response.data?.refresh?.accessToken ||
-          null
-
-        if (accessToken) {
-          const token = verify(accessToken, ACCOUNTS_JWT_SECRET) as User
-
-          const refreshTokenGuid = uuidv4()
-          const newRefreshToken = createRefreshToken(token.id, refreshTokenGuid)
-          // refreshTokens[refreshTokenGuid] = token.id
-
-          NODE_ENV === 'production'
-            ? requestContext.response?.http?.headers.append(
-                'Set-Cookie',
-                `refreshToken=${newRefreshToken}; expires=${tokenExpireDate};domain=.auresx.com; path=/; HttpOnly=true; Secure=true; SameSite=Lax;`
-              )
-            : requestContext.response?.http?.headers.append(
-                'Set-Cookie',
-                `refreshToken=${newRefreshToken}; expires=${tokenExpireDate}; path=/; HttpOnly=true; Secure=true; SameSite=Lax;`
-              )
-        }
-      }
-      return response
-    },
     context: ({ req, res }) => {
       let ctx: ApolloContext = {
         req,
         res,
         user: null,
-        refreshToken: null,
         prisma,
       }
 
-      if (req.cookies) {
-        ctx.refreshToken = req.cookies.refreshToken
-      }
-
       try {
-        if (req.headers['authorization']) {
+        if (req.headers['x-access-token']) {
           const parsedToken: string | JwtPayload = verify(
-            req.headers['authorization'].split(' ')[1] as string,
+            (req.headers['x-access-token'] as string).split(' ')[1] as string,
             ACCOUNTS_JWT_SECRET
           )
           ctx.user = parsedToken as User
         }
-      } catch {}
+      } catch {
+        ctx.user = null
+      }
 
       return ctx
     },

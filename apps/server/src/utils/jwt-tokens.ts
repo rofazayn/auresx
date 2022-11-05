@@ -5,7 +5,7 @@ import { User } from '../graphql/type-graphql'
 export const createAccessToken = (payload: User) => {
   if (!payload) return
   const accessToken = sign(payload, ACCOUNTS_JWT_SECRET, {
-    expiresIn: '5min',
+    expiresIn: '15min',
   })
 
   return accessToken
@@ -14,7 +14,7 @@ export const createAccessToken = (payload: User) => {
 export const createRefreshToken = (userId: string, guid: string) => {
   if (!userId) return
   const refreshToken = sign({ userId, guid }, ACCOUNTS_JWT_SECRET, {
-    expiresIn: '1d',
+    expiresIn: '30d',
   })
 
   return refreshToken
