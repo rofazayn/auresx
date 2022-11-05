@@ -7,6 +7,5 @@ export type ApolloContext = {
   req: Request
   res: Response
   user: User | null
-  refreshToken: string | null
   prisma: PrismaClient
 }

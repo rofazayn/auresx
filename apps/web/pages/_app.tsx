@@ -15,6 +15,7 @@ import '../styles/custom.css'
 import '../styles/fonts.css'
 import mantineTheme from '../styles/mantine-theme'
 import { rtlCache, emotionCache } from '../styles/emotion-caches'
+import { NotificationsProvider } from '@mantine/notifications'
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props
@@ -60,21 +61,27 @@ export default function App(props: AppProps) {
                 }}
                 emotionCache={rtl ? rtlCache : emotionCache}
               >
-                <Box
-                  sx={(theme) => ({
-                    minHeight: '100vh',
-                    width: '100%',
-                    maxWidth: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    backgroundColor:
-                      theme.colorScheme === 'dark'
-                        ? theme.colors.dark[9]
-                        : theme.colors.gray[1],
-                  })}
+                <NotificationsProvider
+                  position='bottom-center'
+                  zIndex={9999}
+                  limit={6}
                 >
-                  <Component {...pageProps} />
-                </Box>
+                  <Box
+                    sx={(theme) => ({
+                      minHeight: '100vh',
+                      width: '100%',
+                      maxWidth: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      backgroundColor:
+                        theme.colorScheme === 'dark'
+                          ? theme.colors.dark[9]
+                          : theme.colors.gray[1],
+                    })}
+                  >
+                    <Component {...pageProps} />
+                  </Box>
+                </NotificationsProvider>
               </MantineProvider>
             </div>
           </AuthProvider>

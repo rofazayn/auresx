@@ -2,6 +2,8 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
+import { SubscriptionCreateNestedManyWithoutUserInput } from "../inputs/SubscriptionCreateNestedManyWithoutUserInput";
+import { TransactionCreateNestedManyWithoutUserInput } from "../inputs/TransactionCreateNestedManyWithoutUserInput";
 
 @TypeGraphQL.InputType("UserCreateInput", {
   isAbstract: true
@@ -56,6 +58,26 @@ export class UserCreateInput {
     nullable: true
   })
   preferredTheme?: string | undefined;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Float, {
+    nullable: true
+  })
+  balance?: number | undefined;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Float, {
+    nullable: true
+  })
+  bonus?: number | undefined;
+
+  @TypeGraphQL.Field(_type => SubscriptionCreateNestedManyWithoutUserInput, {
+    nullable: true
+  })
+  subscriptions?: SubscriptionCreateNestedManyWithoutUserInput | undefined;
+
+  @TypeGraphQL.Field(_type => TransactionCreateNestedManyWithoutUserInput, {
+    nullable: true
+  })
+  transactions?: TransactionCreateNestedManyWithoutUserInput | undefined;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: true

@@ -57,6 +57,16 @@ export class UserCreateManyInput {
   })
   preferredTheme?: string | undefined;
 
+  @TypeGraphQL.Field(_type => TypeGraphQL.Float, {
+    nullable: true
+  })
+  balance?: number | undefined;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Float, {
+    nullable: true
+  })
+  bonus?: number | undefined;
+
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
   })

@@ -4,12 +4,14 @@ mutation UpdateOneUser($data: UserUpdateInput!, $where: UserWhereUniqueInput!) {
     email
     name
     emailConfirmed
-    preferredTheme
     phoneNumber
     country
     region
     city
     job
+    preferredTheme
+    balance
+    bonus
     createdAt
     updatedAt
   }

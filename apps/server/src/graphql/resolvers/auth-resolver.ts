@@ -9,8 +9,10 @@ import { AuthResponse, RefreshTokensResponse } from '../../types/response-types'
 import {
   createAccessToken,
   createEmailConfirmationToken,
+  createRefreshToken,
 } from '../../utils/jwt-tokens'
 import { User } from '../type-graphql'
+import { v4 as uuidv4 } from 'uuid'
 
 @Resolver(User)
 class AuthResolver {
@@ -34,7 +36,7 @@ class AuthResolver {
   async login(
     @Arg('email') email: string,
     @Arg('password') password: string,
-    @Ctx() { refreshToken, prisma }: ApolloContext
+    @Ctx() { prisma }: ApolloContext
   ) {
     if (!email || !password) throw new ApolloError('missing login data')
 
@@ -55,9 +57,12 @@ class AuthResolver {
       updatedAt: user.updatedAt,
     })
 
+    const refreshTokenGuid = uuidv4()
+    const newRefreshToken = createRefreshToken(user.id, refreshTokenGuid)
+
     return {
       accessToken,
-      refreshToken,
+      refreshToken: newRefreshToken,
       user,
     }
   }
@@ -67,7 +72,7 @@ class AuthResolver {
     @Arg('email') email: string,
     @Arg('password') password: string,
     @Arg('name') name: string,
-    @Ctx() { refreshToken, prisma }: ApolloContext
+    @Ctx() { prisma }: ApolloContext
   ) {
     if (!name || !email || !password)
       throw new ApolloError('missing_credentials')
@@ -103,9 +108,12 @@ class AuthResolver {
           updatedAt: user.updatedAt,
         })
 
+        const refreshTokenGuid = uuidv4()
+        const newRefreshToken = createRefreshToken(user.id, refreshTokenGuid)
+
         return {
           accessToken,
-          refreshToken,
+          refreshToken: newRefreshToken,
           user,
         }
       }
@@ -117,7 +125,9 @@ class AuthResolver {
   }
 
   @Mutation(() => RefreshTokensResponse)
-  async refresh(@Ctx() { refreshToken, prisma, res }: ApolloContext) {
+  async refresh(@Ctx() { prisma, req }: ApolloContext) {
+    let refreshToken = (req.headers['x-refresh-token'] as string).split(' ')[1]
+
     if (refreshToken) {
       const token = verify(refreshToken, ACCOUNTS_JWT_SECRET) as {
         userId: string
@@ -125,7 +135,6 @@ class AuthResolver {
       }
 
       if (!token) {
-        res.clearCookie('refreshToken')
         return { accessToken: null, refreshToken: null }
       }
 
@@ -133,8 +142,7 @@ class AuthResolver {
         where: { id: token.userId },
       })
 
-      if (user /*  && token.guid in refreshTokens */) {
-        // console.log(refreshTokens)
+      if (user) {
         const accessToken = createAccessToken({
           id: user.id,
           email: user.email,
@@ -143,39 +151,20 @@ class AuthResolver {
           createdAt: user.createdAt,
           updatedAt: user.updatedAt,
         })
-        return { accessToken, refreshToken }
+
+        const refreshTokenGuid = uuidv4()
+        const newRefreshToken = createRefreshToken(user.id, refreshTokenGuid)
+
+        return { accessToken, refreshToken: newRefreshToken }
       }
     }
     return { accessToken: null, refreshToken: null }
   }
 
   @Mutation(() => Boolean)
-  async logout(@Ctx() { refreshToken, res, user }: ApolloContext) {
-    try {
-      if (refreshToken) {
-        const verifiedToken = verify(
-          refreshToken,
-          ACCOUNTS_JWT_SECRET
-        ) as unknown as {
-          userId: string
-          guid: string
-        }
-
-        // if (verifiedToken.guid in refreshTokens) {
-        //   delete refreshTokens[verifiedToken.guid]
-        // }
-      }
-
-      user = null
-      refreshToken = null
-      res.clearCookie('refreshToken')
-      return true
-    } catch {
-      user = null
-      refreshToken = null
-      res.clearCookie('refreshToken')
-      return true
-    }
+  async logout(@Ctx() { user: currentUser }: ApolloContext) {
+    currentUser = null
+    return true
   }
 
   @Mutation(() => Boolean)

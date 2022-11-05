@@ -3,7 +3,6 @@ import {
   Box,
   Container,
   Grid,
-  Group,
   MediaQuery,
   Paper,
   Text,
@@ -34,9 +33,9 @@ export default function DashboardLayout({ children }: LayoutProps) {
     }
   }, [authStatus, currentUser, router])
 
-  if (authStatus === 'stale' || !currentUser) {
+  if (authStatus === 'stale' || authStatus === 'unfound') {
     return <LoaderGlobal />
-  } else if (authStatus === 'found' && currentUser) {
+  } else {
     return (
       <>
         <NextNProgress
@@ -267,7 +266,5 @@ export default function DashboardLayout({ children }: LayoutProps) {
         {/* <Footer /> */}
       </>
     )
-  } else {
-    return null
   }
 }

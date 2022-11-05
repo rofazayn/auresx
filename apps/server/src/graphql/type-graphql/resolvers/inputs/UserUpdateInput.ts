@@ -4,8 +4,11 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { NullableBoolFieldUpdateOperationsInput } from "../inputs/NullableBoolFieldUpdateOperationsInput";
 import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
+import { NullableFloatFieldUpdateOperationsInput } from "../inputs/NullableFloatFieldUpdateOperationsInput";
 import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
+import { SubscriptionUpdateManyWithoutUserNestedInput } from "../inputs/SubscriptionUpdateManyWithoutUserNestedInput";
+import { TransactionUpdateManyWithoutUserNestedInput } from "../inputs/TransactionUpdateManyWithoutUserNestedInput";
 
 @TypeGraphQL.InputType("UserUpdateInput", {
   isAbstract: true
@@ -55,6 +58,26 @@ export class UserUpdateInput {
     nullable: true
   })
   preferredTheme?: NullableStringFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => NullableFloatFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  balance?: NullableFloatFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => NullableFloatFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  bonus?: NullableFloatFieldUpdateOperationsInput | undefined;
+
+  @TypeGraphQL.Field(_type => SubscriptionUpdateManyWithoutUserNestedInput, {
+    nullable: true
+  })
+  subscriptions?: SubscriptionUpdateManyWithoutUserNestedInput | undefined;
+
+  @TypeGraphQL.Field(_type => TransactionUpdateManyWithoutUserNestedInput, {
+    nullable: true
+  })
+  transactions?: TransactionUpdateManyWithoutUserNestedInput | undefined;
 
   @TypeGraphQL.Field(_type => NullableDateTimeFieldUpdateOperationsInput, {
     nullable: true

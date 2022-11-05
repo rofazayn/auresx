@@ -1,0 +1,12 @@
+export { AggregateProductArgs } from "./AggregateProductArgs";
+export { CreateManyProductArgs } from "./CreateManyProductArgs";
+export { CreateOneProductArgs } from "./CreateOneProductArgs";
+export { DeleteManyProductArgs } from "./DeleteManyProductArgs";
+export { DeleteOneProductArgs } from "./DeleteOneProductArgs";
+export { FindFirstProductArgs } from "./FindFirstProductArgs";
+export { FindManyProductArgs } from "./FindManyProductArgs";
+export { FindUniqueProductArgs } from "./FindUniqueProductArgs";
+export { GroupByProductArgs } from "./GroupByProductArgs";
+export { UpdateManyProductArgs } from "./UpdateManyProductArgs";
+export { UpdateOneProductArgs } from "./UpdateOneProductArgs";
+export { UpsertOneProductArgs } from "./UpsertOneProductArgs";

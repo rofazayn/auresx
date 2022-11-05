@@ -62,6 +62,16 @@ export class UserMinAggregate {
   })
   preferredTheme!: string | null;
 
+  @TypeGraphQL.Field(_type => TypeGraphQL.Float, {
+    nullable: true
+  })
+  balance!: number | null;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Float, {
+    nullable: true
+  })
+  bonus!: number | null;
+
   @TypeGraphQL.Field(_type => Date, {
     nullable: true
   })

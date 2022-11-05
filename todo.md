@@ -1,3 +1,4 @@
+- Remove credentials and allow all CORS
 - Optimize light logo
 - Build a better landing page
 - Setup a newsletter
