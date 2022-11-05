@@ -83,7 +83,7 @@ const UserControllerBadge = () => {
           },
         }}
       >
-        {currentUser.balance ? (
+        {currentUser.balance >= 0 ? (
           <Box>
             <Box
               sx={{
@@ -99,7 +99,8 @@ const UserControllerBadge = () => {
             </Box>
 
             <Text weight='600' sx={{ fontFamily: 'monospace', fontSize: 28 }}>
-              {currentUser.balance ? formatMoney(currentUser.balance) : 0} DA
+              {currentUser.balance >= 0 ? formatMoney(currentUser.balance) : 0}{' '}
+              DA
             </Text>
             <Group spacing={8} mt={16}>
               <Link href='/dashboard/billing'>

@@ -1,5 +1,6 @@
 import { useReactiveVar } from '@apollo/client'
 import { ColorScheme, useMantineColorScheme } from '@mantine/core'
+import { useRouter } from 'next/router'
 import { createContext, useCallback, useEffect, useState } from 'react'
 import { refreshStatusVar } from '../configs/apollo-client'
 import { useLogoutMutation, useProfileQuery } from '../generated/graphql'
@@ -15,6 +16,7 @@ const AuthProvider = ({ children }: any) => {
     fetchPolicy: 'network-only',
   })
   const refreshStatus = useReactiveVar(refreshStatusVar)
+  const router = useRouter()
 
   useEffect(() => {
     if (currentUser) {
