@@ -20,7 +20,7 @@ export const refreshStatusVar = makeVar<string>('stale')
 const NODE_ENV = process.env.NODE_ENV! || 'development'
 const serverEndpoint: string = `${
   NODE_ENV === 'development'
-    ? 'http://localhost:4001'
+    ? 'http://localhost:4000'
     : 'https://api.auresx.com'
 }`
 
