@@ -21,7 +21,7 @@ const LoaderGlobal = () => {
       })}
     >
       <Box>
-        <Loader color='teal' />
+        <Loader color='teal' size='md' variant='dots' />
       </Box>
     </Box>
   )

@@ -43,14 +43,14 @@ const ProductItem = ({ product }: ProductItemProps) => {
       >
         <Group spacing={8}>
           <IconBuildingStore />
-          <Text weight='bold' size='lg'>
+          <Text weight='bold' size='md'>
             {product.name}{' '}
           </Text>
           <Group spacing={4}>
-            <Badge size='lg' variant='dot'>
+            <Badge size='md' variant='dot'>
               Alpha Release - 2023
             </Badge>
-            <Badge size='lg' color='pink' variant='dot'>
+            <Badge size='md' color='pink' variant='dot'>
               New
             </Badge>
           </Group>
@@ -72,9 +72,9 @@ const ProductItem = ({ product }: ProductItemProps) => {
         }}
         mb={16}
       >
-        <Text sx={{ maxWidth: 440 }} size='lg'>
+        <Text sx={{ maxWidth: 440 }} size='md'>
           {product.description}{' '}
-          <Link href='/dashboard/services/'>
+          <Link href='/projects/genesis'>
             <Text
               component='span'
               color='dimmed'
@@ -101,19 +101,19 @@ const ProductItem = ({ product }: ProductItemProps) => {
         }}
       >
         <Box>
-          <Text color='dimmed' weight='500'>
+          <Text color='dimmed' weight='500' size='sm'>
             * Monthly Subscription -{' '}
             <Text component='span' weight='600' color='teal'>
               {product.monthPrice} DA
             </Text>
           </Text>
-          <Text color='dimmed' weight='500'>
+          <Text color='dimmed' weight='500' size='sm'>
             * Money Back Guarantee -{' '}
             <Text component='span' weight='600' color='teal'>
               {product.cancelDuration} Days
             </Text>
           </Text>
-          <Text color='dimmed' weight='500'>
+          <Text color='dimmed' weight='500' size='sm'>
             * Free Online Trial -{' '}
             <Text component='span' weight='600' color='orange'>
               {/* {product.trialDuration} Days */}Available Soon
@@ -127,8 +127,10 @@ const ProductItem = ({ product }: ProductItemProps) => {
           <Button
             rightIcon={<IconShoppingCart size='18' />}
             onClick={() =>
-              router.push(`/dashboard/subscriptions/${product.id}`)
+              router.push(`/dashboard/services/subscribe/${product.id}`)
             }
+            color='teal'
+            variant='light'
           >
             Subscribe Now
           </Button>

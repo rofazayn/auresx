@@ -6,6 +6,7 @@ import {
   MediaQuery,
   Paper,
   Text,
+  useMantineColorScheme,
   useMantineTheme,
 } from '@mantine/core'
 import NextLink from 'next/link'
@@ -24,6 +25,7 @@ interface LayoutProps {
 
 export default function DashboardLayout({ children }: LayoutProps) {
   const theme = useMantineTheme()
+  const { colorScheme } = useMantineColorScheme()
   const { authStatus, currentUser } = useContext(AuthContext)
   const router = useRouter()
 
@@ -60,6 +62,10 @@ export default function DashboardLayout({ children }: LayoutProps) {
             display: 'flex',
             flexDirection: 'column',
             // paddingBottom: 80,
+            backgroundColor:
+              colorScheme === 'dark'
+                ? theme.colors.dark[8]
+                : theme.colors.gray[2],
           }}
         >
           <DashboardNavbar />
@@ -110,7 +116,7 @@ export default function DashboardLayout({ children }: LayoutProps) {
                 >
                   <Box>
                     <Paper
-                      radius='md'
+                      radius={12}
                       sx={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -224,40 +230,55 @@ export default function DashboardLayout({ children }: LayoutProps) {
                   }}
                 >
                   <Box
-                    // spacing={8}
-                    mb={-8}
                     sx={{
                       display: 'flex',
                       alignItems: 'center',
+                      justifyContent: 'center',
+                      textAlign: 'center',
                       gap: 8,
+                      width: '100%',
+                    }}
+                    mb={-12}
+                  >
+                    <Text size='xs' color='dimmed' weight='500' align='center'>
+                      &copy; {new Date().getFullYear()}{' '}
+                      <NextLink href='/' passHref>
+                        <Anchor underline color='dimmed'>
+                          AuresX SPAS
+                        </Anchor>
+                      </NextLink>
+                      , Algeria (Beta Version)
+                    </Text>
+                  </Box>
+                  <Box
+                    // spacing={8}
+                    // mb={-8}
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      textAlign: 'center',
+                      gap: 8,
+                      width: '100%',
                     }}
                     py={8}
                   >
                     <NextLink href='/privacy-policy' passHref>
-                      <Anchor color='dimmed' weight='500' size='sm'>
+                      <Anchor color='dimmed' weight='500' size='xs'>
                         Privacy
                       </Anchor>
                     </NextLink>
                     <NextLink href='/terms' passHref>
-                      <Anchor color='dimmed' weight='500' size='sm'>
+                      <Anchor color='dimmed' weight='500' size='xs'>
                         Terms
                       </Anchor>
                     </NextLink>
                     <NextLink href='/cookies' passHref>
-                      <Anchor color='dimmed' weight='500' size='sm'>
+                      <Anchor color='dimmed' weight='500' size='xs'>
                         Cookies
                       </Anchor>
                     </NextLink>
                   </Box>
-                  <Text size='sm' color='dimmed' weight='500'>
-                    &copy; {new Date().getFullYear()}{' '}
-                    <NextLink href='/' passHref>
-                      <Anchor underline color='dimmed'>
-                        AuresX SPAS
-                      </Anchor>
-                    </NextLink>
-                    , Algeria (Beta Version)
-                  </Text>
                 </Box>
               </Box>
             </Container>

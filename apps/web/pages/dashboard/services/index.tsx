@@ -1,4 +1,12 @@
-import { Box, Group, Loader, Stack, Text, useMantineTheme } from '@mantine/core'
+import {
+  Box,
+  Group,
+  Loader,
+  Stack,
+  Text,
+  Title,
+  useMantineTheme,
+} from '@mantine/core'
 import { IconRocket, IconShip } from '@tabler/icons'
 import { NextPage } from 'next'
 import Head from 'next/head'
@@ -67,10 +75,15 @@ const ServicesDashboard: NextPage = () => {
                       <Image src={servicesImage} alt='Rocket Illustration' />
                     </Box>
 
-                    <Text weight='500' size='xl' mb={8}>
-                      Coming Soon
-                    </Text>
-                    <Text color='dimmed' sx={{ maxWidth: 360 }} align='center'>
+                    <Title order={5} mb={8} weight='600'>
+                      Available Services
+                    </Title>
+                    <Text
+                      color='dimmed'
+                      sx={{ maxWidth: 360 }}
+                      align='center'
+                      size='sm'
+                    >
                       Our products and services are still under development,
                       we&apos;ll notify you by sending you an email once they
                       are available.

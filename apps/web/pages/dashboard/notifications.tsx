@@ -1,5 +1,5 @@
-import { Box, Text, useMantineTheme } from '@mantine/core'
-import { IconNotification } from '@tabler/icons'
+import { Box, Text, Title, useMantineTheme } from '@mantine/core'
+import { IconBell, IconNotification } from '@tabler/icons'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -19,7 +19,7 @@ const Dashboard: NextPage = () => {
 
       <DashboardLayout>
         <Box>
-          <PageHeader label='Notifications' icon={<IconNotification />} />
+          <PageHeader label='Notifications' icon={<IconBell />} />
         </Box>
         <Box
           sx={{
@@ -46,10 +46,15 @@ const Dashboard: NextPage = () => {
               />
             </Box>
 
-            <Text weight='500' size='xl' mb={8}>
+            <Title order={5} mb={8} weight='600'>
               Notifications
-            </Text>
-            <Text color='dimmed' sx={{ maxWidth: 360 }} align='center'>
+            </Title>
+            <Text
+              color='dimmed'
+              sx={{ maxWidth: 360 }}
+              align='center'
+              size='sm'
+            >
               There aren&apos;t any unseen notifications at the moment, we will
               let you know by showing you an indicator on your notifications
               button whenever you receive any.

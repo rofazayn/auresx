@@ -83,7 +83,7 @@ const UserControllerBadge = () => {
           },
         }}
       >
-        {currentUser.balance ? (
+        {currentUser.balance >= 0 ? (
           <Box>
             <Box
               sx={{
@@ -92,14 +92,15 @@ const UserControllerBadge = () => {
                 justifyContent: 'space-between',
               }}
             >
-              <Text color='dimmed' size='md' weight='500'>
+              <Text color='dimmed' size='sm' weight='500'>
                 Account Balance
               </Text>
               <IconCoin color='gray' size='24' style={{ opacity: 0.4 }} />
             </Box>
 
             <Text weight='600' sx={{ fontFamily: 'monospace', fontSize: 28 }}>
-              {currentUser.balance ? formatMoney(currentUser.balance) : 0} DA
+              {currentUser.balance >= 0 ? formatMoney(currentUser.balance) : 0}{' '}
+              DA
             </Text>
             <Group spacing={8} mt={16}>
               <Link href='/dashboard/billing'>

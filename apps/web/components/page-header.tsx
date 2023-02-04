@@ -1,4 +1,4 @@
-import { Box, Divider, Text } from '@mantine/core'
+import { Box, Divider, Text, Title } from '@mantine/core'
 import { IconInfoCircle } from '@tabler/icons'
 import React, { ReactElement } from 'react'
 
@@ -16,15 +16,15 @@ const PageHeader = ({ label, icon }: PageHeaderProps) => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          paddingBottom: 24,
+          paddingBottom: 20,
         }}
       >
         <Box>
-          <Text weight='bold' size='md'>
+          <Title order={6} color='dimmed'>
             {label || 'Page'}
-          </Text>
+          </Title>
         </Box>
-        <Box>{(icon as any) || <IconInfoCircle />}</Box>
+        <Box>{(icon as any) || <IconInfoCircle size={16} />}</Box>
       </Box>
       <Divider variant='dashed' sx={{ opacity: 0.4 }} />
     </Box>

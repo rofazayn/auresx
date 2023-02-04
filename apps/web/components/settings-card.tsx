@@ -22,7 +22,7 @@ const SettingsCard = ({
         backgroundColor:
           theme.colorScheme === 'dark'
             ? theme.fn.darken(theme.colors.dark[7], 0.25)
-            : theme.colors.gray[1],
+            : theme.colors.gray[0],
         border:
           theme.colorScheme === 'dark'
             ? '1px solid transparent'

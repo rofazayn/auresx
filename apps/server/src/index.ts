@@ -10,7 +10,6 @@ import express from 'express'
 import { applyMiddleware } from 'graphql-middleware'
 import http from 'http'
 import { JwtPayload, verify } from 'jsonwebtoken'
-import passport from 'passport'
 import 'reflect-metadata'
 import { buildSchema } from 'type-graphql'
 import './configs/passport'
@@ -24,7 +23,6 @@ import { ApolloContext } from './types/context-types'
 
 // export const refreshTokens: Record<string, any> = {}
 const app = express()
-
 console.log(NODE_ENV)
 
 const corsOptions = {
@@ -33,6 +31,7 @@ const corsOptions = {
       ? ['https://auresx.com', 'https://www.auresx.com']
       : [
           'http://localhost:3000',
+          'http://localhost:4100',
           'https://auresx.com',
           'https://www.auresx.com',
         ],

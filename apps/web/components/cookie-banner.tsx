@@ -59,8 +59,8 @@ const CookieBanner = () => {
       <Container size='xs' sx={{ maxWidth: 440 }}>
         <Paper p='lg' radius='lg' sx={{ marginInline: 8 }}>
           <Group position='apart' spacing={2}>
-            <Title size='lg'>Cookie Consent</Title>
-            <Text size='xs' weight='bold' color='dimmed'>
+            <Title order={6}>Cookie Consent</Title>
+            <Text size='xs' weight='500' color='dimmed'>
               For your privacy, you have to accept our{' '}
               <Link href='/cookies'>
                 <Anchor underline={true}>Cookies Policy</Anchor>
@@ -75,7 +75,7 @@ const CookieBanner = () => {
             <Group spacing={'xs'} sx={{ width: '100%' }}>
               <Button
                 sx={{ width: '100%' }}
-                size='md'
+                size='sm'
                 variant='light'
                 color='indigo'
                 onClick={() => {
@@ -88,7 +88,7 @@ const CookieBanner = () => {
               </Button>
               <Button
                 sx={{ width: '100%' }}
-                size='md'
+                size='sm'
                 // variant='light'
                 onClick={() => {
                   localStorage.setItem('cookies-accepted', 'yes')

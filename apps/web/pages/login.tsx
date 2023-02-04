@@ -4,20 +4,16 @@ import {
   Box,
   Button,
   Center,
-  Checkbox,
   Container,
-  Divider,
   Grid,
-  Image,
   Paper,
   PasswordInput,
   Stack,
   Text,
   TextInput,
-  Title,
   useMantineTheme,
 } from '@mantine/core'
-import { IconAlertCircle, IconLockAccess, IconLogin } from '@tabler/icons'
+import { IconAlertCircle, IconLogin } from '@tabler/icons'
 import { Formik } from 'formik'
 import jwtDecode from 'jwt-decode'
 import type { NextPage } from 'next'
@@ -63,30 +59,23 @@ const Login: NextPage = () => {
 
         <PageLayout>
           <Container
-            size='md'
+            // size='md'
+            size='xs'
             sx={{
-              marginBottom: 120,
-              '@media (max-width: 992px)': {
-                marginInline: 4,
-                paddingInline: 4,
-                transform: 'none',
-              },
+              maxWidth: '480px',
+              paddingTop: 120,
             }}
           >
             <Paper
-              // shadow='xl'
               radius='lg'
+              p={'xl'}
               sx={{
-                paddingInline: 40,
-                '@media (max-width: 768px)': {
-                  paddingInline: 16,
-                },
-                paddingTop: 56,
-                paddingBottom: 64,
+                backgroundColor:
+                  theme.colorScheme === 'dark' ? theme.colors.dark[7] : 'white',
               }}
             >
               <Grid gutter={24} align={'start'} justify={'center'}>
-                <Grid.Col sm={12} md={6}>
+                {/* <Grid.Col sm={12} md={6}>
                   <Center>
                     <Box sx={{ maxWidth: 380 }}>
                       <Box sx={{ transform: 'scale(1.2)' }} mb={40}>
@@ -124,7 +113,7 @@ const Login: NextPage = () => {
                         services and stay updated about what we offer.
                       </Text>
 
-                      {/* <Box mt={16}>
+                      <Box mt={16}>
                         <Divider
                           variant='dashed'
                           sx={{ maxWidth: 380 }}
@@ -151,7 +140,7 @@ const Login: NextPage = () => {
                             <Button
                               variant='light'
                               color='gray'
-                              size='md'
+                              size='sm'
                               sx={{ width: '100%', cursor: 'not-allowed' }}
                               leftIcon={<IconBrandGoogle size='16' />}
                             >
@@ -161,7 +150,7 @@ const Login: NextPage = () => {
                             <Button
                               variant='light'
                               color='gray'
-                              size='md'
+                              size='sm'
                               sx={{ width: '100%', cursor: 'not-allowed' }}
                               leftIcon={<IconBrandFacebook size='16' />}
                             >
@@ -169,7 +158,7 @@ const Login: NextPage = () => {
                             </Button>
                           </Button.Group>
                         </Center>
-                      </Box> */}
+                      </Box>
 
                       <Box
                         sx={{
@@ -193,10 +182,10 @@ const Login: NextPage = () => {
                       </Box>
                     </Box>
                   </Center>
-                </Grid.Col>
-                <Grid.Col sm={12} md={6}>
+                </Grid.Col> */}
+                <Grid.Col sm={12} md={12}>
                   <Center>
-                    <Box sx={{ maxWidth: 380 }}>
+                    <Box sx={{ width: '100%', maxWidth: 380 }}>
                       <Formik
                         initialValues={{
                           email: '',
@@ -262,7 +251,20 @@ const Login: NextPage = () => {
                                 variant='filled'
                                 label='Password (required)'
                                 placeholder='Enter your password'
-                                description='Make sure you do not share it with anyone'
+                                description={
+                                  <Text>
+                                    Share it with no one,{' '}
+                                    <Anchor
+                                      color='dimmed'
+                                      sx={{
+                                        textDecoration: 'underline',
+                                        fontWeight: 'bold',
+                                      }}
+                                    >
+                                      Forgot password?
+                                    </Anchor>
+                                  </Text>
+                                }
                                 size='md'
                                 name='password'
                                 value={values.password}
@@ -271,51 +273,48 @@ const Login: NextPage = () => {
                                 error={touched.password && errors.password}
                               />
 
-                              <Box>
+                              {/* <Box>
                                 <Divider
                                   variant='dashed'
-                                  label={
-                                    'Would you like to stay logged in to your account?'
-                                  }
+                                  label={'More login options'}
+                                  labelPosition='center'
                                   mb={8}
                                 />
 
                                 <Checkbox
-                                  size='lg'
-                                  sx={{ alignItems: 'flex-start' }}
+                                  size='md'
+                                  sx={{ alignItems: 'center' }}
                                   name={'stayLogged'}
                                   onChange={handleChange}
                                   checked={values.stayLogged}
                                   label={
                                     <Text size='sm'>
-                                      <b>Yes, I would like to</b> stay logged in
-                                      to my account on this device if possible
-                                      (optional)
+                                      <b>I would like to</b> stay logged in
                                     </Text>
                                   }
                                 />
-                              </Box>
+                              </Box> */}
 
                               <Box
                                 sx={{
                                   display: 'flex',
                                   flexDirection: 'column',
                                 }}
+                                mt={12}
                               >
-                                <Divider
+                                {/* <Divider
                                   variant='dashed'
                                   label={
                                     'Everything okay? then please proceed to signing in'
                                   }
+                                  labelPosition='center'
                                   mb={8}
-                                />
+                                /> */}
 
                                 <Button
-                                  variant='filled'
                                   rightIcon={<IconLogin />}
-                                  size='lg'
+                                  size='md'
                                   type='submit'
-                                  color='indigo'
                                   loading={isSubmitting}
                                 >
                                   Login to your Account
@@ -342,18 +341,27 @@ const Login: NextPage = () => {
 
                               {/* <Divider variant='dashed' mt={16} mb={8} /> */}
 
-                              <Box mt={16}>
+                              <Box mt={-4}>
                                 {/* <Divider variant='dashed' my={16} /> */}
-                                <Text color='dimmed' mb={8}>
-                                  Don&apos;t you have an account with us?{' '}
+                                <Text
+                                  color='dimmed'
+                                  mb={10}
+                                  size={'sm'}
+                                  align='center'
+                                >
+                                  Don&apos;t have an account?{' '}
                                   <Link href='/register' passHref>
-                                    <Anchor weight='bold' color='indigo'>
+                                    <Anchor
+                                      weight='bold'
+                                      color='dimmed'
+                                      // sx={{ textDecoration: 'underline' }}
+                                    >
                                       Register
                                     </Anchor>
                                   </Link>
                                 </Text>
 
-                                <Text
+                                {/* <Text
                                   size='xs'
                                   color='dimmed'
                                   sx={{ opacity: 0.6 }}
@@ -361,7 +369,7 @@ const Login: NextPage = () => {
                                   AuresX accounts are a general purpose accounts
                                   that handle your data, activity &amp;
                                   authorizations in our ecosystem.
-                                </Text>
+                                </Text> */}
                               </Box>
                             </Stack>
                           </form>

@@ -62,7 +62,7 @@ export default function App(props: AppProps) {
                 emotionCache={rtl ? rtlCache : emotionCache}
               >
                 <NotificationsProvider
-                  position='bottom-center'
+                  position='top-center'
                   zIndex={9999}
                   limit={6}
                 >
@@ -75,8 +75,8 @@ export default function App(props: AppProps) {
                       flexDirection: 'column',
                       backgroundColor:
                         theme.colorScheme === 'dark'
-                          ? theme.colors.dark[9]
-                          : theme.colors.gray[1],
+                          ? theme.colors.dark[8]
+                          : theme.colors.gray[0],
                     })}
                   >
                     <Component {...pageProps} />

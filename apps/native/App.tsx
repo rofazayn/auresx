@@ -29,7 +29,7 @@ export default function App() {
             </AspectRatio>
 
             <Heading>
-              A component Kermouda Tafes for the
+              A component Glass Tafes for the
               <Text color='indigo.500'> React Ecosystem</Text>
             </Heading>
             <Text my='3' fontWeight='medium'>

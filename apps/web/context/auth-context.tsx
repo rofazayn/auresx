@@ -1,5 +1,6 @@
 import { useReactiveVar } from '@apollo/client'
 import { ColorScheme, useMantineColorScheme } from '@mantine/core'
+import { useRouter } from 'next/router'
 import { createContext, useCallback, useEffect, useState } from 'react'
 import { refreshStatusVar } from '../configs/apollo-client'
 import { useLogoutMutation, useProfileQuery } from '../generated/graphql'
@@ -12,9 +13,10 @@ const AuthProvider = ({ children }: any) => {
   const [authStatus, setAuthStatus] = useState<string>('stale')
   const [logoutMutation, { loading: logoutLoading }] = useLogoutMutation({})
   const profileQuery = useProfileQuery({
-    fetchPolicy: 'network-only',
+    // fetchPolicy: 'network-only',
   })
   const refreshStatus = useReactiveVar(refreshStatusVar)
+  const router = useRouter()
 
   useEffect(() => {
     if (currentUser) {
@@ -23,7 +25,7 @@ const AuthProvider = ({ children }: any) => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser?.preferredTheme])
+  }, [currentUser?.preferredTheme, authStatus])
 
   const logout = useCallback(async () => {
     await logoutMutation()

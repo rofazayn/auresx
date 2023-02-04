@@ -11,7 +11,8 @@ const useStyles = createStyles((theme, _params, getRef) => {
       display: 'flex',
       alignItems: 'center',
       textDecoration: 'none',
-      fontSize: theme.fontSizes.md,
+      fontSize: 15,
+      // fontSize: theme.fontSizes.md,
       color:
         theme.colorScheme === 'dark'
           ? theme.colors.dark[1]
@@ -21,6 +22,8 @@ const useStyles = createStyles((theme, _params, getRef) => {
       fontWeight: 500,
       transition: 'all ease-in-out 250ms',
       position: 'relative',
+      // fontFamily: 'Epilogue',
+      lineHeight: 1,
 
       '&::before': {
         content: '""',
@@ -29,13 +32,13 @@ const useStyles = createStyles((theme, _params, getRef) => {
         bottom: 0,
         marginBlock: 'auto',
         left: -2,
-        width: 2,
+        width: 3,
         height: 24,
         background: 'transparent',
-        zIndex: 9,
+        zIndex: 1,
         borderTopLeftRadius: 8,
         borderBottomLeftRadius: 8,
-        opacity: 0.5,
+        opacity: 0.7,
         transition: 'all ease-in-out 250ms',
       },
 
@@ -58,7 +61,7 @@ const useStyles = createStyles((theme, _params, getRef) => {
         theme.colorScheme === 'dark'
           ? theme.colors.dark[2]
           : theme.colors.gray[6],
-      marginRight: theme.spacing.sm,
+      marginInlineEnd: 12,
     },
 
     linkActive: {
@@ -106,7 +109,7 @@ function NavLink({ item }: any) {
             setActive(item.label)
           }}
         >
-          <item.icon className={classes.linkIcon} stroke={1.5} size={30} />
+          <item.icon className={classes.linkIcon} stroke={2} size={25} />
           <span>{item.labelExtended || item.label}</span>
         </a>
       </NextLink>

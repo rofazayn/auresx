@@ -23,7 +23,7 @@ const DashboardSettings: NextPage = () => {
       label: (
         <Center>
           <IconUser size={20} />
-          <Box ml={10}>User Settings</Box>
+          <Box sx={{ marginInlineStart: 10 }}>User Settings</Box>
         </Center>
       ),
       value: 'user',
@@ -32,7 +32,7 @@ const DashboardSettings: NextPage = () => {
       label: (
         <Center>
           <IconPalette size={20} />
-          <Box ml={10}>Customization</Box>
+          <Box sx={{ marginInlineStart: 10 }}>Customization</Box>
         </Center>
       ),
       value: 'customization',
@@ -41,7 +41,7 @@ const DashboardSettings: NextPage = () => {
       label: (
         <Center>
           <IconGift size={20} />
-          <Box ml={10}>Referral Program</Box>
+          <Box sx={{ marginInlineStart: 10 }}>Referral Program</Box>
         </Center>
       ),
       value: 'referral',
@@ -87,7 +87,7 @@ const DashboardSettings: NextPage = () => {
                 size='md'
                 fullWidth
                 orientation='vertical'
-                radius='md'
+                radius={12}
                 data={segmentsData}
               />
             </MediaQuery>

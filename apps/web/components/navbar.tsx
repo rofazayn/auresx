@@ -10,7 +10,6 @@ import {
   Group,
   Loader,
   MediaQuery,
-  Paper,
   Text,
   useMantineColorScheme,
   useMantineTheme,
@@ -18,7 +17,7 @@ import {
 import {
   IconApps,
   IconAppWindow,
-  IconCoin,
+  IconBuildingArch,
   IconConfetti,
   IconHeart,
   IconHome,
@@ -26,6 +25,7 @@ import {
   IconLogout,
   IconMoon,
   IconRocket,
+  IconStar,
   IconSun,
   IconTarget,
   IconX,
@@ -54,37 +54,51 @@ const Navbar = () => {
 
   return (
     <Box
-      sx={{ width: '100%', position: 'fixed', top: 0, left: 0, zIndex: 999 }}
+      sx={{
+        width: '100%',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        zIndex: 999,
+        // height: '100%',
+        // backgroundColor:
+        //   colorScheme === 'dark' ? theme.colors.dark[7] : 'white',
+        backgroundColor:
+          colorScheme === 'dark'
+            ? theme.fn.rgba(theme.colors.dark[8], 0.8)
+            : theme.fn.rgba('#ffffff', 0.8),
+        // theme.fn.rgba(theme.colors.gray[1], 0.75),
+        // backgroundColor: 'red',
+        backdropFilter: 'blur(8px)',
+        borderBottomLeftRadius: 24,
+        borderBottomRightRadius: 24,
+        overflow: 'hidden',
+      }}
     >
       <Container
+        // fluid
         size='xl'
-        sx={{
-          '@media (max-width: 992px)': {
-            marginInline: 4,
-            paddingInline: 4,
-          },
-        }}
+        // sx={{
+        //   maxWidth: 1444,
+        //   '@media (max-width: 992px)': {
+        //     marginInline: 4,
+        //     paddingInline: 4,
+        //   },
+        // }}
       >
-        <Paper
-          // shadow='xs'
-          radius='lg'
+        <Box
           sx={{
-            paddingTop: 28,
-            paddingBottom: 28,
-            paddingInline: 24,
+            width: '100%',
+            paddingBlock: 20,
+            paddingInline: 16,
             '@media (max-width: 768px)': {
-              paddingInline: 16,
+              // paddingInline: 16,
+              paddingBlock: 18,
             },
-            borderTopRightRadius: 0,
-            borderTopLeftRadius: 0,
-            // borderBottomLeftRadius: 24,
-            // borderBottomRightRadius: 24,
             borderTop: 'none',
             borderLeft: 'none',
             borderRight: 'none',
             overflow: 'hidden',
-            // backgroundColor:
-            //   colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
           }}
         >
           <Box
@@ -101,17 +115,18 @@ const Navbar = () => {
                 </Box>
               </Link>
               <MediaQuery smallerThan={'md'} styles={{ display: 'none' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                  <Link href='/solutions' passHref>
-                    <Anchor
-                      color='dimmed'
-                      size='md'
-                      aria-label='Solutions'
-                      weight='500'
-                      sx={{ paddingInline: 12, paddingBlock: 8 }}
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                  <Link href='/projects' passHref>
+                    <Button
+                      aria-label='Projects'
+                      // weight='500'
+                      color='gray'
+                      size='sm'
+                      radius='md'
+                      variant='subtle'
                     >
-                      Solutions
-                    </Anchor>
+                      Projects
+                    </Button>
                   </Link>
                   {/* <Link href='/pricing' passHref>
                     <Anchor
@@ -125,33 +140,47 @@ const Navbar = () => {
                     </Anchor>
                   </Link> */}
                   <Link href='/endeavor' passHref>
-                    <Anchor
-                      color='dimmed'
-                      size='md'
+                    <Button
                       aria-label='Endeavor'
-                      weight='500'
-                      sx={{ paddingInline: 12, paddingBlock: 8 }}
+                      // weight='500'
+                      color='gray'
+                      size='sm'
+                      radius='md'
+                      variant='subtle'
                     >
                       Endeavor
-                    </Anchor>
+                    </Button>
                   </Link>
                   <Link href='/team' passHref>
-                    <Anchor
-                      color='dimmed'
-                      size='md'
-                      aria-label='The Team'
-                      weight='500'
-                      sx={{ paddingInline: 12, paddingBlock: 8 }}
+                    <Button
+                      aria-label='Team'
+                      // weight='500'
+                      color='gray'
+                      size='sm'
+                      radius='md'
+                      variant='subtle'
                     >
                       The Team
-                    </Anchor>
+                    </Button>
+                  </Link>
+                  <Link href='/vision' passHref>
+                    <Button
+                      aria-label='Team'
+                      // weight='500'
+                      color='gray'
+                      size='sm'
+                      radius='md'
+                      variant='subtle'
+                    >
+                      Vision 2030
+                    </Button>
                   </Link>
                 </Box>
               </MediaQuery>
             </Box>
 
             {authStatus === 'stale' ? (
-              <Loader />
+              <Loader size='sm' />
             ) : authStatus === 'found' ? (
               <>
                 <MediaQuery smallerThan={'md'} styles={{ display: 'none' }}>
@@ -160,9 +189,9 @@ const Navbar = () => {
                       <Button
                         variant='subtle'
                         color='gray'
-                        size='md'
+                        size='sm'
                         radius='md'
-                        leftIcon={<IconApps />}
+                        leftIcon={<IconApps width='18px' />}
                       >
                         Dashboard
                       </Button>
@@ -171,9 +200,9 @@ const Navbar = () => {
                       onClick={logout}
                       color='red'
                       variant='subtle'
-                      size='md'
+                      size='sm'
                       radius='md'
-                      rightIcon={<IconLogout />}
+                      rightIcon={<IconLogout width='18px' />}
                       loading={logoutLoading}
                     >
                       Logout
@@ -197,9 +226,9 @@ const Navbar = () => {
                       <Button
                         variant='subtle'
                         color='gray'
-                        size='sm'
+                        size='xs'
                         radius='md'
-                        leftIcon={<IconApps />}
+                        leftIcon={<IconApps width='16' />}
                       >
                         Dashboard
                       </Button>
@@ -208,7 +237,7 @@ const Navbar = () => {
                       // color='gray'
                       aria-label='Menu'
                       opened={opened}
-                      size='sm'
+                      size={14}
                       onClick={() => setOpened((prev) => !prev)}
                     />
                   </Box>
@@ -222,7 +251,7 @@ const Navbar = () => {
                       <Button
                         variant='subtle'
                         color='gray'
-                        size='md'
+                        size='sm'
                         radius='md'
                       >
                         Sign In
@@ -230,11 +259,9 @@ const Navbar = () => {
                     </Link>
                     <Link href='/register'>
                       <Button
-                        variant='filled'
-                        color='indigo'
-                        size='md'
-                        rightIcon={<IconConfetti size='24' />}
-                        radius='md'
+                        variant='default'
+                        size='sm'
+                        rightIcon={<IconRocket size='20' />}
                       >
                         Join Us
                       </Button>
@@ -303,7 +330,7 @@ const Navbar = () => {
                   }}
                   px={16}
                 >
-                  <Box sx={{ width: '100%' }} pt={40}>
+                  <Box sx={{ width: '100%' }} pt={24}>
                     <Box
                       sx={{
                         display: 'flex',
@@ -376,20 +403,20 @@ const Navbar = () => {
                           <Button
                             variant='light'
                             color='gray'
-                            size='md'
-                            leftIcon={<IconHome />}
+                            size='sm'
+                            leftIcon={<IconHome width='18px' />}
                           >
                             Home
                           </Button>
                         </Link>
-                        <Link href='/solutions' passHref>
+                        <Link href='/projects' passHref>
                           <Button
                             variant='light'
                             color='gray'
-                            size='md'
-                            leftIcon={<IconRocket />}
+                            size='sm'
+                            leftIcon={<IconRocket width='18px' />}
                           >
-                            Solutions
+                            Projects
                           </Button>
                         </Link>
                         {/* <Link href='/pricing' passHref>
@@ -406,20 +433,31 @@ const Navbar = () => {
                           <Button
                             variant='light'
                             color='gray'
-                            size='md'
-                            leftIcon={<IconTarget />}
+                            size='sm'
+                            leftIcon={<IconTarget width='18px' />}
                           >
                             Endeavor
                           </Button>
                         </Link>
+
                         <Link href='/team' passHref>
                           <Button
                             variant='light'
                             color='gray'
-                            size='md'
-                            leftIcon={<IconHeart />}
+                            size='sm'
+                            leftIcon={<IconHeart width='18px' />}
                           >
                             The Team
+                          </Button>
+                        </Link>
+                        <Link href='/vision' passHref>
+                          <Button
+                            variant='light'
+                            color='gray'
+                            size='sm'
+                            leftIcon={<IconStar width='18px' />}
+                          >
+                            Vision 2030
                           </Button>
                         </Link>
                         {/* </Button.Group> */}
@@ -457,10 +495,10 @@ const Navbar = () => {
                             <Button
                               variant='light'
                               color='gray'
-                              size='md'
+                              size='sm'
                               sx={{ width: '100%' }}
                               onClick={() => toggleColorScheme('dark')}
-                              leftIcon={<IconMoon size='20' />}
+                              leftIcon={<IconMoon size='18px' />}
                             >
                               Dark
                             </Button>
@@ -468,10 +506,10 @@ const Navbar = () => {
                             <Button
                               variant='light'
                               color='gray'
-                              size='md'
+                              size='sm'
                               sx={{ width: '100%' }}
                               onClick={() => toggleColorScheme('light')}
-                              rightIcon={<IconSun size='20' />}
+                              rightIcon={<IconSun size='18px' />}
                             >
                               Light
                             </Button>
@@ -508,9 +546,9 @@ const Navbar = () => {
                             <Button
                               variant='light'
                               color='indigo'
-                              size='md'
+                              size='sm'
                               sx={{ width: '100%' }}
-                              rightIcon={<IconApps size='24' />}
+                              rightIcon={<IconApps size='18px' />}
                             >
                               Navigate to Dashboard
                             </Button>
@@ -519,8 +557,8 @@ const Navbar = () => {
                           <Button
                             variant='light'
                             color='red'
-                            size='md'
-                            rightIcon={<IconLogout size='24' />}
+                            size='sm'
+                            rightIcon={<IconLogout size='18px' />}
                             sx={{ width: '100%' }}
                             onClick={handleLogout}
                             loading={logoutLoading}
@@ -535,9 +573,9 @@ const Navbar = () => {
                             <Button
                               variant='light'
                               color='indigo'
-                              size='md'
+                              size='sm'
                               sx={{ width: '100%' }}
-                              rightIcon={<IconLogin size='24' />}
+                              rightIcon={<IconLogin size='18px' />}
                             >
                               Login to your Account
                             </Button>
@@ -546,8 +584,8 @@ const Navbar = () => {
                             <Button
                               variant='light'
                               color='teal'
-                              size='md'
-                              rightIcon={<IconConfetti size='24' />}
+                              size='sm'
+                              rightIcon={<IconConfetti size='18px' />}
                               sx={{ width: '100%' }}
                             >
                               Create an AuresX Account
@@ -561,7 +599,7 @@ const Navbar = () => {
               </Box>
             </Drawer>
           </MediaQuery>
-        </Paper>
+        </Box>
       </Container>
     </Box>
   )
