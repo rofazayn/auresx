@@ -70,8 +70,7 @@ const DashboardNavbar = () => {
             // shadow='xs'
             radius='md'
             sx={{
-              paddingTop: 28,
-              paddingBottom: 28,
+              paddingBlock: 20,
               paddingInline: 24,
               '@media (max-width: 992px)': {
                 paddingInline: 16,
@@ -85,7 +84,7 @@ const DashboardNavbar = () => {
               borderRight: 'none',
               overflow: 'hidden',
               // backgroundColor:
-              //   colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+              //   colorScheme === 'dark' ? theme.colors.dark[7]  : theme.colors.gray[0],
             }}
           >
             <Box
@@ -107,25 +106,25 @@ const DashboardNavbar = () => {
                 <Loader />
               ) : authStatus === 'found' ? (
                 <>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                     <Box>
                       <NextLink href='/dashboard/notifications'>
                         <ActionIcon
                           variant='subtle'
-                          size='xl'
+                          size='sm'
                           radius='md'
                           // color='indigo'
                           aria-label='Notifications'
                           // onClick={logout}
                         >
-                          <IconNotification size={24} />
+                          <IconNotification size={20} />
                         </ActionIcon>
                       </NextLink>
                     </Box>
                     <Burger
                       aria-label='Menu'
                       opened={opened}
-                      size='sm'
+                      size={14}
                       onClick={() => setOpened((prev) => !prev)}
                     />
                   </Box>
@@ -192,7 +191,7 @@ const DashboardNavbar = () => {
                     }}
                     px={16}
                   >
-                    <Box sx={{ width: '100%' }} pt={40}>
+                    <Box sx={{ width: '100%' }} pt={24}>
                       <Box
                         sx={{
                           display: 'flex',
@@ -208,7 +207,7 @@ const DashboardNavbar = () => {
                             size={24}
                           />
                           <Text size='sm' weight='bold'>
-                            Dashboard Menu
+                            Menu
                           </Text>
                         </Box>
                         <Box>
@@ -247,23 +246,6 @@ const DashboardNavbar = () => {
                       <Box>
                         <Box mb={16}>
                           <Text weight='bold' mb={4} size='sm'>
-                            Account Preview
-                          </Text>
-                          <Text
-                            size='xs'
-                            color='dimmed'
-                            sx={{ lineHeight: 1.4 }}
-                          >
-                            You can view your balance, navigate to your profile
-                            or log out from here.
-                          </Text>
-                        </Box>
-                        <UserControllerBadge />
-                      </Box>
-                      <Divider variant='dashed' sx={{ opacity: 0.4 }} my={16} />
-                      <Box>
-                        <Box mb={16}>
-                          <Text weight='bold' mb={4} size='sm'>
                             Dashboard Navigation
                           </Text>
                           <Text
@@ -285,6 +267,24 @@ const DashboardNavbar = () => {
                           }}
                         />
                       </Box>
+                      <Divider variant='dashed' sx={{ opacity: 0.4 }} my={16} />
+                      <Box>
+                        {/* <Box mb={16}>
+                          <Text weight='bold' mb={4} size='sm'>
+                            Account Preview
+                          </Text>
+                          <Text
+                            size='xs'
+                            color='dimmed'
+                            sx={{ lineHeight: 1.4 }}
+                          >
+                            You can view your balance, navigate to your profile
+                            or log out from here.
+                          </Text>
+                        </Box> */}
+                        <UserControllerBadge />
+                      </Box>
+                      {/* <Divider variant='dashed' sx={{ opacity: 0.4 }} my={16} /> */}
                       <Box
                         sx={{
                           display: 'flex',
@@ -318,7 +318,7 @@ const DashboardNavbar = () => {
                               <Button
                                 variant='light'
                                 color='gray'
-                                size='md'
+                                size='sm'
                                 sx={{ width: '100%' }}
                                 onClick={() => toggleColorScheme('dark')}
                                 leftIcon={<IconMoon size='20' />}
@@ -329,7 +329,7 @@ const DashboardNavbar = () => {
                               <Button
                                 variant='light'
                                 color='gray'
-                                size='md'
+                                size='sm'
                                 sx={{ width: '100%' }}
                                 onClick={() => toggleColorScheme('light')}
                                 rightIcon={<IconSun size='20' />}

@@ -22,16 +22,7 @@ const PrivacyPolicy: NextPage = () => {
       </Head>
 
       <PageLayout>
-        <Container
-          size='xl'
-          dir='ltr'
-          sx={{
-            '@media (max-width: 992px)': {
-              marginInline: 4,
-              paddingInline: 4,
-            },
-          }}
-        >
+        <Container size='xl' dir='ltr' pt={120}>
           <Paper
             radius='lg'
             p='xl'
@@ -51,7 +42,7 @@ const PrivacyPolicy: NextPage = () => {
                 </Text>
               </Box>
               <Box>
-                <Text mb={8} size='lg'>
+                <Text mb={8} size='md'>
                   This privacy notice for AuresX SPAS (doing business as AuresX)
                   (&quot;AuresX,&quot; &quot;we,&quot; &quot;us,&quot; or
                   &quot;our&quot;), describes how and why we might collect,
@@ -59,7 +50,7 @@ const PrivacyPolicy: NextPage = () => {
                   information when you use our services (&quot;Services&quot;),
                   such as when you:
                 </Text>
-                <List withPadding size='lg'>
+                <List withPadding size='md'>
                   <List.Item>
                     Visit our website at https://auresx.com, or any website of
                     ours that links to this privacy notice
@@ -70,15 +61,15 @@ const PrivacyPolicy: NextPage = () => {
                   </List.Item>
                 </List>
               </Box>
-              <Text size='lg' color='dimmed'>
+              <Text size='md' color='dimmed'>
                 Questions or concerns? Reading this privacy notice will help you
                 understand your privacy rights and choices. If you do not agree
                 with our policies and practices, please do not use our Services.
                 If you still have any questions or concerns, please contact us
                 at support@auresx.com.
               </Text>
-              <Title order={2}>SUMMARY OF KEY POINTS</Title>
-              <Text size='lg'>
+              <Title order={3}>SUMMARY OF KEY POINTS</Title>
+              <Text size='md'>
                 This summary provides key points from our privacy notice, but
                 you can find out more details about any of these topics by
                 clicking the link following each key point or by using our table
@@ -86,7 +77,7 @@ const PrivacyPolicy: NextPage = () => {
                 can also click <Anchor href='#table-contents'>here</Anchor> to
                 go directly to our table of contents.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 <b>What personal information do we process?</b> When you visit,
                 use, or navigate our Services, we may process personal
                 information depending on how you interact with AuresX and the
@@ -94,17 +85,17 @@ const PrivacyPolicy: NextPage = () => {
                 you use. Click <Anchor href='#sec-1'>here</Anchor> to learn
                 more.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 <b>Do we process any sensitive personal information?</b> We may
                 process sensitive personal information when necessary with your
                 consent or as otherwise permitted by applicable law. Click{' '}
                 <Anchor href='#sec-1'>here</Anchor> to learn more.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 <b>Do we receive any information from third parties?</b> We do
                 not receive any information from third parties.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 <b>How do we process your information?</b> We process your
                 information to provide, improve, and administer our Services,
                 communicate with you, for security and fraud prevention, and to
@@ -113,7 +104,7 @@ const PrivacyPolicy: NextPage = () => {
                 when we have a valid legal reason to do so. Click{' '}
                 <Anchor href='#sec-2'>here</Anchor> to learn more.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 <b>
                   In what situations and with which parties do we share personal
                   information?
@@ -122,7 +113,7 @@ const PrivacyPolicy: NextPage = () => {
                 specific third parties. Click{' '}
                 <Anchor href='#sec-3'>here</Anchor> to learn more.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 <b>How do we keep your information safe?</b> We have
                 organizational and technical processes and procedures in place
                 to protect your personal information. However, no electronic
@@ -133,13 +124,13 @@ const PrivacyPolicy: NextPage = () => {
                 improperly collect, access, steal, or modify your information.
                 Click <Anchor href='#sec-7'>here</Anchor> to learn more.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 <b>What are your rights?</b> Depending on where you are located
                 geographically, the applicable privacy law may mean you have
                 certain rights regarding your personal information. Click{' '}
                 <Anchor href='#sec-9'>here</Anchor> to learn more.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 <b>How do you exercise your rights?</b> The easiest way to
                 exercise your rights is by filling out our data subject request
                 form available here:{' '}
@@ -149,7 +140,7 @@ const PrivacyPolicy: NextPage = () => {
                 , or by contacting us. We will consider and act upon any request
                 in accordance with applicable data protection laws.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 <b>
                   Want to learn more about what AuresX does with any information
                   we collect?
@@ -157,10 +148,10 @@ const PrivacyPolicy: NextPage = () => {
                 Click <Anchor href='#table-contents'>here</Anchor> to review the
                 notice in full.
               </Text>
-              <Title order={2} id='table-contents'>
+              <Title order={3} id='table-contents'>
                 TABLE OF CONTENTS
               </Title>
-              <List size='lg' type='ordered'>
+              <List size='md' type='ordered'>
                 <List.Item>
                   <Anchor href='#sec-1'>WHAT INFORMATION DO WE COLLECT?</Anchor>
                 </List.Item>
@@ -229,28 +220,28 @@ const PrivacyPolicy: NextPage = () => {
                   </Anchor>
                 </List.Item>
               </List>
-              <Title order={2} id='sec-1'>
+              <Title order={3} id='sec-1'>
                 1. WHAT INFORMATION DO WE COLLECT?
               </Title>
-              <Text size='lg'>
+              <Text size='md'>
                 <b>In Short:</b> We collect personal information that you
                 provide to us.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 We collect personal information that you voluntarily provide to
                 us when you register on the Services, express an interest in
                 obtaining information about us or our products and Services,
                 when you participate in activities on the Services, or otherwise
                 when you contact us.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 <b>Personal Information Provided by You.</b> The personal
                 information that we collect depends on the context of your
                 interactions with us and the Services, the choices you make, and
                 the products and features you use. The personal information we
                 collect may include the following:
               </Text>
-              <List size='lg'>
+              <List size='md'>
                 <List.Item>names</List.Item>
                 <List.Item>phone numbers</List.Item>
                 <List.Item>email addresses</List.Item>
@@ -263,12 +254,12 @@ const PrivacyPolicy: NextPage = () => {
                 <List.Item>billing addresses</List.Item>
                 <List.Item>debit/credit card numbers</List.Item>
               </List>
-              <Text size='lg'>
+              <Text size='md'>
                 <b>Sensitive Information.</b> When necessary, with your consent
                 or as otherwise permitted by applicable law, we process the
                 following categories of sensitive information:
               </Text>
-              <List size='lg'>
+              <List size='md'>
                 <List.Item>health data</List.Item>
                 <List.Item>
                   social security numbers or other government identifiers
@@ -279,7 +270,7 @@ const PrivacyPolicy: NextPage = () => {
                 </List.Item>
                 <List.Item>information revealing political opinions</List.Item>
               </List>
-              <Text size='lg'>
+              <Text size='md'>
                 <b>Payment Data.</b> We may collect data necessary to process
                 your payment if you make purchases, such as your payment
                 instrument number (such as a credit card number), and the
@@ -291,7 +282,7 @@ const PrivacyPolicy: NextPage = () => {
                 </Anchor>
                 .
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 <b>Social Media Login Data</b>. We may provide you with the
                 option to register with us using your existing social media
                 account details, like your Facebook, Twitter, or other social
@@ -302,13 +293,13 @@ const PrivacyPolicy: NextPage = () => {
                 </Anchor>
                 &quot; below.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 All personal information that you provide to us must be true,
                 complete, and accurate, and you must notify us of any changes to
                 such personal information.
               </Text>
               <Title order={3}>Information automatically collected</Title>
-              <Text size='lg'>
+              <Text size='md'>
                 <em>
                   <b>In Short:</b> Some information — such as your Internet
                   Protocol (IP) address and/or browser and device
@@ -316,7 +307,7 @@ const PrivacyPolicy: NextPage = () => {
                   our Services.
                 </em>
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 We automatically collect certain information when you visit,
                 use, or navigate the Services. This information does not reveal
                 your specific identity (like your name or contact information)
@@ -328,12 +319,12 @@ const PrivacyPolicy: NextPage = () => {
                 needed to maintain the security and operation of our Services,
                 and for our internal analytics and reporting purposes.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 Like many businesses, we also collect information through
                 cookies and similar technologies.{' '}
               </Text>
-              <Text size='lg'>The information we collect includes:</Text>
-              <List size='lg' withPadding>
+              <Text size='md'>The information we collect includes:</Text>
+              <List size='md' withPadding>
                 <List.Item>
                   <em>Log and Usage Data.</em> Log and usage data is
                   service-related, diagnostic, usage, and performance
@@ -373,10 +364,10 @@ const PrivacyPolicy: NextPage = () => {
                   may not be able to use certain aspects of the Services.
                 </List.Item>
               </List>
-              <Title order={2} id='sec-2'>
+              <Title order={3} id='sec-2'>
                 2. HOW DO WE PROCESS YOUR INFORMATION?
               </Title>
-              <Text size='lg'>
+              <Text size='md'>
                 <em>
                   <b>In Short:</b> We process your information to provide,
                   improve, and administer our Services, communicate with you,
@@ -385,13 +376,13 @@ const PrivacyPolicy: NextPage = () => {
                   consent.
                 </em>
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 <b>
                   We process your personal information for a variety of reasons,
                   depending on how you interact with our Services, including:
                 </b>
               </Text>
-              <List size='lg' withPadding>
+              <List size='md' withPadding>
                 <List.Item>
                   <b>
                     To facilitate account creation and authentication and
@@ -496,23 +487,23 @@ const PrivacyPolicy: NextPage = () => {
                   legal rights.
                 </List.Item>
               </List>
-              <Title order={2} id='sec-3'>
+              <Title order={3} id='sec-3'>
                 3. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?
               </Title>
-              <Text size='lg'>
+              <Text size='md'>
                 <em>
                   <b>In Short:</b> We may share information in specific
                   situations described in this section and/or with the following
                   third parties.
                 </em>
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 <b>
                   We may need to share your personal information in the
                   following situations:
                 </b>
               </Text>
-              <List size='lg' withPadding>
+              <List size='md' withPadding>
                 <List.Item>
                   <b>Business Transfers.</b> We may share or transfer your
                   information in connection with, or during negotiations of, any
@@ -557,16 +548,16 @@ const PrivacyPolicy: NextPage = () => {
                   Services, and view your profile.
                 </List.Item>
               </List>
-              <Title order={2} id='sec-4'>
+              <Title order={3} id='sec-4'>
                 4. DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?
               </Title>
-              <Text size='lg'>
+              <Text size='md'>
                 <em>
                   <b>In Short:</b> We may use cookies and other tracking
                   technologies to collect and store your information.
                 </em>
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 <b>
                   We may use cookies and similar tracking technologies (like web
                   beacons and pixels) to access or store information. Specific
@@ -574,17 +565,17 @@ const PrivacyPolicy: NextPage = () => {
                   refuse certain cookies is set out in our Cookie Notice.
                 </b>
               </Text>
-              <Title order={2} id='sec-5'>
+              <Title order={3} id='sec-5'>
                 5. HOW DO WE HANDLE YOUR SOCIAL LOGINS?
               </Title>
-              <Text size='lg'>
+              <Text size='md'>
                 <em>
                   <b>In Short:</b> If you choose to register or log in to our
                   services using a social media account, we may have access to
                   certain information about you.
                 </em>
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 Our Services offer you the ability to register and log in using
                 your third-party social media account details (like your
                 Facebook or Twitter logins). Where you choose to do this, we
@@ -595,7 +586,7 @@ const PrivacyPolicy: NextPage = () => {
                 profile picture, as well as other information you choose to make
                 public on such a social media platform.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 We will use the information we receive only for the purposes
                 that are described in this privacy notice or that are otherwise
                 made clear to you on the relevant Services. Please note that we
@@ -606,17 +597,17 @@ const PrivacyPolicy: NextPage = () => {
                 how you can set your privacy preferences on their sites and
                 apps.
               </Text>
-              <Title order={2} id='sec-6'>
+              <Title order={3} id='sec-6'>
                 6. HOW LONG DO WE KEEP YOUR INFORMATION?
               </Title>
-              <Text size='lg'>
+              <Text size='md'>
                 <em>
                   <b>In Short:</b> We keep your information for as long as
                   necessary to fulfill the purposes outlined in this privacy
                   notice unless otherwise required by law.
                 </em>
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 We will only keep your personal information for as long as it is
                 necessary for the purposes set out in this privacy notice,
                 unless a longer retention period is required or permitted by law
@@ -625,7 +616,7 @@ const PrivacyPolicy: NextPage = () => {
                 information for longer than six (6) months past the termination
                 of the user&apos;s account.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 When we have no ongoing legitimate business need to process your
                 personal information, we will either delete or anonymize such
                 information, or, if this is not possible (for example, because
@@ -634,17 +625,17 @@ const PrivacyPolicy: NextPage = () => {
                 isolate it from any further processing until deletion is
                 possible.
               </Text>
-              <Title order={2} id='sec-7'>
+              <Title order={3} id='sec-7'>
                 7. HOW DO WE KEEP YOUR INFORMATION SAFE?
               </Title>
-              <Text size='lg'>
+              <Text size='md'>
                 <em>
                   <b>In Short:</b> We aim to protect your personal information
                   through a system of organizational and technical security
                   measures.
                 </em>
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 We have implemented appropriate and reasonable technical and
                 organizational security measures designed to protect the
                 security of any personal information we process. However,
@@ -659,16 +650,16 @@ const PrivacyPolicy: NextPage = () => {
                 and from our Services is at your own risk. You should only
                 access the Services within a secure environment.
               </Text>
-              <Title order={2} id='sec-8'>
+              <Title order={3} id='sec-8'>
                 8. DO WE COLLECT INFORMATION FROM MINORS?
               </Title>
-              <Text size='lg'>
+              <Text size='md'>
                 <em>
                   <b>In Short:</b> We do not knowingly collect data from or
                   market to children under 18 years of age.
                 </em>
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 We do not knowingly solicit data from or market to children
                 under 18 years of age. By using the Services, you represent that
                 you are at least 18 or that you are the parent or guardian of
@@ -683,16 +674,16 @@ const PrivacyPolicy: NextPage = () => {
                 </Anchor>
                 .
               </Text>
-              <Title order={2} id='sec-9'>
+              <Title order={3} id='sec-9'>
                 9. WHAT ARE YOUR PRIVACY RIGHTS?
               </Title>
-              <Text size='lg'>
+              <Text size='md'>
                 <em>
                   <b>In Short:</b> You may review, change, or terminate your
                   account at any time.
                 </em>
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 If you are located in the EEA or UK and you believe we are
                 unlawfully processing your personal information, you also have
                 the right to complain to your local data protection supervisory
@@ -705,7 +696,7 @@ const PrivacyPolicy: NextPage = () => {
                 </Anchor>
                 .
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 If you are located in Switzerland, the contact details for the
                 data protection authorities are available here:{' '}
                 <Anchor
@@ -716,7 +707,7 @@ const PrivacyPolicy: NextPage = () => {
                 </Anchor>
                 .
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 <u>
                   <b>Withdrawing your consent:</b>
                 </u>{' '}
@@ -731,14 +722,14 @@ const PrivacyPolicy: NextPage = () => {
                 </Anchor>
                 &quot; below.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 However, please note that this will not affect the lawfulness of
                 the processing before its withdrawal nor, when applicable law
                 allows, will it affect the processing of your personal
                 information conducted in reliance on lawful processing grounds
                 other than consent.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 Opting out of marketing and promotional communications: You can
                 unsubscribe from our marketing and promotional communications at
                 any time by clicking on the unsubscribe link in the emails that
@@ -755,11 +746,11 @@ const PrivacyPolicy: NextPage = () => {
                 requests, or for other non-marketing purposes.
               </Text>
               <Title order={3}>Account Information</Title>
-              <Text size='lg'>
+              <Text size='md'>
                 If you would at any time like to review or change the
                 information in your account or terminate your account, you can:
               </Text>
-              <List withPadding size='lg'>
+              <List withPadding size='md'>
                 <List.Item>
                   Log in to your account settings and update your user account.
                 </List.Item>
@@ -767,7 +758,7 @@ const PrivacyPolicy: NextPage = () => {
                   Contact us using the contact information provided.
                 </List.Item>
               </List>
-              <Text size='lg'>
+              <Text size='md'>
                 Upon your request to terminate your account, we will deactivate
                 or delete your account and information from our active
                 databases. However, we may retain some information in our files
@@ -775,7 +766,7 @@ const PrivacyPolicy: NextPage = () => {
                 investigations, enforce our legal terms and/or comply with
                 applicable legal requirements.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 <u>
                   <b>Cookies and similar technologies:</b>
                 </u>{' '}
@@ -793,7 +784,7 @@ const PrivacyPolicy: NextPage = () => {
                 </Anchor>
                 .
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 If you have questions or comments about your privacy rights, you
                 may email us at{' '}
                 <Anchor href='mailto:privacy@auresx.com'>
@@ -801,10 +792,10 @@ const PrivacyPolicy: NextPage = () => {
                 </Anchor>
                 .
               </Text>
-              <Title order={2} id='sec-10'>
+              <Title order={3} id='sec-10'>
                 10. CONTROLS FOR DO-NOT-TRACK FEATURES
               </Title>
-              <Text size='lg'>
+              <Text size='md'>
                 Most web browsers and some mobile operating systems and mobile
                 applications include a Do-Not-Track (&quot;DNT&quot;) feature or
                 setting you can activate to signal your privacy preference not
@@ -817,17 +808,17 @@ const PrivacyPolicy: NextPage = () => {
                 adopted that we must follow in the future, we will inform you
                 about that practice in a revised version of this privacy notice.
               </Text>
-              <Title order={2} id='sec-11'>
+              <Title order={3} id='sec-11'>
                 11. DO CALIFORNIA RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?
               </Title>
-              <Text size='lg'>
+              <Text size='md'>
                 <em>
                   <b>In Short:</b> Yes, if you are a resident of California, you
                   are granted specific rights regarding access to your personal
                   information.
                 </em>
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 California Civil Code Section 1798.83, also known as the
                 &quot;Shine The Light&quot; law, permits our users who are
                 California residents to request and obtain from us, once a year
@@ -840,7 +831,7 @@ const PrivacyPolicy: NextPage = () => {
                 your request in writing to us using the contact information
                 provided below.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 If you are under 18 years of age, reside in California, and have
                 a registered account with Services, you have the right to
                 request removal of unwanted data that you publicly post on the
@@ -852,16 +843,16 @@ const PrivacyPolicy: NextPage = () => {
                 data may not be completely or comprehensively removed from all
                 our systems (e.g., backups, etc.).
               </Text>
-              <Title order={2} id='sec-12'>
+              <Title order={3} id='sec-12'>
                 12. DO WE MAKE UPDATES TO THIS NOTICE?
               </Title>
-              <Text size='lg'>
+              <Text size='md'>
                 <em>
                   <b>In Short:</b> Yes, we will update this notice as necessary
                   to stay compliant with relevant laws.
                 </em>
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 We may update this privacy notice from time to time. The updated
                 version will be indicated by an updated &quot;Revised&quot; date
                 and the updated version will be effective as soon as it is
@@ -871,10 +862,10 @@ const PrivacyPolicy: NextPage = () => {
                 you to review this privacy notice frequently to be informed of
                 how we are protecting your information.
               </Text>
-              <Title order={2} id='sec-13'>
+              <Title order={3} id='sec-13'>
                 13. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?
               </Title>
-              <Text size='lg'>
+              <Text size='md'>
                 If you have questions or comments about this notice, you may
                 email us at{' '}
                 <Anchor href='mailto:privacy@auresx.com'>
@@ -894,11 +885,11 @@ const PrivacyPolicy: NextPage = () => {
                   Algeria).
                 </b>
               </Text>
-              <Title order={2} id='sec-14'>
+              <Title order={3} id='sec-14'>
                 14. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT
                 FROM YOU?
               </Title>
-              <Text size='lg'>
+              <Text size='md'>
                 Based on the applicable laws of your country, you may have the
                 right to request access to the personal information we collect
                 from you, change that information, or delete it. To request to

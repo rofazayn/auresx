@@ -5,6 +5,7 @@ import {
   useMantineColorScheme,
   Divider,
   Text,
+  Title,
 } from '@mantine/core'
 import { IconSun, IconMoon, IconBell, IconNotification } from '@tabler/icons'
 import React from 'react'
@@ -51,9 +52,9 @@ const SidebarHeader = () => {
                 >
                   <Logo />
                   <Box>
-                    <Text size='md' weight='500' mb={-4}>
+                    <Title order={6} pt={3} mb={-4} sx={{ letterSpacing: 0.5 }}>
                       AuresX
-                    </Text>
+                    </Title>
                     <Text size='sm' color='dimmed'>
                       Accounts Center
                     </Text>

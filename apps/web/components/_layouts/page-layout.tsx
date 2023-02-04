@@ -25,16 +25,18 @@ export default function PageLayout({ children }: LayoutProps) {
       <CookieBanner />
       <Box
         sx={{
-          minHeight: '100%',
+          minHeight: '900px',
           width: '100%',
-          paddingTop: 132,
-          paddingBottom: 35,
+          // paddingTop: 160,
+          paddingBottom: 240,
           '@media (max-width: 768px)': {
-            paddingTop: 128,
+            // paddingTop: 104,
+            paddingBottom: 40,
           },
           position: 'relative',
           flexGrow: 1,
           overflow: 'hidden',
+          zIndex: 0,
         }}
       >
         {children}

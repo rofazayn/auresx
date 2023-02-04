@@ -35,15 +35,16 @@ const Terms: NextPage = () => {
         >
           <Container
             size='xl'
-            sx={{
-              '@media (max-width: 992px)': {
-                marginInline: 4,
-                paddingInline: 4,
-              },
-            }}
+            pt={120}
+            // sx={{
+            //   '@media (max-width: 992px)': {
+            //     marginInline: 4,
+            //     paddingInline: 4,
+            //   },
+            // }}
           >
-            <Paper
-              radius='lg'
+            <Box
+              // radius='lg'
               sx={{
                 width: '100%',
                 maxWidth: 500,
@@ -93,7 +94,7 @@ const Terms: NextPage = () => {
                   Let&apos;s Go Back Home
                 </Button>
               </Link>
-            </Paper>
+            </Box>
           </Container>
         </Box>
       </PageLayout>

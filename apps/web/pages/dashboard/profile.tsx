@@ -83,9 +83,9 @@ const DashboardProfile: NextPage = () => {
             sx={{
               backgroundColor:
                 theme.colorScheme === 'dark'
-                  ? theme.colors.dark[8]
+                  ? theme.colors.dark[7]
                   : theme.colors.gray[0],
-              paddingInline: 24,
+              // paddingInline: 24,
               overflow: 'hidden',
             }}
             mt={24}

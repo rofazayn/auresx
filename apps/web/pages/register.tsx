@@ -15,9 +15,12 @@ import {
   Text,
   TextInput,
   Title,
+  useMantineTheme,
 } from '@mantine/core'
 import {
   IconAlertCircle,
+  IconBrandFacebook,
+  IconBrandGoogle,
   IconLockAccess,
   IconPlugConnected,
 } from '@tabler/icons'
@@ -32,7 +35,7 @@ import LoaderGlobal from '../components/loader-global'
 import PageLayout from '../components/_layouts/page-layout'
 import { AuthContext } from '../context/auth-context'
 import { useRegisterMutation } from '../generated/graphql'
-import { setAccessToken } from '../utils/tokens-operations'
+import { setAccessToken, setRefreshToken } from '../utils/tokens-operations'
 import { capitalizeWords } from '../utils/input-formatter'
 import { registerSchema } from '../validation/auth-validation'
 
@@ -49,6 +52,8 @@ const Register: NextPage = () => {
       router.push('/dashboard')
     }
   }, [authStatus, router])
+
+  const theme = useMantineTheme()
 
   if (authStatus === 'stale' || authStatus === 'found') {
     return <LoaderGlobal />
@@ -68,27 +73,27 @@ const Register: NextPage = () => {
           <Container
             size='md'
             sx={{
-              marginBottom: 120,
-              '@media (max-width: 992px)': {
-                marginInline: 4,
-                paddingInline: 4,
-              },
+              maxWidth: '480px',
+              paddingTop: 120,
             }}
           >
             <Paper
-              // shadow='xl'
               radius='lg'
+              p={'xl'}
               sx={{
-                paddingInline: 40,
-                '@media (max-width: 768px)': {
-                  paddingInline: 16,
-                },
-                paddingTop: 56,
-                paddingBottom: 64,
+                // paddingInline: 40,
+                // paddingTop: 32,
+                // '@media (max-width: 768px)': {
+                //   paddingTop: 24,
+                //   paddingInline: 16,
+                // },
+                // paddingBottom: 40,
+                backgroundColor:
+                  theme.colorScheme === 'dark' ? theme.colors.dark[7] : 'white',
               }}
             >
               <Grid gutter={24} align={'start'} justify={'center'}>
-                <Grid.Col sm={12} md={6}>
+                {/* <Grid.Col sm={12} md={6}>
                   <Center>
                     <Box
                       sx={{
@@ -134,7 +139,7 @@ const Register: NextPage = () => {
                         </Text>
                       </Box>
 
-                      {/* <Divider
+                      <Divider
                         variant='dashed'
                         sx={{ maxWidth: 380 }}
                         // label={'Third party login is coming soon!'}
@@ -157,7 +162,7 @@ const Register: NextPage = () => {
                           <Button
                             variant='light'
                             color='gray'
-                            size='md'
+                            size='sm'
                             sx={{ width: '100%', cursor: 'not-allowed' }}
                             leftIcon={<IconBrandGoogle size='16' />}
                           >
@@ -167,14 +172,14 @@ const Register: NextPage = () => {
                           <Button
                             variant='light'
                             color='gray'
-                            size='md'
+                            size='sm'
                             sx={{ width: '100%', cursor: 'not-allowed' }}
                             leftIcon={<IconBrandFacebook size='16' />}
                           >
                             Facebook
                           </Button>
                         </Button.Group>
-                      </Center> */}
+                      </Center>
 
                       <Box
                         sx={{
@@ -206,8 +211,8 @@ const Register: NextPage = () => {
                       </Box>
                     </Box>
                   </Center>
-                </Grid.Col>
-                <Grid.Col sm={12} md={6}>
+                </Grid.Col> */}
+                <Grid.Col sm={12} md={12}>
                   <Center>
                     <Box sx={{ maxWidth: 380 }}>
                       <Formik
@@ -229,14 +234,17 @@ const Register: NextPage = () => {
                           })
 
                           if (registerOperation.data?.register.accessToken) {
+                            setAuthStatus('found')
                             setAccessToken(
                               registerOperation.data?.register.accessToken
+                            )
+                            setRefreshToken(
+                              registerOperation.data?.register.refreshToken
                             )
                             let decodedUser = jwtDecode(
                               registerOperation.data.register.accessToken
                             )
                             setCurrentUser(decodedUser)
-                            setAuthStatus('found')
                           }
                         }}
                       >
@@ -311,13 +319,23 @@ const Register: NextPage = () => {
                                     <Text size='sm'>
                                       <b>I agree</b> to the{' '}
                                       <Link href='/terms' passHref>
-                                        <Anchor underline weight='500'>
+                                        <Anchor
+                                          underline
+                                          weight='500'
+                                          color='dimmed'
+                                          sx={{ fontWeight: 'bold' }}
+                                        >
                                           Terms of Use
                                         </Anchor>
                                       </Link>{' '}
                                       and to the{' '}
                                       <Link href='/privacy-policy' passHref>
-                                        <Anchor underline weight='500'>
+                                        <Anchor
+                                          underline
+                                          weight='500'
+                                          color='dimmed'
+                                          sx={{ fontWeight: 'bold' }}
+                                        >
                                           Privacy Policy
                                         </Anchor>
                                       </Link>{' '}
@@ -351,9 +369,8 @@ const Register: NextPage = () => {
                                   mb={8}
                                 />
                                 <Button
-                                  variant='filled'
                                   rightIcon={<IconPlugConnected />}
-                                  size='lg'
+                                  size='md'
                                   type='submit'
                                   loading={isSubmitting}
                                 >
@@ -377,17 +394,27 @@ const Register: NextPage = () => {
                                   )}
                               </Box>
 
-                              <Box mt={16}>
-                                {/* <Divider variant='dashed' mt={16} mb={8} /> */}
-                                <Text color='dimmed' mb={8}>
+                              <Box mt={-4}>
+                                {/* <Divider variant='dashed' my={16} /> */}
+                                <Text
+                                  color='dimmed'
+                                  mb={10}
+                                  size={'sm'}
+                                  align='center'
+                                >
                                   Already have an AuresX account?{' '}
                                   <Link href='/login' passHref>
-                                    <Anchor weight='bold' color='indigo'>
-                                      Sign in
+                                    <Anchor
+                                      weight='bold'
+                                      color='dimmed'
+                                      // sx={{ textDecoration: 'underline' }}
+                                    >
+                                      Login
                                     </Anchor>
                                   </Link>
                                 </Text>
-                                <Text
+
+                                {/* <Text
                                   size='xs'
                                   color='dimmed'
                                   sx={{ opacity: 0.6 }}
@@ -395,7 +422,7 @@ const Register: NextPage = () => {
                                   AuresX accounts are a general purpose accounts
                                   that handle your data, activity &amp;
                                   authorizations in our ecosystem.
-                                </Text>
+                                </Text> */}
                               </Box>
                             </Stack>
                           </form>

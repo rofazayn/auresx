@@ -9,6 +9,7 @@ import {
   LoadingOverlay,
   Radio,
   Text,
+  Title,
   useMantineTheme,
 } from '@mantine/core'
 import { showNotification } from '@mantine/notifications'
@@ -24,16 +25,27 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useContext, useEffect, useState } from 'react'
-import PageHeader from '../../../components/page-header'
-import DashboardLayout from '../../../components/_layouts/dashboard-layout'
-import { AuthContext } from '../../../context/auth-context'
+import PageHeader from '../../../../components/page-header'
+import DashboardLayout from '../../../../components/_layouts/dashboard-layout'
+import { AuthContext } from '../../../../context/auth-context'
 import {
   useCreateOneSubscriptionMutation,
   useCreateOneTransactionMutation,
   useProductQuery,
   useUpdateOneUserMutation,
-} from '../../../generated/graphql'
-import formatMoney from '../../../utils/to-money'
+} from '../../../../generated/graphql'
+import formatMoney from '../../../../utils/to-money'
+import {
+  getAccessToken,
+  getRefreshToken,
+} from '../../../../utils/tokens-operations'
+
+const NODE_ENV = process.env.NODE_ENV! || 'development'
+const synchroEndPoint: string = `${
+  NODE_ENV === 'development'
+    ? 'http://localhost:8888'
+    : 'https://synchro.auresx.com'
+}`
 
 const ProductSubscription: NextPage = () => {
   const router = useRouter()
@@ -136,45 +148,92 @@ const ProductSubscription: NextPage = () => {
             renewCounter: 0,
           },
         },
-      }).then(async () => {
-        await createOneTransaction({
-          variables: {
-            data: {
-              type: 'PAYMENT',
-              status: 'SUCCESS',
-              message: `${productData?.product?.name} - ${calculatedDuration} Month(s) Subscription`,
-              amount: total,
-              user: {
-                connect: { id: `${currentUser.id}` },
-              },
+      }).then(async (res) => {
+        console.log(res.data?.createOneSubscription)
+        if (res.data?.createOneSubscription) {
+          let accessToken = getAccessToken()
+          let refreshToken = getRefreshToken()
+
+          const synchroSubscriptionMutation = `
+            mutation {
+              createOneSubscription(data: {
+                renewCounter: 0,
+                totalPaid: ${total},
+                axId: "${res.data.createOneSubscription.id}",
+                user: {
+                  connectOrCreate: {
+                    where: {axId: "${currentUser.id}"},
+                    create: {
+                      axId: "${currentUser.id}",
+                      email: "${currentUser.email}",
+                      name: "${currentUser.name}",
+                      role: "SUPER",
+                    }
+                  }
+                }
+              }) {
+                id
+                axId
+                userId
+                totalPaid
+                renewCounter
+                expiryDate
+                createdAt
+                updatedAt
+              }
+            }`
+          const response = await fetch(synchroEndPoint + '/graphql', {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              'x-access-token': `Bearer ${accessToken}`,
+              'x-refresh-token': `Bearer ${refreshToken}`,
             },
-          },
-        }).then(async () => {
-          const updatedUser = await updateOneUser({
+            body: JSON.stringify({
+              query: synchroSubscriptionMutation,
+            }),
+          })
+          await createOneTransaction({
             variables: {
               data: {
-                balance: { decrement: total },
-              },
-              where: {
-                id: `${currentUser.id}`,
+                type: 'PAYMENT',
+                status: 'SUCCESS',
+                message: `${productData?.product?.name} - ${calculatedDuration} Month(s) Subscription`,
+                amount: total,
+                user: {
+                  connect: { id: `${currentUser.id}` },
+                },
               },
             },
-          })
-
-          if (updatedUser.data?.updateOneUser) {
-            setCurrentUser({
-              currentUser,
-              ...updatedUser.data?.updateOneUser,
+          }).then(async () => {
+            const updatedUser = await updateOneUser({
+              variables: {
+                data: {
+                  balance: { decrement: total },
+                },
+                where: {
+                  id: `${currentUser.id}`,
+                },
+              },
             })
-          }
 
-          showNotification({
-            title: 'Success',
-            message: `You've successfully subscribed to ${productData?.product?.name}`,
-            color: 'indigo',
-            icon: <IconCheck />,
+            if (updatedUser.data?.updateOneUser) {
+              setCurrentUser({
+                currentUser,
+                ...updatedUser.data?.updateOneUser,
+              })
+            }
+
+            showNotification({
+              title: 'Success',
+              message: `You've successfully subscribed to ${productData?.product?.name}`,
+              color: 'pink',
+              icon: <IconCheck />,
+            })
           })
-        })
+          console.log(response.json())
+        }
       })
       setGlobalLoading(false)
     } catch (error) {
@@ -234,13 +293,13 @@ const ProductSubscription: NextPage = () => {
                   visible={globalLoading}
                   overlayBlur={3}
                   radius='md'
-                  loaderProps={{ color: 'teal', variant: 'dots' }}
+                  loaderProps={{ color: 'indigo', variant: 'dots' }}
                 />
                 {productLoading ? (
                   <Box>
                     <Group spacing={8}>
                       <Loader size='sm' color='indigo' />
-                      <Text color='dimmed'>
+                      <Text color='dimmed' size='sm'>
                         Searching the database for your specific product, please
                         be patient!
                       </Text>
@@ -258,14 +317,12 @@ const ProductSubscription: NextPage = () => {
                     >
                       <Group spacing={8}>
                         <IconBuildingStore />
-                        <Text weight='bold' size='lg'>
-                          {productData.product.name}{' '}
-                        </Text>
+                        <Title order={6}>{productData.product.name}</Title>
                         <Group spacing={4}>
-                          <Badge size='lg' variant='dot'>
+                          <Badge size='lg' color='teal' variant='dot'>
                             Alpha Release - 2023
                           </Badge>
-                          <Badge size='lg' color='pink' variant='dot'>
+                          <Badge size='lg' color='teal' variant='dot'>
                             New
                           </Badge>
                         </Group>
@@ -282,7 +339,7 @@ const ProductSubscription: NextPage = () => {
                       }}
                       mb={16}
                     >
-                      <Text sx={{ maxWidth: 440 }} size='lg'>
+                      <Text sx={{ maxWidth: 440 }} size='md'>
                         {productData.product.description}{' '}
                         <Link href='/dashboard/services/'>
                           <Text
@@ -326,10 +383,7 @@ const ProductSubscription: NextPage = () => {
                       <Text weight='bold' size='md' mb={6}>
                         1 - Pick a Subscription Plan
                       </Text>
-                      <Text
-                        sx={{ maxWidth: 440, lineHeight: 1.2 }}
-                        color='dimmed'
-                      >
+                      <Text sx={{ maxWidth: 440 }} color='dimmed' size='sm'>
                         Choose the subscription plan that suits your needs from
                         the available ones down below.
                       </Text>
@@ -364,9 +418,7 @@ const ProductSubscription: NextPage = () => {
                                   size='lg'
                                   mb={3}
                                   weight='bold'
-                                  color={
-                                    selectedPlan === 0 ? 'indigo' : 'unset'
-                                  }
+                                  color={selectedPlan === 0 ? 'pink' : 'unset'}
                                 >
                                   Starter Plan
                                 </Text>
@@ -385,7 +437,7 @@ const ProductSubscription: NextPage = () => {
                                   checked={selectedPlan === 0}
                                   onChange={() => setSelectedPlan(0)}
                                   size='md'
-                                  color='indigo'
+                                  color='pink'
                                 />
                               </Box>
                             </Box>
@@ -452,9 +504,7 @@ const ProductSubscription: NextPage = () => {
                                   size='lg'
                                   mb={3}
                                   weight='bold'
-                                  color={
-                                    selectedPlan === 1 ? 'indigo' : 'unset'
-                                  }
+                                  color={selectedPlan === 1 ? 'pink' : 'unset'}
                                 >
                                   Business Plan
                                 </Text>
@@ -473,7 +523,7 @@ const ProductSubscription: NextPage = () => {
                                   checked={selectedPlan === 1}
                                   onChange={() => setSelectedPlan(1)}
                                   size='md'
-                                  color='indigo'
+                                  color='pink'
                                 />
                               </Box>
                             </Box>
@@ -542,9 +592,7 @@ const ProductSubscription: NextPage = () => {
                                   size='lg'
                                   mb={3}
                                   weight='bold'
-                                  color={
-                                    selectedPlan === 2 ? 'indigo' : 'unset'
-                                  }
+                                  color={selectedPlan === 2 ? 'pink' : 'unset'}
                                 >
                                   Entreprize Plan
                                 </Text>
@@ -563,7 +611,7 @@ const ProductSubscription: NextPage = () => {
                                   checked={selectedPlan === 2}
                                   onChange={() => setSelectedPlan(2)}
                                   size='md'
-                                  color='indigo'
+                                  color='pink'
                                 />
                               </Box>
                             </Box>
@@ -616,10 +664,7 @@ const ProductSubscription: NextPage = () => {
                       <Text weight='bold' size='md' mb={6}>
                         2 - Pick your Subscription Duration
                       </Text>
-                      <Text
-                        sx={{ maxWidth: 440, lineHeight: 1.2 }}
-                        color='dimmed'
-                      >
+                      <Text sx={{ maxWidth: 440 }} color='dimmed' size='sm'>
                         Choose the subscription duration you wan&apos;t to start
                         with{' '}
                         <Text component='span' weight='500'>
@@ -746,7 +791,7 @@ const ProductSubscription: NextPage = () => {
                                 - Save{' '}
                                 <Text
                                   component='span'
-                                  color='indigo'
+                                  color='teal'
                                   weight='bold'
                                 >
                                   10%
@@ -816,7 +861,7 @@ const ProductSubscription: NextPage = () => {
                                 - Save{' '}
                                 <Text
                                   component='span'
-                                  color='yellow'
+                                  color='teal'
                                   weight='bold'
                                 >
                                   20%
@@ -841,15 +886,12 @@ const ProductSubscription: NextPage = () => {
                       <Text weight='bold' size='md' mb={6}>
                         3 - Check your Subscription Details
                       </Text>
-                      <Text
-                        sx={{ maxWidth: 440, lineHeight: 1.2 }}
-                        color='dimmed'
-                      >
+                      <Text sx={{ maxWidth: 440 }} color='dimmed' size='sm'>
                         Check the plan that you&apos;ve picked then click on
                         <Text component='span' weight='500'>
-                          &quot;Subscribe to {productData.product.name}&quot;
+                          &quot;Purchase {productData.product.name}&quot;
                         </Text>{' '}
-                        to finish
+                        button to finish your subscription process.
                       </Text>
 
                       <Box mt={16}>
@@ -880,12 +922,8 @@ const ProductSubscription: NextPage = () => {
                             }}
                           >
                             <Box mt={16}>
-                              <Group spacing={3}>
-                                <Text
-                                  size='sm'
-                                  weight='500'
-                                  // color='dimmed'
-                                >
+                              <Group spacing={2}>
+                                <Text size='sm' weight='500' color='dimmed'>
                                   Payment Information
                                 </Text>
                                 <IconCoin size='16' />
@@ -897,12 +935,12 @@ const ProductSubscription: NextPage = () => {
                                     Current plan saves
                                   </Text>
                                   <Text
-                                    color='orange'
+                                    color='teal'
                                     component='span'
                                     sx={{
                                       fontFamily: 'monospace',
-                                      lineHeight: 1.2,
                                     }}
+                                    size='xl'
                                     weight='bold'
                                   >
                                     {formatMoney(discountAmount)} DA
@@ -913,7 +951,7 @@ const ProductSubscription: NextPage = () => {
                                     Included Tax (TVA)
                                   </Text>
                                   <Text
-                                    // color='orange'
+                                    // color='teal'
                                     component='span'
                                     sx={{
                                       fontFamily: 'monospace',
@@ -961,7 +999,6 @@ const ProductSubscription: NextPage = () => {
                               <Button
                                 size='md'
                                 rightIcon={<IconShoppingCart />}
-                                color='indigo'
                                 fullWidth
                                 onClick={onSubscribeToProduct}
                                 disabled={globalLoading}
@@ -984,7 +1021,7 @@ const ProductSubscription: NextPage = () => {
                     }}
                   >
                     <Text
-                      color='orange'
+                      color='teal'
                       sx={{ display: 'flex', alignItems: 'center' }}
                       weight='500'
                     >
@@ -994,7 +1031,7 @@ const ProductSubscription: NextPage = () => {
                     </Text>
                     <Button
                       size='sm'
-                      color='orange'
+                      color='teal'
                       variant='outline'
                       onClick={() => router.push('/dashboard/services')}
                     >

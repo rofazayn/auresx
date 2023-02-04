@@ -23,16 +23,7 @@ const Terms: NextPage = () => {
       </Head>
 
       <PageLayout>
-        <Container
-          size='xl'
-          dir='ltr'
-          sx={{
-            '@media (max-width: 992px)': {
-              marginInline: 4,
-              paddingInline: 4,
-            },
-          }}
-        >
+        <Container size='xl' dir='ltr' pt={120}>
           <Paper
             radius='lg'
             p='xl'
@@ -51,7 +42,7 @@ const Terms: NextPage = () => {
                   Last updated August 12, 2022
                 </Text>
               </Box>
-              <Text size='lg'>
+              <Text size='md'>
                 {' '}
                 This Cookie Policy explains how AuresX SPAS
                 (&quot;Company&quot;, &quot;we&quot;, &quot;us&quot;, and
@@ -61,14 +52,14 @@ const Terms: NextPage = () => {
                 and why we use them, as well as your rights to control our use
                 of them.{' '}
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 {' '}
                 In some cases we may use cookies to collect personal
                 information, or that becomes personal information if we combine
                 it with other information.{' '}
               </Text>
-              <Title order={2}>What are cookies?</Title>
-              <Text size='lg'>
+              <Title order={3}>What are cookies?</Title>
+              <Text size='md'>
                 {' '}
                 Cookies are small data files that are placed on your computer or
                 mobile device when you visit a website. Cookies are widely used
@@ -76,7 +67,7 @@ const Terms: NextPage = () => {
                 work more efficiently, as well as to provide reporting
                 information.{' '}
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 Cookies set by the website owner (in this case, AuresX SPAS) are
                 called &quot;first party cookies&quot;. Cookies set by parties
                 other than the website owner are called &quot;third party
@@ -87,8 +78,8 @@ const Terms: NextPage = () => {
                 computer both when it visits the website in question and also
                 when it visits certain other websites.
               </Text>
-              <Title order={2}>Why do we use cookies? </Title>
-              <Text size='lg'>
+              <Title order={3}>Why do we use cookies? </Title>
+              <Text size='md'>
                 We use first and third party cookies for several reasons. Some
                 cookies are required for technical reasons in order for our
                 Websites to operate, and we refer to these as
@@ -99,14 +90,14 @@ const Terms: NextPage = () => {
                 advertising, analytics and other purposes. This is described in
                 more detail below.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 The specific types of first and third party cookies served
                 through our Websites and the purposes they perform are described
                 below (please note that the specific cookies served may vary
                 depending on the specific Online Properties you visit).
               </Text>
-              <Title order={2}>How can I control cookies?</Title>
-              <Text size='lg'>
+              <Title order={3}>How can I control cookies?</Title>
+              <Text size='md'>
                 You have the right to decide whether to accept or reject
                 cookies. You can exercise your cookie rights by setting your
                 preferences in the Cookie Consent Manager. The Cookie Consent
@@ -114,7 +105,7 @@ const Terms: NextPage = () => {
                 accept or reject. Essential cookies cannot be rejected as they
                 are strictly necessary to provide you with services.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 The Cookie Consent Manager can be found in the notification
                 banner and on our website. If you choose to reject cookies, you
                 may still use our website though your access to some
@@ -125,7 +116,7 @@ const Terms: NextPage = () => {
                 you should visit your browser&apos;s help menu for more
                 information.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 In addition, most advertising networks offer you a way to opt
                 out of targeted advertising. If you would like to find out more
                 information, please visit{' '}
@@ -141,16 +132,16 @@ const Terms: NextPage = () => {
                 </Anchor>
                 .
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 The specific types of first and third party cookies served
                 through our Websites and the purposes they perform are described
                 in the table below (please note that the specific cookies served
                 may vary depending on the specific Online Properties you visit):
               </Text>
-              <Title order={2}>
+              <Title order={3}>
                 What about other tracking technologies, like web beacons?
               </Title>
-              <Text size='lg'>
+              <Text size='md'>
                 Cookies are not the only way to recognize or track visitors to a
                 website. We may use other, similar technologies from time to
                 time, like web beacons (sometimes called &quot;tracking
@@ -167,16 +158,16 @@ const Terms: NextPage = () => {
                 cookies to function properly, and so declining cookies will
                 impair their functioning.
               </Text>
-              <Title order={2}>
+              <Title order={3}>
                 Do you use Flash cookies or Local Shared Objects?
               </Title>
-              <Text size='lg'>
+              <Text size='md'>
                 Websites may also use so-called &quot;Flash Cookies&quot; (also
                 known as Local Shared Objects or &quot;LSOs&quot;) to, among
                 other things, collect and store information about your use of
                 our services, fraud prevention and for other site operations.
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 If you do not want Flash Cookies stored on your computer, you
                 can adjust the settings of your Flash player to block Flash
                 Cookies storage using the tools contained in the Website Storage
@@ -190,15 +181,15 @@ const Terms: NextPage = () => {
                 Cookies that are not being delivered by the operator of the page
                 you are on at the time).
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 Please note that setting the Flash Player to restrict or limit
                 acceptance of Flash Cookies may reduce or impede the
                 functionality of some Flash applications, including,
                 potentially, Flash applications used in connection with our
                 services or online content
               </Text>
-              <Title order={2}>Do you serve targeted advertising?</Title>
-              <Text size='lg'>
+              <Title order={3}>Do you serve targeted advertising?</Title>
+              <Text size='md'>
                 Third parties may serve cookies on your computer or mobile
                 device to serve advertising through our Websites. These
                 companies may use information about your visits to this and
@@ -213,10 +204,10 @@ const Terms: NextPage = () => {
                 them to identify your name, contact details or other details
                 that directly identify you unless you choose to provide these.
               </Text>
-              <Title order={2}>
+              <Title order={3}>
                 How often will you update this Cookie Policy?
               </Title>
-              <Text size='lg'>
+              <Text size='md'>
                 {' '}
                 We may update this Cookie Policy from time to time in order to
                 reflect, for example, changes to the cookies we use or for other
@@ -224,17 +215,17 @@ const Terms: NextPage = () => {
                 re-visit this Cookie Policy regularly to stay informed about our
                 use of cookies and related technologies.{' '}
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 The date at the top of this Cookie Policy indicates when it was
                 last updated.
               </Text>
-              <Title order={2}>Where can I get further information?</Title>
-              <Text size='lg'>
+              <Title order={3}>Where can I get further information?</Title>
+              <Text size='md'>
                 If you have any questions about our use of cookies or other
                 technologies, please email us at support@auresx.com or by post
                 to:
               </Text>
-              <Text size='lg'>
+              <Text size='md'>
                 <b>Legal name: AuresX SPAS</b>
                 <br />
                 <b>Address: 5th of July St.</b>

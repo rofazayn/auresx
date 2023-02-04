@@ -1,4 +1,4 @@
-import { Box, Text } from '@mantine/core'
+import { Box, Text, Title } from '@mantine/core'
 import { IconReceipt2 } from '@tabler/icons'
 import { NextPage } from 'next'
 import Head from 'next/head'
@@ -41,10 +41,15 @@ const BillingDashboard: NextPage = () => {
               <Image src={billingIllustration} alt='Rocket Illustration' />
             </Box>
 
-            <Text weight='500' size='xl' mb={8}>
-              Coming Soon
-            </Text>
-            <Text color='dimmed' sx={{ maxWidth: 360 }} align='center'>
+            <Title order={5} mb={8} weight='600'>
+              Payment &amp; Billing
+            </Title>
+            <Text
+              color='dimmed'
+              size='sm'
+              sx={{ maxWidth: 360 }}
+              align='center'
+            >
               Once you add balance to your account or purchase a service from
               us, we will show you detailed billing reports.
             </Text>

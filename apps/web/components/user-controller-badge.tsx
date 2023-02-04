@@ -92,7 +92,7 @@ const UserControllerBadge = () => {
                 justifyContent: 'space-between',
               }}
             >
-              <Text color='dimmed' size='md' weight='500'>
+              <Text color='dimmed' size='sm' weight='500'>
                 Account Balance
               </Text>
               <IconCoin color='gray' size='24' style={{ opacity: 0.4 }} />

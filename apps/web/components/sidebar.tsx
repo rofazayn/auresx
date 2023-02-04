@@ -14,7 +14,7 @@ const Sidebar = () => {
   const theme = useMantineTheme()
   return (
     <Paper
-      radius='md'
+      radius={12}
       sx={{
         padding: 24,
         marginBlock: 24,
