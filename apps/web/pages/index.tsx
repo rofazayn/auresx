@@ -34,8 +34,12 @@ import { useRef } from 'react'
 import PageLayout from '../components/_layouts/page-layout'
 import genesisLogoDark from '../public/images/genesis-logo-dark.png'
 import genesisLogoLight from '../public/images/genesis-logo-light.png'
-import genesisPreviewLightImage from '../public/images/genesis-preview-light.png'
-import genesisPreviewImage from '../public/images/genesis-preview.png'
+import genesisPreviewLightImage1 from '../public/images/gl1.png'
+import genesisPreviewDarkImage1 from '../public/images/gd1.png'
+import genesisPreviewLightImage2 from '../public/images/gl2.png'
+import genesisPreviewDarkImage2 from '../public/images/gd2.png'
+import genesisPreviewLightImage3 from '../public/images/gl3.png'
+import genesisPreviewDarkImage3 from '../public/images/gd3.png'
 // import xSvg from '../public/images/svg/x.svg'
 
 const Home: NextPage = () => {
@@ -234,11 +238,11 @@ const Home: NextPage = () => {
                     color='dimmed'
                     mb={24}
                   >
-                    Genesis POS is a point of sale software as a service
+                    <b>Genesis POS</b> is a point of sale software as a service
                     application that synchronizes, developed, crafted and
-                    battle-tested to handle worst case network scenarios
+                    battle-tested to handle worst case network scenarios.
                   </Text>
-                  <Group sx={{ width: '100%' }} spacing={8} mb={32}>
+                  <Group sx={{ width: '100%' }} spacing={8}>
                     <Link href='/dashboard/services'>
                       <Button
                         size='sm'
@@ -253,6 +257,8 @@ const Home: NextPage = () => {
                       </Button>
                     </Link>
                   </Group>
+
+                  <Divider variant='dashed' my={40} sx={{ width: '50%' }} />
 
                   <Box sx={{ width: '100%', maxWidth: 500 }}>
                     <Carousel
@@ -282,7 +288,7 @@ const Home: NextPage = () => {
                         >
                           {theme.colorScheme === 'dark' ? (
                             <NextImage
-                              src={genesisPreviewImage}
+                              src={genesisPreviewDarkImage1}
                               alt='Genssi preview'
                               aria-label='Genesis preview'
                               // layout='fill'
@@ -290,7 +296,7 @@ const Home: NextPage = () => {
                             />
                           ) : (
                             <NextImage
-                              src={genesisPreviewLightImage}
+                              src={genesisPreviewLightImage1}
                               alt='Genssi preview'
                               aria-label='Genesis preview'
                               // layout='fill'
@@ -317,7 +323,7 @@ const Home: NextPage = () => {
                         >
                           {theme.colorScheme === 'dark' ? (
                             <NextImage
-                              src={genesisPreviewImage}
+                              src={genesisPreviewDarkImage2}
                               alt='Genssi preview'
                               aria-label='Genesis preview'
                               // layout='fill'
@@ -325,7 +331,7 @@ const Home: NextPage = () => {
                             />
                           ) : (
                             <NextImage
-                              src={genesisPreviewLightImage}
+                              src={genesisPreviewLightImage2}
                               alt='Genssi preview'
                               aria-label='Genesis preview'
                               // layout='fill'
@@ -352,7 +358,7 @@ const Home: NextPage = () => {
                         >
                           {theme.colorScheme === 'dark' ? (
                             <NextImage
-                              src={genesisPreviewImage}
+                              src={genesisPreviewDarkImage3}
                               alt='Genssi preview'
                               aria-label='Genesis preview'
                               // layout='fill'
@@ -360,7 +366,7 @@ const Home: NextPage = () => {
                             />
                           ) : (
                             <NextImage
-                              src={genesisPreviewLightImage}
+                              src={genesisPreviewLightImage3}
                               alt='Genssi preview'
                               aria-label='Genesis preview'
                               // layout='fill'
@@ -414,7 +420,8 @@ const Home: NextPage = () => {
                     <Text color='dimmed' size='sm'>
                       In order to develop such a complex software, we had to
                       discover possible ways to achieve seamless flow of data
-                      and resolve conflicts as soon as they occur.
+                      and resolve synchronization conflicts as soon as they
+                      occur.
                     </Text>
                   </Timeline.Item>
 
@@ -433,12 +440,12 @@ const Home: NextPage = () => {
                     lineVariant='dashed'
                   >
                     <Text color='dimmed' size='sm'>
-                      The development for this software started back 2022, first
-                      we had to desgin a software architecture to support the
-                      heavy data analysis we are willing to perform. Therefore,
-                      we developed 3 main modules: the server, the clint and the
-                      synchronizer. Each module is responsible for certain
-                      functionality and is maintained seperately.
+                      The development for this software started back in 2022.
+                      First, we had to desgin a software architecture that
+                      supports heavy data flow. Therefore, we developed 3 main
+                      modules: the server, the client and the synchronizer. Each
+                      module is responsible for a certain functionality and is
+                      maintained seperately.
                     </Text>
                   </Timeline.Item>
 
@@ -461,8 +468,8 @@ const Home: NextPage = () => {
                   >
                     <Text color='dimmed' size='sm'>
                       We are constantly upgdating our ecosystem so that our
-                      future releases are fully compatible with our
-                      infratstructure. Genesis POS alpha release will be
+                      future releases will be fully compatible with any
+                      infratstructure. Genesis POS Alpha release will be
                       available for everyone to try in June 2023.
                     </Text>
                   </Timeline.Item>
@@ -472,10 +479,11 @@ const Home: NextPage = () => {
                   >
                     <Text color='dimmed' size='sm'>
                       We are planning to support Genesis POS with many other
-                      solutions, such as the ability to expose your local store
-                      to a national online market with as few intervention from
-                      your side. Our goal is to allow small businesses to thrive
-                      and market their goods in the most efficient way possible.
+                      solutions, such as the ability to expose a local store
+                      from Genesis POS to a national online market with few
+                      intervention from your side. Our goal is to help small
+                      businesses to thrive and market their products in an
+                      efficient way.
                     </Text>
                   </Timeline.Item>
                 </Timeline>

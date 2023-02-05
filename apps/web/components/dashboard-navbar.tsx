@@ -68,7 +68,7 @@ const DashboardNavbar = () => {
         >
           <Paper
             // shadow='xs'
-            radius='md'
+            radius='lg'
             sx={{
               paddingBlock: 20,
               paddingInline: 24,

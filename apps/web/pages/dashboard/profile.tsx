@@ -13,6 +13,7 @@ import {
   IconAlertTriangle,
   IconCircleCheck,
   IconClipboardText,
+  IconCoin,
   IconDeviceDesktop,
   IconHeartHandshake,
   IconLocation,
@@ -29,6 +30,7 @@ import { useContext } from 'react'
 import PageHeader from '../../components/page-header'
 import DashboardLayout from '../../components/_layouts/dashboard-layout'
 import { AuthContext } from '../../context/auth-context'
+import formatMoney from '../../utils/to-money'
 
 const DashboardProfile: NextPage = () => {
   const theme = useMantineTheme()
@@ -61,20 +63,21 @@ const DashboardProfile: NextPage = () => {
             <br />
             If you wish to change anything, go to your{' '}
             <NextLink href='/dashboard/settings' passHref>
-              <Anchor underline>
-                <Box
-                  sx={{
-                    display: 'inline-flex',
-                    transform: 'translateY(3px)',
-                    alignItems: 'center',
-                    gap: 4,
-                  }}
-                >
-                  <Text span weight='500'>
-                    Settings
-                  </Text>
-                  <IconSettings size={16} />
-                </Box>
+              <Anchor
+                underline
+                sx={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 4,
+                  lineHeight: 1,
+                  padding: 0,
+                  margin: 0,
+                }}
+              >
+                <Text span weight='500'>
+                  Settings
+                </Text>
+                <IconSettings size={16} />
               </Anchor>
             </NextLink>
           </Text>
@@ -214,6 +217,39 @@ const DashboardProfile: NextPage = () => {
                     </Text>
                   </Box>
                 </Tooltip>
+              </Box>
+            </Box>
+            <Divider variant='dashed' />
+            <Box
+              py={24}
+              sx={{
+                display: 'flex',
+                alignItems: 'flex-end',
+                justifyContent: 'space-between',
+                gap: 16,
+                '@media (max-width: 520px)': {
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                },
+              }}
+            >
+              <Box>
+                <Group spacing={8}>
+                  <IconCoin color='gray' />
+                  <Text
+                    weight='500'
+                    color='dimmed'
+                    size='sm'
+                    sx={{ minWidth: 140 }}
+                  >
+                    Balance
+                  </Text>
+                </Group>
+              </Box>
+              <Box>
+                <Text weight='bold' sx={{ fontFamily: 'monospace' }}>
+                  {formatMoney(currentUser?.balance) + ' DZD' || 'No balance'}
+                </Text>
               </Box>
             </Box>
             <Divider variant='dashed' />
