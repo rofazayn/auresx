@@ -22,7 +22,7 @@ const mantineTheme: MantineThemeOverride = {
       '#0d5b47',
     ],
   },
-  primaryColor: 'indigo',
+  primaryColor: 'teal',
   // primaryShade: 7,
   lineHeight: 1.6,
   components: {

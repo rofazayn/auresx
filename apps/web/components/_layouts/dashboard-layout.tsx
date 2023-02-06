@@ -31,7 +31,7 @@ export default function DashboardLayout({ children }: LayoutProps) {
 
   useEffect(() => {
     if (authStatus === 'unfound' && !currentUser) {
-      router.push('/login')
+      router.push('/')
     }
   }, [authStatus, currentUser, router])
 
@@ -65,7 +65,7 @@ export default function DashboardLayout({ children }: LayoutProps) {
             backgroundColor:
               colorScheme === 'dark'
                 ? theme.colors.dark[8]
-                : theme.colors.gray[2],
+                : theme.colors.gray[1],
           }}
         >
           <DashboardNavbar />
@@ -199,7 +199,7 @@ export default function DashboardLayout({ children }: LayoutProps) {
             >
               <Box>
                 <Paper
-                  radius='md'
+                  radius='lg'
                   sx={{
                     overflow: 'hidden',
                     display: 'flex',

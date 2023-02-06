@@ -52,11 +52,19 @@ const SidebarHeader = () => {
                 >
                   <Logo />
                   <Box>
-                    <Title order={6} pt={3} mb={-4} sx={{ letterSpacing: 0.5 }}>
+                    <Title
+                      order={5}
+                      pt={3}
+                      mb={-4}
+                      sx={{
+                        // letterSpacing: 0.5,
+                        fontFamily: 'Work Sans',
+                      }}
+                    >
                       AuresX
                     </Title>
-                    <Text size='sm' color='dimmed'>
-                      Accounts Center
+                    <Text size='xs' color='dimmed'>
+                      Dashboard
                     </Text>
                   </Box>
                 </Box>
