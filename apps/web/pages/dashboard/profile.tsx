@@ -248,7 +248,8 @@ const DashboardProfile: NextPage = () => {
               </Box>
               <Box>
                 <Text weight='bold' sx={{ fontFamily: 'monospace' }}>
-                  {formatMoney(currentUser?.balance) + ' DZD' || 'No balance'}
+                  {formatMoney(currentUser?.balance || 0) + ' DZD' ||
+                    'No balance'}
                 </Text>
               </Box>
             </Box>
