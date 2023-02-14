@@ -316,6 +316,7 @@ const Login: NextPage = () => {
                                   size='md'
                                   type='submit'
                                   loading={isSubmitting}
+                                  color='indigo'
                                 >
                                   Login to your Account
                                 </Button>

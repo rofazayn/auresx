@@ -373,6 +373,7 @@ const Register: NextPage = () => {
                                   size='md'
                                   type='submit'
                                   loading={isSubmitting}
+                                  color='indigo'
                                 >
                                   Create your Account
                                 </Button>

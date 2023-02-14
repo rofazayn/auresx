@@ -1,13 +1,12 @@
-import { Box, createStyles, useContextStylesApi } from '@mantine/core'
-import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import { Box, createStyles } from '@mantine/core'
 import NextLink from 'next/link'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
 
 const useStyles = createStyles((theme, _params, getRef) => {
   const icon: any = getRef('icon')
   return {
     link: {
-      ...theme.fn.focusStyles(),
       display: 'flex',
       alignItems: 'center',
       textDecoration: 'none',
@@ -20,10 +19,12 @@ const useStyles = createStyles((theme, _params, getRef) => {
       padding: `${theme.spacing.md}px ${theme.spacing.sm}px`,
       borderRadius: theme.radius.md,
       fontWeight: 500,
-      transition: 'all ease-in-out 250ms',
+      transitionProperty: 'color, background-color',
+      transition: 'ease-in-out 200ms',
       position: 'relative',
       // fontFamily: 'Epilogue',
       lineHeight: 1,
+      // ...theme.fn.focusStyles(),
 
       '&::before': {
         content: '""',
@@ -39,7 +40,7 @@ const useStyles = createStyles((theme, _params, getRef) => {
         borderTopLeftRadius: 8,
         borderBottomLeftRadius: 8,
         opacity: 0.7,
-        transition: 'all ease-in-out 250ms',
+        transition: 'background-color ease-in-out 200ms',
       },
 
       '&:hover': {
@@ -62,6 +63,8 @@ const useStyles = createStyles((theme, _params, getRef) => {
           ? theme.colors.dark[2]
           : theme.colors.gray[6],
       marginInlineEnd: 12,
+      // transitionProperty: 'stroke fill path',
+      transition: 'ease-in-out 200ms',
     },
 
     linkActive: {
