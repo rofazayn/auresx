@@ -247,6 +247,7 @@ const Home: NextPage = () => {
                       <Button
                         size='sm'
                         leftIcon={<IconShoppingCart size={16} />}
+                        color='indigo'
                       >
                         Buy Now
                       </Button>

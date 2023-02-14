@@ -63,7 +63,9 @@ const CookieBanner = () => {
             <Text size='xs' weight='500' color='dimmed'>
               For your privacy, you have to accept our{' '}
               <Link href='/cookies'>
-                <Anchor underline={true}>Cookies Policy</Anchor>
+                <Anchor color='indigo' weight='bold' underline={true}>
+                  Cookies Policy
+                </Anchor>
               </Link>{' '}
               to proceed with using the website.
             </Text>
@@ -90,6 +92,7 @@ const CookieBanner = () => {
                 sx={{ width: '100%' }}
                 size='sm'
                 // variant='light'
+                color='indigo'
                 onClick={() => {
                   localStorage.setItem('cookies-accepted', 'yes')
                   setCookiesConsent('yes')
