@@ -5,22 +5,24 @@ import {
   Button,
   Center,
   Container,
+  Divider,
   Grid,
   Paper,
   PasswordInput,
+  SegmentedControl,
   Stack,
   Text,
   TextInput,
   useMantineTheme,
 } from '@mantine/core'
-import { IconAlertCircle, IconLogin } from '@tabler/icons'
+import { IconAlertCircle, IconConfetti, IconLogin } from '@tabler/icons'
 import { Formik } from 'formik'
 import jwtDecode from 'jwt-decode'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import LoaderGlobal from '../components/loader-global'
 import PageLayout from '../components/_layouts/page-layout'
 import { AuthContext } from '../context/auth-context'
@@ -42,6 +44,32 @@ const Login: NextPage = () => {
       router.push('/dashboard')
     }
   }, [authStatus, router])
+
+  const [segment, setSegment] = useState<string>('login')
+  let segmentsData: any[] = [
+    {
+      label: (
+        <Center>
+          <IconLogin size={20} />
+          <Box sx={{ marginInlineStart: 10 }}>Login</Box>
+        </Center>
+      ),
+      value: 'login',
+    },
+    {
+      label: (
+        <Center>
+          <IconConfetti size={20} />
+          <Box sx={{ marginInlineStart: 10 }}>New Account</Box>
+        </Center>
+      ),
+      value: 'register',
+    },
+  ]
+
+  useEffect(() => {
+    router.push(('/' + segment) as string)
+  }, [segment])
 
   if (authStatus === 'stale' || authStatus === 'found') {
     return <LoaderGlobal />
@@ -184,6 +212,19 @@ const Login: NextPage = () => {
                   </Center>
                 </Grid.Col> */}
                 <Grid.Col sm={12} md={12}>
+                  <Box sx={{ width: '100%' }} mb={16}>
+                    <SegmentedControl
+                      value={segment}
+                      onChange={setSegment}
+                      // color='indigo'
+
+                      size='md'
+                      fullWidth
+                      radius='md'
+                      data={segmentsData}
+                    />
+                    <Divider variant='dashed' my={16} sx={{ opacity: 0.4 }} />
+                  </Box>
                   <Center>
                     <Box sx={{ width: '100%', maxWidth: 380 }}>
                       <Formik
@@ -246,6 +287,8 @@ const Login: NextPage = () => {
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 error={touched.email && errors.email}
+                                required
+                                autoFocus
                               />
                               <PasswordInput
                                 variant='filled'

@@ -23,7 +23,7 @@ import {
   IconStars,
 } from '@tabler/icons'
 import Link from 'next/link'
-import React, { useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import NextImage from 'next/image'
 import genesisLogoDark from '../public/images/genesis-logo-dark.png'
 import genesisLogoLight from '../public/images/genesis-logo-light.png'
@@ -34,11 +34,13 @@ import genesisPreviewDarkImage2 from '../public/images/gd2.png'
 import genesisPreviewLightImage3 from '../public/images/gl3.png'
 import genesisPreviewDarkImage3 from '../public/images/gd3.png'
 import Autoplay from 'embla-carousel-autoplay'
+import { AuthContext } from '../context/auth-context'
 
 const GenesisPreviewCard = () => {
   const theme = useMantineTheme()
   const { colorScheme } = useMantineColorScheme()
   const autoplay = useRef(Autoplay({ delay: 3000 }))
+  const { authStatus } = useContext(AuthContext)
   return (
     <Paper
       sx={{
@@ -107,7 +109,9 @@ const GenesisPreviewCard = () => {
               battle-tested to handle worst case network scenarios.
             </Text>
             <Group sx={{ width: '100%' }} spacing={8}>
-              <Link href='/dashboard/services'>
+              <Link
+                href={authStatus === 'found' ? '/dashboard/services/' : 'login'}
+              >
                 <Button
                   size='sm'
                   leftIcon={<IconShoppingCart size={16} />}

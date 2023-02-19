@@ -8,20 +8,18 @@ import {
   Container,
   Divider,
   Grid,
-  Image,
   Paper,
   PasswordInput,
+  SegmentedControl,
   Stack,
   Text,
   TextInput,
-  Title,
   useMantineTheme,
 } from '@mantine/core'
 import {
   IconAlertCircle,
-  IconBrandFacebook,
-  IconBrandGoogle,
-  IconLockAccess,
+  IconConfetti,
+  IconLogin,
   IconPlugConnected,
 } from '@tabler/icons'
 import { Formik } from 'formik'
@@ -30,13 +28,13 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import LoaderGlobal from '../components/loader-global'
 import PageLayout from '../components/_layouts/page-layout'
 import { AuthContext } from '../context/auth-context'
 import { useRegisterMutation } from '../generated/graphql'
-import { setAccessToken, setRefreshToken } from '../utils/tokens-operations'
 import { capitalizeWords } from '../utils/input-formatter'
+import { setAccessToken, setRefreshToken } from '../utils/tokens-operations'
 import { registerSchema } from '../validation/auth-validation'
 
 const Register: NextPage = () => {
@@ -53,7 +51,35 @@ const Register: NextPage = () => {
     }
   }, [authStatus, router])
 
+  const [agreedToTerms, setAgreedToTerms] = useState<boolean>(true)
+
   const theme = useMantineTheme()
+
+  const [segment, setSegment] = useState<string>('register')
+  let segmentsData: any[] = [
+    {
+      label: (
+        <Center>
+          <IconLogin size={20} />
+          <Box sx={{ marginInlineStart: 10 }}>Login</Box>
+        </Center>
+      ),
+      value: 'login',
+    },
+    {
+      label: (
+        <Center>
+          <IconConfetti size={20} />
+          <Box sx={{ marginInlineStart: 10 }}>New Account</Box>
+        </Center>
+      ),
+      value: 'register',
+    },
+  ]
+
+  useEffect(() => {
+    router.push(('/' + segment) as string)
+  }, [segment])
 
   if (authStatus === 'stale' || authStatus === 'found') {
     return <LoaderGlobal />
@@ -213,6 +239,37 @@ const Register: NextPage = () => {
                   </Center>
                 </Grid.Col> */}
                 <Grid.Col sm={12} md={12}>
+                  <Box sx={{ width: '100%' }}>
+                    <SegmentedControl
+                      value={segment}
+                      onChange={setSegment}
+                      // color='indigo'
+
+                      size='md'
+                      fullWidth
+                      radius='md'
+                      data={segmentsData}
+                    />
+                    <Divider variant='dashed' my={16} sx={{ opacity: 0.4 }} />
+                  </Box>
+                  {registerMutationError && registerMutationError?.message && (
+                    <Box mb={16}>
+                      <Alert
+                        icon={null}
+                        // icon={<IconAlertCircle size={24} />}
+                        title='Email already in use.'
+                        radius='md'
+                        variant='outline'
+                        color='red'
+
+                        // mt={24}
+                      >
+                        {registerMutationError.message === 'email_not_available'
+                          ? 'The entered email is not available, please use another email address to proceed!'
+                          : 'Something went wrong, we are really sorry for the inconvenience, please try again later!'}
+                      </Alert>
+                    </Box>
+                  )}
                   <Center>
                     <Box sx={{ maxWidth: 380 }}>
                       <Formik
@@ -267,11 +324,13 @@ const Register: NextPage = () => {
                                 placeholder='Enter your full name'
                                 description='Please provide your real &amp; full name'
                                 size='md'
+                                required
                                 name='name'
                                 value={values.name}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 error={touched.name && errors.name}
+                                autoFocus
                               />
                               <TextInput
                                 variant='filled'
@@ -281,6 +340,7 @@ const Register: NextPage = () => {
                                 size='md'
                                 type='email'
                                 name='email'
+                                required
                                 value={values.email}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
@@ -296,6 +356,7 @@ const Register: NextPage = () => {
                                 value={values.password}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
+                                required
                                 error={touched.password && errors.password}
                               />
 
@@ -313,8 +374,11 @@ const Register: NextPage = () => {
                                   required
                                   size='lg'
                                   sx={{ alignItems: 'flex-start' }}
-                                  checked={true}
-                                  disabled={true}
+                                  checked={agreedToTerms}
+                                  onChange={() =>
+                                    setAgreedToTerms(!agreedToTerms)
+                                  }
+                                  // disabled={true}
                                   label={
                                     <Text size='sm'>
                                       <b>I agree</b> to the{' '}
@@ -373,26 +437,11 @@ const Register: NextPage = () => {
                                   size='md'
                                   type='submit'
                                   loading={isSubmitting}
+                                  disabled={!agreedToTerms}
                                   color='indigo'
                                 >
                                   Create your Account
                                 </Button>
-                                {registerMutationError &&
-                                  registerMutationError?.message && (
-                                    <Alert
-                                      icon={<IconAlertCircle size={24} />}
-                                      // title='Oopsie!'
-                                      radius='md'
-                                      variant='outline'
-                                      color='red'
-                                      mt={24}
-                                    >
-                                      {registerMutationError.message ===
-                                      'email_not_available'
-                                        ? 'The entered email is not available, please use another email address to proceed!'
-                                        : 'Something went wrong, we are really sorry for the inconvenience, please try again later!'}
-                                    </Alert>
-                                  )}
                               </Box>
 
                               <Box mt={-4}>
