@@ -1,6 +1,5 @@
 import {
   ActionIcon,
-  Anchor,
   Box,
   Burger,
   Button,
@@ -17,7 +16,6 @@ import {
 import {
   IconApps,
   IconAppWindow,
-  IconBuildingArch,
   IconConfetti,
   IconHeart,
   IconHome,

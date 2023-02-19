@@ -31,7 +31,7 @@ export default function DashboardLayout({ children }: LayoutProps) {
 
   useEffect(() => {
     if (authStatus === 'unfound' && !currentUser) {
-      router.push('/')
+      router.push('/login')
     }
   }, [authStatus, currentUser, router])
 
