@@ -330,7 +330,6 @@ const Register: NextPage = () => {
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 error={touched.name && errors.name}
-                                autoFocus
                               />
                               <TextInput
                                 variant='filled'

@@ -1,10 +1,10 @@
 html:focus-within {
-  /* scroll-behavior: smooth; */
-  scroll-padding-top: 20px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
 }
 
-/* @media (prefers-reduced-motion) {
+@media (prefers-reduced-motion) {
   html:focus-within {
     scroll-behavior: auto;
   }
-} */
+}

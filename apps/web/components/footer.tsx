@@ -73,9 +73,9 @@ const Footer = () => {
           {/* <Divider variant='dotted' mb={40} /> */}
           <Grid gutter={16} sx={{ width: '100%' }}>
             <Grid.Col span={6} sm={3}>
-              <Box sx={{ disaply: 'flex' }}>
-                <Text size='xs' color='dimmed' weight='500' mb={16}>
-                  Company
+              <Box sx={{ disaply: 'flex' }} pb={20}>
+                <Text size='xs' color='dimmed' weight='500' mb={20}>
+                  Essentials
                 </Text>
                 <Box
                   sx={{
@@ -90,17 +90,17 @@ const Footer = () => {
                 </Link> */}
                   <Link href='/solutions' passHref>
                     <Anchor size='sm' variant='text'>
-                      Ready Solutions
+                      Planned Solutions
                     </Anchor>
                   </Link>
                   <Link href='/pricing' passHref>
                     <Anchor size='sm' variant='text'>
-                      Products Pricings
+                      Impact and Motives
                     </Anchor>
                   </Link>
-                  <Link href='/endeavor' passHref>
+                  <Link href='/vision' passHref>
                     <Anchor size='sm' variant='text'>
-                      Our Endeavor
+                      AuresX Vision 2033
                     </Anchor>
                   </Link>
                   <Link href='/team' passHref>
@@ -110,35 +110,20 @@ const Footer = () => {
                   </Link>
                   <Link href='/careers' passHref>
                     <Anchor size='sm' variant='text'>
-                      Careers (not yet)
+                      Careers (coming soon)
                     </Anchor>
                   </Link>
-                  {/* <Link href='/system-status' passHref>
+                  <Link href='/investor' passHref>
                     <Anchor size='sm' variant='text'>
-                      System Status
-                    </Anchor>
-                  </Link> */}
-                  <Link href='/privacy-policy' passHref>
-                    <Anchor size='sm' variant='text'>
-                      Privacy Policy
-                    </Anchor>
-                  </Link>
-                  <Link href='/terms' passHref>
-                    <Anchor size='sm' variant='text'>
-                      Terms of Use
-                    </Anchor>
-                  </Link>
-                  <Link href='/cookies' passHref>
-                    <Anchor size='sm' variant='text'>
-                      Cookies Policy
+                      Become an Investor
                     </Anchor>
                   </Link>
                 </Box>
               </Box>
             </Grid.Col>
             <Grid.Col span={6} sm={3}>
-              <Box>
-                <Text size='xs' color='dimmed' weight='500' mb={16}>
+              <Box pb={20}>
+                <Text size='xs' color='dimmed' weight='500' mb={20}>
                   Community
                 </Text>
                 <Box
@@ -154,16 +139,16 @@ const Footer = () => {
                       The Blog
                     </Anchor>
                   </Link>
-                  <Link href='/agency' passHref>
+                  {/* <Link href='/agency' passHref>
                     <Anchor size='sm' variant='text'>
                       Agency &amp; Web Dev
                     </Anchor>
-                  </Link>
-                  <Link href='/saas' passHref>
+                  </Link> */}
+                  {/* <Link href='/saas' passHref>
                     <Anchor size='sm' variant='text'>
                       SaaS Solutions
                     </Anchor>
-                  </Link>
+                  </Link> */}
                   <Link href='/tech-consulting' passHref>
                     <Anchor size='sm' variant='text'>
                       Technology Consulting
@@ -174,14 +159,15 @@ const Footer = () => {
                       Blockchain Infrastructure
                     </Anchor>
                   </Link>
-                  <Link href='/investor' passHref>
+
+                  <Link href='/support/ideas' passHref>
                     <Anchor size='sm' variant='text'>
-                      Become an Investor
+                      Share your Ideas
                     </Anchor>
                   </Link>
-                  <Link href='/vision' passHref>
+                  <Link href='/support/bug' passHref>
                     <Anchor size='sm' variant='text'>
-                      AuresX Vision 2030
+                      Report a Bug
                     </Anchor>
                   </Link>
                 </Box>
@@ -189,8 +175,8 @@ const Footer = () => {
             </Grid.Col>
             <Grid.Col span={6} sm={3}>
               <Box>
-                <Text size='xs' color='dimmed' weight='500' mb={16}>
-                  Support
+                <Text size='xs' color='dimmed' weight='500' mb={20}>
+                  Legal &amp; Support
                 </Text>
                 <Box
                   sx={{
@@ -200,16 +186,31 @@ const Footer = () => {
                     rowGap: 16,
                   }}
                 >
-                  <Link href='/support/support' passHref>
+                  <Link href='/privacy-policy' passHref>
+                    <Anchor size='sm' variant='text'>
+                      Privacy Policy
+                    </Anchor>
+                  </Link>
+                  <Link href='/terms' passHref>
+                    <Anchor size='sm' variant='text'>
+                      Terms of Use
+                    </Anchor>
+                  </Link>
+                  <Link href='/cookies' passHref>
+                    <Anchor size='sm' variant='text'>
+                      Cookies Policy
+                    </Anchor>
+                  </Link>
+                  <Link href='/support/customer' passHref>
                     <Anchor size='sm' variant='text'>
                       Customer Support
                     </Anchor>
                   </Link>
-                  <Link href='/support/sales' passHref>
+                  {/* <Link href='/support/sales' passHref>
                     <Anchor size='sm' variant='text'>
                       Report Sales Issue
                     </Anchor>
-                  </Link>
+                  </Link> */}
                   <Link href='/support/abuse' passHref>
                     <Anchor size='sm' variant='text'>
                       Report an Abuse
@@ -218,16 +219,6 @@ const Footer = () => {
                   <Link href='/support/status' passHref>
                     <Anchor size='sm' variant='text'>
                       System Status Check
-                    </Anchor>
-                  </Link>
-                  <Link href='/support/ideas' passHref>
-                    <Anchor size='sm' variant='text'>
-                      Share your Ideas
-                    </Anchor>
-                  </Link>
-                  <Link href='/support/bug' passHref>
-                    <Anchor size='sm' variant='text'>
-                      Report a Bug
                     </Anchor>
                   </Link>
                 </Box>

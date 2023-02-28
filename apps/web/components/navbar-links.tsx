@@ -1,11 +1,5 @@
 import { Box } from '@mantine/core'
-import {
-  IconHome,
-  IconReceipt2,
-  IconRocket,
-  IconSettings,
-  IconShip,
-} from '@tabler/icons'
+import { IconHome, IconReceipt2, IconSettings, IconShip } from '@tabler/icons'
 import NavLink from './nav-link'
 
 const data = [

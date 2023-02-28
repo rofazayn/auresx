@@ -288,7 +288,6 @@ const Login: NextPage = () => {
                                 onBlur={handleBlur}
                                 error={touched.email && errors.email}
                                 required
-                                autoFocus
                               />
                               <PasswordInput
                                 variant='filled'

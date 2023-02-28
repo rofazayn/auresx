@@ -1,9 +1,7 @@
 import {
-  Blockquote,
   Box,
   Button,
   Container,
-  Divider,
   Text,
   Title,
   useMantineColorScheme,
@@ -17,7 +15,6 @@ import Link from 'next/link'
 import { useRef } from 'react'
 import PageLayout from '../components/_layouts/page-layout'
 
-import GenesisPreviewCard from '../components/genesis-preview-card'
 // import xSvg from '../public/images/svg/x.svg'
 
 const Home: NextPage = () => {
@@ -47,7 +44,7 @@ const Home: NextPage = () => {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              minHeight: '500px',
+              height: 'calc(100vh - 160px)',
               paddingInline: 16,
               borderRadius: 16,
             }}
@@ -62,7 +59,7 @@ const Home: NextPage = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 textAlign: 'center',
-                maxWidth: 520,
+                maxWidth: 580,
               }}
               mb={24}
             >
@@ -74,24 +71,24 @@ const Home: NextPage = () => {
                     fontSize: 28,
                   },
                 }}
-                mb={8}
+                mb={12}
               >
-                AuresX, bringing high-tier technology to the lofty mountain
-                peaks of the Aures region.
+                Bringing high-tier technology to the lofty mountain peaks of
+                Algeria.
               </Title>
 
               <Text
-                size='md'
+                size='lg'
                 sx={{
-                  maxWidth: 420,
+                  maxWidth: 520,
                   '@media(max-width: 768px)': {
                     fontSize: theme.fontSizes.sm,
                   },
                 }}
-                mb={24}
+                mb={32}
                 color='dimmed'
               >
-                A software company that took the initiative to provide
+                We are software company that took the initiative to provide
                 innovative solutions to major digital challenges facing vital
                 sectors in Algeria <Text component='span'>🇩🇿</Text>
               </Text>
@@ -108,8 +105,8 @@ const Home: NextPage = () => {
               </Link>
             </Box>
             <Box>
-              <Divider variant='dashed' my={8} />
-              <Blockquote
+              {/* <Divider variant='dashed' my={8} /> */}
+              {/* <Blockquote
                 cite='– Founder &amp; CEO of AuresX'
                 sx={(theme) => ({
                   opacity: 0.7,
@@ -125,7 +122,7 @@ const Home: NextPage = () => {
                 Algeria lacks many digital solutions to most of its vital
                 sectors, our goal at AuresX is to solve that problem in the most
                 innovative way and as fast as we possibly can.
-              </Blockquote>
+              </Blockquote> */}
             </Box>
             {/* <Box
               sx={(theme) => ({
@@ -153,7 +150,7 @@ const Home: NextPage = () => {
             </Box> */}
           </Box>
 
-          <GenesisPreviewCard />
+          {/* <GenesisPreviewCard /> */}
         </Container>
       </PageLayout>
     </>
