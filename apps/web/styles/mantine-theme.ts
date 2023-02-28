@@ -3,7 +3,7 @@ import { MantineThemeOverride } from '@mantine/core'
 const mantineTheme: MantineThemeOverride = {
   fontFamily: 'Work Sans, IBM Plex Sans Arabic, sans-serif',
   focusRing: 'always',
-  colorScheme: 'dark',
+  colorScheme: 'light',
   defaultRadius: 8,
   headings: {
     fontFamily: 'Epilogue, Merriweather Sans, IBM Plex Sans Arabic, serif',

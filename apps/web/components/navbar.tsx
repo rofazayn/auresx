@@ -116,14 +116,14 @@ const Navbar = () => {
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                   <Link href='/projects' passHref>
                     <Button
-                      aria-label='Projects'
+                      aria-label='Solutions'
                       // weight='500'
                       color='gray'
                       size='sm'
                       radius='md'
                       variant='subtle'
                     >
-                      Projects
+                      Solutions
                     </Button>
                   </Link>
                   {/* <Link href='/pricing' passHref>
@@ -137,7 +137,7 @@ const Navbar = () => {
                       Pricing
                     </Anchor>
                   </Link> */}
-                  <Link href='/endeavor' passHref>
+                  {/* <Link href='/endeavor' passHref>
                     <Button
                       aria-label='Endeavor'
                       // weight='500'
@@ -148,7 +148,7 @@ const Navbar = () => {
                     >
                       Endeavor
                     </Button>
-                  </Link>
+                  </Link> */}
                   <Link href='/team' passHref>
                     <Button
                       aria-label='Team'
@@ -170,7 +170,7 @@ const Navbar = () => {
                       radius='md'
                       variant='subtle'
                     >
-                      Vision 2030
+                      Vision 2033
                     </Button>
                   </Link>
                 </Box>
@@ -414,7 +414,7 @@ const Navbar = () => {
                             size='sm'
                             leftIcon={<IconRocket width='18px' />}
                           >
-                            Projects
+                            Solutions
                           </Button>
                         </Link>
                         {/* <Link href='/pricing' passHref>
@@ -427,7 +427,7 @@ const Navbar = () => {
                             Pricing
                           </Button>
                         </Link> */}
-                        <Link href='/endeavor' passHref>
+                        {/* <Link href='/endeavor' passHref>
                           <Button
                             variant='light'
                             color='gray'
@@ -436,7 +436,7 @@ const Navbar = () => {
                           >
                             Endeavor
                           </Button>
-                        </Link>
+                        </Link> */}
 
                         <Link href='/team' passHref>
                           <Button
@@ -455,7 +455,7 @@ const Navbar = () => {
                             size='sm'
                             leftIcon={<IconStar width='18px' />}
                           >
-                            Vision 2030
+                            Vision 2033
                           </Button>
                         </Link>
                         {/* </Button.Group> */}
