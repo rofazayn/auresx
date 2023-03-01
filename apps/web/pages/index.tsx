@@ -13,6 +13,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRef } from 'react'
+import ThreeScene from '../components/ThreeScene'
 import PageLayout from '../components/_layouts/page-layout'
 
 // import xSvg from '../public/images/svg/x.svg'
@@ -47,10 +48,22 @@ const Home: NextPage = () => {
               height: 'calc(100vh - 160px)',
               paddingInline: 16,
               borderRadius: 16,
+              position: 'relative',
             }}
             mb={64}
             pt={160}
           >
+            <Box
+              sx={{
+                zIndex: -10,
+                width: '100%',
+                height: '100%',
+                position: 'absolute',
+                opacity: 0.55,
+              }}
+            >
+              <ThreeScene />
+            </Box>
             <Box
               sx={{
                 width: '100%',
@@ -60,6 +73,8 @@ const Home: NextPage = () => {
                 justifyContent: 'center',
                 textAlign: 'center',
                 maxWidth: 580,
+                zIndex: 9,
+                backgroundColor: 'transparent',
               }}
               mb={24}
             >
@@ -86,7 +101,7 @@ const Home: NextPage = () => {
                   },
                 }}
                 mb={32}
-                color='dimmed'
+                // color='dimmed'
               >
                 We are software company that took the initiative to provide
                 innovative solutions to major digital challenges facing vital
