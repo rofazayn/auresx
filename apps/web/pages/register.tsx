@@ -115,7 +115,9 @@ const Register: NextPage = () => {
                 // },
                 // paddingBottom: 40,
                 backgroundColor:
-                  theme.colorScheme === 'dark' ? theme.colors.dark[7] : 'white',
+                  theme.colorScheme === 'dark'
+                    ? theme.colors.dark[7]
+                    : theme.fn.lighten(theme.colors.gray[0], 0.3),
               }}
             >
               <Grid gutter={24} align={'start'} justify={'center'}>
@@ -318,7 +320,7 @@ const Register: NextPage = () => {
                           <form onSubmit={handleSubmit}>
                             <Stack spacing={16}>
                               <TextInput
-                                variant='filled'
+                                // variant='filled'
                                 type='text'
                                 label='Full Name (required)'
                                 placeholder='Enter your full name'
@@ -332,7 +334,7 @@ const Register: NextPage = () => {
                                 error={touched.name && errors.name}
                               />
                               <TextInput
-                                variant='filled'
+                                // variant='filled'
                                 label='Email (required)'
                                 placeholder='Enter your email'
                                 description='We need your email to validate your account'
@@ -346,7 +348,7 @@ const Register: NextPage = () => {
                                 error={touched.email && errors.email}
                               />
                               <PasswordInput
-                                variant='filled'
+                                // variant='filled'
                                 label='Password (required)'
                                 placeholder='Enter your password'
                                 description='Pick a password that is hard to guess'

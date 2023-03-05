@@ -88,7 +88,7 @@ const Navbar = () => {
           sx={{
             width: '100%',
             paddingBlock: 20,
-            paddingInline: 16,
+            // paddingInline: 16,
             '@media (max-width: 768px)': {
               // paddingInline: 16,
               paddingBlock: 18,
@@ -96,7 +96,7 @@ const Navbar = () => {
             borderTop: 'none',
             borderLeft: 'none',
             borderRight: 'none',
-            overflow: 'hidden',
+            // overflow: 'hidden',
           }}
         >
           <Box

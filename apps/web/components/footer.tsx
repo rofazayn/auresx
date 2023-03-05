@@ -36,7 +36,9 @@ const Footer = () => {
       sx={{
         width: '100%',
         backgroundColor:
-          colorScheme === 'dark' ? theme.colors.dark[7] : 'white',
+          colorScheme === 'dark'
+            ? theme.colors.dark[7]
+            : theme.fn.lighten(theme.colors.gray[0], 0.3),
         borderTopLeftRadius: 24,
         borderTopRightRadius: 24,
       }}
@@ -57,14 +59,14 @@ const Footer = () => {
             width: '100%',
             paddingTop: '80px !important',
             paddingBottom: '160px !important',
-            paddingInline: 16,
+            // paddingInline: 16,
             // '@media (max-width: 992px)': {
             //   paddingInline: 16,
             // },
 
             zIndex: 9,
 
-            overflow: 'hidden',
+            // overflow: 'hidden',
             borderBottom: 'none',
             borderLeft: 'none',
             borderRight: 'none',
