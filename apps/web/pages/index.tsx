@@ -21,6 +21,7 @@ import InfoBanner from '../components/info-banner'
 import SolutionsSection from '../components/solutions-section'
 import PageLayout from '../components/_layouts/page-layout'
 import heroImage from '../public/images/illustrations/hero-3.png'
+import NextImage from 'next/image'
 
 const Home: NextPage = () => {
   const theme = useMantineTheme()
@@ -140,15 +141,15 @@ const Home: NextPage = () => {
                     justifyContent: 'center',
                   }}
                 >
-                  <Image
-                    src={heroImage.src}
+                  <NextImage
+                    src={heroImage}
                     alt='AuresX inbound'
                     style={{
                       width: '100%',
                       height: '100%',
                       borderRadius: 12,
                       overflow: 'hidden',
-                      transform: 'scale(1.2)',
+                      transform: 'scale(1.25)',
                     }}
                   />
                 </Box>
