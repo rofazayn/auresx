@@ -19,18 +19,22 @@ import SolutionCard from './solution-card'
 const SolutionsSection = () => {
   return (
     <Box mb={80}>
-      <Title order={1} mb={8} sx={{ maxWidth: 400 }}>
+      <Title order={1} mb={16} sx={{ maxWidth: 400 }}>
         Strategic strides with purposeful planning:
       </Title>
       <Box mb={40}>
         <Divider
-          variant='dashed'
           label={
-            <Text weight='500' size='md' color='dimmed'>
-              * Phase One: Infrastructural Projects
+            <Text weight='500' size='xl'>
+              <Text component='span' color='dimmed'>
+                Phase 01 -
+              </Text>{' '}
+              Infrastructural Projects
             </Text>
           }
+          variant='dashed'
           mb={16}
+          size='sm'
         />
         <Grid gutter={24}>
           <Grid.Col span={12} md={4} sm={6} xs={12}>
@@ -70,14 +74,19 @@ const SolutionsSection = () => {
       </Box>
       <Box mb={40}>
         <Divider
-          variant='dashed'
           label={
-            <Text weight='500' size='md' color='dimmed'>
-              * Phase Two: Digitalizing Core Essentials
+            <Text weight='500' size='xl'>
+              <Text component='span' color='dimmed'>
+                Phase 02 -
+              </Text>{' '}
+              Digitalize Vital Sectors
             </Text>
           }
+          variant='dashed'
           mb={16}
+          size='sm'
         />
+
         <Grid gutter={24}>
           <Grid.Col span={12} md={4} sm={6} xs={12}>
             <SolutionCard
@@ -129,14 +138,19 @@ const SolutionsSection = () => {
 
       <Box mb={40}>
         <Divider
-          variant='dashed'
           label={
-            <Text weight='500' size='md' color='dimmed'>
-              * Phase Three: Innovative Solutions for Public Adoption
+            <Text weight='500' size='xl'>
+              <Text component='span' color='dimmed'>
+                Phase 03 -
+              </Text>{' '}
+              Innovative Solutions for Public Adoption
             </Text>
           }
+          variant='dashed'
           mb={16}
+          size='sm'
         />
+
         <Grid gutter={24}>
           <Grid.Col span={12} md={4} sm={6} xs={12}>
             <SolutionCard
