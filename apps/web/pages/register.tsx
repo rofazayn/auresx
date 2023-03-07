@@ -16,12 +16,7 @@ import {
   TextInput,
   useMantineTheme,
 } from '@mantine/core'
-import {
-  IconAlertCircle,
-  IconConfetti,
-  IconLogin,
-  IconPlugConnected,
-} from '@tabler/icons'
+import { IconConfetti, IconLogin, IconPlugConnected } from '@tabler/icons'
 import { Formik } from 'formik'
 import jwtDecode from 'jwt-decode'
 import type { NextPage } from 'next'

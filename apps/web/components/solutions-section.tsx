@@ -1,4 +1,4 @@
-import { Box, Divider, Grid, Text, Title } from '@mantine/core'
+import { Box, Grid, Text, Title } from '@mantine/core'
 import {
   IconBook,
   IconBox,
@@ -19,23 +19,18 @@ import SolutionCard from './solution-card'
 const SolutionsSection = () => {
   return (
     <Box mb={80}>
-      <Title order={1} mb={16} sx={{ maxWidth: 400 }}>
+      <Title order={1} mb={24} sx={{ maxWidth: 400 }}>
         Strategic strides with purposeful planning:
       </Title>
       <Box mb={40}>
-        <Divider
-          label={
-            <Text weight='500' size='xl'>
-              <Text component='span' color='dimmed'>
-                Phase 01 -
-              </Text>{' '}
-              Infrastructural Projects
-            </Text>
-          }
-          variant='dashed'
-          mb={16}
-          size='sm'
-        />
+        <Box mb={16}>
+          <Text weight='500' size='xl'>
+            <Text component='span' color='dimmed'>
+              Phase 01 -
+            </Text>{' '}
+            Infrastructural Projects
+          </Text>
+        </Box>
         <Grid gutter={24}>
           <Grid.Col span={12} md={4} sm={6} xs={12}>
             <SolutionCard
@@ -73,19 +68,14 @@ const SolutionsSection = () => {
         </Grid>
       </Box>
       <Box mb={40}>
-        <Divider
-          label={
-            <Text weight='500' size='xl'>
-              <Text component='span' color='dimmed'>
-                Phase 02 -
-              </Text>{' '}
-              Digitalize Vital Sectors
-            </Text>
-          }
-          variant='dashed'
-          mb={16}
-          size='sm'
-        />
+        <Box mb={16}>
+          <Text weight='500' size='xl'>
+            <Text component='span' color='dimmed'>
+              Phase 02 -
+            </Text>{' '}
+            Digitalization of Vital Sectors
+          </Text>
+        </Box>
 
         <Grid gutter={24}>
           <Grid.Col span={12} md={4} sm={6} xs={12}>
@@ -137,19 +127,14 @@ const SolutionsSection = () => {
       </Box>
 
       <Box mb={40}>
-        <Divider
-          label={
-            <Text weight='500' size='xl'>
-              <Text component='span' color='dimmed'>
-                Phase 03 -
-              </Text>{' '}
-              Innovative Solutions for Public Adoption
-            </Text>
-          }
-          variant='dashed'
-          mb={16}
-          size='sm'
-        />
+        <Box mb={16}>
+          <Text weight='500' size='xl'>
+            <Text component='span' color='dimmed'>
+              Phase 03 -
+            </Text>{' '}
+            Innovative Solutions for Public Adoption
+          </Text>
+        </Box>
 
         <Grid gutter={24}>
           <Grid.Col span={12} md={4} sm={6} xs={12}>

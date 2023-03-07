@@ -4,7 +4,6 @@ import {
   Button,
   Container,
   Grid,
-  Image,
   Text,
   Title,
   useMantineColorScheme,
@@ -15,14 +14,14 @@ import Autoplay from 'embla-carousel-autoplay'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
+import NextImage from 'next/image'
 import Link from 'next/link'
 import { useRef } from 'react'
 import InfoBanner from '../components/info-banner'
+import Newsletter from '../components/newsletter'
 import SolutionsSection from '../components/solutions-section'
 import PageLayout from '../components/_layouts/page-layout'
 import heroImage from '../public/images/illustrations/hero-3.png'
-import NextImage from 'next/image'
-import Newsletter from '../components/newsletter'
 
 const Home: NextPage = () => {
   const theme = useMantineTheme()
@@ -102,8 +101,8 @@ const Home: NextPage = () => {
                     <Link href='/register'>
                       <Button
                         size='lg'
-                        color='teal'
-                        variant='outline'
+                        color='indigo'
+                        // variant='outline'
                         rightIcon={<IconRadar2 />}
                       >
                         Join our Endeavor
@@ -159,7 +158,9 @@ const Home: NextPage = () => {
           </Box>
 
           <InfoBanner />
+
           <SolutionsSection />
+
           <Newsletter />
 
           {/* <GenesisPreviewCard /> */}
