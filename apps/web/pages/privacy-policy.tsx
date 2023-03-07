@@ -7,12 +7,14 @@ import {
   Stack,
   Text,
   Title,
+  useMantineTheme,
 } from '@mantine/core'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import PageLayout from '../components/_layouts/page-layout'
 
 const PrivacyPolicy: NextPage = () => {
+  const theme = useMantineTheme()
   return (
     <>
       <Head>
@@ -30,6 +32,10 @@ const PrivacyPolicy: NextPage = () => {
               '@media (max-width: 992px)': {
                 paddingInline: 16,
               },
+              backgroundColor:
+                theme.colorScheme === 'dark'
+                  ? theme.colors.dark[7]
+                  : theme.colors.gray[0],
               paddingTop: 40,
               paddingBottom: 64,
             }}

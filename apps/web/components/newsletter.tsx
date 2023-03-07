@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Checkbox,
+  Divider,
   Grid,
   Stack,
   Text,
@@ -10,7 +11,7 @@ import {
   Title,
   useMantineTheme,
 } from '@mantine/core'
-import { IconRadio } from '@tabler/icons'
+import { IconMail, IconRadio, IconUser } from '@tabler/icons'
 import Link from 'next/link'
 
 const Newsletter = () => {
@@ -32,7 +33,7 @@ const Newsletter = () => {
         <Grid.Col xs={12} sm={12} md={6}>
           <Box
             sx={{
-              padding: 40,
+              padding: 56,
               minHeight: '100%',
               width: '100%',
               backgroundColor:
@@ -68,9 +69,9 @@ const Newsletter = () => {
               minHeight: '100%',
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'center',
+              alignItems: 'flex-start',
               justifyContent: 'space-between',
-              padding: 40,
+              padding: '56px',
               backgroundColor:
                 theme.colorScheme === 'dark'
                   ? theme.colors.dark[7]
@@ -85,28 +86,30 @@ const Newsletter = () => {
               mb={32}
               sx={{
                 width: '100%',
+                // maxWidth: 600,
               }}
             >
               <TextInput
-                variant='filled'
+                variant='default'
                 type='text'
                 label='Full Name'
                 placeholder='Enter your full name'
                 description='What should we call you?'
-                size='lg'
+                size='md'
                 name='name'
                 // value={values.name}
                 // onChange={handleChange}
                 // onBlur={handleBlur}
                 // error={touched.name && errors.name}
                 required
+                rightSection={<IconUser />}
               />
               <TextInput
-                variant='filled'
+                variant='default'
                 label='Email'
                 placeholder='Enter your email'
                 description='You can unsubscribe at anytime!'
-                size='lg'
+                size='md'
                 name='email'
                 type='email'
                 // value={values.email}
@@ -114,11 +117,19 @@ const Newsletter = () => {
                 // onBlur={handleBlur}
                 // error={touched.email && errors.email}
                 required
+                rightSection={<IconMail />}
               />
+              <Box my={4}>
+                <Divider
+                  variant='dashed'
+                  sx={{ maxWidth: 320, opacity: 0.6 }}
+                />
+              </Box>
               <Checkbox
                 required
-                size='xl'
+                size='lg'
                 sx={{ alignItems: 'center' }}
+                color='teal'
                 // checked={agreedToTerms}
                 // onChange={() => setAgreedToTerms(!agreedToTerms)}
                 // disabled={true}
@@ -150,12 +161,27 @@ const Newsletter = () => {
                   </Text>
                 }
               />
+              <Checkbox
+                required
+                size='lg'
+                color='teal'
+                sx={{ alignItems: 'center' }}
+                // checked={agreedToTerms}
+                // onChange={() => setAgreedToTerms(!agreedToTerms)}
+                // disabled={true}
+                label={
+                  <Text size='sm' sx={{ maxWidth: 360 }}>
+                    <b>I would like</b> to receive marketing and commercial
+                    emails from AuresX.
+                  </Text>
+                }
+              />
             </Stack>
             <Button
               size='lg'
-              variant='default'
-              // color={theme.colorScheme === 'dark' ? 'gray' : 'indigo'}
-              // color='teal'
+              mt={16}
+              variant='light'
+              color='teal'
               rightIcon={<IconRadio />}
               fullWidth
             >

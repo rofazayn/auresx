@@ -4,12 +4,11 @@ import {
   Box,
   Button,
   Center,
+  Checkbox,
   Container,
-  Divider,
   Grid,
   Paper,
   PasswordInput,
-  SegmentedControl,
   Stack,
   Text,
   TextInput,
@@ -101,7 +100,7 @@ const Login: NextPage = () => {
                 backgroundColor:
                   theme.colorScheme === 'dark'
                     ? theme.colors.dark[7]
-                    : theme.fn.lighten(theme.colors.gray[0], 0.3),
+                    : theme.colors.gray[0],
               }}
             >
               <Grid gutter={24} align={'start'} justify={'center'}>
@@ -214,7 +213,7 @@ const Login: NextPage = () => {
                   </Center>
                 </Grid.Col> */}
                 <Grid.Col sm={12} md={12}>
-                  <Box sx={{ width: '100%' }} mb={16}>
+                  {/* <Box sx={{ width: '100%' }} mb={16}>
                     <SegmentedControl
                       value={segment}
                       onChange={setSegment}
@@ -226,7 +225,7 @@ const Login: NextPage = () => {
                       data={segmentsData}
                     />
                     <Divider variant='dashed' my={16} sx={{ opacity: 0.4 }} />
-                  </Box>
+                  </Box> */}
                   <Center>
                     <Box sx={{ width: '100%', maxWidth: 380 }}>
                       <Formik
@@ -315,6 +314,21 @@ const Login: NextPage = () => {
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 error={touched.password && errors.password}
+                              />
+                              <Checkbox
+                                size='lg'
+                                sx={{ alignItems: 'center' }}
+                                // checked={agreedToTerms}
+                                // onChange={() =>
+                                //   setAgreedToTerms(!agreedToTerms)
+                                // }
+                                // disabled={true}
+                                label={
+                                  <Text size='sm'>
+                                    <b>Remember</b> login credentials for this
+                                    device!
+                                  </Text>
+                                }
                               />
 
                               {/* <Box>

@@ -7,6 +7,7 @@ import {
   Stack,
   Text,
   Title,
+  useMantineTheme,
 } from '@mantine/core'
 import type { NextPage } from 'next'
 import Head from 'next/head'
@@ -14,6 +15,7 @@ import Link from 'next/link'
 import PageLayout from '../components/_layouts/page-layout'
 
 const Terms: NextPage = () => {
+  const theme = useMantineTheme()
   return (
     <>
       <Head>
@@ -33,6 +35,10 @@ const Terms: NextPage = () => {
               },
               paddingTop: 40,
               paddingBottom: 64,
+              backgroundColor:
+                theme.colorScheme === 'dark'
+                  ? theme.colors.dark[7]
+                  : theme.colors.gray[0],
             }}
           >
             <Stack spacing={20}>
