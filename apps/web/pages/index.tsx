@@ -22,6 +22,7 @@ import SolutionsSection from '../components/solutions-section'
 import PageLayout from '../components/_layouts/page-layout'
 import heroImage from '../public/images/illustrations/hero-3.png'
 import NextImage from 'next/image'
+import Newsletter from '../components/newsletter'
 
 const Home: NextPage = () => {
   const theme = useMantineTheme()
@@ -158,8 +159,8 @@ const Home: NextPage = () => {
           </Box>
 
           <InfoBanner />
-
           <SolutionsSection />
+          <Newsletter />
 
           {/* <GenesisPreviewCard /> */}
         </Container>

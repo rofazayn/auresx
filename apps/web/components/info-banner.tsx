@@ -70,11 +70,12 @@ const InfoBanner = () => {
                 Money Raised
               </Text>
               <Text
-                color={
-                  theme.colorScheme === 'dark'
-                    ? theme.colors.teal[4]
-                    : theme.colors.teal[5]
-                }
+                // color={
+                //   theme.colorScheme === 'dark'
+                //     ? theme.colors.teal[4]
+                //     : theme.colors.teal[5]
+                // }
+                color='dimmed'
                 weight='bold'
                 sx={{ fontFamily: 'monospace' }}
                 size='xl'
@@ -153,8 +154,8 @@ const InfoBanner = () => {
               <Text
                 color={
                   theme.colorScheme === 'dark'
-                    ? theme.colors.teal[4]
-                    : theme.colors.teal[5]
+                    ? theme.colors.orange[4]
+                    : theme.colors.orange[6]
                 }
                 weight='bold'
                 sx={{ fontFamily: 'monospace' }}
