@@ -36,9 +36,9 @@ const Footer = () => {
       sx={{
         width: '100%',
         backgroundColor:
-          colorScheme === 'dark'
+          theme.colorScheme === 'dark'
             ? theme.colors.dark[7]
-            : theme.fn.lighten(theme.colors.gray[0], 0.3),
+            : theme.colors.gray[0],
         borderTopLeftRadius: 24,
         borderTopRightRadius: 24,
       }}
@@ -309,18 +309,17 @@ const Footer = () => {
                 <Box>
                   <Group spacing={16} mb={24}>
                     <Select
-                      // variant='outline'
+                      variant='default'
                       data={[{ value: 'en', label: 'English' }]}
                       placeholder='Change Language'
                       value='en'
-                      variant='filled'
                       sx={{ maxWidth: 120 }}
                     />
 
                     <Divider orientation='vertical' mx={8} variant='dashed' />
                     <Button
                       size='sm'
-                      variant='light'
+                      variant='default'
                       color='gray'
                       sx={{
                         fontWeight: 500,

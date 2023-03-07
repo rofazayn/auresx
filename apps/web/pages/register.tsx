@@ -112,7 +112,7 @@ const Register: NextPage = () => {
                 backgroundColor:
                   theme.colorScheme === 'dark'
                     ? theme.colors.dark[7]
-                    : theme.fn.lighten(theme.colors.gray[0], 0.3),
+                    : theme.colors.gray[0],
               }}
             >
               <Grid gutter={24} align={'start'} justify={'center'}>
@@ -236,7 +236,7 @@ const Register: NextPage = () => {
                   </Center>
                 </Grid.Col> */}
                 <Grid.Col sm={12} md={12}>
-                  <Box sx={{ width: '100%' }}>
+                  {/* <Box sx={{ width: '100%' }}>
                     <SegmentedControl
                       value={segment}
                       onChange={setSegment}
@@ -248,7 +248,7 @@ const Register: NextPage = () => {
                       data={segmentsData}
                     />
                     <Divider variant='dashed' my={16} sx={{ opacity: 0.4 }} />
-                  </Box>
+                  </Box> */}
                   {registerMutationError && registerMutationError?.message && (
                     <Box mb={16}>
                       <Alert
