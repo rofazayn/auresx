@@ -29,13 +29,17 @@ const Home: NextPage = () => {
 
   // carousel autoplay
   const autoplay = useRef(Autoplay({ delay: 3000 }))
+
   return (
     <>
       <Head>
         <title>AuresX - Let&apos;s Go!</title>
         <meta
           name='description'
-          content='AuresX is a software company that took the initiative to provide innovative solutions to major digital challenges facing vital sectors in Algeria.'
+          content='Our team comprises of talented individuals who have taken
+          the initiative to offer innovative solutions to address
+          significant digital challenges faced by critical sectors
+          in Algeria.'
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
@@ -43,7 +47,7 @@ const Home: NextPage = () => {
       <PageLayout>
         <Container size='xl'>
           <Box
-            mb={96}
+            mb={0}
             sx={{
               paddingTop: 120,
               '@media(max-width: 768px)': {
@@ -85,17 +89,17 @@ const Home: NextPage = () => {
                           fontSize: 40,
                         },
                       }}
-                      mb={8}
+                      mb={12}
                     >
                       Bringing high-tier technology to the lofty mountain peaks
                       of Algeria.
                     </Title>
 
-                    <Text size='lg' mb={24}>
-                      We are a team of talents who took the initiative to
-                      provide innovative solutions to major digital challenges
-                      facing vital sectors in Algeria.{' '}
-                      <Text component='span'>🇩🇿</Text>
+                    <Text size='lg' mb={28} color='dimmed' weight='500'>
+                      Our team comprises of talented individuals who have taken
+                      the initiative to offer innovative solutions to address
+                      significant digital challenges faced by critical sectors
+                      in Algeria <Text component='span'>🇩🇿</Text>
                     </Text>
 
                     <Link href='/register'>
@@ -113,7 +117,7 @@ const Home: NextPage = () => {
                     <Blockquote
                       cite='– Founder &amp; CEO of AuresX'
                       sx={(theme) => ({
-                        opacity: 0.7,
+                        opacity: 0.5,
                         fontSize: 14,
                         maxWidth: 400,
                         margin: 0,
@@ -149,21 +153,16 @@ const Home: NextPage = () => {
                       height: '100%',
                       borderRadius: 12,
                       overflow: 'hidden',
-                      transform: 'scale(1.25)',
+                      transform: 'translateY(-24px)',
                     }}
                   />
                 </Box>
               </Grid.Col>
             </Grid>
           </Box>
-
           <InfoBanner />
-
           <SolutionsSection />
-
           <Newsletter />
-
-          {/* <GenesisPreviewCard /> */}
         </Container>
       </PageLayout>
     </>
