@@ -12,7 +12,7 @@ const InfoBanner = () => {
   const theme = useMantineTheme()
   return (
     <Box
-      mb={80}
+      mb={120}
       sx={{
         borderRadius: 16,
         width: '100%',
