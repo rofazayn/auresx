@@ -45,7 +45,7 @@ const Home: NextPage = () => {
       </Head>
 
       <PageLayout>
-        <Container size='xl'>
+        <Container size='lg'>
           <Box
             mb={0}
             sx={{
@@ -56,7 +56,7 @@ const Home: NextPage = () => {
             }}
           >
             <Grid align={'center'} gutter={24}>
-              <Grid.Col xs={12} sm={12} md={8} lg={6}>
+              <Grid.Col xs={12} sm={12} md={6} lg={6}>
                 <Box
                   sx={{
                     zIndex: 10,
@@ -84,7 +84,7 @@ const Home: NextPage = () => {
                     <Title
                       order={1}
                       sx={{
-                        fontSize: 40,
+                        fontSize: 36,
                         '@media(max-width: 768px)': {
                           fontSize: 40,
                         },
@@ -95,7 +95,7 @@ const Home: NextPage = () => {
                       of Algeria.
                     </Title>
 
-                    <Text size='lg' mb={28} color='dimmed' weight='500'>
+                    <Text size='md' mb={28} color='dimmed'>
                       Our team comprises of talented individuals who have taken
                       the initiative to offer innovative solutions to address
                       significant digital challenges faced by critical sectors
@@ -104,7 +104,7 @@ const Home: NextPage = () => {
 
                     <Link href='/register'>
                       <Button
-                        size='lg'
+                        size='md'
                         color='indigo'
                         // variant='outline'
                         rightIcon={<IconRadar2 />}
@@ -135,7 +135,7 @@ const Home: NextPage = () => {
                   </Box>
                 </Box>
               </Grid.Col>
-              <Grid.Col xs={12} sm={12} md={8} lg={6}>
+              <Grid.Col xs={12} sm={12} md={6} lg={6}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -162,7 +162,7 @@ const Home: NextPage = () => {
           </Box>
           <InfoBanner />
           <SolutionsSection />
-          <Newsletter />
+          {/* <Newsletter /> */}
         </Container>
       </PageLayout>
     </>

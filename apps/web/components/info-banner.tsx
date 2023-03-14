@@ -13,6 +13,7 @@ const InfoBanner = () => {
   return (
     <Box
       mb={120}
+      mt={16}
       sx={{
         borderRadius: 16,
         width: '100%',
