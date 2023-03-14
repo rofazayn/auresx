@@ -1,5 +1,6 @@
 import {
   ActionIcon,
+  Anchor,
   Box,
   Burger,
   Button,
@@ -32,6 +33,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../context/auth-context'
+import CustomLink from './custom-link'
 import Logo from './logo'
 
 const Navbar = () => {
@@ -87,7 +89,7 @@ const Navbar = () => {
         <Box
           sx={{
             width: '100%',
-            paddingBlock: 20,
+            paddingBlock: 16,
             // paddingInline: 16,
             '@media (max-width: 768px)': {
               // paddingInline: 16,
@@ -108,71 +110,23 @@ const Navbar = () => {
           >
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <Link href='/'>
-                <Box sx={{ marginInlineEnd: 40 }}>
+                <Box
+                  sx={{
+                    marginInlineEnd: 32,
+                    transition: 'transform 250ms ease-in-out',
+                    '&:hover': {
+                      transform: 'translateY(-2px)',
+                    },
+                  }}
+                >
                   <Logo />
                 </Box>
               </Link>
               <MediaQuery smallerThan={'md'} styles={{ display: 'none' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <Link href='/projects' passHref>
-                    <Button
-                      aria-label='Solutions'
-                      // weight='500'
-                      color='gray'
-                      size='sm'
-                      radius='md'
-                      variant='subtle'
-                    >
-                      Solutions
-                    </Button>
-                  </Link>
-                  {/* <Link href='/pricing' passHref>
-                    <Anchor
-                      color='dimmed'
-                      size='md'
-                      aria-label='Pricing'
-                      weight='500'
-                      sx={{ paddingInline: 12, paddingBlock: 8 }}
-                    >
-                      Pricing
-                    </Anchor>
-                  </Link> */}
-                  {/* <Link href='/endeavor' passHref>
-                    <Button
-                      aria-label='Endeavor'
-                      // weight='500'
-                      color='gray'
-                      size='sm'
-                      radius='md'
-                      variant='subtle'
-                    >
-                      Endeavor
-                    </Button>
-                  </Link> */}
-                  <Link href='/team' passHref>
-                    <Button
-                      aria-label='Team'
-                      // weight='500'
-                      color='gray'
-                      size='sm'
-                      radius='md'
-                      variant='subtle'
-                    >
-                      The Team
-                    </Button>
-                  </Link>
-                  <Link href='/vision' passHref>
-                    <Button
-                      aria-label='Team'
-                      // weight='500'
-                      color='gray'
-                      size='sm'
-                      radius='md'
-                      variant='subtle'
-                    >
-                      Vision 2033
-                    </Button>
-                  </Link>
+                  <CustomLink href='/solutions' text='Solutions' />
+                  <CustomLink href='/team' text='Team' />
+                  <CustomLink href='/vision' text='Vision' />
                 </Box>
               </MediaQuery>
             </Box>
