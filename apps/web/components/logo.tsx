@@ -10,7 +10,7 @@ const Logo = () => {
       <AspectRatio
         ratio={1 / 1}
         sx={{
-          width: 42,
+          width: 40,
           cursor: 'pointer',
           '@media (max-width: 768px)': {
             width: 38,

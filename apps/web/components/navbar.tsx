@@ -65,11 +65,11 @@ const Navbar = () => {
         //   colorScheme === 'dark' ? theme.colors.dark[7] : 'white',
         backgroundColor:
           colorScheme === 'dark'
-            ? theme.fn.rgba(theme.colors.dark[8], 0.8)
-            : theme.fn.rgba('#ffffff', 0.8),
+            ? theme.fn.rgba(theme.colors.dark[8], 0.7)
+            : theme.fn.rgba('#ffffff', 0.7),
         // theme.fn.rgba(theme.colors.gray[1], 0.75),
         // backgroundColor: 'red',
-        backdropFilter: 'blur(8px)',
+        backdropFilter: 'blur(12px)',
         borderBottomLeftRadius: 24,
         borderBottomRightRadius: 24,
         overflow: 'hidden',
@@ -99,6 +99,11 @@ const Navbar = () => {
             borderLeft: 'none',
             borderRight: 'none',
             // overflow: 'hidden',
+            borderBottom: '1px solid',
+            borderColor:
+              theme.colorScheme === 'dark'
+                ? theme.colors.dark[6]
+                : theme.colors.gray[1],
           }}
         >
           <Box
@@ -199,16 +204,7 @@ const Navbar = () => {
               <>
                 <MediaQuery smallerThan={'md'} styles={{ display: 'none' }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <Link href='/login'>
-                      <Button
-                        variant='subtle'
-                        color='gray'
-                        size='sm'
-                        radius='md'
-                      >
-                        Sign In
-                      </Button>
-                    </Link>
+                    <CustomLink href='login' text='Sign in' />
                     <Link href='/register'>
                       <Button
                         variant='default'

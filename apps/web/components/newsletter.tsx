@@ -39,28 +39,27 @@ const Newsletter = () => {
                 width: '100%',
                 backgroundColor:
                   theme.colorScheme === 'dark'
-                    ? theme.colors.fluor[5]
-                    : theme.colors.fluor[3],
+                    ? theme.colors.dark[6]
+                    : theme.colors.gray[1],
                 '@media (max-width: 992px)': {
                   padding: '32px 16px',
                 },
               }}
             >
               <Stack spacing={16}>
-                <Title color='black'>
+                <Title>
                   AuresX Insider - Get Exclusive News and Updates on Our Journey
                   to Building an Algerian Digital Community
                 </Title>
-                <Text color='black' size='lg'>
+                <Text color='dimmed'>
                   Want to be the first to know about our latest updates and
                   milestones at AuresX? Subscribe to AuresX Insider today! Our
                   newsletter is your insider&apos;s guide to our journey of
-                  building a digital community in Algeria.
-                  {/* We&apos;ll share
+                  building a digital community in Algeria. We&apos;ll share
                   exclusive news and updates on our product development,
                   marketing strategy, and fundraising efforts, as well as
                   insights and lessons learned from our team members and
-                  advisors. */}
+                  advisors.
                 </Text>
               </Stack>
             </Box>
@@ -132,6 +131,7 @@ const Newsletter = () => {
                   required
                   size='lg'
                   sx={{ alignItems: 'center' }}
+                  color='indigo'
                   // checked={agreedToTerms}
                   // onChange={() => setAgreedToTerms(!agreedToTerms)}
                   // disabled={true}
@@ -166,6 +166,7 @@ const Newsletter = () => {
                 <Checkbox
                   required
                   size='lg'
+                  color='indigo'
                   sx={{ alignItems: 'center' }}
                   // checked={agreedToTerms}
                   // onChange={() => setAgreedToTerms(!agreedToTerms)}
@@ -183,6 +184,7 @@ const Newsletter = () => {
                 mt={16}
                 color='indigo'
                 rightIcon={<IconChecks />}
+                variant='light'
                 sx={{
                   '@media (max-width: 992px)': {
                     width: '100%',

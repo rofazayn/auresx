@@ -14,11 +14,13 @@ const CustomLink = ({ href, text }: CustomLinkProps) => {
       <Anchor
         aria-label={text || 'unset_link_text'}
         sx={{
-          padding: '8px 16px',
+          fontSize: 15,
+          fontFamily: theme.fontFamily,
+          padding: '8px 12px',
           color:
             theme.colorScheme === 'dark'
               ? theme.colors.gray[4]
-              : theme.colors.dark[3],
+              : theme.colors.dark[5],
           transition: 'color, transform 250ms ease-in-out',
           '&:hover': {
             color: theme.colorScheme === 'dark' ? 'white' : 'black',

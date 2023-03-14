@@ -36,9 +36,9 @@ const Footer = () => {
       sx={{
         width: '100%',
         backgroundColor:
-          theme.colorScheme === 'dark'
-            ? theme.colors.dark[7]
-            : theme.colors.gray[0],
+          colorScheme === 'dark'
+            ? theme.fn.rgba(theme.colors.dark[8], 0.7)
+            : theme.fn.rgba('#ffffff', 0.7),
         borderTopLeftRadius: 24,
         borderTopRightRadius: 24,
       }}
@@ -57,8 +57,8 @@ const Footer = () => {
         <Box
           sx={{
             width: '100%',
-            paddingTop: '80px !important',
-            paddingBottom: '160px !important',
+            paddingTop: 64,
+            paddingBottom: '80px',
             // paddingInline: 16,
             // '@media (max-width: 992px)': {
             //   paddingInline: 16,
@@ -67,9 +67,14 @@ const Footer = () => {
             zIndex: 9,
 
             // overflow: 'hidden',
-            borderBottom: 'none',
+
             borderLeft: 'none',
             borderRight: 'none',
+            borderTop: '1px solid',
+            borderColor:
+              theme.colorScheme === 'dark'
+                ? theme.colors.dark[6]
+                : theme.colors.gray[1],
           }}
         >
           {/* <Divider variant='dotted' mb={40} /> */}
