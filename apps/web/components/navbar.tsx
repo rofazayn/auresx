@@ -75,7 +75,7 @@ const Navbar = () => {
     >
       <Container
         // fluid
-        size='xl'
+        size='lg'
         // sx={{
         //   maxWidth: 1444,
         //   '@media (max-width: 992px)': {

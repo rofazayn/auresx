@@ -2,7 +2,6 @@ import {
   Anchor,
   Box,
   Container,
-  List,
   Paper,
   Stack,
   Text,
@@ -11,7 +10,6 @@ import {
 } from '@mantine/core'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 import PageLayout from '../components/_layouts/page-layout'
 
 const Terms: NextPage = () => {
@@ -25,7 +23,7 @@ const Terms: NextPage = () => {
       </Head>
 
       <PageLayout>
-        <Container size='xl' dir='ltr' pt={120}>
+        <Container size='lg' dir='ltr' pt={120}>
           <Paper
             radius='lg'
             p='xl'

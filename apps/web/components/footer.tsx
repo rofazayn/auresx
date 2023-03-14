@@ -44,7 +44,7 @@ const Footer = () => {
       }}
     >
       <Container
-        size='xl'
+        size='lg'
         // fluid
         // sx={{
         //   maxWidth: 1444,
@@ -307,7 +307,7 @@ const Footer = () => {
                   </Box>
                 </Box>
                 <Box>
-                  <Group spacing={16} mb={24}>
+                  <Group spacing={8} mb={24}>
                     <Select
                       variant='default'
                       data={[{ value: 'en', label: 'English' }]}

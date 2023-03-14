@@ -24,7 +24,7 @@ const PrivacyPolicy: NextPage = () => {
       </Head>
 
       <PageLayout>
-        <Container size='xl' dir='ltr' pt={120}>
+        <Container size='lg' dir='ltr' pt={120}>
           <Paper
             radius='lg'
             p='xl'

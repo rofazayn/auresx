@@ -79,7 +79,7 @@ const SolutionsSection = () => {
           meet their needs.
         </Text>
         <Box mb={40}>
-          <Box mb={40}>
+          <Box mb={32}>
             <MediaQuery smallerThan={'sm'} styles={{ display: 'none' }}>
               <SegmentedControl
                 sx={{

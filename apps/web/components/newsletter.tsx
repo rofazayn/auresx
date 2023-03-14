@@ -55,11 +55,12 @@ const Newsletter = () => {
                   Want to be the first to know about our latest updates and
                   milestones at AuresX? Subscribe to AuresX Insider today! Our
                   newsletter is your insider&apos;s guide to our journey of
-                  building a digital community in Algeria. We&apos;ll share
+                  building a digital community in Algeria.
+                  {/* We&apos;ll share
                   exclusive news and updates on our product development,
                   marketing strategy, and fundraising efforts, as well as
                   insights and lessons learned from our team members and
-                  advisors.
+                  advisors. */}
                 </Text>
               </Stack>
             </Box>
@@ -131,7 +132,6 @@ const Newsletter = () => {
                   required
                   size='lg'
                   sx={{ alignItems: 'center' }}
-                  color='teal'
                   // checked={agreedToTerms}
                   // onChange={() => setAgreedToTerms(!agreedToTerms)}
                   // disabled={true}
@@ -166,7 +166,6 @@ const Newsletter = () => {
                 <Checkbox
                   required
                   size='lg'
-                  color='teal'
                   sx={{ alignItems: 'center' }}
                   // checked={agreedToTerms}
                   // onChange={() => setAgreedToTerms(!agreedToTerms)}
