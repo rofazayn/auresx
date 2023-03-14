@@ -12,19 +12,19 @@ const InfoBanner = () => {
   const theme = useMantineTheme()
   return (
     <Box
-      mb={120}
-      mt={16}
+      mb={80}
+      mt={0}
       sx={{
-        borderRadius: 16,
+        borderRadius: 12,
         width: '100%',
-        minHeight: 168,
+        // minHeight: 168,
         backgroundColor:
           theme.colorScheme === 'dark'
             ? theme.colors.dark[7]
             : theme.colors.gray[0],
         display: 'flex',
         alignItems: 'center',
-        padding: '24px',
+        padding: '20px',
       }}
     >
       <Grid gutter={24} sx={{ width: '100%' }}>
@@ -44,6 +44,7 @@ const InfoBanner = () => {
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
+
                 '@media (max-width: 992px)': {
                   paddingBottom: 24,
                 },
@@ -56,7 +57,7 @@ const InfoBanner = () => {
                       ? theme.colors.gray[5]
                       : theme.colors.gray[7]
                   }
-                  size='40px'
+                  size='28px'
                 />
               </Box>
 
@@ -138,7 +139,7 @@ const InfoBanner = () => {
                       ? theme.colors.gray[5]
                       : theme.colors.gray[7]
                   }
-                  size='40px'
+                  size='28px'
                 />
               </Box>
 
@@ -219,7 +220,7 @@ const InfoBanner = () => {
                       ? theme.colors.gray[5]
                       : theme.colors.gray[7]
                   }
-                  size='40px'
+                  size='28px'
                 />
               </Box>
 

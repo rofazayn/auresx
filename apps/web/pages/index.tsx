@@ -49,7 +49,7 @@ const Home: NextPage = () => {
           <Box
             mb={0}
             sx={{
-              paddingTop: 120,
+              paddingTop: 80,
               '@media(max-width: 768px)': {
                 paddingTop: 112,
               },
