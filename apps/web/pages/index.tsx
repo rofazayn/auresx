@@ -19,7 +19,8 @@ import { useRef } from 'react'
 import InfoBanner from '../components/info-banner'
 import SolutionsSection from '../components/solutions-section'
 import PageLayout from '../components/_layouts/page-layout'
-import heroImage from '../public/images/illustrations/hero-3.png'
+// import heroImage from '../public/images/illustrations/hero-3.png'
+import heroImage from '../public/images/illustrations/settings-region.svg'
 
 const Home: NextPage = () => {
   const theme = useMantineTheme()
@@ -47,14 +48,17 @@ const Home: NextPage = () => {
           <Box
             mb={0}
             sx={{
-              paddingTop: 80,
-              '@media(max-width: 768px)': {
+              paddingBlock: 80,
+              marginBlock: 24,
+              '@media(max-width: 992px)': {
                 paddingTop: 112,
+                marginBlock: 0,
+                marginBottom: -64,
               },
             }}
           >
-            <Grid align={'center'} gutter={24}>
-              <Grid.Col xs={12} sm={12} md={7} lg={7}>
+            <Grid align={'end'} gutter={24}>
+              <Grid.Col xs={12} sm={12} md={6} lg={6}>
                 <Box
                   sx={{
                     zIndex: 10,
@@ -75,20 +79,13 @@ const Home: NextPage = () => {
                       alignItems: 'flex-start',
                       justifyContent: 'center',
                       // textAlign: 'center',
-                      maxWidth: 580,
+                      // maxWidth: 600,
                     }}
                     mb={32}
                   >
-                    <Title
-                      order={1}
-                      sx={{
-                        fontSize: 36,
-                        // maxWidth: 600,
-                      }}
-                      mb={12}
-                    >
-                      Bringing the future to Algeria: Advanced technology for a
-                      smarter nation.
+                    <Title order={1} mb={12}>
+                      Leading Algeria into a tech-driven future: Introducing
+                      advanced solutions for progress.
                     </Title>
 
                     <Text size='md' mb={28} color='dimmed'>
@@ -131,7 +128,13 @@ const Home: NextPage = () => {
                   </Box> */}
                 </Box>
               </Grid.Col>
-              <Grid.Col xs={12} sm={12} md={5} lg={5}>
+              <Grid.Col
+                xs={12}
+                sm={12}
+                md={6}
+                lg={6}
+                sx={{ '@media (max-width: 992px)': { display: 'none' } }}
+              >
                 <Box
                   sx={{
                     display: 'flex',
@@ -147,7 +150,7 @@ const Home: NextPage = () => {
                     style={{
                       width: '100%',
                       height: '100%',
-                      transform: 'translateY(-20px)',
+                      // transform: 'scale(1.1)',
                     }}
                   />
                 </Box>
