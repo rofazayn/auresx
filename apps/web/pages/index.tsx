@@ -19,8 +19,8 @@ import { useRef } from 'react'
 import InfoBanner from '../components/info-banner'
 import SolutionsSection from '../components/solutions-section'
 import PageLayout from '../components/_layouts/page-layout'
-// import heroImage from '../public/images/illustrations/hero-3.png'
-import heroImage from '../public/images/illustrations/settings-region.svg'
+// import heroImage from '../public/images/illustrations/hero-2.png'
+import heroImage from '../public/images/illustrations/dashboard-services.svg'
 
 const Home: NextPage = () => {
   const theme = useMantineTheme()
@@ -48,16 +48,15 @@ const Home: NextPage = () => {
           <Box
             mb={0}
             sx={{
-              paddingBlock: 80,
-              marginBlock: 24,
+              paddingTop: 80,
+              marginTop: 40,
               '@media(max-width: 992px)': {
                 paddingTop: 112,
                 marginBlock: 0,
-                marginBottom: -64,
               },
             }}
           >
-            <Grid align={'end'} gutter={24}>
+            <Grid align={'center'} gutter={24}>
               <Grid.Col xs={12} sm={12} md={6} lg={6}>
                 <Box
                   sx={{
@@ -150,7 +149,7 @@ const Home: NextPage = () => {
                     style={{
                       width: '100%',
                       height: '100%',
-                      // transform: 'scale(1.1)',
+                      transform: 'translateY(-32px)',
                     }}
                   />
                 </Box>
