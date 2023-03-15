@@ -75,7 +75,7 @@ const Home: NextPage = () => {
                       alignItems: 'flex-start',
                       justifyContent: 'center',
                       // textAlign: 'center',
-                      maxWidth: 580,
+                      maxWidth: 600,
                     }}
                     mb={32}
                   >
@@ -87,8 +87,8 @@ const Home: NextPage = () => {
                       }}
                       mb={12}
                     >
-                      Bringing the future to Algeria: Advanced technology for a
-                      smarter nation.
+                      Pioneering a smarter tomorrow for Algeria: Introducing
+                      next-gen technology.
                     </Title>
 
                     <Text size='md' mb={28} color='dimmed'>
