@@ -80,7 +80,7 @@ const InfoBanner = () => {
                 color='dimmed'
                 weight='bold'
                 sx={{ fontFamily: 'monospace' }}
-                size='xl'
+                size='lg'
               >
                 0.00 DZD
               </Text>
@@ -161,7 +161,7 @@ const InfoBanner = () => {
                 }
                 weight='bold'
                 sx={{ fontFamily: 'monospace' }}
-                size='xl'
+                size='lg'
               >
                 Awaiting Approval
               </Text>
@@ -242,7 +242,7 @@ const InfoBanner = () => {
                 }
                 weight='bold'
                 sx={{ fontFamily: 'monospace' }}
-                size='xl'
+                size='lg'
               >
                 1 Member(s)
               </Text>

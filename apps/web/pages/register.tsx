@@ -98,7 +98,7 @@ const Register: NextPage = () => {
               paddingTop: 120,
             }}
           >
-            <Paper
+            {/* <Paper
               radius='lg'
               p={'xl'}
               sx={{
@@ -114,9 +114,9 @@ const Register: NextPage = () => {
                     ? theme.colors.dark[7]
                     : theme.colors.gray[0],
               }}
-            >
-              <Grid gutter={24} align={'start'} justify={'center'}>
-                {/* <Grid.Col sm={12} md={6}>
+            > */}
+            <Grid gutter={24} align={'start'} justify={'center'}>
+              {/* <Grid.Col sm={12} md={6}>
                   <Center>
                     <Box
                       sx={{
@@ -235,8 +235,8 @@ const Register: NextPage = () => {
                     </Box>
                   </Center>
                 </Grid.Col> */}
-                <Grid.Col sm={12} md={12}>
-                  {/* <Box sx={{ width: '100%' }}>
+              <Grid.Col sm={12} md={12}>
+                {/* <Box sx={{ width: '100%' }}>
                     <SegmentedControl
                       value={segment}
                       onChange={setSegment}
@@ -249,218 +249,218 @@ const Register: NextPage = () => {
                     />
                     <Divider variant='dashed' my={16} sx={{ opacity: 0.4 }} />
                   </Box> */}
-                  {registerMutationError && registerMutationError?.message && (
-                    <Box mb={16}>
-                      <Alert
-                        icon={null}
-                        // icon={<IconAlertCircle size={24} />}
-                        title='Email already in use.'
-                        radius='md'
-                        variant='outline'
-                        color='red'
+                {registerMutationError && registerMutationError?.message && (
+                  <Box mb={16}>
+                    <Alert
+                      icon={null}
+                      // icon={<IconAlertCircle size={24} />}
+                      title='Email already in use.'
+                      radius='md'
+                      variant='outline'
+                      color='red'
 
-                        // mt={24}
-                      >
-                        {registerMutationError.message === 'email_not_available'
-                          ? 'The entered email is not available, please use another email address to proceed!'
-                          : 'Something went wrong, we are really sorry for the inconvenience, please try again later!'}
-                      </Alert>
-                    </Box>
-                  )}
-                  <Center>
-                    <Box sx={{ maxWidth: 380 }}>
-                      <Formik
-                        initialValues={{ name: '', email: '', password: '' }}
-                        validationSchema={registerSchema}
-                        onSubmit={async (
-                          values,
-                          {
-                            /* setSubmitting */
-                          }
-                        ) => {
-                          const { name, email, password } = values
-                          const registerOperation = await registerMutation({
-                            variables: {
-                              name: capitalizeWords(name.trim()),
-                              email,
-                              password,
-                            },
-                          })
+                      // mt={24}
+                    >
+                      {registerMutationError.message === 'email_not_available'
+                        ? 'The entered email is not available, please use another email address to proceed!'
+                        : 'Something went wrong, we are really sorry for the inconvenience, please try again later!'}
+                    </Alert>
+                  </Box>
+                )}
+                <Center>
+                  <Box sx={{ maxWidth: 380 }}>
+                    <Formik
+                      initialValues={{ name: '', email: '', password: '' }}
+                      validationSchema={registerSchema}
+                      onSubmit={async (
+                        values,
+                        {
+                          /* setSubmitting */
+                        }
+                      ) => {
+                        const { name, email, password } = values
+                        const registerOperation = await registerMutation({
+                          variables: {
+                            name: capitalizeWords(name.trim()),
+                            email,
+                            password,
+                          },
+                        })
 
-                          if (registerOperation.data?.register.accessToken) {
-                            setAuthStatus('found')
-                            setAccessToken(
-                              registerOperation.data?.register.accessToken
-                            )
-                            setRefreshToken(
-                              registerOperation.data?.register.refreshToken
-                            )
-                            let decodedUser = jwtDecode(
-                              registerOperation.data.register.accessToken
-                            )
-                            setCurrentUser(decodedUser)
-                          }
-                        }}
-                      >
-                        {({
-                          values,
-                          errors,
-                          touched,
-                          handleChange,
-                          handleBlur,
-                          handleSubmit,
-                          isSubmitting,
-                          /* and other goodies */
-                        }) => (
-                          <form onSubmit={handleSubmit}>
-                            <Stack spacing={16}>
-                              <TextInput
-                                // variant='filled'
-                                type='text'
-                                label='Full Name (required)'
-                                placeholder='Enter your full name'
-                                description='Please provide your real &amp; full name'
-                                size='md'
-                                required
-                                name='name'
-                                value={values.name}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                error={touched.name && errors.name}
-                              />
-                              <TextInput
-                                // variant='filled'
-                                label='Email (required)'
-                                placeholder='Enter your email'
-                                description='We need your email to validate your account'
-                                size='md'
-                                type='email'
-                                name='email'
-                                required
-                                value={values.email}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                error={touched.email && errors.email}
-                              />
-                              <PasswordInput
-                                // variant='filled'
-                                label='Password (required)'
-                                placeholder='Enter your password'
-                                description='Pick a password that is hard to guess'
-                                size='md'
-                                name='password'
-                                value={values.password}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                required
-                                error={touched.password && errors.password}
-                              />
+                        if (registerOperation.data?.register.accessToken) {
+                          setAuthStatus('found')
+                          setAccessToken(
+                            registerOperation.data?.register.accessToken
+                          )
+                          setRefreshToken(
+                            registerOperation.data?.register.refreshToken
+                          )
+                          let decodedUser = jwtDecode(
+                            registerOperation.data.register.accessToken
+                          )
+                          setCurrentUser(decodedUser)
+                        }
+                      }}
+                    >
+                      {({
+                        values,
+                        errors,
+                        touched,
+                        handleChange,
+                        handleBlur,
+                        handleSubmit,
+                        isSubmitting,
+                        /* and other goodies */
+                      }) => (
+                        <form onSubmit={handleSubmit}>
+                          <Stack spacing={16}>
+                            <TextInput
+                              variant='filled'
+                              type='text'
+                              label='Full Name (required)'
+                              placeholder='Enter your full name'
+                              description='Please provide your real &amp; full name'
+                              size='md'
+                              required
+                              name='name'
+                              value={values.name}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              error={touched.name && errors.name}
+                            />
+                            <TextInput
+                              variant='filled'
+                              label='Email (required)'
+                              placeholder='Enter your email'
+                              description='We need your email to validate your account'
+                              size='md'
+                              type='email'
+                              name='email'
+                              required
+                              value={values.email}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              error={touched.email && errors.email}
+                            />
+                            <PasswordInput
+                              variant='filled'
+                              label='Password (required)'
+                              placeholder='Enter your password'
+                              description='Pick a password that is hard to guess'
+                              size='md'
+                              name='password'
+                              value={values.password}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              required
+                              error={touched.password && errors.password}
+                            />
 
+                            <Divider
+                              variant='dashed'
+                              label={
+                                'By signing-up with us you agree to the following'
+                              }
+                              mt={8}
+                              mb={-8}
+                            />
+
+                            <Stack spacing={8}>
+                              <Checkbox
+                                required
+                                size='lg'
+                                sx={{ alignItems: 'flex-start' }}
+                                checked={agreedToTerms}
+                                onChange={() =>
+                                  setAgreedToTerms(!agreedToTerms)
+                                }
+                                // disabled={true}
+                                label={
+                                  <Text size='sm'>
+                                    <b>I agree</b> to the{' '}
+                                    <Link href='/terms' passHref>
+                                      <Anchor
+                                        underline
+                                        weight='500'
+                                        color='dimmed'
+                                        sx={{ fontWeight: 'bold' }}
+                                      >
+                                        Terms of Use
+                                      </Anchor>
+                                    </Link>{' '}
+                                    and to the{' '}
+                                    <Link href='/privacy-policy' passHref>
+                                      <Anchor
+                                        underline
+                                        weight='500'
+                                        color='dimmed'
+                                        sx={{ fontWeight: 'bold' }}
+                                      >
+                                        Privacy Policy
+                                      </Anchor>
+                                    </Link>{' '}
+                                    provided by AuresX (<b>required</b>)
+                                  </Text>
+                                }
+                              />
+                              <Checkbox
+                                size='lg'
+                                sx={{ alignItems: 'flex-start' }}
+                                label={
+                                  <Text size='sm'>
+                                    <b>I would like</b> to susbscribe to
+                                    AuresX&apos;s newsletter and receive latest
+                                    news (<b>optional</b>)
+                                  </Text>
+                                }
+                              />
+                            </Stack>
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                              }}
+                            >
                               <Divider
                                 variant='dashed'
                                 label={
-                                  'By signing-up with us you agree to the following'
+                                  "That's it, press the registration button to finish up"
                                 }
-                                mt={8}
-                                mb={-8}
+                                mb={8}
                               />
-
-                              <Stack spacing={8}>
-                                <Checkbox
-                                  required
-                                  size='lg'
-                                  sx={{ alignItems: 'flex-start' }}
-                                  checked={agreedToTerms}
-                                  onChange={() =>
-                                    setAgreedToTerms(!agreedToTerms)
-                                  }
-                                  // disabled={true}
-                                  label={
-                                    <Text size='sm'>
-                                      <b>I agree</b> to the{' '}
-                                      <Link href='/terms' passHref>
-                                        <Anchor
-                                          underline
-                                          weight='500'
-                                          color='dimmed'
-                                          sx={{ fontWeight: 'bold' }}
-                                        >
-                                          Terms of Use
-                                        </Anchor>
-                                      </Link>{' '}
-                                      and to the{' '}
-                                      <Link href='/privacy-policy' passHref>
-                                        <Anchor
-                                          underline
-                                          weight='500'
-                                          color='dimmed'
-                                          sx={{ fontWeight: 'bold' }}
-                                        >
-                                          Privacy Policy
-                                        </Anchor>
-                                      </Link>{' '}
-                                      provided by AuresX (<b>required</b>)
-                                    </Text>
-                                  }
-                                />
-                                <Checkbox
-                                  size='lg'
-                                  sx={{ alignItems: 'flex-start' }}
-                                  label={
-                                    <Text size='sm'>
-                                      <b>I would like</b> to susbscribe to
-                                      AuresX&apos;s newsletter and receive
-                                      latest news (<b>optional</b>)
-                                    </Text>
-                                  }
-                                />
-                              </Stack>
-                              <Box
-                                sx={{
-                                  display: 'flex',
-                                  flexDirection: 'column',
-                                }}
+                              <Button
+                                rightIcon={<IconPlugConnected />}
+                                size='md'
+                                type='submit'
+                                loading={isSubmitting}
+                                disabled={!agreedToTerms}
+                                color='indigo'
                               >
-                                <Divider
-                                  variant='dashed'
-                                  label={
-                                    "That's it, press the registration button to finish up"
-                                  }
-                                  mb={8}
-                                />
-                                <Button
-                                  rightIcon={<IconPlugConnected />}
-                                  size='md'
-                                  type='submit'
-                                  loading={isSubmitting}
-                                  disabled={!agreedToTerms}
-                                  color='indigo'
-                                >
-                                  Create your Account
-                                </Button>
-                              </Box>
+                                Create your Account
+                              </Button>
+                            </Box>
 
-                              <Box mt={-4}>
-                                {/* <Divider variant='dashed' my={16} /> */}
-                                <Text
-                                  color='dimmed'
-                                  mb={10}
-                                  size={'sm'}
-                                  align='center'
-                                >
-                                  Already have an AuresX account?{' '}
-                                  <Link href='/login' passHref>
-                                    <Anchor
-                                      weight='bold'
-                                      color='dimmed'
-                                      // sx={{ textDecoration: 'underline' }}
-                                    >
-                                      Login
-                                    </Anchor>
-                                  </Link>
-                                </Text>
+                            <Box mt={-4}>
+                              {/* <Divider variant='dashed' my={16} /> */}
+                              <Text
+                                color='dimmed'
+                                mb={10}
+                                size={'sm'}
+                                align='center'
+                              >
+                                Already have an AuresX account?{' '}
+                                <Link href='/login' passHref>
+                                  <Anchor
+                                    weight='bold'
+                                    color='dimmed'
+                                    // sx={{ textDecoration: 'underline' }}
+                                  >
+                                    Login
+                                  </Anchor>
+                                </Link>
+                              </Text>
 
-                                {/* <Text
+                              {/* <Text
                                   size='xs'
                                   color='dimmed'
                                   sx={{ opacity: 0.6 }}
@@ -469,16 +469,16 @@ const Register: NextPage = () => {
                                   that handle your data, activity &amp;
                                   authorizations in our ecosystem.
                                 </Text> */}
-                              </Box>
-                            </Stack>
-                          </form>
-                        )}
-                      </Formik>
-                    </Box>
-                  </Center>
-                </Grid.Col>
-              </Grid>
-            </Paper>
+                            </Box>
+                          </Stack>
+                        </form>
+                      )}
+                    </Formik>
+                  </Box>
+                </Center>
+              </Grid.Col>
+            </Grid>
+            {/* </Paper> */}
           </Container>
         </PageLayout>
       </>

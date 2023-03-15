@@ -1,5 +1,4 @@
 import {
-  Blockquote,
   Box,
   Button,
   Container,
@@ -18,7 +17,6 @@ import NextImage from 'next/image'
 import Link from 'next/link'
 import { useRef } from 'react'
 import InfoBanner from '../components/info-banner'
-import Newsletter from '../components/newsletter'
 import SolutionsSection from '../components/solutions-section'
 import PageLayout from '../components/_layouts/page-layout'
 import heroImage from '../public/images/illustrations/hero-3.png'
@@ -56,7 +54,7 @@ const Home: NextPage = () => {
             }}
           >
             <Grid align={'center'} gutter={24}>
-              <Grid.Col xs={12} sm={12} md={6} lg={6}>
+              <Grid.Col xs={12} sm={12} md={7} lg={7}>
                 <Box
                   sx={{
                     zIndex: 10,
@@ -85,14 +83,12 @@ const Home: NextPage = () => {
                       order={1}
                       sx={{
                         fontSize: 36,
-                        '@media(max-width: 768px)': {
-                          fontSize: 40,
-                        },
+                        // maxWidth: 600,
                       }}
                       mb={12}
                     >
-                      Bringing high-tier technology to the lofty mountain peaks
-                      of Algeria.
+                      Bringing the future to Algeria: Advanced technology for a
+                      smarter nation.
                     </Title>
 
                     <Text size='md' mb={28} color='dimmed'>
@@ -113,7 +109,7 @@ const Home: NextPage = () => {
                       </Button>
                     </Link>
                   </Box>
-                  <Box>
+                  {/* <Box>
                     <Blockquote
                       cite='– Founder &amp; CEO of AuresX'
                       sx={(theme) => ({
@@ -132,10 +128,10 @@ const Home: NextPage = () => {
                       sectors, our goal at AuresX is to solve that problem in
                       the most innovative way and as fast as we possibly can.
                     </Blockquote>
-                  </Box>
+                  </Box> */}
                 </Box>
               </Grid.Col>
-              <Grid.Col xs={12} sm={12} md={6} lg={6}>
+              <Grid.Col xs={12} sm={12} md={5} lg={5}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -151,9 +147,7 @@ const Home: NextPage = () => {
                     style={{
                       width: '100%',
                       height: '100%',
-                      borderRadius: 12,
-                      overflow: 'hidden',
-                      transform: 'translateY(-24px)',
+                      transform: 'translateY(-20px)',
                     }}
                   />
                 </Box>

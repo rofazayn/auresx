@@ -72,7 +72,7 @@ const SolutionsSection = () => {
         >
           <Grid gutter={16} align='end'>
             <Grid.Col sm={6}>
-              <Title order={1}>
+              <Title order={2} sx={{ maxWidth: 420 }}>
                 Making purposeful plans to achieve strategic goals.
               </Title>
             </Grid.Col>
@@ -91,8 +91,8 @@ const SolutionsSection = () => {
               variant='dashed'
               mb={16}
               mt={32}
-              label={'Phase One'}
-              labelPosition='right'
+              label={'First Tier Projects'}
+              labelPosition='left'
             />
             <Grid gutter={24}>
               <Grid.Col span={12} md={6} sm={6} xs={12}>
@@ -136,8 +136,8 @@ const SolutionsSection = () => {
               variant='dashed'
               mb={16}
               mt={32}
-              label={'Phase Two'}
-              labelPosition='right'
+              label={'Second Tier Projects'}
+              labelPosition='left'
             />
 
             <Grid gutter={24}>
@@ -194,8 +194,8 @@ const SolutionsSection = () => {
               variant='dashed'
               mb={16}
               mt={32}
-              label={'Phase Three'}
-              labelPosition='right'
+              label={'Third Tier Projects'}
+              labelPosition='left'
             />
 
             <Grid gutter={24} mb={24}>
