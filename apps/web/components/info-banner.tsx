@@ -13,18 +13,18 @@ const InfoBanner = () => {
   return (
     <Box
       mb={80}
-      mt={0}
+      mt={16}
       sx={{
         borderRadius: 12,
         width: '100%',
-        // minHeight: 168,
+        minHeight: 168,
         backgroundColor:
           theme.colorScheme === 'dark'
             ? theme.colors.dark[7]
             : theme.colors.gray[0],
         display: 'flex',
         alignItems: 'center',
-        padding: '20px',
+        padding: '24px',
       }}
     >
       <Grid gutter={24} sx={{ width: '100%' }}>
