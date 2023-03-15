@@ -218,17 +218,7 @@ const Navbar = () => {
                 </MediaQuery>
                 <MediaQuery largerThan={'md'} styles={{ display: 'none' }}>
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Link href='/login'>
-                      <Button
-                        variant='subtle'
-                        color='gray'
-                        size='sm'
-                        radius='md'
-                        sx={{ marginInlineEnd: 8 }}
-                      >
-                        Sign In
-                      </Button>
-                    </Link>
+                    <CustomLink href='login' text='Sign in' mr={8} />
                     <Burger
                       aria-label='Menu'
                       opened={opened}

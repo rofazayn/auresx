@@ -1,13 +1,13 @@
-import { Anchor, useMantineTheme } from '@mantine/core'
+import { Anchor, MantineStyleSystemProps, useMantineTheme } from '@mantine/core'
 import Link from 'next/link'
 import React from 'react'
 
-interface CustomLinkProps {
+interface CustomLinkProps extends MantineStyleSystemProps {
   href: string
   text: string
 }
 
-const CustomLink = ({ href, text }: CustomLinkProps) => {
+const CustomLink = ({ href, text, ...props }: CustomLinkProps) => {
   const theme = useMantineTheme()
   return (
     <Link href={href || '/'} passHref>
@@ -29,6 +29,7 @@ const CustomLink = ({ href, text }: CustomLinkProps) => {
         }}
         weight='500'
         variant='text'
+        {...props}
       >
         {text || 'unset_link_text'}
       </Anchor>

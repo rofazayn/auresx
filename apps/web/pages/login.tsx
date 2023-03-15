@@ -93,7 +93,7 @@ const Login: NextPage = () => {
               paddingTop: 120,
             }}
           >
-            <Paper
+            {/* <Paper
               radius='lg'
               p={'xl'}
               sx={{
@@ -102,9 +102,9 @@ const Login: NextPage = () => {
                     ? theme.colors.dark[7]
                     : theme.colors.gray[0],
               }}
-            >
-              <Grid gutter={24} align={'start'} justify={'center'}>
-                {/* <Grid.Col sm={12} md={6}>
+            > */}
+            <Grid gutter={24} align={'start'} justify={'center'}>
+              {/* <Grid.Col sm={12} md={6}>
                   <Center>
                     <Box sx={{ maxWidth: 380 }}>
                       <Box sx={{ transform: 'scale(1.2)' }} mb={40}>
@@ -212,8 +212,8 @@ const Login: NextPage = () => {
                     </Box>
                   </Center>
                 </Grid.Col> */}
-                <Grid.Col sm={12} md={12}>
-                  {/* <Box sx={{ width: '100%' }} mb={16}>
+              <Grid.Col sm={12} md={12}>
+                {/* <Box sx={{ width: '100%' }} mb={16}>
                     <SegmentedControl
                       value={segment}
                       onChange={setSegment}
@@ -226,112 +226,110 @@ const Login: NextPage = () => {
                     />
                     <Divider variant='dashed' my={16} sx={{ opacity: 0.4 }} />
                   </Box> */}
-                  <Center>
-                    <Box sx={{ width: '100%', maxWidth: 380 }}>
-                      <Formik
-                        initialValues={{
-                          email: '',
-                          password: '',
-                          stayLogged: false,
-                        }}
-                        validationSchema={loginSchema}
-                        onSubmit={async (
-                          values,
-                          {
-                            /* setSubmitting */
-                          }
-                        ) => {
-                          const { email, password } = values
-                          const loginOperation = await loginMutation({
-                            variables: {
-                              email,
-                              password,
-                            },
-                          })
+                <Center>
+                  <Box sx={{ width: '100%', maxWidth: 380 }}>
+                    <Formik
+                      initialValues={{
+                        email: '',
+                        password: '',
+                        stayLogged: false,
+                      }}
+                      validationSchema={loginSchema}
+                      onSubmit={async (
+                        values,
+                        {
+                          /* setSubmitting */
+                        }
+                      ) => {
+                        const { email, password } = values
+                        const loginOperation = await loginMutation({
+                          variables: {
+                            email,
+                            password,
+                          },
+                        })
 
-                          if (loginOperation.data?.login.accessToken) {
-                            setAuthStatus('found')
-                            setAccessToken(
-                              loginOperation.data?.login.accessToken
-                            )
-                            setRefreshToken(
-                              loginOperation.data?.login.refreshToken
-                            )
-                            let decodedUser = jwtDecode(
-                              loginOperation.data.login.accessToken
-                            )
-                            setCurrentUser(decodedUser)
-                          }
-                        }}
-                      >
-                        {({
-                          values,
-                          errors,
-                          touched,
-                          handleChange,
-                          handleBlur,
-                          handleSubmit,
-                          isSubmitting,
-                          /* and other goodies */
-                        }) => (
-                          <form onSubmit={handleSubmit}>
-                            <Stack spacing={16}>
-                              <TextInput
-                                // variant='filled'
-                                label='Email (required)'
-                                placeholder='Enter your email'
-                                description='The email you used to create your account'
-                                size='md'
-                                name='email'
-                                type='email'
-                                value={values.email}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                error={touched.email && errors.email}
-                                required
-                              />
-                              <PasswordInput
-                                // variant='filled'
-                                label='Password (required)'
-                                placeholder='Enter your password'
-                                description={
-                                  <Text>
-                                    Share it with no one,{' '}
-                                    <Anchor
-                                      color='dimmed'
-                                      sx={{
-                                        textDecoration: 'underline',
-                                        fontWeight: 'bold',
-                                      }}
-                                    >
-                                      Forgot password?
-                                    </Anchor>
-                                  </Text>
-                                }
-                                size='md'
-                                name='password'
-                                value={values.password}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                error={touched.password && errors.password}
-                              />
-                              <Checkbox
-                                size='lg'
-                                sx={{ alignItems: 'center' }}
-                                // checked={agreedToTerms}
-                                // onChange={() =>
-                                //   setAgreedToTerms(!agreedToTerms)
-                                // }
-                                // disabled={true}
-                                label={
-                                  <Text size='sm'>
-                                    <b>Remember</b> login credentials for this
-                                    device!
-                                  </Text>
-                                }
-                              />
+                        if (loginOperation.data?.login.accessToken) {
+                          setAuthStatus('found')
+                          setAccessToken(loginOperation.data?.login.accessToken)
+                          setRefreshToken(
+                            loginOperation.data?.login.refreshToken
+                          )
+                          let decodedUser = jwtDecode(
+                            loginOperation.data.login.accessToken
+                          )
+                          setCurrentUser(decodedUser)
+                        }
+                      }}
+                    >
+                      {({
+                        values,
+                        errors,
+                        touched,
+                        handleChange,
+                        handleBlur,
+                        handleSubmit,
+                        isSubmitting,
+                        /* and other goodies */
+                      }) => (
+                        <form onSubmit={handleSubmit}>
+                          <Stack spacing={12}>
+                            <TextInput
+                              variant='filled'
+                              label='Email (required)'
+                              placeholder='Enter your email'
+                              description='The email you used to create your account'
+                              size='md'
+                              name='email'
+                              type='email'
+                              value={values.email}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              error={touched.email && errors.email}
+                              required
+                            />
+                            <PasswordInput
+                              variant='filled'
+                              label='Password (required)'
+                              placeholder='Enter your password'
+                              description={
+                                <Text>
+                                  Share it with no one,{' '}
+                                  <Anchor
+                                    color='dimmed'
+                                    sx={{
+                                      textDecoration: 'underline',
+                                      fontWeight: 'bold',
+                                    }}
+                                  >
+                                    Forgot password?
+                                  </Anchor>
+                                </Text>
+                              }
+                              size='md'
+                              name='password'
+                              value={values.password}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              error={touched.password && errors.password}
+                            />
+                            <Checkbox
+                              size='lg'
+                              sx={{ alignItems: 'center' }}
+                              // checked={agreedToTerms}
+                              // onChange={() =>
+                              //   setAgreedToTerms(!agreedToTerms)
+                              // }
+                              // disabled={true}
+                              label={
+                                <Text size='sm'>
+                                  <b>Remember</b> login credentials for this
+                                  device!
+                                </Text>
+                              }
+                            />
 
-                              {/* <Box>
+                            {/* <Box>
                                 <Divider
                                   variant='dashed'
                                   label={'More login options'}
@@ -353,14 +351,14 @@ const Login: NextPage = () => {
                                 />
                               </Box> */}
 
-                              <Box
-                                sx={{
-                                  display: 'flex',
-                                  flexDirection: 'column',
-                                }}
-                                mt={12}
-                              >
-                                {/* <Divider
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                              }}
+                              mt={4}
+                            >
+                              {/* <Divider
                                   variant='dashed'
                                   label={
                                     'Everything okay? then please proceed to signing in'
@@ -369,58 +367,58 @@ const Login: NextPage = () => {
                                   mb={8}
                                 /> */}
 
-                                <Button
-                                  rightIcon={<IconLogin />}
-                                  size='md'
-                                  type='submit'
-                                  loading={isSubmitting}
-                                  color='indigo'
-                                >
-                                  Login to your Account
-                                </Button>
-                                {loginMutationError &&
-                                  loginMutationError?.message && (
-                                    <Alert
-                                      icon={<IconAlertCircle size={24} />}
-                                      // title='Oopsie!'
-                                      radius='md'
-                                      variant='outline'
-                                      color='red'
-                                      mt={24}
-                                    >
-                                      {loginMutationError.message ===
-                                        'invalid_username' ||
-                                      loginMutationError.message ===
-                                        'invalid_password'
-                                        ? 'You entered wrong credentials, please check your email and password and try again!'
-                                        : 'Something went wrong, we are really sorry for the inconvenience, please try again later!'}
-                                    </Alert>
-                                  )}
-                              </Box>
+                              <Button
+                                rightIcon={<IconLogin />}
+                                size='md'
+                                type='submit'
+                                loading={isSubmitting}
+                                color='indigo'
+                              >
+                                Login to your Account
+                              </Button>
+                              {loginMutationError &&
+                                loginMutationError?.message && (
+                                  <Alert
+                                    icon={<IconAlertCircle size={24} />}
+                                    // title='Oopsie!'
+                                    radius='md'
+                                    variant='outline'
+                                    color='red'
+                                    mt={24}
+                                  >
+                                    {loginMutationError.message ===
+                                      'invalid_username' ||
+                                    loginMutationError.message ===
+                                      'invalid_password'
+                                      ? 'You entered wrong credentials, please check your email and password and try again!'
+                                      : 'Something went wrong, we are really sorry for the inconvenience, please try again later!'}
+                                  </Alert>
+                                )}
+                            </Box>
 
-                              {/* <Divider variant='dashed' mt={16} mb={8} /> */}
+                            {/* <Divider variant='dashed' mt={16} mb={8} /> */}
 
-                              <Box mt={-4}>
-                                {/* <Divider variant='dashed' my={16} /> */}
-                                <Text
-                                  color='dimmed'
-                                  mb={10}
-                                  size={'sm'}
-                                  align='center'
-                                >
-                                  Don&apos;t have an account?{' '}
-                                  <Link href='/register' passHref>
-                                    <Anchor
-                                      weight='bold'
-                                      color='dimmed'
-                                      // sx={{ textDecoration: 'underline' }}
-                                    >
-                                      Register
-                                    </Anchor>
-                                  </Link>
-                                </Text>
+                            <Box mt={-4}>
+                              {/* <Divider variant='dashed' my={16} /> */}
+                              <Text
+                                color='dimmed'
+                                mb={10}
+                                size={'sm'}
+                                align='center'
+                              >
+                                Don&apos;t have an account?{' '}
+                                <Link href='/register' passHref>
+                                  <Anchor
+                                    weight='bold'
+                                    color='dimmed'
+                                    // sx={{ textDecoration: 'underline' }}
+                                  >
+                                    Register
+                                  </Anchor>
+                                </Link>
+                              </Text>
 
-                                {/* <Text
+                              {/* <Text
                                   size='xs'
                                   color='dimmed'
                                   sx={{ opacity: 0.6 }}
@@ -429,16 +427,16 @@ const Login: NextPage = () => {
                                   that handle your data, activity &amp;
                                   authorizations in our ecosystem.
                                 </Text> */}
-                              </Box>
-                            </Stack>
-                          </form>
-                        )}
-                      </Formik>
-                    </Box>
-                  </Center>
-                </Grid.Col>
-              </Grid>
-            </Paper>
+                            </Box>
+                          </Stack>
+                        </form>
+                      )}
+                    </Formik>
+                  </Box>
+                </Center>
+              </Grid.Col>
+            </Grid>
+            {/* </Paper> */}
           </Container>
         </PageLayout>
       </>
