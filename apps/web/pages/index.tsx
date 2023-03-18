@@ -1,4 +1,5 @@
 import {
+  Blockquote,
   Box,
   Button,
   Container,
@@ -19,8 +20,8 @@ import { useRef } from 'react'
 import InfoBanner from '../components/info-banner'
 import SolutionsSection from '../components/solutions-section'
 import PageLayout from '../components/_layouts/page-layout'
-// import heroImage from '../public/images/illustrations/hero-2.png'
-import heroImage from '../public/images/illustrations/dashboard-services.svg'
+import heroImage from '../public/images/illustrations/hero-4.png'
+// import heroImage from '../public/images/illustrations/dashboard-services.svg'
 
 const Home: NextPage = () => {
   const theme = useMantineTheme()
@@ -49,14 +50,23 @@ const Home: NextPage = () => {
             mb={0}
             sx={{
               paddingTop: 80,
+              paddingBottom: 40,
               marginTop: 40,
               '@media(max-width: 992px)': {
-                paddingTop: 112,
+                paddingTop: 100,
                 marginBlock: 0,
               },
             }}
           >
-            <Grid align={'center'} gutter={24}>
+            <Grid
+              align={'center'}
+              gutter={24}
+              sx={{
+                '@media(max-width: 768px)': {
+                  flexDirection: 'column-reverse',
+                },
+              }}
+            >
               <Grid.Col xs={12} sm={12} md={6} lg={6}>
                 <Box
                   sx={{
@@ -105,7 +115,7 @@ const Home: NextPage = () => {
                       </Button>
                     </Link>
                   </Box>
-                  {/* <Box>
+                  <Box>
                     <Blockquote
                       cite='– Founder &amp; CEO of AuresX'
                       sx={(theme) => ({
@@ -124,7 +134,7 @@ const Home: NextPage = () => {
                       sectors, our goal at AuresX is to solve that problem in
                       the most innovative way and as fast as we possibly can.
                     </Blockquote>
-                  </Box> */}
+                  </Box>
                 </Box>
               </Grid.Col>
               <Grid.Col
@@ -132,7 +142,7 @@ const Home: NextPage = () => {
                 sm={12}
                 md={6}
                 lg={6}
-                sx={{ '@media (max-width: 992px)': { display: 'none' } }}
+                // sx={{ '@media (max-width: 992px)': { display: 'none' } }}
               >
                 <Box
                   sx={{
@@ -149,7 +159,9 @@ const Home: NextPage = () => {
                     style={{
                       width: '100%',
                       height: '100%',
-                      transform: 'translateY(-32px)',
+                      // transform: 'translateY(-32px)',
+                      borderRadius: 12,
+                      overflow: 'hidden',
                     }}
                   />
                 </Box>
