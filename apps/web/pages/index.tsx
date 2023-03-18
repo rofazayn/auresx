@@ -151,17 +151,19 @@ const Home: NextPage = () => {
                     height: '100%',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    borderRadius: 12,
+                    overflow: 'hidden',
                   }}
                 >
                   <NextImage
                     src={heroImage}
                     alt='AuresX inbound'
+                    aria-label='AuresX Hero Ilustration'
+                    // layout='fill'
+                    placeholder='blur'
                     style={{
                       width: '100%',
                       height: '100%',
-                      // transform: 'translateY(-32px)',
-                      borderRadius: 12,
-                      overflow: 'hidden',
                     }}
                   />
                 </Box>
