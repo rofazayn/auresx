@@ -41,7 +41,7 @@ const SolutionCard = ({
               ? theme.colors.dark[6]
               : theme.colors.gray[1],
         },
-        userSelect: 'none',
+        // userSelect: 'none',
       }}
     >
       <Box

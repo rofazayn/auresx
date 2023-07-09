@@ -136,99 +136,89 @@ const Navbar = () => {
               </MediaQuery>
             </Box>
 
-            {authStatus === 'stale' ? (
-              <Loader size='sm' />
-            ) : authStatus === 'found' ? (
-              <>
-                <MediaQuery smallerThan={'md'} styles={{ display: 'none' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Link href='/dashboard'>
+            <>
+              {authStatus === 'stale' ? (
+                <Loader size='sm' />
+              ) : authStatus === 'found' ? (
+                <>
+                  <MediaQuery smallerThan={'md'} styles={{ display: 'none' }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                      <Link href='/dashboard'>
+                        <Button
+                          variant='subtle'
+                          color='gray'
+                          size='sm'
+                          radius='md'
+                          leftIcon={<IconApps width='18px' />}
+                        >
+                          Dashboard
+                        </Button>
+                      </Link>
                       <Button
+                        onClick={logout}
+                        color='red'
                         variant='subtle'
-                        color='gray'
                         size='sm'
                         radius='md'
-                        leftIcon={<IconApps width='18px' />}
+                        rightIcon={<IconLogout width='18px' />}
+                        loading={logoutLoading}
                       >
-                        Dashboard
+                        Logout
                       </Button>
-                    </Link>
-                    <Button
-                      onClick={logout}
-                      color='red'
-                      variant='subtle'
-                      size='sm'
-                      radius='md'
-                      rightIcon={<IconLogout width='18px' />}
-                      loading={logoutLoading}
-                    >
-                      Logout
-                    </Button>
-
-                    {/* <Divider orientation='vertical' />
-                    <ActionIcon
-                      variant='light'
-                      color='red'
-                      size='lg'
-                      radius='md'
-                      onClick={handleLogout}
-                    >
-                      <IconLogout />
-                    </ActionIcon> */}
-                  </Box>
-                </MediaQuery>
-                <MediaQuery largerThan={'md'} styles={{ display: 'none' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                    <Link href='/dashboard'>
-                      <Button
-                        variant='subtle'
-                        color='gray'
-                        size='xs'
-                        radius='md'
-                        leftIcon={<IconApps width='16' />}
-                      >
-                        Dashboard
-                      </Button>
-                    </Link>
-                    <Burger
-                      // color='gray'
-                      aria-label='Menu'
-                      opened={opened}
-                      size={14}
-                      onClick={() => setOpened((prev) => !prev)}
-                    />
-                  </Box>
-                </MediaQuery>
-              </>
-            ) : (
-              <>
-                <MediaQuery smallerThan={'md'} styles={{ display: 'none' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <CustomLink href='login' text='Sign in' />
-                    <Link href='/register'>
-                      <Button
-                        variant='default'
+                    </Box>
+                  </MediaQuery>
+                  <MediaQuery largerThan={'md'} styles={{ display: 'none' }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                      <Link href='/dashboard'>
+                        <Button
+                          variant='subtle'
+                          color='gray'
+                          size='xs'
+                          radius='md'
+                          leftIcon={<IconApps width='16' />}
+                        >
+                          Dashboard
+                        </Button>
+                      </Link>
+                      <Burger
+                        aria-label='Menu'
+                        opened={opened}
+                        size={14}
+                        onClick={() => setOpened((prev) => !prev)}
+                      />
+                    </Box>
+                  </MediaQuery>
+                </>
+              ) : (
+                <>
+                  <MediaQuery smallerThan={'md'} styles={{ display: 'none' }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <CustomLink href='login' text='Sign in' />
+                      <Link href='/register'>
+                        <Button
+                          variant='default'
+                          size='sm'
+                          rightIcon={<IconRocket size='20' />}
+                        >
+                          Join Us
+                        </Button>
+                      </Link>
+                    </Box>
+                  </MediaQuery>
+                  <MediaQuery largerThan={'md'} styles={{ display: 'none' }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                      {/* <CustomLink href='login' text='Sign in' mr={8} /> */}
+                      <Burger
+                        aria-label='Menu'
+                        opened={opened}
                         size='sm'
-                        rightIcon={<IconRocket size='20' />}
-                      >
-                        Join Us
-                      </Button>
-                    </Link>
-                  </Box>
-                </MediaQuery>
-                <MediaQuery largerThan={'md'} styles={{ display: 'none' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <CustomLink href='login' text='Sign in' mr={8} />
-                    <Burger
-                      aria-label='Menu'
-                      opened={opened}
-                      size='sm'
-                      onClick={() => setOpened((prev) => !prev)}
-                    />
-                  </Box>
-                </MediaQuery>
-              </>
-            )}
+                        onClick={() => setOpened((prev) => !prev)}
+                      />
+                    </Box>
+                  </MediaQuery>
+                </>
+              )}
+            </>
           </Box>
 
           <MediaQuery largerThan={'md'} styles={{ display: 'none' }}>
@@ -480,17 +470,18 @@ const Navbar = () => {
                         <Loader />
                       ) : authStatus === 'found' ? (
                         <>
-                          <Link href='/dashboard'>
-                            <Button
-                              variant='light'
-                              color='indigo'
-                              size='sm'
-                              sx={{ width: '100%' }}
-                              rightIcon={<IconApps size='18px' />}
-                            >
-                              Navigate to Dashboard
-                            </Button>
-                          </Link>
+                          {/* <Link href='/dashboard'> */}
+                          <Button
+                            variant='light'
+                            color='indigo'
+                            size='sm'
+                            sx={{ width: '100%' }}
+                            rightIcon={<IconApps size='18px' />}
+                            disabled
+                          >
+                            Navigate to Dashboard
+                          </Button>
+                          {/* </Link> */}
                           {/* <Link href='/register'> */}
                           <Button
                             variant='light'
@@ -500,6 +491,7 @@ const Navbar = () => {
                             sx={{ width: '100%' }}
                             onClick={handleLogout}
                             loading={logoutLoading}
+                            disabled
                           >
                             Log Out of your Account
                           </Button>
@@ -507,28 +499,30 @@ const Navbar = () => {
                         </>
                       ) : (
                         <>
-                          <Link href='/login'>
-                            <Button
-                              variant='light'
-                              color='indigo'
-                              size='sm'
-                              sx={{ width: '100%' }}
-                              rightIcon={<IconLogin size='18px' />}
-                            >
-                              Login to your Account
-                            </Button>
-                          </Link>
-                          <Link href='/register'>
-                            <Button
-                              variant='light'
-                              color='teal'
-                              size='sm'
-                              rightIcon={<IconConfetti size='18px' />}
-                              sx={{ width: '100%' }}
-                            >
-                              Create an AuresX Account
-                            </Button>
-                          </Link>
+                          {/* <Link href='/login'> */}
+                          <Button
+                            variant='light'
+                            color='indigo'
+                            size='sm'
+                            sx={{ width: '100%' }}
+                            rightIcon={<IconLogin size='18px' />}
+                            disabled
+                          >
+                            Login to your Account
+                          </Button>
+                          {/* </Link> */}
+                          {/* <Link href='/register'> */}
+                          <Button
+                            variant='light'
+                            color='teal'
+                            size='sm'
+                            rightIcon={<IconConfetti size='18px' />}
+                            sx={{ width: '100%' }}
+                            disabled
+                          >
+                            Create an AuresX Account
+                          </Button>
+                          {/* </Link> */}
                         </>
                       )}
                     </Box>
