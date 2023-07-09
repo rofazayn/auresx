@@ -104,7 +104,7 @@ const Home: NextPage = () => {
                       in Algeria <Text component='span'>🇩🇿</Text>
                     </Text>
 
-                    <Link href='/register'>
+                    {/* <Link href='/register'>
                       <Button
                         size='md'
                         color='indigo'
@@ -113,7 +113,7 @@ const Home: NextPage = () => {
                       >
                         Join our Endeavor
                       </Button>
-                    </Link>
+                    </Link> */}
                   </Box>
                   <Box>
                     <Blockquote
