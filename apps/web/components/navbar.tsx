@@ -191,7 +191,7 @@ const Navbar = () => {
                 </>
               ) : (
                 <>
-                  <MediaQuery smallerThan={'md'} styles={{ display: 'none' }}>
+                  {/* <MediaQuery smallerThan={'md'} styles={{ display: 'none' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                       <CustomLink href='login' text='Sign in' />
                       <Link href='/register'>
@@ -204,7 +204,7 @@ const Navbar = () => {
                         </Button>
                       </Link>
                     </Box>
-                  </MediaQuery>
+                  </MediaQuery> */}
                   <MediaQuery largerThan={'md'} styles={{ display: 'none' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                       {/* <CustomLink href='login' text='Sign in' mr={8} /> */}
