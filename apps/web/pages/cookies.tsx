@@ -32,7 +32,7 @@ const Terms: NextPage = () => {
             </Box>
             <Text size='md'>
               {' '}
-              This Cookie Policy explains how AuresX SPAS (&quot;Company&quot;,
+              This Cookie Policy explains how AuresX SARL (&quot;Company&quot;,
               &quot;we&quot;, &quot;us&quot;, and &quot;our&quot;) uses cookies
               and similar technologies to recognize you when you visit our
               websites at https://auresx.com, (&quot;Websites&quot;). It
@@ -54,7 +54,7 @@ const Terms: NextPage = () => {
               more efficiently, as well as to provide reporting information.{' '}
             </Text>
             <Text size='md'>
-              Cookies set by the website owner (in this case, AuresX SPAS) are
+              Cookies set by the website owner (in this case, AuresX SARL) are
               called &quot;first party cookies&quot;. Cookies set by parties
               other than the website owner are called &quot;third party
               cookies&quot;. Third party cookies enable third party features or
@@ -205,7 +205,7 @@ const Terms: NextPage = () => {
               technologies, please email us at support@auresx.com or by post to:
             </Text>
             <Text size='md'>
-              <b>Legal name: AuresX SPAS</b>
+              <b>Legal name: AuresX SARL</b>
               <br />
               <b>Address: 5th of July St.</b>
               <br />

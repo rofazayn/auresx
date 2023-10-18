@@ -1,5 +1,13 @@
-import { Badge, Box, Group, Text, useMantineTheme } from '@mantine/core'
-import { IconLamp } from '@tabler/icons'
+import {
+  ActionIcon,
+  Badge,
+  Box,
+  Group,
+  Text,
+  useMantineTheme,
+} from '@mantine/core'
+import { IconExternalLink, IconLamp } from '@tabler/icons'
+import Link from 'next/link'
 import React from 'react'
 
 interface ISolutioCardProps {
@@ -8,6 +16,7 @@ interface ISolutioCardProps {
   description: string
   tags: string[]
   tagsColor?: string
+  link?: string
 }
 
 const SolutionCard = ({
@@ -16,6 +25,7 @@ const SolutionCard = ({
   description,
   tags,
   tagsColor,
+  link,
 }: ISolutioCardProps) => {
   const theme = useMantineTheme()
   return (
@@ -23,24 +33,25 @@ const SolutionCard = ({
       sx={{
         width: '100%',
         height: '100%',
-        minHeight: 160,
+        minHeight: 224,
         display: 'flex',
         flexDirection: 'column',
         borderRadius: 12,
         justifyContent: 'space-between',
         transition: 'all 150ms ease-in-out',
-        cursor: 'pointer',
+        // cursor: 'pointer',
         backgroundColor:
           theme.colorScheme === 'dark'
             ? theme.colors.dark[7]
             : theme.colors.gray[0],
         padding: '16px',
-        '&:hover': {
-          backgroundColor:
-            theme.colorScheme === 'dark'
-              ? theme.colors.dark[6]
-              : theme.colors.gray[1],
-        },
+        // '&:hover': {
+        //   backgroundColor:
+        //     theme.colorScheme === 'dark'
+        //       ? theme.colors.dark[6]
+        //       : theme.colors.gray[1],
+        // },
+
         // userSelect: 'none',
       }}
     >
@@ -78,7 +89,14 @@ const SolutionCard = ({
           <Text color='dimmed'>{description}</Text>
         </Box>
       </Box>
-      <Box>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 12,
+        }}
+      >
         <Group spacing={8}>
           {tags &&
             tags.length > 0 &&
@@ -94,6 +112,20 @@ const SolutionCard = ({
               </Badge>
             ))}
         </Group>
+        {link && (
+          <Box sx={{ marginInlineEnd: '4px' }}>
+            <ActionIcon
+              variant='default'
+              size='md'
+              color='gray'
+              component={'a'}
+              href={link}
+              target='_blank'
+            >
+              <IconExternalLink width='16px' height='16px' />
+            </ActionIcon>
+          </Box>
+        )}
       </Box>
     </Box>
   )

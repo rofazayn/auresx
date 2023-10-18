@@ -33,7 +33,7 @@ const PrivacyPolicy: NextPage = () => {
             </Box>
             <Box>
               <Text mb={8} size='md'>
-                This privacy notice for AuresX SPAS (doing business as AuresX)
+                This privacy notice for AuresX SARL (doing business as AuresX)
                 (&quot;AuresX,&quot; &quot;we,&quot; &quot;us,&quot; or
                 &quot;our&quot;), describes how and why we might collect, store,
                 use, and/or share (&quot;process&quot;) your information when
@@ -850,7 +850,7 @@ const PrivacyPolicy: NextPage = () => {
               or by post to:
             </Text>
             <Text size='md'>
-              <b>Legal name: AuresX SPAS</b>
+              <b>Legal name: AuresX SARL</b>
               <br />
               <b>Address: 5th of July St.</b>
               <br />

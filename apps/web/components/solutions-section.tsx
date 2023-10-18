@@ -3,8 +3,6 @@ import {
   Center,
   Divider,
   Grid,
-  MediaQuery,
-  SegmentedControl,
   Text,
   Title,
   useMantineTheme,
@@ -20,7 +18,6 @@ import {
   IconFingerprint,
   IconMoon,
   IconPyramid,
-  IconStars,
   IconTriangles,
   IconWebhook,
 } from '@tabler/icons'
@@ -94,40 +91,54 @@ const SolutionsSection = () => {
               label={'First Tier Projects'}
               labelPosition='left'
             />
-            <Grid gutter={24}>
-              <Grid.Col span={12} md={6} sm={6} xs={12}>
-                <SolutionCard
-                  title='Secure Data Exchange Platform'
-                  icon={<IconWebhook size='20' />}
-                  description='The reliable and modern platform for secure data exchange across government agencies and citizens in Algeria.'
-                  tags={['Atakor', 'WiP', '2026']}
-                />
-              </Grid.Col>
 
+            <Grid gutter={24} mb={24}>
               <Grid.Col span={12} md={6} sm={6} xs={12}>
                 <SolutionCard
-                  title='Digital Government'
-                  icon={<IconBuildingMonument size='20' />}
-                  description="Transforming Algeria's public services with e-government: Improving access, efficiency, and transparency for citizens and businesses."
-                  tags={['Hokoma', 'WiP', '2026']}
+                  title='PoS and Business Management'
+                  icon={<IconTriangles size='20' />}
+                  description='A user-friendly point of sale software that streamlines business operations. Its key benefit is its ability to synchronize data when an internet connection is available, ensuring that your data is always up-to-date and accessible.'
+                  tags={['Gedged', 'Live', '2024']}
+                  tagsColor='pink'
+                  link='https://gedged.co'
                 />
               </Grid.Col>
               <Grid.Col span={12} md={6} sm={6} xs={12}>
                 <SolutionCard
-                  title='Distributed Ledger Technology'
-                  icon={<IconBox size='20' />}
-                  description='Enhancing the security, integrity, and transparency of e-Hokoma services and data exchange on the Atakor platform.'
-                  tags={['Hoggar', 'WiP', '2026']}
+                  title='Streamlined Online Marketplace'
+                  icon={<IconBuildingStore size='20' />}
+                  description='Streamline your online marketplace with Lekwana. Utilizing data from Gedged PoS instances, Lekwana simplifies your onboarding process, making it a breeze for vendors to join your platform.'
+                  tags={['Lekwana', 'WIP', '2025']}
+                  tagsColor='pink'
                 />
               </Grid.Col>
               <Grid.Col span={12} md={6} sm={6} xs={12}>
                 <SolutionCard
-                  title='Digital Identity'
-                  icon={<IconFingerprint size='20' />}
-                  description='Digital identity is your virtual fingerprint, providing a secure and convenient way to access online services with confidence.'
-                  tags={['Chkon: e-ID', 'WiP', '2026']}
+                  title='Education and Research'
+                  icon={<IconBook size='20' />}
+                  description='A digital space that enables individuals to access and learn educational content online. It provides a flexible and accessible way for learners to access courses,lectures, and resources from anywhere, anytime.'
+                  tags={['Tighri', 'WIP', '2025']}
+                  tagsColor='pink'
                 />
               </Grid.Col>
+              <Grid.Col span={12} md={6} sm={6} xs={12}>
+                <SolutionCard
+                  title='Freelance Work'
+                  icon={<IconBriefcase size='20' />}
+                  description='An online platform that connects freelance workers with businesses and individuals seeking their services. It provides a streamlined and secure way for freelancers to showcase their skills and find new clients.'
+                  tags={['Teftoufa', 'WIP', '2026']}
+                  tagsColor='pink'
+                />
+              </Grid.Col>
+              {/* <Grid.Col span={12} md={6} sm={6} xs={12}>
+                <SolutionCard
+                  title='And More and More...'
+                  icon={<IconStars size='20' />}
+                  description='At our company, we are committed to continuously developing and expanding our ecosystem with new and innovative solutions that meet the needs of our users. We believe that collaboration is key to achieving this goal.'
+                  tags={['Ideas', 'Third-parties', '2033']}
+                  tagsColor='pink'
+                />
+              </Grid.Col> */}
             </Grid>
           </>
 
@@ -139,51 +150,38 @@ const SolutionsSection = () => {
               label={'Second Tier Projects'}
               labelPosition='left'
             />
-
             <Grid gutter={24}>
               <Grid.Col span={12} md={6} sm={6} xs={12}>
                 <SolutionCard
-                  title='Electronic Taxation'
-                  icon={<IconPyramid size='20' />}
-                  description='A secure platform that helps to increase tax compliance and reduce tax evasion, benefiting both taxpayers and the government.'
-                  tags={['e-Dariba', 'Coming up', '2028']}
-                  tagsColor='indigo'
+                  title='Secure Data Exchange Platform'
+                  icon={<IconWebhook size='20' />}
+                  description='The reliable and modern platform for secure data exchange across government agencies and citizens in Algeria.'
+                  tags={['AtakorX', 'Vision', '2027']}
+                />
+              </Grid.Col>
+
+              <Grid.Col span={12} md={6} sm={6} xs={12}>
+                <SolutionCard
+                  title='Digital Government'
+                  icon={<IconBuildingMonument size='20' />}
+                  description="Transforming Algeria's public services with e-government: Improving access, efficiency, and transparency for citizens and businesses."
+                  tags={['E-Hokoma', 'Vision', '2027']}
                 />
               </Grid.Col>
               <Grid.Col span={12} md={6} sm={6} xs={12}>
                 <SolutionCard
-                  title='Electronic Banking'
-                  icon={<IconBusinessplan size='20' />}
-                  description='It enables individuals and businesses to manage their banking needs online. It provides a convenient and secure way to access bank accounts, transfer funds and pay bills.'
-                  tags={['e-Sordan', 'Coming up', '2028']}
-                  tagsColor='indigo'
+                  title='Distributed Ledger Technology'
+                  icon={<IconBox size='20' />}
+                  description='Enhancing the security, integrity, and transparency of e-Hokoma services and data exchange on the Atakor platform.'
+                  tags={['HoggarX', 'Vision', '2027']}
                 />
               </Grid.Col>
               <Grid.Col span={12} md={6} sm={6} xs={12}>
                 <SolutionCard
-                  title='Electronic Business Registration'
-                  icon={<IconBuildingWarehouse size='20' />}
-                  description='Provides a simple and efficient way for businesses to complete registration and filing requirements, such as business licenses, permits, and tax registrations.'
-                  tags={['e-Bezness', 'Coming up', '2028']}
-                  tagsColor='indigo'
-                />
-              </Grid.Col>
-              <Grid.Col span={12} md={6} sm={6} xs={12}>
-                <SolutionCard
-                  title='Electronic Commerce'
-                  icon={<IconBuildingStore size='20' />}
-                  description='Businesses can easily connect with suppliers, customers, and government agencies, streamlining the e-commerce process and increasing efficiency.'
-                  tags={['LEKWANA', 'Coming up', '2028']}
-                  tagsColor='indigo'
-                />
-              </Grid.Col>
-              <Grid.Col span={12} md={6} sm={6} xs={12}>
-                <SolutionCard
-                  title='Health Records &amp; Services'
-                  icon={<IconMoon size='20' />}
-                  description='A platform that enables individuals and healthcare providers to access and exchange health information electronically.'
-                  tags={['Lafya', 'Coming up', '2028']}
-                  tagsColor='indigo'
+                  title='Digital Identity'
+                  icon={<IconFingerprint size='20' />}
+                  description='Digital identity is your virtual fingerprint, providing a secure and convenient way to access online services with confidence.'
+                  tags={['Chkon: e-ID', 'Vision', '2027']}
                 />
               </Grid.Col>
             </Grid>
@@ -198,41 +196,50 @@ const SolutionsSection = () => {
               labelPosition='left'
             />
 
-            <Grid gutter={24} mb={24}>
+            <Grid gutter={24}>
               <Grid.Col span={12} md={6} sm={6} xs={12}>
                 <SolutionCard
-                  title='PoS and Business Management'
-                  icon={<IconTriangles size='20' />}
-                  description='A user-friendly point of sale software that streamlines business operations. Its key benefit is its ability to synchronize data when an internet connection is available, ensuring that your data is always up-to-date and accessible.'
-                  tags={['Gedged', 'Vision', '2030']}
-                  tagsColor='pink'
+                  title='Electronic Taxation'
+                  icon={<IconPyramid size='20' />}
+                  description='A secure platform that helps to increase tax compliance and reduce tax evasion, benefiting both taxpayers and the government.'
+                  tags={['e-Dariba', 'vision +', '2030']}
+                  tagsColor='indigo'
                 />
               </Grid.Col>
               <Grid.Col span={12} md={6} sm={6} xs={12}>
                 <SolutionCard
-                  title='Education and Research'
-                  icon={<IconBook size='20' />}
-                  description='A digital space that enables individuals to access and learn educational content online. It provides a flexible and accessible way for learners to access courses,lectures, and resources from anywhere, anytime.'
-                  tags={['Tighri', 'Vision', '2030']}
-                  tagsColor='pink'
+                  title='Electronic Banking'
+                  icon={<IconBusinessplan size='20' />}
+                  description='It enables individuals and businesses to manage their banking needs online. It provides a convenient and secure way to access bank accounts, transfer funds and pay bills.'
+                  tags={['e-Sordan', 'vision +', '2030']}
+                  tagsColor='indigo'
                 />
               </Grid.Col>
               <Grid.Col span={12} md={6} sm={6} xs={12}>
                 <SolutionCard
-                  title='Freelance Work'
-                  icon={<IconBriefcase size='20' />}
-                  description='An online platform that connects freelance workers with businesses and individuals seeking their services. It provides a streamlined and secure way for freelancers to showcase their skills and find new clients.'
-                  tags={['Teftoufa', 'Vision', '2030']}
-                  tagsColor='pink'
+                  title='Electronic Business Registration'
+                  icon={<IconBuildingWarehouse size='20' />}
+                  description='Provides a simple and efficient way for businesses to complete registration and filing requirements, such as business licenses, permits, and tax registrations.'
+                  tags={['e-Bezness', 'vision +', '2030']}
+                  tagsColor='indigo'
                 />
               </Grid.Col>
               <Grid.Col span={12} md={6} sm={6} xs={12}>
                 <SolutionCard
-                  title='And More and More...'
-                  icon={<IconStars size='20' />}
-                  description='At our company, we are committed to continuously developing and expanding our ecosystem with new and innovative solutions that meet the needs of our users. We believe that collaboration is key to achieving this goal.'
-                  tags={['Ideas', 'Third-parties', '2033']}
-                  tagsColor='pink'
+                  title='Electronic Commerce'
+                  icon={<IconBuildingStore size='20' />}
+                  description='Businesses can easily connect with suppliers, customers, and government agencies, streamlining the e-commerce process and increasing efficiency.'
+                  tags={['LEKWANA', 'vision +', '2030']}
+                  tagsColor='indigo'
+                />
+              </Grid.Col>
+              <Grid.Col span={12} md={6} sm={6} xs={12}>
+                <SolutionCard
+                  title='Health Records &amp; Services'
+                  icon={<IconMoon size='20' />}
+                  description='A platform that enables individuals and healthcare providers to access and exchange health information electronically.'
+                  tags={['Lafya', 'vision +', '2030']}
+                  tagsColor='indigo'
                 />
               </Grid.Col>
             </Grid>

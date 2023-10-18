@@ -129,7 +129,7 @@ const Navbar = () => {
               </Link>
               <MediaQuery smallerThan={'md'} styles={{ display: 'none' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <CustomLink href='/solutions' text='Solutions' />
+                  <CustomLink href='/' text='Solutions' />
                   <CustomLink href='/team' text='Team' />
                   <CustomLink href='/vision' text='Vision' />
                 </Box>
@@ -337,7 +337,7 @@ const Navbar = () => {
                             Home
                           </Button>
                         </Link>
-                        <Link href='/projects' passHref>
+                        <Link href='/' passHref>
                           <Button
                             variant='light'
                             color='gray'
