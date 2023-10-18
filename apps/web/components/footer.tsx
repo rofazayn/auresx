@@ -301,7 +301,7 @@ const Footer = () => {
                       <Text span size='lg'>
                         &copy;
                       </Text>{' '}
-                      {new Date().getFullYear()} AuresX, SPAS.
+                      {new Date().getFullYear()} AuresX, SARL.
                       <br /> All rights reserved.
                     </Text>
                     <Text size='sm' mb={16} color='dimmed'>

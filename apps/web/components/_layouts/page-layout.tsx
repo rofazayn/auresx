@@ -27,12 +27,7 @@ export default function PageLayout({ children }: LayoutProps) {
         sx={{
           minHeight: '900px',
           width: '100%',
-          // paddingTop: 160,
-          paddingBottom: 80,
-          '@media (max-width: 768px)': {
-            // paddingTop: 104,
-            paddingBottom: 40,
-          },
+
           position: 'relative',
           flexGrow: 1,
           overflow: 'hidden',

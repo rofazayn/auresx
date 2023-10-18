@@ -127,7 +127,7 @@ const Terms: NextPage = () => {
             <Text size='md'>
               These Terms of Use constitute a legally binding agreement made
               between you, whether personally or on behalf of an entity
-              (&quot;you&quot;) and AuresX SPAS, doing business as AuresX
+              (&quot;you&quot;) and AuresX SARL, doing business as AuresX
               (&quot;AuresX,&quot; &quot;we,&quot; &quot;us,&quot; or
               &quot;our&quot;), concerning your access to and use of the{' '}
               <Anchor href='https://auresx.com' target='_blank'>
@@ -773,7 +773,7 @@ const Terms: NextPage = () => {
             </Title>
             <Text size='md'>
               These terms shall be governed by and defined following the laws of
-              Algeria. AuresX SPAS and yourself irrevocably consent that the
+              Algeria. AuresX SARL and yourself irrevocably consent that the
               courts of Algeria shall have exclusive jurisdiction to resolve any
               dispute which may arise in connection with these terms.
             </Text>
@@ -783,7 +783,7 @@ const Terms: NextPage = () => {
             <Text size='md'>
               You agree to irrevocably submit all disputes related to Terms or
               the relationship established by this Agreement to the jurisdiction
-              of the Algeria courts. AuresX SPAS shall also maintain the right
+              of the Algeria courts. AuresX SARL shall also maintain the right
               to bring proceedings as to the substance of the matter in the
               courts of the country where you reside or, if these Terms are
               entered into in the course of your trade or profession, the state
@@ -947,7 +947,7 @@ const Terms: NextPage = () => {
               at:
             </Text>
             <Text size='md'>
-              <b>Legal name: AuresX SPAS</b>
+              <b>Legal name: AuresX SARL</b>
               <br />
               <b>Address: 5th of July St.</b>
               <br />

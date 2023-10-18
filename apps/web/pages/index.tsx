@@ -50,7 +50,7 @@ const Home: NextPage = () => {
             mb={0}
             sx={{
               paddingTop: 80,
-              paddingBottom: 40,
+              paddingBottom: 80,
               marginTop: 40,
               '@media(max-width: 992px)': {
                 paddingTop: 100,
@@ -170,7 +170,7 @@ const Home: NextPage = () => {
               </Grid.Col>
             </Grid>
           </Box>
-          <InfoBanner />
+          {/* <InfoBanner /> */}
           <SolutionsSection />
           {/* <Newsletter /> */}
         </Container>

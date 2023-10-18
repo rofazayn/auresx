@@ -176,7 +176,7 @@ export default function DashboardLayout({ children }: LayoutProps) {
                         &copy; {new Date().getFullYear()}{' '}
                         <NextLink href='/' passHref>
                           <Anchor underline color='dimmed'>
-                            AuresX SPAS
+                            AuresX SARL
                           </Anchor>
                         </NextLink>
                         , Algeria (Beta Version)
@@ -244,7 +244,7 @@ export default function DashboardLayout({ children }: LayoutProps) {
                       &copy; {new Date().getFullYear()}{' '}
                       <NextLink href='/' passHref>
                         <Anchor underline color='dimmed'>
-                          AuresX SPAS
+                          AuresX SARL
                         </Anchor>
                       </NextLink>
                       , Algeria (Beta Version)
