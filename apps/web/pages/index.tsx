@@ -117,7 +117,7 @@ const Home: NextPage = () => {
                   </Box>
                   <Box>
                     <Blockquote
-                      cite='– Founder &amp; CEO of AuresX'
+                      cite='– Founder &amp; Director of AuresX'
                       sx={(theme) => ({
                         opacity: 0.5,
                         fontSize: 14,
