@@ -1,0 +1,25 @@
+# *
+User-agent: *
+Disallow: /dashboard-old/
+
+# *
+User-agent: *
+Disallow: /register/
+
+# *
+User-agent: *
+Disallow: /login/
+
+# *
+User-agent: *
+Disallow: /projects/
+
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://gedged.co
+
+# Sitemaps
+Sitemap: https://gedged.co/sitemap.xml

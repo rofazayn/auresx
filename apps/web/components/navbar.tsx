@@ -138,7 +138,7 @@ const Navbar = () => {
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                   <CustomLink href='/' text='Solutions' />
                   <CustomLink href='/team' text='Team' />
-                  <CustomLink href='/vision' text='Vision' />
+                  {/* <CustomLink href='/vision' text='Vision' /> */}
                 </Box>
               </MediaQuery>
             </Box>
@@ -385,7 +385,7 @@ const Navbar = () => {
                             The Team
                           </Button>
                         </Link>
-                        <Link href='/vision' passHref>
+                        {/* <Link href='/vision' passHref>
                           <Button
                             variant='light'
                             color='gray'
@@ -394,7 +394,7 @@ const Navbar = () => {
                           >
                             Vision 2033
                           </Button>
-                        </Link>
+                        </Link> */}
                         {/* </Button.Group> */}
                       </Group>
                     </Box>
