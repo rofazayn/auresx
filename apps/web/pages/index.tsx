@@ -1,7 +1,6 @@
 import {
   Blockquote,
   Box,
-  Button,
   Container,
   Grid,
   Text,
@@ -9,17 +8,14 @@ import {
   useMantineColorScheme,
   useMantineTheme,
 } from '@mantine/core'
-import { IconRadar2 } from '@tabler/icons'
 import Autoplay from 'embla-carousel-autoplay'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
 import NextImage from 'next/image'
-import Link from 'next/link'
 import { useRef } from 'react'
-import InfoBanner from '../components/info-banner'
-import SolutionsSection from '../components/solutions-section'
 import PageLayout from '../components/_layouts/page-layout'
+import SolutionsSection from '../components/solutions-section'
 import heroImage from '../public/images/illustrations/hero-4.png'
 // import heroImage from '../public/images/illustrations/dashboard-services.svg'
 
