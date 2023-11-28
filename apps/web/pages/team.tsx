@@ -15,7 +15,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useRef } from 'react'
 import PageLayout from '../components/_layouts/page-layout'
-import founderImage from '../public/images/founder.jpg'
+import founderImage from '../public/images/ruzo.jpg'
 // import heroImage from '../public/images/illustrations/dashboard-services.svg'
 
 const Team: NextPage = () => {
