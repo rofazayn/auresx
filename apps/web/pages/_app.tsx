@@ -42,6 +42,13 @@ export default function App(props: AppProps) {
           name='viewport'
           content='minimum-scale=1, initial-scale=1, width=device-width'
         />
+        <meta
+          name='description'
+          content='Our team comprises of talented individuals who have taken
+          the initiative to offer innovative solutions to address
+          significant digital challenges faced by critical sectors
+          in Algeria.'
+        />
       </Head>
 
       <ApolloProvider client={apolloClient}>

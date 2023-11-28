@@ -12,14 +12,13 @@ import Autoplay from 'embla-carousel-autoplay'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import NextImage from 'next/image'
+import Image from 'next/image'
 import { useRef } from 'react'
 import PageLayout from '../components/_layouts/page-layout'
-import SolutionsSection from '../components/solutions-section'
-import heroImage from '../public/images/illustrations/hero-4.png'
+import founderImage from '../public/images/founder.jpg'
 // import heroImage from '../public/images/illustrations/dashboard-services.svg'
 
-const Home: NextPage = () => {
+const Team: NextPage = () => {
   const theme = useMantineTheme()
   const { colorScheme } = useMantineColorScheme()
 
@@ -41,7 +40,7 @@ const Home: NextPage = () => {
       </Head>
 
       <PageLayout>
-        <Container size='lg'>
+        <Container size='md'>
           <Box
             mb={0}
             sx={{
@@ -54,15 +53,7 @@ const Home: NextPage = () => {
               },
             }}
           >
-            <Grid
-              align={'center'}
-              gutter={24}
-              sx={{
-                '@media(max-width: 768px)': {
-                  flexDirection: 'column-reverse',
-                },
-              }}
-            >
+            <Grid align={'center'} gutter={24}>
               <Grid.Col xs={12} sm={12} md={6} lg={6}>
                 <Box
                   sx={{
@@ -89,27 +80,25 @@ const Home: NextPage = () => {
                     mb={32}
                   >
                     <Title order={1} mb={12}>
-                      Leading Algeria into a tech-driven future: Introducing
-                      advanced solutions for progress.
+                      Meet the Founder
                     </Title>
 
-                    <Text size='md' mb={28} color='dimmed'>
-                      Our team comprises of talented individuals who have taken
-                      the initiative to offer innovative solutions to address
-                      significant digital challenges faced by critical sectors
-                      in Algeria <Text component='span'>🇩🇿</Text>
+                    <Text size='md' mb={12} color='dimmed'>
+                      At AuresX, our strength lies in our dedicated team of
+                      passionate individuals who are committed to innovation and
+                      excellence. Get to know the faces behind our success
                     </Text>
 
-                    {/* <Link href='/register'>
-                      <Button
-                        size='md'
-                        color='indigo'
-                        // variant='outline'
-                        rightIcon={<IconRadar2 />}
-                      >
-                        Join our Endeavor
-                      </Button>
-                    </Link> */}
+                    {/* <Button
+                      component='a'
+                      href='https://rofazayn.com'
+                      size='sm'
+                      color='indigo'
+                      // variant='outline'
+                      rightIcon={<IconUser width='18px' height='18px' />}
+                    >
+                      Check the founder's website
+                    </Button> */}
                   </Box>
                   <Box>
                     <Blockquote
@@ -133,46 +122,42 @@ const Home: NextPage = () => {
                   </Box>
                 </Box>
               </Grid.Col>
-              <Grid.Col
-                xs={12}
-                sm={12}
-                md={6}
-                lg={6}
-                // sx={{ '@media (max-width: 992px)': { display: 'none' } }}
-              >
+              <Grid.Col xs={12} sm={12} md={6} lg={6}>
                 <Box
                   sx={{
-                    display: 'flex',
-                    width: '100%',
+                    midth: '100%',
                     height: '100%',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    borderRadius: 12,
+                    maxWidth: '120px',
+                    borderRadius: 24,
                     overflow: 'hidden',
+                    display: 'flex',
+                    marginBottom: 20,
                   }}
                 >
-                  <NextImage
-                    src={heroImage}
-                    alt='AuresX inbound'
-                    aria-label='AuresX Hero Ilustration'
-                    // layout='fill'
-                    placeholder='blur'
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                    }}
-                  />
+                  <Image src={founderImage} />
                 </Box>
+                <Title order={2}>Abderraouf Zine</Title>
+
+                <Text size='lg' color='dimmed'>
+                  Founder &amp; Director at AuresX
+                </Text>
+                <Text size='sm' color='dimmed' mt={12}>
+                  Hey, I'm Abderraouf Zine, also known as Rofa or Ruzo. I'm
+                  based in Batna, Algeria, deeply immersed in software
+                  engineering, web development, and entrepreneurship. My coding
+                  journey began when I stumbled upon an ad that introduced me to
+                  Codecademy back in 2013. That moment ignited my passion for
+                  coding and set me on a path of continuous learning and digital
+                  exploration.
+                </Text>
               </Grid.Col>
             </Grid>
+            {/* <Divider mt={64} variant='dashed' /> */}
           </Box>
-          {/* <InfoBanner /> */}
-          <SolutionsSection />
-          {/* <Newsletter /> */}
         </Container>
       </PageLayout>
     </>
   )
 }
 
-export default Home
+export default Team
