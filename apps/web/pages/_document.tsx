@@ -55,6 +55,11 @@ export default class _Document extends Document {
             sizes='16x16'
             href='/favicon-16x16.png'
           />
+
+          <meta
+            name='description'
+            content='Our team comprises of talented individuals who have taken the initiative to offer innovative solutions to address significant digital challenges faced by critical sectors in Algeria.'
+          />
           <link rel='manifest' href='/site.webmanifest' />
           {/* Fonts */}
           <link rel='preconnect' href='https://fonts.googleapis.com' />
