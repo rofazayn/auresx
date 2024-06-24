@@ -15,7 +15,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useRef } from 'react'
 import PageLayout from '../components/_layouts/page-layout'
-import founderImage from '../public/images/ruzo.jpg'
+import founderImage from '../public/images/ruzo-new.jpg'
 // import heroImage from '../public/images/illustrations/dashboard-services.svg'
 
 const Team: NextPage = () => {
@@ -53,7 +53,7 @@ const Team: NextPage = () => {
               },
             }}
           >
-            <Grid align={'center'} gutter={24}>
+            <Grid align={'start'} gutter={24}>
               <Grid.Col xs={12} sm={12} md={6} lg={6}>
                 <Box
                   sx={{
@@ -102,7 +102,7 @@ const Team: NextPage = () => {
                   </Box>
                   <Box>
                     <Blockquote
-                      cite='– Abderraouf Zine, Founder &amp; Director of AuresX'
+                      cite="– Rauf E'Zain, Founder &amp; Director of AuresX"
                       sx={(theme) => ({
                         opacity: 0.5,
                         fontSize: 14,
@@ -127,7 +127,7 @@ const Team: NextPage = () => {
                   sx={{
                     midth: '100%',
                     height: '100%',
-                    maxWidth: '120px',
+                    maxWidth: '240px',
                     borderRadius: 24,
                     overflow: 'hidden',
                     display: 'flex',
@@ -136,18 +136,18 @@ const Team: NextPage = () => {
                 >
                   <Image src={founderImage} />
                 </Box>
-                <Title order={2}>Abderraouf Zine</Title>
+                <Title order={2}>Rauf E'Zain</Title>
 
                 <Text size='lg' color='dimmed'>
                   Founder &amp; Director at AuresX
                 </Text>
                 <Text size='sm' color='dimmed' mt={12}>
-                  Hey, I'm Abderraouf Zine, also known as Rofa or Ruzo. I'm
-                  based in Batna, Algeria, deeply immersed in software
-                  engineering, web development, and entrepreneurship. My coding
-                  journey began when I stumbled upon an ad that introduced me to
-                  Codecademy back in 2013. That moment ignited my passion for
-                  coding and set me on a path of continuous learning and digital
+                  Hey, I'm Rauf E'Zain, also known as Rofa or Ruzo. I'm based in
+                  Batna, Algeria, deeply immersed in software engineering, web
+                  development, and entrepreneurship. My coding journey began
+                  when I stumbled upon an ad that introduced me to Codecademy
+                  back in 2013. That moment ignited my passion for coding and
+                  set me on a path of continuous learning and digital
                   exploration.
                 </Text>
               </Grid.Col>

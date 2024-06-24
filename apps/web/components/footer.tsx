@@ -26,7 +26,7 @@ import {
 import NextImage from 'next/image'
 import Link from 'next/link'
 import logoImageLight from '../public/images/logo-light.png'
-import logoImage from '../public/images/logo.png'
+import logoImageDark from '../public/images/logo-dark.png'
 
 const Footer = () => {
   const theme = useMantineTheme()
@@ -268,7 +268,6 @@ const Footer = () => {
                           cursor: 'pointer',
                           marginInlineEnd: 16,
                           filter: 'grayscale(100%)',
-                          opacity: 0.75,
                           transition: 'all 250ms ease-in-out',
                           '&:hover': {
                             opacity: 1,
@@ -278,7 +277,7 @@ const Footer = () => {
                       >
                         {colorScheme === 'dark' ? (
                           <NextImage
-                            src={logoImage}
+                            src={logoImageDark}
                             alt='AuresX logo'
                             aria-label='AuresX logo'
                             layout='fill'
@@ -301,7 +300,7 @@ const Footer = () => {
                       <Text span size='lg'>
                         &copy;
                       </Text>{' '}
-                      {new Date().getFullYear()} AuresX, SARL.
+                      {new Date().getFullYear()} AuresX, EURL.
                       <br /> All rights reserved.
                     </Text>
                     <Text size='sm' mb={16} color='dimmed'>
@@ -425,6 +424,10 @@ const Footer = () => {
                   sx={{
                     maxWidth: 140,
                     borderRadius: 8,
+                    border:
+                      theme.colorScheme === 'dark'
+                        ? `2px solid ${theme.colors.blue[6]}`
+                        : `2px solid ${theme.colors.blue[4]}`,
                     overflow: 'hidden',
                   }}
                 >
