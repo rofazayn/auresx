@@ -51,50 +51,50 @@ export default function App(props: AppProps) {
         />
       </Head>
 
-      <ApolloProvider client={apolloClient}>
-        <ColorSchemeProvider
-          colorScheme={colorScheme}
-          toggleColorScheme={toggleColorScheme}
-        >
-          <AuthProvider>
-            <div dir={rtl ? 'rtl' : 'ltr'}>
-              <MantineProvider
-                withGlobalStyles
-                withNormalizeCSS
-                theme={{
-                  ...mantineTheme,
-                  colorScheme,
-                  dir: rtl ? 'rtl' : 'ltr',
-                }}
-                emotionCache={rtl ? rtlCache : emotionCache}
+      {/* <ApolloProvider client={apolloClient}> */}
+      <ColorSchemeProvider
+        colorScheme={colorScheme}
+        toggleColorScheme={toggleColorScheme}
+      >
+        {/* <AuthProvider> */}
+        <div dir={rtl ? 'rtl' : 'ltr'}>
+          <MantineProvider
+            withGlobalStyles
+            withNormalizeCSS
+            theme={{
+              ...mantineTheme,
+              colorScheme,
+              dir: rtl ? 'rtl' : 'ltr',
+            }}
+            emotionCache={rtl ? rtlCache : emotionCache}
+          >
+            <NotificationsProvider
+              position='top-center'
+              zIndex={9999}
+              limit={6}
+            >
+              <Box
+                sx={(theme) => ({
+                  minHeight: '100vh',
+                  width: '100%',
+                  maxWidth: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  backgroundColor:
+                    theme.colorScheme === 'dark'
+                      ? theme.colors.dark[8]
+                      : 'white',
+                  // : theme.colors.gray[0],
+                })}
               >
-                <NotificationsProvider
-                  position='top-center'
-                  zIndex={9999}
-                  limit={6}
-                >
-                  <Box
-                    sx={(theme) => ({
-                      minHeight: '100vh',
-                      width: '100%',
-                      maxWidth: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      backgroundColor:
-                        theme.colorScheme === 'dark'
-                          ? theme.colors.dark[8]
-                          : 'white',
-                      // : theme.colors.gray[0],
-                    })}
-                  >
-                    <Component {...pageProps} />
-                  </Box>
-                </NotificationsProvider>
-              </MantineProvider>
-            </div>
-          </AuthProvider>
-        </ColorSchemeProvider>
-      </ApolloProvider>
+                <Component {...pageProps} />
+              </Box>
+            </NotificationsProvider>
+          </MantineProvider>
+        </div>
+        {/* </AuthProvider> */}
+      </ColorSchemeProvider>
+      {/* </ApolloProvider> */}
     </>
   )
 }

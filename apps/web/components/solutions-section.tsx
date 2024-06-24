@@ -17,6 +17,7 @@ import {
   IconBusinessplan,
   IconFingerprint,
   IconMoon,
+  IconPlane,
   IconPyramid,
   IconTriangles,
   IconWebhook,
@@ -99,6 +100,16 @@ const SolutionsSection = () => {
                   icon={<IconTriangles size='20' />}
                   description='A user-friendly point of sale software that streamlines business operations. Its key benefit is its ability to synchronize data when an internet connection is available, ensuring that your data is always up-to-date and accessible.'
                   tags={['Gedged', 'Live', '2024']}
+                  tagsColor='pink'
+                  link='https://gedged.co'
+                />
+              </Grid.Col>
+              <Grid.Col span={12} md={6} sm={6} xs={12}>
+                <SolutionCard
+                  title='Simplifying Visa Procedures'
+                  icon={<IconPlane size='20' />}
+                  description='Lihlih offers a user-friendly platform for seamless visa applications, supporting multiple countries and types. Agencies can subscribe for advanced tools to better serve their clients.'
+                  tags={['Lihlih', 'WIP', '2024']}
                   tagsColor='pink'
                   link='https://gedged.co'
                 />

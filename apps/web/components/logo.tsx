@@ -1,7 +1,7 @@
 import { AspectRatio, Box, useMantineColorScheme } from '@mantine/core'
 import NextImage from 'next/image'
 import logoImageLight from '../public/images/logo-light.png'
-import logoImage from '../public/images/logo.png'
+import logoImageDark from '../public/images/logo-dark.png'
 
 const Logo = () => {
   const { colorScheme } = useMantineColorScheme()
@@ -10,7 +10,7 @@ const Logo = () => {
       <AspectRatio
         ratio={1 / 1}
         sx={{
-          width: 40,
+          width: 36,
           cursor: 'pointer',
           '@media (max-width: 768px)': {
             width: 38,
@@ -19,7 +19,7 @@ const Logo = () => {
       >
         {colorScheme === 'dark' ? (
           <NextImage
-            src={logoImage}
+            src={logoImageDark}
             alt='AuresX logo'
             aria-label='AuresX logo'
             layout='fill'
